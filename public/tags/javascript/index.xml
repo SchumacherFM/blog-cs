@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Javascript on CyrillSchumacher.com</title>
+        <link>http://localhost:1313/tags/javascript/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Sun, 01 Jul 2012 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Nodejs Playground</title>
+            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
+            <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
+            <description>
+
+&lt;p&gt;Node.js Playground&lt;/p&gt;
+
+&lt;h2 id=&#34;schumacherfm-node-js-playground:3feaa270577b2ec9e9f004c4c5699f53&#34;&gt;@SchumacherFM Node.js Playground&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;implemented mysql&lt;/li&gt;
+&lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
+&lt;li&gt;custom handlebars.js helper&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Nodejs-Playground&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+</description>
+        </item>
+        
+    </channel>
+</rss>

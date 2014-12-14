@@ -1,0 +1,243 @@
+/*
+ Theme Name:     Hueman Child
+ Theme URI:      http://example.com/twenty-fourteen-child/
+ Description:    Hueman Child Theme
+ Author:         Cyrill Schumacher
+ Author URI:     http://example.com
+ Template:       hueman
+ Version:        1.0.0
+*/
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+/* FiraSans from: git clone https://github.com/mozilla/Fira.git */
+body, input, textarea, button, select, label {
+    font-family: "Fira Sans", Arial, sans-serif;
+}
+
+body {
+    background: #f3c17e;
+}
+
+#commentform {
+    background-color: #FAEBD7;
+}
+
+.entry code, .entry pre {
+    font-family: "Fira Mono", Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
+    font-size: 11px;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-Light.eot');
+    src: local('Fira Sans Light'), url('fonts/Fira/eot/FiraSans-Light.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-Light.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-LightItalic.eot');
+    src: local('Fira Sans Light Italic'), url('fonts/Fira/eot/FiraSans-LightItalic.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-LightItalic.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-Regular.eot');
+    src: local('Fira Sans Regular'), url('fonts/Fira/eot/FiraSans-Regular.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-Regular.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-RegularItalic.eot');
+    src: local('Fira Sans Regular Italic'), url('fonts/Fira/eot/FiraSans-RegularItalic.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-RegularItalic.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-RegularItalic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-Medium.eot');
+    src: local('Fira Sans Medium'), url('fonts/Fira/eot/FiraSans-Medium.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-Medium.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-MediumItalic.eot');
+    src: local('Fira Sans Medium Italic'), url('fonts/Fira/eot/FiraSans-MediumItalic.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-MediumItalic.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-Bold.eot');
+    src: local('Fira Sans Bold'), url('fonts/Fira/eot/FiraSans-Bold.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-Bold.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('fonts/Fira/eot/FiraSans-BoldItalic.eot');
+    src: local('Fira Sans Bold Italic'), url('fonts/Fira/eot/FiraSans-BoldItalic.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraSans-BoldItalic.woff') format('woff'), url('fonts/Fira/ttf/FiraSans-BoldItalic.ttf') format('truetype');
+    font-weight: 600;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Fira Mono';
+    src: url('fonts/Fira/eot/FiraMono-Regular.eot');
+    src: local('Fira Mono'), url('fonts/Fira/eot/FiraMono-Regular.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraMono-Regular.woff') format('woff'), url('fonts/Fira/ttf/FiraMono-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Fira Mono';
+    src: url('fonts/Fira/eot/FiraMono-Bold.eot');
+    src: local('Fira Mono Bold'), url('fonts/Fira/eot/FiraMono-Bold.eot') format('embedded-opentype'), url('fonts/Fira/woff/FiraMono-Bold.woff') format('woff'), url('fonts/Fira/ttf/FiraMono-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+.site-description {
+    font-weight: bold;
+}
+
+#header {
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+::selection {
+    background-color: #E3701A;
+}
+
+::-moz-selection {
+    background-color: #E3701A;
+}
+
+a,
+.themeform label .required,
+#flexslider-featured .flex-direction-nav .flex-next:hover,
+#flexslider-featured .flex-direction-nav .flex-prev:hover,
+.post-hover:hover .post-title a,
+.post-title a:hover,
+.s1 .post-nav li a:hover i,
+.content .post-nav li a:hover i,
+.post-related a:hover,
+.s1 .widget_rss ul li a,
+#footer .widget_rss ul li a,
+.s1 .widget_calendar a,
+#footer .widget_calendar a,
+.s1 .alx-tab .tab-item-category a,
+.s1 .alx-posts .post-item-category a,
+.s1 .alx-tab li:hover .tab-item-title a,
+.s1 .alx-tab li:hover .tab-item-comment a,
+.s1 .alx-posts li:hover .post-item-title a,
+#footer .alx-tab .tab-item-category a,
+#footer .alx-posts .post-item-category a,
+#footer .alx-tab li:hover .tab-item-title a,
+#footer .alx-tab li:hover .tab-item-comment a,
+#footer .alx-posts li:hover .post-item-title a,
+.comment-tabs li.active a,
+.comment-awaiting-moderation,
+.child-menu a:hover,
+.child-menu .current_page_item > a,
+.wp-pagenavi a {
+    color: #E3701A;
+}
+
+.themeform input[type="submit"],
+.themeform button[type="submit"],
+.s1 .sidebar-top,
+.s1 .sidebar-toggle,
+#flexslider-featured .flex-control-nav li a.flex-active,
+.post-tags a:hover,
+.s1 .widget_calendar caption,
+#footer .widget_calendar caption,
+.author-bio .bio-avatar:after,
+.commentlist li.bypostauthor > .comment-body:after {
+    /*background-color: #E3701A;*/
+    background-color: #E3701A;
+}
+
+.post-format .format-container {
+    border-color: #E3701A;
+}
+
+.s1 .alx-tabs-nav li.active a,
+#footer .alx-tabs-nav li.active a,
+.comment-tabs li.active a,
+.wp-pagenavi a:hover,
+.wp-pagenavi a:active,
+.wp-pagenavi span.current {
+    border-bottom-color: #E3701A !important;
+}
+
+.s2 .post-nav li a:hover i,
+.s2 .widget_rss ul li a,
+.s2 .widget_calendar a,
+.s2 .alx-tab .tab-item-category a,
+.s2 .alx-posts .post-item-category a,
+.s2 .alx-tab li:hover .tab-item-title a,
+.s2 .alx-tab li:hover .tab-item-comment a,
+.s2 .alx-posts li:hover .post-item-title a {
+    color: #8B2500;
+}
+
+.s2 .sidebar-top,
+.s2 .sidebar-toggle,
+.post-comments,
+.jp-play-bar,
+.jp-volume-bar-value,
+.s2 .widget_calendar caption {
+    background-color: #8B2500;
+}
+
+.s2 .alx-tabs-nav li.active a {
+    border-bottom-color: #8B2500;
+}
+
+.post-comments span:before {
+    border-right-color: #8B2500;
+}
+
+.widget_archive h4 {
+    font-weight: 500;
+    margin: 1em 0 0;
+}
+
+@media only screen and (min-width : 1921px) {
+    #header {
+        background-image    : url("img/syd-bridge-oper-3200.jpg");
+        background-repeat   : no-repeat;
+        background-position : center;
+    }
+}
+
+@media only screen and (min-width : 1025px) and  (max-width : 1920px) {
+    #header {
+        background-image : url("img/syd-bridge-oper-1920.jpg");
+    }
+}
+
+@media only screen and (min-width : 720px) and  (max-width : 1024px) {
+    #header {
+        background-image : url("img/syd-bridge-oper-1024.jpg");
+    }
+}
+
+@media only screen and (max-width : 719px) {
+    #header {
+        background-image : url("img/syd-bridge-oper-720.jpg");
+    }
+}

@@ -1,0 +1,13 @@
+/public/wp-content/uploads
+/static/wp-content/uploads
+syncFolders*
+/branches
+/config
+/description
+/HEAD
+/hooks
+/info
+/objects
+/refs
+/index
+/logs

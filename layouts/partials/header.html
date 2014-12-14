@@ -1,0 +1,67 @@
+<header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"><!-- put your mobile menu text here --></div>
+    <div class="nav-wrap container">
+      <a href="{{ .Site.BaseUrl }}" class="nav-cs-icon">
+        <img width="40" height="40" src="wp-content/uploads/schumacher.png" alt="schumacherfm" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        {{ range .Site.Params.Categories }}
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/{{ . | urlize | lower }}">{{ . }}</a>
+        </li>
+        {{ end }}
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+          eBusiness | Magento Go JavaScript | Cyrill at Schumacher dot fm
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!--/.container-inner-->
+    </div>
+    <!--/.container-->
+
+  </nav>
+  <!--/#nav-topbar-->
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a href="{{ .Site.BaseUrl }}" rel="home">
+              <img class="home-icon" width="50" height="50" src="wp-content/uploads/schumacher.png" alt="schumacherfm" title="Home">
+              {{ .Site.Title }}
+            </a>
+          </h1>
+
+          <!--<p class="site-description">-->
+          <!--eBusiness | Magento Go JavaScript-->
+          <!--</p>-->
+        </div>
+
+      </div>
+    </div>
+    <!--/.container-inner-->
+  </div>
+  <!--/.container-->
+
+</header>
+<!--/#header-->
