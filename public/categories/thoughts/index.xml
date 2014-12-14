@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Thoughts on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/categories/thoughts/</link>
+        <link>http://cyrillschumacher.com/categories/thoughts/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Demo1 Test</title>
-            <link>http://localhost:1313/2014/12/14/demo1-test/</link>
+            <link>http://cyrillschumacher.com/2014/12/14/demo1-test/</link>
             <pubDate>Sun, 14 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/2014/12/14/demo1-test/</guid>
+            <guid>http://cyrillschumacher.com/2014/12/14/demo1-test/</guid>
             <description>&lt;p&gt;Bacon ipsum dolor amet short ribs t-bone drumstick chicken, kielbasa ball tip porchetta sirloin kevin corned beef.&lt;/p&gt;
 
 &lt;p&gt;Turducken pork chop rump, spare ribs pork belly salami ribeye shoulder shankle pork loin tail bresaola short loin. Ball tip chuck t-bone prosciutto beef ground round ribeye cupim pork chop short ribs bresaola. Filet mignon ball tip jerky pork loin tenderloin hamburger t-bone chicken andouille cupim brisket sausage spare ribs.&lt;/p&gt;

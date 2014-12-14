@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
-        <loc>http://localhost:1313/</loc>
+        <loc>http://cyrillschumacher.com/</loc>
         <lastmod>2014-12-14T00:00:00+00:00</lastmod>
         <priority>0</priority>
     </url>
     
     <url>
-        <loc>http://localhost:1313/2014/12/14/demo1-test/</loc>
+        <loc>http://cyrillschumacher.com/2014/12/14/demo1-test/</loc>
         <lastmod>2014-12-14T00:00:00+00:00</lastmod>
     </url>
     
     <url>
-        <loc>http://localhost:1313/imprint/</loc>
+        <loc>http://cyrillschumacher.com/imprint/</loc>
         <lastmod>2013-12-01T00:00:00+00:00</lastmod>
     </url>
     
     <url>
-        <loc>http://localhost:1313/projects/2013-07-01-node-playground/</loc>
+        <loc>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</loc>
         <lastmod>2012-07-01T00:00:00+00:00</lastmod>
     </url>
     
     <url>
-        <loc>http://localhost:1313/projects/2012-07-01-magenerator/</loc>
+        <loc>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</loc>
         <lastmod>2012-07-01T00:00:00+00:00</lastmod>
     </url>
     
