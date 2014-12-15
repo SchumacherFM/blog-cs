@@ -23,11 +23,6 @@ body {
     background-color: #FAEBD7;
 }
 
-.entry code, .entry pre {
-    font-family: "Fira Mono", Monaco, "Courier New", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace;
-    font-size: 11px;
-}
-
 @font-face {
     font-family: 'Fira Sans';
     src: url('fonts/Fira/eot/FiraSans-Light.eot');

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pgp on CyrillSchumacher.com</title>
+        <link>http://cyrillschumacher.com/tags/pgp/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Tue, 23 Jul 2013 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Magento PGP</title>
+            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
+            <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
+            <description>
+
+&lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
+their public key and each email sent to their address will be automatically encrypted.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-PGP&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/logo/magento-pgp.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Secure emails in Magento via PGP / GPG email encryption.&lt;/p&gt;
+
+&lt;p&gt;Customers and shop owners can upload their public key and each email sent to their address will be automatically encrypted.
+That means if an email will leave the webserver via Magento this module will lookup via email address for a public key in the database
+and encrypts the email before it will be sent out.&lt;/p&gt;
+
+&lt;p&gt;If an email has multiple recipients then the email will be encrypted with the key from the first recipient.&lt;/p&gt;
+
+&lt;p&gt;This module uses:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PHP based &lt;a href=&#34;https://github.com/jasonhinkle/php-gpg&#34;&gt;https://github.com/jasonhinkle/php-gpg&lt;/a&gt;, if your hosting provider has disabled exec()&lt;/li&gt;
+&lt;li&gt;CLI based [&lt;a href=&#34;http://pear.php.net/package/Crypt_GPG&#34;&gt;http://pear.php.net/package/Crypt_GPG&lt;/a&gt;] &lt;a href=&#34;https://svn.php.net/repository/pear/packages/Crypt_GPG&#34;&gt;PEAR SVN&lt;/a&gt; via the native gpg installation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://prism-break.org/#email-encryption&#34;&gt;https://prism-break.org/#email-encryption&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;what-is-pgp:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;What is PGP?&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://en.wikipedia.org/wiki/Public-key_cryptography&#34;&gt;http://en.wikipedia.org/wiki/Public-key_cryptography&lt;/a&gt;
+Public-key cryptography refers to a cryptographic system requiring two separate keys, one of which is secret and one of which is public. Although different, the two parts of the key pair are mathematically linked. One key locks or encrypts the plaintext, and the other unlocks or decrypts the ciphertext. Neither key can perform both functions by itself. The public key may be published without compromising security, while the private key must not be revealed to anyone not authorized to read the messages.&lt;/p&gt;
+
+&lt;h2 id=&#34;restrictions:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Restrictions&lt;/h2&gt;
+
+&lt;p&gt;Sending of pure HTML emails is not possible &amp;hellip; ok it is &amp;hellip; but there needs to be mayor refactorings
+of the Zend_Mail classes. Due to the different Magento and Zend versions this could be quite a challange.&lt;/p&gt;
+
+&lt;p&gt;At the moment I have implemented a PHP class [&lt;a href=&#34;https://github.com/mtibben/html2text&#34;&gt;https://github.com/mtibben/html2text&lt;/a&gt;] which converts HTML into plain text.
+This plain text lacks only of nice output tables &amp;hellip; so I am still looking for a good PHP based HTML to text converter.&lt;/p&gt;
+
+&lt;p&gt;The PHP based gpg module cannot handle comments in a key. So please remove comments before submitting a key.
+The CLI based gpg module has no restrictions.&lt;/p&gt;
+
+&lt;h2 id=&#34;used-versions:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Used Versions&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Crypt_GPG-1.4.0b4.tgz&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jasonhinkle/php-gpg/commit/985bcdbfc16fb839d833d33a8f4c6057e621fbfe&#34;&gt;https://github.com/jasonhinkle/php-gpg/commit/985bcdbfc16fb839d833d33a8f4c6057e621fbfe&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;todo:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Todo&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;translations&lt;/li&gt;
+&lt;li&gt;sign&lt;/li&gt;
+&lt;li&gt;sign and encrypt&lt;/li&gt;
+&lt;li&gt;if an email has multiple recipients sent out for each recipient an encrypted mail.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;api:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;API&lt;/h2&gt;
+
+&lt;p&gt;If there is a key in the database:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/** @var $pgp SchumacherFM_Pgp_Model_Pgp */
+$pgp = Mage::getModel(&#39;pgp/pgp&#39;)
+    -&amp;gt;setPlainTextString($text)
+    -&amp;gt;setEmailAddress($emailAddressForEncryption);
+
+$encrypted = $pgp-&amp;gt;encrypt()-&amp;gt;getEncrypted();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Import a key:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/** @var SchumacherFM_Pgp_Model_Pgp $pgp */
+$pgp = Mage::getModel(&#39;pgp/pgp&#39;, array(
+    &#39;publicKeyAscii&#39; =&amp;gt; $publicKey,
+));
+
+$pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Both methods can also be combined.&lt;/p&gt;
+
+&lt;h2 id=&#34;printscreens:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Printscreens&lt;/h2&gt;
+
+&lt;h3 id=&#34;frontend-customer-account-section:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Frontend customer account section&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/doc/fe_customer_key_edit.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;backend-system-configuration:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Backend System Configuration&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/doc/be_config.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;backend-pgp-key-management-list:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Backend PGP Key Management (List)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/doc/be_key_list.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&#34;backend-pgp-key-management-edit:b7ad85f763f15e841c8fe1cef024cdfc&#34;&gt;Backend PGP Key Management (Edit)&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/doc/be_key_edit.png&#34; alt=&#34;image&#34; /&gt;
+&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

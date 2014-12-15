@@ -13,18 +13,33 @@
     </url>
     
     <url>
+        <loc>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</loc>
+        <lastmod>2013-12-20T00:00:00+00:00</lastmod>
+    </url>
+    
+    <url>
         <loc>http://cyrillschumacher.com/imprint/</loc>
         <lastmod>2013-12-01T00:00:00+00:00</lastmod>
     </url>
     
     <url>
+        <loc>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</loc>
+        <lastmod>2013-07-23T00:00:00+00:00</lastmod>
+    </url>
+    
+    <url>
         <loc>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</loc>
-        <lastmod>2012-07-01T00:00:00+00:00</lastmod>
+        <lastmod>2013-07-01T00:00:00+00:00</lastmod>
     </url>
     
     <url>
         <loc>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</loc>
         <lastmod>2012-07-01T00:00:00+00:00</lastmod>
+    </url>
+    
+    <url>
+        <loc>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</loc>
+        <lastmod>2011-11-14T00:00:00+00:00</lastmod>
     </url>
     
 </urlset>

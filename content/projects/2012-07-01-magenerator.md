@@ -1,5 +1,5 @@
 ---
-title: MageNerator
+title: MageNerator - Magento Extension Generator Website
 author: Cyrill
 date: 2012-07-01
 disqus_identifier: /2012/07/01/magenerator/
@@ -9,8 +9,6 @@ tags:
   - Magento
   - Generator
 ---
-
-### Magento Extension Generator Website
 
 This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.
 <!--more-->

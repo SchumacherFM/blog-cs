@@ -231,3 +231,12 @@ a,
 .social-tooltip i {
     color: #dddddd;
 }
+
+.entry .gist table {
+    text-align: left;
+}
+
+.entry .gist table td {
+    text-align: left;
+}
+
