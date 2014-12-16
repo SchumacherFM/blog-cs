@@ -15,7 +15,7 @@ OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.
 
 <!--more-->
 
-{ {% hubinfo u="SchumacherFM" r="Magento-OpCache" c="5" %}}
+{{% hubinfo u="SchumacherFM" r="Magento-OpCache" c="5" %}}
 
 OpCache Control Panel for Magento Backend.
 

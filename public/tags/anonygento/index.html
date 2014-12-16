@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+  <base href="http://cyrillschumacher.com/">
+  <script type="text/javascript">
+ 
+(function(){var a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X=[].slice,Y={}.hasOwnProperty,Z=function(a,b){function c(){this.constructor=a}for(var d in b)Y.call(b,d)&&(a[d]=b[d]);return c.prototype=b.prototype,a.prototype=new c,a.__super__=b.prototype,a},$=[].indexOf||function(a){for(var b=0,c=this.length;c>b;b++)if(b in this&&this[b]===a)return b;return-1};for(u={catchupTime:100,initialRate:.03,minTime:250,ghostTime:100,maxProgressPerFrame:20,easeFactor:1.25,startOnPageLoad:!0,restartOnPushState:!0,restartOnRequestAfter:500,target:"body",elements:{checkInterval:100,selectors:["body"]},eventLag:{minSamples:10,sampleCount:3,lagThreshold:3},ajax:{trackMethods:["GET"],trackWebSockets:!0,ignoreURLs:[]}},C=function(){var a;return null!=(a="undefined"!=typeof performance&&null!==performance&&"function"==typeof performance.now?performance.now():void 0)?a:+new Date},E=window.requestAnimationFrame||window.mozRequestAnimationFrame||window.webkitRequestAnimationFrame||window.msRequestAnimationFrame,t=window.cancelAnimationFrame||window.mozCancelAnimationFrame,null==E&&(E=function(a){return setTimeout(a,50)},t=function(a){return clearTimeout(a)}),G=function(a){var b,c;return b=C(),(c=function(){var d;return d=C()-b,d>=33?(b=C(),a(d,function(){return E(c)})):setTimeout(c,33-d)})()},F=function(){var a,b,c;return c=arguments[0],b=arguments[1],a=3<=arguments.length?X.call(arguments,2):[],"function"==typeof c[b]?c[b].apply(c,a):c[b]},v=function(){var a,b,c,d,e,f,g;for(b=arguments[0],d=2<=arguments.length?X.call(arguments,1):[],f=0,g=d.length;g>f;f++)if(c=d[f])for(a in c)Y.call(c,a)&&(e=c[a],null!=b[a]&&"object"==typeof b[a]&&null!=e&&"object"==typeof e?v(b[a],e):b[a]=e);return b},q=function(a){var b,c,d,e,f;for(c=b=0,e=0,f=a.length;f>e;e++)d=a[e],c+=Math.abs(d),b++;return c/b},x=function(a,b){var c,d,e;if(null==a&&(a="options"),null==b&&(b=!0),e=document.querySelector("[data-pace-"+a+"]")){if(c=e.getAttribute("data-pace-"+a),!b)return c;try{return JSON.parse(c)}catch(f){return d=f,"undefined"!=typeof console&&null!==console?console.error("Error parsing inline pace options",d):void 0}}},g=function(){function a(){}return a.prototype.on=function(a,b,c,d){var e;return null==d&&(d=!1),null==this.bindings&&(this.bindings={}),null==(e=this.bindings)[a]&&(e[a]=[]),this.bindings[a].push({handler:b,ctx:c,once:d})},a.prototype.once=function(a,b,c){return this.on(a,b,c,!0)},a.prototype.off=function(a,b){var c,d,e;if(null!=(null!=(d=this.bindings)?d[a]:void 0)){if(null==b)return delete this.bindings[a];for(c=0,e=[];c<this.bindings[a].length;)e.push(this.bindings[a][c].handler===b?this.bindings[a].splice(c,1):c++);return e}},a.prototype.trigger=function(){var a,b,c,d,e,f,g,h,i;if(c=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],null!=(g=this.bindings)?g[c]:void 0){for(e=0,i=[];e<this.bindings[c].length;)h=this.bindings[c][e],d=h.handler,b=h.ctx,f=h.once,d.apply(null!=b?b:this,a),i.push(f?this.bindings[c].splice(e,1):e++);return i}},a}(),j=window.Pace||{},window.Pace=j,v(j,g.prototype),D=j.options=v({},u,window.paceOptions,x()),U=["ajax","document","eventLag","elements"],Q=0,S=U.length;S>Q;Q++)K=U[Q],D[K]===!0&&(D[K]=u[K]);i=function(a){function b(){return V=b.__super__.constructor.apply(this,arguments)}return Z(b,a),b}(Error),b=function(){function a(){this.progress=0}return a.prototype.getElement=function(){var a;if(null==this.el){if(a=document.querySelector(D.target),!a)throw new i;this.el=document.createElement("div"),this.el.className="pace pace-active",document.body.className=document.body.className.replace(/pace-done/g,""),document.body.className+=" pace-running",this.el.innerHTML='<div class="pace-progress">\n  <div class="pace-progress-inner"></div>\n</div>\n<div class="pace-activity"></div>',null!=a.firstChild?a.insertBefore(this.el,a.firstChild):a.appendChild(this.el)}return this.el},a.prototype.finish=function(){var a;return a=this.getElement(),a.className=a.className.replace("pace-active",""),a.className+=" pace-inactive",document.body.className=document.body.className.replace("pace-running",""),document.body.className+=" pace-done"},a.prototype.update=function(a){return this.progress=a,this.render()},a.prototype.destroy=function(){try{this.getElement().parentNode.removeChild(this.getElement())}catch(a){i=a}return this.el=void 0},a.prototype.render=function(){var a,b,c,d,e,f,g;if(null==document.querySelector(D.target))return!1;for(a=this.getElement(),d="translate3d("+this.progress+"%, 0, 0)",g=["webkitTransform","msTransform","transform"],e=0,f=g.length;f>e;e++)b=g[e],a.children[0].style[b]=d;return(!this.lastRenderedProgress||this.lastRenderedProgress|0!==this.progress|0)&&(a.children[0].setAttribute("data-progress-text",""+(0|this.progress)+"%"),this.progress>=100?c="99":(c=this.progress<10?"0":"",c+=0|this.progress),a.children[0].setAttribute("data-progress",""+c)),this.lastRenderedProgress=this.progress},a.prototype.done=function(){return this.progress>=100},a}(),h=function(){function a(){this.bindings={}}return a.prototype.trigger=function(a,b){var c,d,e,f,g;if(null!=this.bindings[a]){for(f=this.bindings[a],g=[],d=0,e=f.length;e>d;d++)c=f[d],g.push(c.call(this,b));return g}},a.prototype.on=function(a,b){var c;return null==(c=this.bindings)[a]&&(c[a]=[]),this.bindings[a].push(b)},a}(),P=window.XMLHttpRequest,O=window.XDomainRequest,N=window.WebSocket,w=function(a,b){var c,d,e;e=[];for(d in b.prototype)try{e.push(null==a[d]&&"function"!=typeof b[d]?"function"==typeof Object.defineProperty?Object.defineProperty(a,d,{get:function(){return b.prototype[d]},configurable:!0,enumerable:!0}):a[d]=b.prototype[d]:void 0)}catch(f){c=f}return e},A=[],j.ignore=function(){var a,b,c;return b=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],A.unshift("ignore"),c=b.apply(null,a),A.shift(),c},j.track=function(){var a,b,c;return b=arguments[0],a=2<=arguments.length?X.call(arguments,1):[],A.unshift("track"),c=b.apply(null,a),A.shift(),c},J=function(a){var b;if(null==a&&(a="GET"),"track"===A[0])return"force";if(!A.length&&D.ajax){if("socket"===a&&D.ajax.trackWebSockets)return!0;if(b=a.toUpperCase(),$.call(D.ajax.trackMethods,b)>=0)return!0}return!1},k=function(a){function b(){var a,c=this;b.__super__.constructor.apply(this,arguments),a=function(a){var b;return b=a.open,a.open=function(d,e){return J(d)&&c.trigger("request",{type:d,url:e,request:a}),b.apply(a,arguments)}},window.XMLHttpRequest=function(b){var c;return c=new P(b),a(c),c};try{w(window.XMLHttpRequest,P)}catch(d){}if(null!=O){window.XDomainRequest=function(){var b;return b=new O,a(b),b};try{w(window.XDomainRequest,O)}catch(d){}}if(null!=N&&D.ajax.trackWebSockets){window.WebSocket=function(a,b){var d;return d=null!=b?new N(a,b):new N(a),J("socket")&&c.trigger("request",{type:"socket",url:a,protocols:b,request:d}),d};try{w(window.WebSocket,N)}catch(d){}}}return Z(b,a),b}(h),R=null,y=function(){return null==R&&(R=new k),R},I=function(a){var b,c,d,e;for(e=D.ajax.ignoreURLs,c=0,d=e.length;d>c;c++)if(b=e[c],"string"==typeof b){if(-1!==a.indexOf(b))return!0}else if(b.test(a))return!0;return!1},y().on("request",function(b){var c,d,e,f,g;return f=b.type,e=b.request,g=b.url,I(g)?void 0:j.running||D.restartOnRequestAfter===!1&&"force"!==J(f)?void 0:(d=arguments,c=D.restartOnRequestAfter||0,"boolean"==typeof c&&(c=0),setTimeout(function(){var b,c,g,h,i,k;if(b="socket"===f?e.readyState<2:0<(h=e.readyState)&&4>h){for(j.restart(),i=j.sources,k=[],c=0,g=i.length;g>c;c++){if(K=i[c],K instanceof a){K.watch.apply(K,d);break}k.push(void 0)}return k}},c))}),a=function(){function a(){var a=this;this.elements=[],y().on("request",function(){return a.watch.apply(a,arguments)})}return a.prototype.watch=function(a){var b,c,d,e;return d=a.type,b=a.request,e=a.url,I(e)?void 0:(c="socket"===d?new n(b):new o(b),this.elements.push(c))},a}(),o=function(){function a(a){var b,c,d,e,f,g,h=this;if(this.progress=0,null!=window.ProgressEvent)for(c=null,a.addEventListener("progress",function(a){return h.progress=a.lengthComputable?100*a.loaded/a.total:h.progress+(100-h.progress)/2},!1),g=["load","abort","timeout","error"],d=0,e=g.length;e>d;d++)b=g[d],a.addEventListener(b,function(){return h.progress=100},!1);else f=a.onreadystatechange,a.onreadystatechange=function(){var b;return 0===(b=a.readyState)||4===b?h.progress=100:3===a.readyState&&(h.progress=50),"function"==typeof f?f.apply(null,arguments):void 0}}return a}(),n=function(){function a(a){var b,c,d,e,f=this;for(this.progress=0,e=["error","open"],c=0,d=e.length;d>c;c++)b=e[c],a.addEventListener(b,function(){return f.progress=100},!1)}return a}(),d=function(){function a(a){var b,c,d,f;for(null==a&&(a={}),this.elements=[],null==a.selectors&&(a.selectors=[]),f=a.selectors,c=0,d=f.length;d>c;c++)b=f[c],this.elements.push(new e(b))}return a}(),e=function(){function a(a){this.selector=a,this.progress=0,this.check()}return a.prototype.check=function(){var a=this;return document.querySelector(this.selector)?this.done():setTimeout(function(){return a.check()},D.elements.checkInterval)},a.prototype.done=function(){return this.progress=100},a}(),c=function(){function a(){var a,b,c=this;this.progress=null!=(b=this.states[document.readyState])?b:100,a=document.onreadystatechange,document.onreadystatechange=function(){return null!=c.states[document.readyState]&&(c.progress=c.states[document.readyState]),"function"==typeof a?a.apply(null,arguments):void 0}}return a.prototype.states={loading:0,interactive:50,complete:100},a}(),f=function(){function a(){var a,b,c,d,e,f=this;this.progress=0,a=0,e=[],d=0,c=C(),b=setInterval(function(){var g;return g=C()-c-50,c=C(),e.push(g),e.length>D.eventLag.sampleCount&&e.shift(),a=q(e),++d>=D.eventLag.minSamples&&a<D.eventLag.lagThreshold?(f.progress=100,clearInterval(b)):f.progress=100*(3/(a+3))},50)}return a}(),m=function(){function a(a){this.source=a,this.last=this.sinceLastUpdate=0,this.rate=D.initialRate,this.catchup=0,this.progress=this.lastProgress=0,null!=this.source&&(this.progress=F(this.source,"progress"))}return a.prototype.tick=function(a,b){var c;return null==b&&(b=F(this.source,"progress")),b>=100&&(this.done=!0),b===this.last?this.sinceLastUpdate+=a:(this.sinceLastUpdate&&(this.rate=(b-this.last)/this.sinceLastUpdate),this.catchup=(b-this.progress)/D.catchupTime,this.sinceLastUpdate=0,this.last=b),b>this.progress&&(this.progress+=this.catchup*a),c=1-Math.pow(this.progress/100,D.easeFactor),this.progress+=c*this.rate*a,this.progress=Math.min(this.lastProgress+D.maxProgressPerFrame,this.progress),this.progress=Math.max(0,this.progress),this.progress=Math.min(100,this.progress),this.lastProgress=this.progress,this.progress},a}(),L=null,H=null,r=null,M=null,p=null,s=null,j.running=!1,z=function(){return D.restartOnPushState?j.restart():void 0},null!=window.history.pushState&&(T=window.history.pushState,window.history.pushState=function(){return z(),T.apply(window.history,arguments)}),null!=window.history.replaceState&&(W=window.history.replaceState,window.history.replaceState=function(){return z(),W.apply(window.history,arguments)}),l={ajax:a,elements:d,document:c,eventLag:f},(B=function(){var a,c,d,e,f,g,h,i;for(j.sources=L=[],g=["ajax","elements","document","eventLag"],c=0,e=g.length;e>c;c++)a=g[c],D[a]!==!1&&L.push(new l[a](D[a]));for(i=null!=(h=D.extraSources)?h:[],d=0,f=i.length;f>d;d++)K=i[d],L.push(new K(D));return j.bar=r=new b,H=[],M=new m})(),j.stop=function(){return j.trigger("stop"),j.running=!1,r.destroy(),s=!0,null!=p&&("function"==typeof t&&t(p),p=null),B()},j.restart=function(){return j.trigger("restart"),j.stop(),j.start()},j.go=function(){var a;return j.running=!0,r.render(),a=C(),s=!1,p=G(function(b,c){var d,e,f,g,h,i,k,l,n,o,p,q,t,u,v,w;for(l=100-r.progress,e=p=0,f=!0,i=q=0,u=L.length;u>q;i=++q)for(K=L[i],o=null!=H[i]?H[i]:H[i]=[],h=null!=(w=K.elements)?w:[K],k=t=0,v=h.length;v>t;k=++t)g=h[k],n=null!=o[k]?o[k]:o[k]=new m(g),f&=n.done,n.done||(e++,p+=n.tick(b));return d=p/e,r.update(M.tick(b,d)),r.done()||f||s?(r.update(100),j.trigger("done"),setTimeout(function(){return r.finish(),j.running=!1,j.trigger("hide")},Math.max(D.ghostTime,Math.max(D.minTime-(C()-a),0)))):c()})},j.start=function(a){v(D,a),j.running=!0;try{r.render()}catch(b){i=b}return document.querySelector(".pace")?(j.trigger("start"),j.go()):setTimeout(j.start,50)},"function"==typeof define&&define.amd?define(["pace"],function(){return j}):"object"==typeof exports?module.exports=j:D.startOnPageLoad&&j.start()}).call(this);
+</script>
+<style type="text/css">
+   
+  .pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  .pace.pace-inactive .pace-progress {
+    display: none;
+  }
+
+  .pace .pace-progress {
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    right: 45%;
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .pace .pace-progress:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+    content: attr(data-progress-text);
+    font-family: "Helvetica Neue", sans-serif;
+    font-weight: 100;
+    font-size: 5rem;
+    line-height: 1;
+    text-align: right;
+    color: rgba(229, 146, 42, 0.90);
+  }
+</style>
+
+  <title>Anonygento - http://cyrillschumacher.com</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<meta name="description" content="">
+<meta name="author" content="Cyrill Schumacher">
+<meta name="generator" content="http://gohugo.io/"/>
+
+
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
+  <style type="text/css">
+    .google_map div img {
+      max-width: none !important;
+    }
+  </style>
+
+  <link rel="canonical" href="http://cyrillschumacher.com/tags/anonygento/">
+  <link rel='shortlink' href='http://cyrillschumacher.com/tags/anonygento/'/>
+  <link rel="shortcut icon" href="wp-content/uploads/2013/12/schumacher.png"/>
+  
+<link href="http://cyrillschumacher.com/tags/anonygento/index.xml" rel="alternate" type="application/rss+xml" title="CyrillSchumacher.com"/>
+
+
+<link rel="stylesheet" id="human-style-css" href="wp-content/themes/hueman/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css2" href="wp-content/themes/hueman-child/style.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="responsive-css" href="wp-content/themes/hueman/responsive.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="font-awesome-css" href="wp-content/themes/hueman/fonts/font-awesome.min.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="wp-youtube-lyte" href="wp-content/plugins/wp-youtube-lyte/lyte/lyte.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="hubinfo" href="assets/hubinfo/dist/hubinfo.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="highlight" href="assets/highlight/styles/github.css" type="text/css" media="all"/>
+<link rel="stylesheet" id="human-style-css3" href="wp-content/themes/hueman-child/user.css" type="text/css" media="all"/>
+
+
+</head>
+
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
+<div id="wrapper">
+  <header id="header">
+
+  <nav class="nav-container group" id="nav-topbar">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap container">
+      <a href="http://cyrillschumacher.com" class="nav-cs-icon">
+        <img width="40" height="40" src="wp-content/uploads/schumacher.png" alt="schumacherfm" title="Home">
+      </a>
+      <ul id="menu-default-menu" class="nav container-inner group">
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/thoughts">Thoughts</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/projects">Projects</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/imprint">Imprint</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-text">
+          eBusiness | Magento Go JavaScript | Cyrill at Schumacher dot fm
+        </li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <div class="container-inner">
+        <div class="toggle-search"><i class="fa fa-search"></i></div>
+        <div class="search-expand">
+          <div class="search-expand-inner">
+            <form method="get" class="searchform themeform" action="https://www.google.com/search">
+              <div>
+                <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+
+  </nav>
+  
+
+  <div class="container group">
+    <div class="container-inner">
+
+      <div class="group pad">
+
+        <div class="group pad">
+          <h1 class="site-title">
+            <a href="http://cyrillschumacher.com" rel="home">
+              <img class="home-icon" width="50" height="50" src="wp-content/uploads/schumacher.png" alt="schumacherfm" title="Home">
+              CyrillSchumacher.com
+            </a>
+          </h1>
+
+          
+          
+          
+        </div>
+
+      </div>
+    </div>
+    
+  </div>
+  
+
+</header>
+
+
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="page-title pad group">
+              <h1><i class="fa fa-folder-open"></i>Posts with the tag: <span>Anonygento</span></h1>
+            </div>
+            <div class="pad group">
+
+              <div class="post-list group">
+  
+  
+    <article class="post type-post status-publish format-standard has-post-thumbnail hentry group">
+  <div class="post-inner post-hover">
+    <div class="post-meta group">
+  <p class="post-category">
+    
+    <a href="categories/projects/" title="Alle Posts in Projects" rel="category tag">Projects</a>
+    
+  </p>
+
+  <p class="post-date">1 July 2012</p>
+</div>
+
+<h2 class="post-title">
+  <a href="http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/" rel="bookmark" title="Magento Anonygento">Magento Anonygento</a>
+</h2>
+
+<div class="entry excerpt">
+  <p><p>Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.</p>
+
+<p>This anonymization is useful when you want to hire external developers or for your internal
+developers who really not need any kind of sensitive data.</p>
+</p>
+</div>
+
+
+  </div>
+  
+</article>
+
+
+    
+  
+</div>
+
+            </div>
+          </section>
+          <div class="sidebar s1">
+
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+
+  <div class="sidebar-content">
+
+    <div class="sidebar-top group">
+      <p>Follow:</p>
+      <ul class="social-links">
+  
+  
+  
+  
+  
+
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="Keybase.io"
+       href="https://keybase.io/cyrill" target="_blank">
+      <i class="fa fa-key"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="My GPG/PGP Key for Cyrill at Schumacher dot fm"
+       href="http://www.schumacher.fm/cyrill.asc" target="_blank">
+      <i class="fa fa-lock"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On Twitter"
+       href="https://twitter.com/SchumacherFM" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On GitHub"
+       href="https://github.com/SchumacherFM" target="_blank">
+      <i class="fa fa-github"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On Flickr"
+       href="https://www.flickr.com/photos/kiri-wt/" target="_blank">
+      <i class="fa fa-flickr"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On LinkedIn"
+       href="https://www.linkedin.com/in/cyrillschumacher" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+</ul>
+    </div>
+
+    <div class="widget widget_recent_entries sidebarLeftCategories"><h3>Last posts</h3>
+      <ul>
+        
+        <li><a href="http://cyrillschumacher.com/2014/12/14/how-to-speed-up-the-golang-based-onix-parser/">How to speed up the GoLang based Onix parser?</a></li>
+        
+        <li><a href="http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/">OnixParser</a></li>
+        
+        <li><a href="http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/">Magento MySQL AsyncSave</a></li>
+        
+        <li><a href="http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/">Magento Security Bundle @todo</a></li>
+        
+        <li><a href="http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/">Magento OPCache Panel</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="search-2" class="widget widget_search"><h3>Search</h3>
+
+      <form method="get" class="searchform themeform" action="https://www.google.com/search">
+        <div>
+          <input type="text" class="search" name="q" placeholder="Press enter to start searching">
+        </div>
+      </form>
+    </div>
+
+  </div>
+  
+</div>
+
+          <div class="sidebar s2">
+
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+
+  <div class="sidebar-content">
+
+    <div class="sidebar-top group">
+      <p>More</p>
+    </div>
+
+
+    <div id="categories-2" class="widget widget_categories"><h3>Categories</h3>
+      <ul>
+        
+        <li class="cat-item cat-item-1">
+          <a href="categories/thoughts">Thoughts</a>
+        </li>
+        
+        <li class="cat-item cat-item-1">
+          <a href="categories/projects">Projects</a>
+        </li>
+        
+        <li class="cat-item cat-item-1">
+          <a href="categories/imprint">Imprint</a>
+        </li>
+        
+      </ul>
+    </div>
+
+    <div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>Tags</h3>
+
+      <div class="tagcloud">
+        <p class="post-tags">
+          
+          
+          <a rel="tag" href="tags/anonygento" class="tag-link-1" title="1 Posts">anonygento</a>
+          
+          <a rel="tag" href="tags/backend" class="tag-link-2" title="2 Posts">backend</a>
+          
+          <a rel="tag" href="tags/development" class="tag-link-3" title="3 Posts">development</a>
+          
+          <a rel="tag" href="tags/freemind" class="tag-link-1" title="1 Posts">freemind</a>
+          
+          <a rel="tag" href="tags/generator" class="tag-link-1" title="1 Posts">generator</a>
+          
+          <a rel="tag" href="tags/golang" class="tag-link-2" title="2 Posts">golang</a>
+          
+          <a rel="tag" href="tags/javascript" class="tag-link-1" title="1 Posts">javascript</a>
+          
+          <a rel="tag" href="tags/login" class="tag-link-1" title="1 Posts">login</a>
+          
+          <a rel="tag" href="tags/magento" class="tag-link-7" title="7 Posts">magento</a>
+          
+          <a rel="tag" href="tags/mindmap" class="tag-link-1" title="1 Posts">mindmap</a>
+          
+          <a rel="tag" href="tags/mysql" class="tag-link-1" title="1 Posts">mysql</a>
+          
+          <a rel="tag" href="tags/nodejs" class="tag-link-1" title="1 Posts">nodejs</a>
+          
+          <a rel="tag" href="tags/onixparser" class="tag-link-2" title="2 Posts">onixparser</a>
+          
+          <a rel="tag" href="tags/opcache" class="tag-link-1" title="1 Posts">opcache</a>
+          
+          <a rel="tag" href="tags/pgp" class="tag-link-1" title="1 Posts">pgp</a>
+          
+          <a rel="tag" href="tags/project-failed" class="tag-link-1" title="1 Posts">project-failed</a>
+          
+          <a rel="tag" href="tags/security" class="tag-link-1" title="1 Posts">security</a>
+          
+          <a rel="tag" href="tags/todo" class="tag-link-1" title="1 Posts">todo</a>
+          
+          <a rel="tag" href="tags/typo3" class="tag-link-1" title="1 Posts">typo3</a>
+          
+          <a rel="tag" href="tags/xml" class="tag-link-1" title="1 Posts">xml</a>
+          
+          
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer id="footer">
+
+  <nav class="nav-container group" id="nav-footer">
+    <div class="nav-toggle"><i class="fa fa-bars"></i></div>
+    <div class="nav-text"></div>
+    <div class="nav-wrap">
+      <ul id="menu-default-menu-1" class="nav container group">
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/thoughts">Thoughts</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/projects">Projects</a>
+        </li>
+        
+        <li class="menu-item menu-item-type-post_type menu-item-object-page">
+          <a href="categories/imprint">Imprint</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+  
+
+  <section class="container" id="footer-bottom">
+    <div class="container-inner">
+
+      <a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+
+      <div class="pad group">
+
+        <div class="grid one-half">
+
+          <img id="footer-logo" src="wp-content/uploads/schumacher.png" alt="logo">
+
+          <div id="copyright">
+            <p>Cyrill Schumacher © 2014. All Rights Reserved. <br>Powered by
+              <a href="http://gohugo.io/" target="_blank">Hugo - the static site generator</a>.
+              <a href="http://golang.org" target="_blank">#golang</a>.
+            </p>
+          </div>
+          
+
+        </div>
+        
+
+        <div class="grid one-half last">
+          <ul class="social-links">
+  
+  
+  
+  
+  
+
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="Keybase.io"
+       href="https://keybase.io/cyrill" target="_blank">
+      <i class="fa fa-key"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="My GPG/PGP Key for Cyrill at Schumacher dot fm"
+       href="http://www.schumacher.fm/cyrill.asc" target="_blank">
+      <i class="fa fa-lock"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On Twitter"
+       href="https://twitter.com/SchumacherFM" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On GitHub"
+       href="https://github.com/SchumacherFM" target="_blank">
+      <i class="fa fa-github"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On Flickr"
+       href="https://www.flickr.com/photos/kiri-wt/" target="_blank">
+      <i class="fa fa-flickr"></i>
+    </a>
+  </li>
+  <li>
+    <a rel="nofollow" class="social-tooltip" title="On LinkedIn"
+       href="https://www.linkedin.com/in/cyrillschumacher" target="_blank">
+      <i class="fa fa-linkedin-square"></i>
+    </a>
+  </li>
+</ul>
+        </div>
+      </div>
+
+    </div>
+    
+  </section>
+  
+
+</footer>
+
+</div>
+<script type="text/javascript">
+  var _paq = _paq || [];_paq.push([ 'trackPageView' ]);_paq.push([ 'enableLinkTracking' ]);
+  (function() {
+    var u = (("https:" == document.location.protocol) ? "https" : "http") + "://www.schumacher.fm/piwik/";
+    _paq.push([ 'setTrackerUrl', u + 'js/' ]);_paq.push([ 'setSiteId', 5 ]);
+    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[ 0 ];
+    g.type = 'text/javascript';g.defer = true;g.async = true;g.src = u + 'js/';s.parentNode.insertBefore(g, s);
+  })();
+</script>
+<noscript><p><img src="http://www.schumacher.fm/piwik/js/?idsite=5" style="border:0;" alt=""/></p></noscript>
+<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
+<script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
+<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
+<script type="text/javascript" src="assets/hubinfo/dist/hubinfo.js"></script>
+<script type="text/javascript" src="assets/highlight/highlight.pack.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+
+
+<script type="text/javascript">var bU = "http:\/\/cyrillschumacher.com/wp-content/plugins/wp-youtube-lyte/lyte/";</script>
+<script type="text/javascript" async defer src="wp-content/plugins/wp-youtube-lyte/lyte/lyte.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+</body>
+</html>

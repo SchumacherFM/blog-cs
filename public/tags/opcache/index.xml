@@ -18,7 +18,9 @@
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
 
-&lt;p&gt;{ {% hubinfo u=&amp;ldquo;SchumacherFM&amp;rdquo; r=&amp;ldquo;Magento-OpCache&amp;rdquo; c=&amp;ldquo;5&amp;rdquo; %}}&lt;/p&gt;
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OpCache&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
 
 &lt;p&gt;OpCache Control Panel for Magento Backend.&lt;/p&gt;
 

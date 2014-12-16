@@ -1,16 +1,19 @@
 ---
-title: Demo1 Test
+title: How to speed up the GoLang based Onix parser?
 author: Cyrill
 date: 2014-12-14
-disqus_identifier: /2014/12/14/test1/
+disqus_identifier: /2014/12/14/speedup-onix/
 categories:
   - Thoughts
 tags:
-  - Test
+  - GoLang
+  - OnixParser
 ---
 
 Bacon ipsum dolor amet short ribs t-bone drumstick chicken, kielbasa ball tip porchetta sirloin kevin corned beef. 
+
 <!--more-->
+
 Turducken pork chop rump, spare ribs pork belly salami ribeye shoulder shankle pork loin tail bresaola short loin. Ball tip chuck t-bone prosciutto beef ground round ribeye cupim pork chop short ribs bresaola. Filet mignon ball tip jerky pork loin tenderloin hamburger t-bone chicken andouille cupim brisket sausage spare ribs.
 
 Ham hock picanha venison tail drumstick, short ribs pork loin beef kevin pork fatback doner. Filet mignon beef flank, cupim alcatra jerky short loin turducken hamburger porchetta tri-tip. Ground round chicken pastrami filet mignon landjaeger jerky, tri-tip tail beef. Cupim spare ribs tail alcatra chuck bacon.

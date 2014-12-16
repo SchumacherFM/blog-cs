@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Project Failed on CyrillSchumacher.com</title>
+        <link>http://cyrillschumacher.com/tags/project-failed/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Sun, 01 Jun 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Magento MySQL AsyncSave</title>
+            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <description>
+
+&lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
+MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-AsyncSave&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Magento implementation of &lt;a href=&#34;http://au1.php.net/manual/en/mysqli.query.php&#34;&gt;http://au1.php.net/manual/en/mysqli.query.php&lt;/a&gt;
+to use MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
+
+&lt;p&gt;Fire and forget.&lt;/p&gt;
+
+&lt;p&gt;This fails because Magento uses too many connections and one async query can
+only use one connection. IMHO setting the max connection variable to a higher
+value cannot be a solution. The guy here &lt;a href=&#34;http://sysmagazine.com/posts/155377/&#34;&gt;http://sysmagazine.com/posts/155377/&lt;/a&gt; stuck in the same situation &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Real DML async queries with one connection are not possible :-(&lt;/p&gt;
+
+&lt;h2 id=&#34;api:c2b26ba2886436dea74de315693e515f&#34;&gt;API&lt;/h2&gt;
+
+&lt;p&gt;Please only instantiate this resource via singleton.&lt;/p&gt;
+
+&lt;h3 id=&#34;available-methods:c2b26ba2886436dea74de315693e515f&#34;&gt;Available methods&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$this save(Mage_Core_Model_Abstract $object, array $_fieldsForUpdate = null)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With its _beforeSave and _afterSave methods if you want extend the Async resource class.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$this delete(Mage_Core_Model_Abstract $object)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With its _beforeDelete and _afterDelete methods if you want extend the Async resource class.&lt;/p&gt;
+
+&lt;p&gt;For both methods &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;delete()&lt;/code&gt; the provided &lt;code&gt;$object&lt;/code&gt; must have a valid resource object.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$this setSerializableFields(array $serializableFields)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;raw_query($sql, array $bind = null)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;null|bool|mysqli_result getLastAsyncResult()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;examples:c2b26ba2886436dea74de315693e515f&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$collection = Mage::getModel(&#39;catalog/product&#39;)-&amp;gt;getCollection();
+foreach($collection as $product){
+    $product-&amp;gt;setName(...)-&amp;gt;setPrice(...);
+    Mage::getResourceSingleton(&#39;schumacherfm_asyncsave/async&#39;)-&amp;gt;save($product);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$sql = $select-&amp;gt;insertFromSelect($this-&amp;gt;getFlatTableName($storeId), $fieldList);
+Mage::getResourceSingleton(&#39;schumacherfm_asyncsave/async&#39;)-&amp;gt;raw_query($sql, $bind);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;disadvantage-risks:c2b26ba2886436dea74de315693e515f&#34;&gt;Disadvantage / Risks&lt;/h2&gt;
+
+&lt;p&gt;This method provides no prepared statements. You are at the risk
+of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL injections&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

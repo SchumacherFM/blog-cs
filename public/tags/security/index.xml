@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Security on CyrillSchumacher.com</title>
+        <link>http://cyrillschumacher.com/tags/security/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Thu, 13 Mar 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Magento Security Bundle @todo</title>
+            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
+            <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
+            <description>
+
+&lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
+
+&lt;p&gt;This project is ideal for a hackathon.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-SecurityBundle&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
+
+&lt;p&gt;Idea:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nelmio/NelmioSecurityBundle&#34;&gt;https://github.com/nelmio/NelmioSecurityBundle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ibuildings.nl/blog/2013/03/4-http-security-headers-you-should-always-be-using&#34;&gt;http://ibuildings.nl/blog/&lt;sup&gt;2013&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/4-http-security-headers-you-should-always-be-using&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;features:42c27cc29ee68fb9885e187a6490dd46&#34;&gt;Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Content Security Policy&lt;/strong&gt;: Cross site scripting attacks (XSS) can be mitigated
+in modern browsers using a policy which instructs the browser never to execute inline scripts,
+or never to load content from another domain than the page&amp;rsquo;s domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Signed Cookies&lt;/strong&gt;: Specify certain cookies to be signed, so that the user cannot modify
+them. Note that they will not be encrypted, but signed only. The contents will still be
+visible to the user.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Encrypted Cookies&lt;/strong&gt;: Specify certain cookies to be encrypted, so that the value cannot be
+read. When you retreive the cookie it will be automatically decrypted.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Clickjacking Protection&lt;/strong&gt;: X-Frame-Options header is added to all responses to prevent your&lt;br /&gt;
+site from being put in a frame/iframe. This can have serious security implications as it has
+been demonstrated time and time again with Facebook and others. You can allow framing of your&lt;br /&gt;
+site from itself or from anywhere on a per-URL basis.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;External Redirects Detection&lt;/strong&gt;: Redirecting from your site to arbitrary URLs based on user
+input can be exploited to confuse users into clicking links that seemingly point to valid
+sites while they in fact lead to malicious content. It also may be possible to gain PageRank
+that way.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Forced HTTPS/SSL Handling&lt;/strong&gt;: This forces by all requests to go through SSL. It will also
+send &lt;a href=&#34;http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02&#34;&gt;HSTS&lt;/a&gt; headers so that
+modern browsers supporting it can make users use HTTPS even if they enter URLs without https,
+avoiding attacks on public Wi-Fi.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Flexible HTTPS/SSL Handling&lt;/strong&gt;: If you don&amp;rsquo;t want to force all users to use HTTPS, you should&lt;br /&gt;
+at least use secure session cookies and force SSL for logged-in users. But then logged-in users  appear logged-out when they access a non-HTTPS resource. This is not really a good solution.  This will make the application detect logged-in users and redirect them to a secure URL,  without making the session cookie insecure.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cookie Session Handler&lt;/strong&gt;: You can configure the session handler to use a cookie based storage.
+&lt;strong&gt;WARNING&lt;/strong&gt;: by default the session is not encrypted, it is your responsibility to properly
+configure the Encrypted Cookies  section to include the session cookie (default name: session).
+The size limit of a cookie is 4KB, so make sure you are not  storing object or long text into session.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Disable Content Type Sniffing&lt;/strong&gt;: Require that scripts are loaded using the correct mime type.
+This disables the feature that some browsers have which uses content sniffing to determine if
+the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Maybe: &lt;strong&gt;Implement pbkdf2&lt;/strong&gt;: Encrypting passwords for customers, admins and API access&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Xml on CyrillSchumacher.com</title>
+        <link>http://cyrillschumacher.com/tags/xml/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Sun, 29 Jun 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>OnixParser</title>
+            <link>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</link>
+            <pubDate>Sun, 29 Jun 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</guid>
+            <description>
+
+&lt;p&gt;Onix Parser written in GoLang to deal with huge XML file sizes. The ONIX for Books Product Information
+Message is the international standard for representing and communicating book industry product
+information in electronic form.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;OnixParser&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A parser for the &lt;a href=&#34;http://www.editeur.org/83/Overview/&#34;&gt;EDItEUR ONIX xml file format&lt;/a&gt; written in GoLang.&lt;/p&gt;
+
+&lt;p&gt;My first learning project. Of course it contains many &lt;em&gt;mistakes&lt;/em&gt; but the binary runs quite nice and at Zookal.com we&amp;rsquo;re
+using it in production. If you find an error or incorrect usage of Go, let me know :-)&lt;/p&gt;
+
+&lt;p&gt;Inspired for learning by &lt;a href=&#34;http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/&#34;&gt;http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;xml-data:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;XML Data&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.editeur.org/onix/2.1/02/reference/onix-international.dtd&#34;&gt;http://www.editeur.org/onix/2.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;02&lt;/sub&gt;/reference/onix-international.dtd&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;test-data-onix-data-feed:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Test data Onix Data Feed&lt;/h3&gt;
+
+&lt;p&gt;You can download test data from &lt;a href=&#34;http://www.oup.com.au/help_and_advice/booksellers&#34;&gt;http://www.oup.com.au/help_and_advice/booksellers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Complete File or The Incremental File.&lt;/p&gt;
+
+&lt;p&gt;Not all XML elements are matched because structure in DTD is unclear and we don&amp;rsquo;t need all elements. If one element is
+missing send me an email or a pull request.&lt;/p&gt;
+
+&lt;h2 id=&#34;performance:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Performance&lt;/h2&gt;
+
+&lt;p&gt;Parsing a &lt;strong&gt;3GB XML&lt;/strong&gt; file with &lt;strong&gt;998673 products&lt;/strong&gt; needs &lt;strong&gt;14m36.525541544s&lt;/strong&gt; to import that data &lt;strong&gt;into MySQL 5.5&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hardware used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MacBook Air&lt;/li&gt;
+&lt;li&gt;13-inch, Mid 2012&lt;/li&gt;
+&lt;li&gt;Processor  1.8 GHz Intel Core i5&lt;/li&gt;
+&lt;li&gt;Memory  8 GB 1600 MHz DDR3&lt;/li&gt;
+&lt;li&gt;APPLE SATA SSD SM256E Media&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are several options on the command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go run OnixParser.go -h
+OnixParser Copyright (C) 2014 Cyrill AT Schumacher dot fm
+This program comes with ABSOLUTELY NO WARRANTY; License: http://www.gnu.org/copyleft/gpl.html
+Usage of OnixParser:
+  -db=&amp;quot;test&amp;quot;: MySQL db name
+  -host=&amp;quot;127.0.0.1&amp;quot;: MySQL host name
+  -infile=&amp;quot;&amp;quot;: Input file path
+  -logfile=&amp;quot;&amp;quot;: Logfile name, if empty direct output
+  -moc=20: Max MySQL open connections
+  -outdir=&amp;quot;&amp;quot;: Dir for CSV output file for reading into MySQL, if empty writes to /tmp/
+  -pass=&amp;quot;test&amp;quot;: MySQL password
+  -tablePrefix=&amp;quot;gonix_&amp;quot;: Table name prefix
+  -user=&amp;quot;test&amp;quot;: MySQL user name
+  -v=false: Increase verbosity
+exit status 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The speed of import can only be achieved by using &lt;code&gt;LOAD DATA INFILE LOCAL&lt;/code&gt; with MySQL. So check your config if the option
+has been enabled.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To install the command line program, use the following:&lt;/p&gt;
+
+&lt;p&gt;Install Go: &lt;a href=&#34;http://golang.org/doc/install&#34;&gt;http://golang.org/doc/install&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/SchumacherFM/OnixParser
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;license:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;License&lt;/h1&gt;
+
+&lt;p&gt;General Public License&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/copyleft/gpl.html&#34;&gt;http://www.gnu.org/copyleft/gpl.html&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
