@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Generator on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/generator/</link>
+        <link>http://localhost:1313/tags/generator/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
+            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
+            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;

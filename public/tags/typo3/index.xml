@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Typo3 on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/typo3/</link>
+        <link>http://localhost:1313/tags/typo3/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>TYPO3Mind</title>
-            <link>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</link>
+            <link>http://localhost:1313/projects/2011-11-14-typo3mind/</link>
             <pubDate>Mon, 14 Nov 2011 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</guid>
+            <guid>http://localhost:1313/projects/2011-11-14-typo3mind/</guid>
             <description>&lt;p&gt;TYPO3Mind is an extension for generating mind mapping files. Mind maps helps you to understand how
 your whole TYPO3 installation has been setup and what the current running status is. Currently you
 can only export .mm files which can be imported by FreeMind.&lt;/p&gt;

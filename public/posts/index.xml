@@ -2,29 +2,49 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/posts/</link>
+        <link>http://localhost:1313/posts/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
-        <updated>Sun, 14 Dec 2014 00:00:00 UTC</updated>
+        <updated>Tue, 16 Dec 2014 00:00:00 UTC</updated>
         
         <item>
-            <title>Demo1 Test</title>
-            <link>http://cyrillschumacher.com/2014/12/14/demo1-test/</link>
-            <pubDate>Sun, 14 Dec 2014 00:00:00 UTC</pubDate>
+            <title>Magento Grid Column Renderer</title>
+            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</link>
+            <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/2014/12/14/demo1-test/</guid>
-            <description>&lt;p&gt;Bacon ipsum dolor amet short ribs t-bone drumstick chicken, kielbasa ball tip porchetta sirloin kevin corned beef.&lt;/p&gt;
+            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</guid>
+            <description>&lt;p&gt;Today I&amp;rsquo;ve weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
 
-&lt;p&gt;Turducken pork chop rump, spare ribs pork belly salami ribeye shoulder shankle pork loin tail bresaola short loin. Ball tip chuck t-bone prosciutto beef ground round ribeye cupim pork chop short ribs bresaola. Filet mignon ball tip jerky pork loin tenderloin hamburger t-bone chicken andouille cupim brisket sausage spare ribs.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse extends
+    Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
+{
+    public function render(Varien_Object $row)
+    {
+        $html      = &#39;&#39;;
+        $orderId   = $row-&amp;gt;getId();
+        $productId = $this-&amp;gt;getColumn()-&amp;gt;getproduct_id();
 
-&lt;p&gt;Ham hock picanha venison tail drumstick, short ribs pork loin beef kevin pork fatback doner. Filet mignon beef flank, cupim alcatra jerky short loin turducken hamburger porchetta tri-tip. Ground round chicken pastrami filet mignon landjaeger jerky, tri-tip tail beef. Cupim spare ribs tail alcatra chuck bacon.&lt;/p&gt;
+        $orderItem = Mage::getModel(&#39;sales/order_item&#39;)
+            -&amp;gt;getCollection()
+            -&amp;gt;addFieldToFilter(&#39;order_id&#39;, $orderId)
+            -&amp;gt;addFieldToFilter(&#39;product_id&#39;, $productId)
+            -&amp;gt;getFirstitem();
 
-&lt;p&gt;Jerky ribeye ham salami beef landjaeger biltong. Flank pancetta pork loin salami. Cupim kevin pig, biltong capicola porchetta pastrami pork spare ribs pork belly corned beef chicken drumstick turkey hamburger. Ball tip pork belly bresaola hamburger t-bone short loin pastrami boudin jerky drumstick alcatra. Short loin ham hock andouille jerky, pork belly pastrami pig chicken venison shoulder. Kevin pig turducken, strip steak doner tongue spare ribs venison pancetta sirloin ham hock. Jowl chuck cow, pork ham shoulder bacon pig pork loin.&lt;/p&gt;
+        $orderItemId = $orderItem-&amp;gt;getId();
 
-&lt;p&gt;Capicola sirloin jowl ribeye t-bone chicken turducken pastrami landjaeger pork belly filet mignon flank tri-tip. T-bone pancetta tenderloin venison. Tongue andouille hamburger, bacon pork shoulder tri-tip strip steak prosciutto alcatra pork belly picanha kevin. Leberkas tenderloin cow porchetta jowl turkey turducken bacon. Frankfurter boudin ham hock, pancetta kevin landjaeger prosciutto ground round strip steak fatback. Pancetta flank capicola, beef ribs sausage tail meatloaf leberkas ham hock filet mignon drumstick kielbasa rump. Biltong kevin tenderloin ham hock, t-bone meatball salami tongue frankfurter ham ribeye cow pork chop shoulder.&lt;/p&gt;
+        $item                     = Mage::getModel(&#39;Module/SalesFlatOrderItem&#39;)-&amp;gt;load($orderItemId);
+        $preparationWarehouseCode = $item-&amp;gt;getpreparation_warehouse();
+        if ($preparationWarehouseCode) {
+            $preparationWarehouse = Mage::getModel(&#39;Module/Warehouse&#39;)-&amp;gt;load($preparationWarehouseCode);
+            $html .= $preparationWarehouse-&amp;gt;getstock_name();
+        } else
+            $html .= &#39;&amp;lt;font color=&amp;quot;red&amp;quot;&amp;gt;&#39; . $this-&amp;gt;__(&#39;Undefined&#39;) . &#39;&amp;lt;/font&amp;gt;&#39;;
 
-&lt;p&gt;Porchetta beef ribs pork drumstick ribeye tongue. Pork loin rump pastrami bacon brisket capicola salami ball tip picanha. Hamburger ball tip spare ribs prosciutto meatball chuck. Ball tip porchetta ham hock turkey tri-tip, spare ribs rump kielbasa. Meatloaf brisket doner short loin.&lt;/p&gt;
+        return $html;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         
