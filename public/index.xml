@@ -2,25 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title> on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/</link>
+        <link>http://cyrillschumacher.com/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
         <updated>Tue, 16 Dec 2014 00:00:00 UTC</updated>
         
         <item>
-            <title>Magento Grid Column Renderer</title>
-            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</link>
+            <title>Magento Grid Column Renderer with DB queries</title>
+            <link>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</guid>
-            <description>&lt;p&gt;Today I&amp;rsquo;ve weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+            <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
+            <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid 
+    extends Mage_Adminhtml_Block_Widget_Grid
+{
+    protected function _prepareColumns()
+    {
+	  // more column definitions
+	  
+        $this-&amp;gt;addColumn(&#39;preparation_warehouse&#39;, array(
+            &#39;header&#39;     =&amp;gt; Mage::helper(&#39;Module&#39;)-&amp;gt;__(&#39;Preparation&amp;lt;br&amp;gt;Warehouses&#39;),
+            &#39;index&#39;      =&amp;gt; &#39;preparation_warehouse&#39;,
+            &#39;product_id&#39; =&amp;gt; $this-&amp;gt;_getProduct()-&amp;gt;getId(),
+            &#39;field_name&#39; =&amp;gt; &#39;preparation_warehouse&#39;,
+            &#39;renderer&#39;   =&amp;gt; &#39;Module/product_widget_grid_column_renderer_preparationWarehouse&#39;,
+            &#39;align&#39;      =&amp;gt; &#39;center&#39;,
+            &#39;filter&#39;     =&amp;gt; false,
+            &#39;sortable&#39;   =&amp;gt; false
+        ));
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the renderer:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse extends
     Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
     public function render(Varien_Object $row)
     {
+        /** @var $row NameSpace_Module_Model_Sales_Order */
         $html      = &#39;&#39;;
         $orderId   = $row-&amp;gt;getId();
         $productId = $this-&amp;gt;getColumn()-&amp;gt;getproduct_id();
@@ -45,20 +68,283 @@
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A little explanation before we figure out what is wrong here:&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;PreparationWarehouse&lt;/code&gt; is saved per &lt;code&gt;sales/order_item&lt;/code&gt; because one order item can be shipped from a different warehouse.&lt;/p&gt;
+
+&lt;p&gt;The entity &lt;code&gt;Module/SalesFlatOrderItem&lt;/code&gt; is an additional table which extends in very very bad way the &lt;code&gt;sales_flat_order_item&lt;/code&gt; table/entity.&lt;/p&gt;
+
+&lt;p&gt;After refactoring of &lt;code&gt;NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid&lt;/code&gt; I&amp;rsquo;ve completely deleted the column renderer &lt;code&gt;PreparationWarehouse&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; relied on only 10 different columns on the &lt;code&gt;sales/order&lt;/code&gt; table but more DB retrieval work has been done in all the column renderers. The &lt;code&gt;PreparationWarehouse&lt;/code&gt; was the worst one of all.&lt;/p&gt;
+
+&lt;p&gt;After switching the collection in the &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        $this-&amp;gt;_collection = Mage::getModel(&#39;sales/order_item&#39;)-&amp;gt;getCollection();
+        $this-&amp;gt;_collection-&amp;gt;join(
+            [&#39;so&#39; =&amp;gt; &#39;sales/order&#39;],
+            &#39;main_table.order_id = so.entity_id AND main_table.product_id = &#39; . $this-&amp;gt;_getProduct()-&amp;gt;getId(),
+            [
+                &#39;increment_id&#39;,
+                &#39;so_created_at&#39; =&amp;gt; &#39;so.created_at&#39;,
+                &#39;grand_total&#39;,
+                &#39;order_currency_code&#39;,
+                &#39;customer_id&#39;,
+                &#39;customer_firstname&#39;,
+                &#39;customer_lastname&#39;,
+                &#39;is_valid&#39;,
+                &#39;status&#39;,
+                &#39;state&#39;,
+            ]
+        );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;all column renderers can now be removed and a simple option list or even the default text fields have been reimplemented.&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>OnixParser</title>
+            <link>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</link>
+            <pubDate>Sun, 29 Jun 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</guid>
+            <description>
+
+&lt;p&gt;Onix Parser written in GoLang to deal with huge XML file sizes. The ONIX for Books Product Information
+Message is the international standard for representing and communicating book industry product
+information in electronic form.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;OnixParser&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;A parser for the &lt;a href=&#34;http://www.editeur.org/83/Overview/&#34;&gt;EDItEUR ONIX xml file format&lt;/a&gt; written in GoLang.&lt;/p&gt;
+
+&lt;p&gt;My first learning project. Of course it contains many &lt;em&gt;mistakes&lt;/em&gt; but the binary runs quite nice and at Zookal.com we&amp;rsquo;re
+using it in production. If you find an error or incorrect usage of Go, let me know :-)&lt;/p&gt;
+
+&lt;p&gt;Inspired for learning by &lt;a href=&#34;http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/&#34;&gt;http://blog.davidsingleton.org/parsing-huge-xml-files-with-go/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;xml-data:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;XML Data&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.editeur.org/onix/2.1/02/reference/onix-international.dtd&#34;&gt;http://www.editeur.org/onix/2.&lt;sup&gt;1&lt;/sup&gt;&amp;frasl;&lt;sub&gt;02&lt;/sub&gt;/reference/onix-international.dtd&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;test-data-onix-data-feed:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Test data Onix Data Feed&lt;/h3&gt;
+
+&lt;p&gt;You can download test data from &lt;a href=&#34;http://www.oup.com.au/help_and_advice/booksellers&#34;&gt;http://www.oup.com.au/help_and_advice/booksellers&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The Complete File or The Incremental File.&lt;/p&gt;
+
+&lt;p&gt;Not all XML elements are matched because structure in DTD is unclear and we don&amp;rsquo;t need all elements. If one element is
+missing send me an email or a pull request.&lt;/p&gt;
+
+&lt;h2 id=&#34;performance:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Performance&lt;/h2&gt;
+
+&lt;p&gt;Parsing a &lt;strong&gt;3GB XML&lt;/strong&gt; file with &lt;strong&gt;998673 products&lt;/strong&gt; needs &lt;strong&gt;14m36.525541544s&lt;/strong&gt; to import that data &lt;strong&gt;into MySQL 5.5&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Hardware used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MacBook Air&lt;/li&gt;
+&lt;li&gt;13-inch, Mid 2012&lt;/li&gt;
+&lt;li&gt;Processor  1.8 GHz Intel Core i5&lt;/li&gt;
+&lt;li&gt;Memory  8 GB 1600 MHz DDR3&lt;/li&gt;
+&lt;li&gt;APPLE SATA SSD SM256E Media&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are several options on the command line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ go run OnixParser.go -h
+OnixParser Copyright (C) 2014 Cyrill AT Schumacher dot fm
+This program comes with ABSOLUTELY NO WARRANTY; License: http://www.gnu.org/copyleft/gpl.html
+Usage of OnixParser:
+  -db=&amp;quot;test&amp;quot;: MySQL db name
+  -host=&amp;quot;127.0.0.1&amp;quot;: MySQL host name
+  -infile=&amp;quot;&amp;quot;: Input file path
+  -logfile=&amp;quot;&amp;quot;: Logfile name, if empty direct output
+  -moc=20: Max MySQL open connections
+  -outdir=&amp;quot;&amp;quot;: Dir for CSV output file for reading into MySQL, if empty writes to /tmp/
+  -pass=&amp;quot;test&amp;quot;: MySQL password
+  -tablePrefix=&amp;quot;gonix_&amp;quot;: Table name prefix
+  -user=&amp;quot;test&amp;quot;: MySQL user name
+  -v=false: Increase verbosity
+exit status 2
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The speed of import can only be achieved by using &lt;code&gt;LOAD DATA INFILE LOCAL&lt;/code&gt; with MySQL. So check your config if the option
+has been enabled.&lt;/p&gt;
+
+&lt;h1 id=&#34;installation:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;Installation&lt;/h1&gt;
+
+&lt;p&gt;To install the command line program, use the following:&lt;/p&gt;
+
+&lt;p&gt;Install Go: &lt;a href=&#34;http://golang.org/doc/install&#34;&gt;http://golang.org/doc/install&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;go get github.com/SchumacherFM/OnixParser
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;license:a44564a0a74e2cbf21533d898d45bce4&#34;&gt;License&lt;/h1&gt;
+
+&lt;p&gt;General Public License&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.gnu.org/copyleft/gpl.html&#34;&gt;http://www.gnu.org/copyleft/gpl.html&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Magento MySQL AsyncSave</title>
+            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <description>
+
+&lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
+MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-AsyncSave&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Magento implementation of &lt;a href=&#34;http://au1.php.net/manual/en/mysqli.query.php&#34;&gt;http://au1.php.net/manual/en/mysqli.query.php&lt;/a&gt;
+to use MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
+
+&lt;p&gt;Fire and forget.&lt;/p&gt;
+
+&lt;p&gt;This fails because Magento uses too many connections and one async query can
+only use one connection. IMHO setting the max connection variable to a higher
+value cannot be a solution. The guy here &lt;a href=&#34;http://sysmagazine.com/posts/155377/&#34;&gt;http://sysmagazine.com/posts/155377/&lt;/a&gt; stuck in the same situation &amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;Real DML async queries with one connection are not possible :-(&lt;/p&gt;
+
+&lt;h2 id=&#34;api:c2b26ba2886436dea74de315693e515f&#34;&gt;API&lt;/h2&gt;
+
+&lt;p&gt;Please only instantiate this resource via singleton.&lt;/p&gt;
+
+&lt;h3 id=&#34;available-methods:c2b26ba2886436dea74de315693e515f&#34;&gt;Available methods&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;$this save(Mage_Core_Model_Abstract $object, array $_fieldsForUpdate = null)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With its _beforeSave and _afterSave methods if you want extend the Async resource class.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$this delete(Mage_Core_Model_Abstract $object)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;With its _beforeDelete and _afterDelete methods if you want extend the Async resource class.&lt;/p&gt;
+
+&lt;p&gt;For both methods &lt;code&gt;save()&lt;/code&gt; and &lt;code&gt;delete()&lt;/code&gt; the provided &lt;code&gt;$object&lt;/code&gt; must have a valid resource object.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$this setSerializableFields(array $serializableFields)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;raw_query($sql, array $bind = null)&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;null|bool|mysqli_result getLastAsyncResult()&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;examples:c2b26ba2886436dea74de315693e515f&#34;&gt;Examples&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$collection = Mage::getModel(&#39;catalog/product&#39;)-&amp;gt;getCollection();
+foreach($collection as $product){
+    $product-&amp;gt;setName(...)-&amp;gt;setPrice(...);
+    Mage::getResourceSingleton(&#39;schumacherfm_asyncsave/async&#39;)-&amp;gt;save($product);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;$sql = $select-&amp;gt;insertFromSelect($this-&amp;gt;getFlatTableName($storeId), $fieldList);
+Mage::getResourceSingleton(&#39;schumacherfm_asyncsave/async&#39;)-&amp;gt;raw_query($sql, $bind);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;disadvantage-risks:c2b26ba2886436dea74de315693e515f&#34;&gt;Disadvantage / Risks&lt;/h2&gt;
+
+&lt;p&gt;This method provides no prepared statements. You are at the risk
+of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL injections&lt;/a&gt;.&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Magento Security Bundle @todo</title>
+            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
+            <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
+            <description>
+
+&lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
+
+&lt;p&gt;This project is ideal for a hackathon.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-SecurityBundle&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
+
+&lt;p&gt;Idea:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/nelmio/NelmioSecurityBundle&#34;&gt;https://github.com/nelmio/NelmioSecurityBundle&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://ibuildings.nl/blog/2013/03/4-http-security-headers-you-should-always-be-using&#34;&gt;http://ibuildings.nl/blog/&lt;sup&gt;2013&lt;/sup&gt;&amp;frasl;&lt;sub&gt;03&lt;/sub&gt;/4-http-security-headers-you-should-always-be-using&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;features:42c27cc29ee68fb9885e187a6490dd46&#34;&gt;Features&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Content Security Policy&lt;/strong&gt;: Cross site scripting attacks (XSS) can be mitigated
+in modern browsers using a policy which instructs the browser never to execute inline scripts,
+or never to load content from another domain than the page&amp;rsquo;s domain.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Signed Cookies&lt;/strong&gt;: Specify certain cookies to be signed, so that the user cannot modify
+them. Note that they will not be encrypted, but signed only. The contents will still be
+visible to the user.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Encrypted Cookies&lt;/strong&gt;: Specify certain cookies to be encrypted, so that the value cannot be
+read. When you retreive the cookie it will be automatically decrypted.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Clickjacking Protection&lt;/strong&gt;: X-Frame-Options header is added to all responses to prevent your&lt;br /&gt;
+site from being put in a frame/iframe. This can have serious security implications as it has
+been demonstrated time and time again with Facebook and others. You can allow framing of your&lt;br /&gt;
+site from itself or from anywhere on a per-URL basis.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;External Redirects Detection&lt;/strong&gt;: Redirecting from your site to arbitrary URLs based on user
+input can be exploited to confuse users into clicking links that seemingly point to valid
+sites while they in fact lead to malicious content. It also may be possible to gain PageRank
+that way.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Forced HTTPS/SSL Handling&lt;/strong&gt;: This forces by all requests to go through SSL. It will also
+send &lt;a href=&#34;http://tools.ietf.org/html/draft-hodges-strict-transport-sec-02&#34;&gt;HSTS&lt;/a&gt; headers so that
+modern browsers supporting it can make users use HTTPS even if they enter URLs without https,
+avoiding attacks on public Wi-Fi.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Flexible HTTPS/SSL Handling&lt;/strong&gt;: If you don&amp;rsquo;t want to force all users to use HTTPS, you should&lt;br /&gt;
+at least use secure session cookies and force SSL for logged-in users. But then logged-in users  appear logged-out when they access a non-HTTPS resource. This is not really a good solution.  This will make the application detect logged-in users and redirect them to a secure URL,  without making the session cookie insecure.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Cookie Session Handler&lt;/strong&gt;: You can configure the session handler to use a cookie based storage.
+&lt;strong&gt;WARNING&lt;/strong&gt;: by default the session is not encrypted, it is your responsibility to properly
+configure the Encrypted Cookies  section to include the session cookie (default name: session).
+The size limit of a cookie is 4KB, so make sure you are not  storing object or long text into session.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Disable Content Type Sniffing&lt;/strong&gt;: Require that scripts are loaded using the correct mime type.
+This disables the feature that some browsers have which uses content sniffing to determine if
+the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Maybe: &lt;strong&gt;Implement pbkdf2&lt;/strong&gt;: Encrypting passwords for customers, admins and API access&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
 
-&lt;p&gt;{ {% hubinfo u=&amp;ldquo;SchumacherFM&amp;rdquo; r=&amp;ldquo;Magento-OpCache&amp;rdquo; c=&amp;ldquo;5&amp;rdquo; %}}&lt;/p&gt;
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OpCache&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
 
 &lt;p&gt;OpCache Control Panel for Magento Backend.&lt;/p&gt;
 
@@ -114,10 +400,10 @@
         
         <item>
             <title>Impressum</title>
-            <link>http://localhost:1313/imprint/</link>
+            <link>http://cyrillschumacher.com/imprint/</link>
             <pubDate>Sun, 01 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/imprint/</guid>
+            <guid>http://cyrillschumacher.com/imprint/</guid>
             <description>
 
 &lt;p&gt;Click for more details!&lt;/p&gt;
@@ -162,10 +448,10 @@
         
         <item>
             <title>Magento PGP</title>
-            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
+            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
@@ -277,10 +563,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Nodejs Playground</title>
-            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
+            <link>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</link>
             <pubDate>Mon, 01 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</guid>
             <description>&lt;ul&gt;
 &lt;li&gt;implemented mysql&lt;/li&gt;
 &lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
@@ -294,11 +580,376 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         </item>
         
         <item>
-            <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
+            <title>Magento Optimized Backend Login</title>
+            <link>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</link>
+            <pubDate>Tue, 04 Jun 2013 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
+            <description>&lt;p&gt;Sets the autocomplete html form attribute depending on the environment for the backend login form.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OptimizedBackendLogin&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Sets the autocomplete html form attribute depending on the environment. (Allows you to store the password in the browser during development)&lt;/li&gt;
+&lt;li&gt;Show Magento logo: yes/no&lt;/li&gt;
+&lt;li&gt;Setting a custom background color&lt;/li&gt;
+&lt;li&gt;Show &amp;ldquo;Forgot your Password&amp;rdquo; link: yes/no&lt;/li&gt;
+&lt;li&gt;Switch on minimalistic login &amp;amp; forgotpassword form with even minimalistic captcha (no JS will be loaded)&lt;/li&gt;
+&lt;li&gt;Display optionally store owner logo in login form&lt;/li&gt;
+&lt;li&gt;Adds accidentally more security to the Magento CE 1.7 and EE 1.12 login form&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This module is only for the Magento backend. All options are configurable in the backend configuration developer section.&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>Magento Anonygento</title>
+            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
+            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
+            <description>
+
+&lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;
+
+&lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal
+developers who really not need any kind of sensitive data.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Anonygento&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Anonymizes all customer related data in a Magento shop!&lt;/p&gt;
+
+&lt;p&gt;Install (via modman) and run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd shell
+$ php -f anonygento.php
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, quotes, newsletters, etc.&lt;/p&gt;
+
+&lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal developers who really
+not need any kind of sensitive data.&lt;/p&gt;
+
+&lt;p&gt;Anonygento can be easily extended by custom configuration and observers.&lt;/p&gt;
+
+&lt;p&gt;Do not run this script in the production environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;what-it-does:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;What it does?&lt;/h2&gt;
+
+&lt;p&gt;This extension anonymizes all customer related data from the following data objects:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Customers&lt;/li&gt;
+&lt;li&gt;Customers Addresses&lt;/li&gt;
+&lt;li&gt;Orders&lt;/li&gt;
+&lt;li&gt;Order Addresses&lt;/li&gt;
+&lt;li&gt;Order Grid&lt;/li&gt;
+&lt;li&gt;Order Payment&lt;/li&gt;
+&lt;li&gt;Quotes&lt;/li&gt;
+&lt;li&gt;Quote Addresses&lt;/li&gt;
+&lt;li&gt;Quote Payment&lt;/li&gt;
+&lt;li&gt;Credit memo&lt;/li&gt;
+&lt;li&gt;Invoice&lt;/li&gt;
+&lt;li&gt;Shipment&lt;/li&gt;
+&lt;li&gt;Newsletter Subscribers&lt;/li&gt;
+&lt;li&gt;Gift messages&lt;/li&gt;
+&lt;li&gt;Review&lt;/li&gt;
+&lt;li&gt;Rating&lt;/li&gt;
+&lt;li&gt;Sendfriend&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This module is optimized to handle a large amount of data.&lt;/p&gt;
+
+&lt;h2 id=&#34;random-data:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Random Data&lt;/h2&gt;
+
+&lt;p&gt;All data is read from self defined csv files which are stored in the module data folder and in this location in a locale subfolder.&lt;/p&gt;
+
+&lt;p&gt;You provide the random data for the module. There are several files for the en_US locale already available.&lt;/p&gt;
+
+&lt;p&gt;Zipcode, City, State and Country aren&amp;rsquo;t anonymized so that shipping and tax calculations still work correctly.&lt;/p&gt;
+
+&lt;p&gt;IP addresses in all tables are also anonymized.&lt;/p&gt;
+
+&lt;p&gt;You can configure in the backend section which locale to use. Just navigate
+to System -&amp;gt; Configuration -&amp;gt; Advanced -&amp;gt; Developer -&amp;gt; Anonygento Settings&lt;/p&gt;
+
+&lt;p&gt;If the csv files are empty in the locale folder then the Anonygento generates real random mnenomic strings.&lt;/p&gt;
+
+&lt;h2 id=&#34;magento-backend-hints:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Magento Backend hints&lt;/h2&gt;
+
+&lt;p&gt;The red label &amp;lsquo;sensitive data&amp;rsquo; will switch to green for each entity when the anonymization process ran successful.&lt;/p&gt;
+
+&lt;h2 id=&#34;compatibility:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Compatibility&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Magento &amp;gt;= 1.5&lt;/li&gt;
+&lt;li&gt;php &amp;gt;= 5.3.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It could run with Magento &amp;lt; 1.5 but still not tested.&lt;/p&gt;
+
+&lt;h2 id=&#34;todo-next-versions:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Todo / Next Versions&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Enterprise tables like Logging, RMA, Sales credit memo, sales invoice grid, sales order grid, sales shipment grid&lt;/li&gt;
+&lt;li&gt;Ask for a different database before running the anonymization process&lt;/li&gt;
+&lt;li&gt;Assign a store view to a locale to get e.g. country specific random names.&lt;/li&gt;
+&lt;li&gt;Run via backend instead of shell. Use a nice ajax updater.&lt;/li&gt;
+&lt;li&gt;Restore created_at and updated_at columns / attributes&lt;/li&gt;
+&lt;li&gt;Anonymize all prices&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;backend:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Backend&lt;/h4&gt;
+
+&lt;p&gt;Clear the cache, logout from the admin panel and then login again.&lt;/p&gt;
+
+&lt;p&gt;Call the extension from System -&amp;gt; Tools -&amp;gt; Anonygento (just to get a summery).&lt;/p&gt;
+
+&lt;p&gt;In this grid view you can view the data from all entities by clicking on the &amp;ldquo;View&amp;rdquo; link.&lt;/p&gt;
+
+&lt;h4 id=&#34;shell:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Shell&lt;/h4&gt;
+
+&lt;p&gt;Call the script like shown below.&lt;/p&gt;
+
+&lt;h5 id=&#34;this-is-the-view-if-you-choose-no:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;This is the view if you choose &amp;ldquo;no&amp;rdquo;.&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd shell
+$ php -f anonygento.php
+Anonymize this Magento installation? [y/n]n
+Nothing done!
+$
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;this-view-shows-the-result-for-choosing-yes:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;This view shows the result for choosing &amp;ldquo;yes&amp;rdquo;:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd shell
+$ php -f anonygento.php
+Anonymize this Magento installation? [y/n]y
+Running customer, work load: XXXX rows
+  0% [-------------------------------------]
+Running ...
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;command-line-options:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Command line options&lt;/h5&gt;
+
+&lt;p&gt;Adjusting memory limit (in MB): &lt;code&gt;php -f anonygento.php -- --memoryLimit=2048 --runAnonymization&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Statistics: &lt;code&gt;php -f anonygento.php -- --stat&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If all fails and you still get our of memory errors:&lt;/p&gt;
+
+&lt;p&gt;Limiting the collection size: &lt;code&gt;php -f anonygento.php -- --collectionLimit=400 --runAnonymization&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;disabling-the-confirmation-and-username-query:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Disabling the confirmation and username query&lt;/h4&gt;
+
+&lt;p&gt;Add to your e.g. .bash_profile or type it into the shell: &lt;code&gt;export ANONYGENTO_DEV=true&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is will enable the dev mode.&lt;/p&gt;
+
+&lt;h2 id=&#34;extending-the-anonymization-process:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Extending the anonymization process&lt;/h2&gt;
+
+&lt;h4 id=&#34;custom-attributes:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Custom attributes&lt;/h4&gt;
+
+&lt;p&gt;To anonymize custom attributes in the e.g. customer eav model you can add the following
+xml to the config.xml. No PHP programming is necessary except if you need custom random strings.&lt;/p&gt;
+
+&lt;h5 id=&#34;example-config:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Example config:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;config&amp;gt;
+    &amp;lt;anonygento&amp;gt;
+        &amp;lt;anonymizations&amp;gt;
+            &amp;lt;!--extending the customer anonymization process with two custom attributes--&amp;gt;
+            &amp;lt;customer&amp;gt;
+                &amp;lt;mapping&amp;gt;
+                    &amp;lt;fill&amp;gt;
+                        &amp;lt;myAttributeName1&amp;gt;
+                            &amp;lt;model&amp;gt;schumacherfm_demo1/mydemo1&amp;lt;/model&amp;gt;
+                            &amp;lt;method&amp;gt;changeMydemo1&amp;lt;/method&amp;gt;
+                        &amp;lt;/myAttributeName1&amp;gt;
+                        &amp;lt;myAttributeName2&amp;gt;
+                            &amp;lt;method&amp;gt;mt_rand&amp;lt;/method&amp;gt;
+                            &amp;lt;args&amp;gt;
+                                &amp;lt;a0&amp;gt;100&amp;lt;/a0&amp;gt;
+                                &amp;lt;a1&amp;gt;1000&amp;lt;/a1&amp;gt;
+                            &amp;lt;/args&amp;gt;
+                        &amp;lt;/myAttributeName2&amp;gt;
+                        &amp;lt;myAttributeName3&amp;gt;
+                            &amp;lt;helper&amp;gt;core&amp;lt;/helper&amp;gt;
+                            &amp;lt;method&amp;gt;getRandomString&amp;lt;/method&amp;gt;
+                            &amp;lt;args&amp;gt;
+                                &amp;lt;a0&amp;gt;12&amp;lt;/a0&amp;gt;
+                            &amp;lt;/args&amp;gt;
+                        &amp;lt;/myAttributeName3&amp;gt;
+                    &amp;lt;/fill&amp;gt;
+                &amp;lt;/mapping&amp;gt;
+            &amp;lt;/customer&amp;gt;
+        &amp;lt;/anonymizations&amp;gt;
+    &amp;lt;/anonygento&amp;gt;
+&amp;lt;/config&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Please see Demo1 module.&lt;/p&gt;
+
+&lt;p&gt;The XML &lt;code&gt;fill&lt;/code&gt; element will be automatically processed. It executes a defined method or function on an EAV or entity attribute. The above example should be self-explanatory.&lt;/p&gt;
+
+&lt;h4 id=&#34;custom-entities:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Custom entities&lt;/h4&gt;
+
+&lt;p&gt;To add custom entities to anonymization process you can simply extend the config.xml. Useful when you want to anonymize e.g.: store locator, news, enterprise or other payment solutions.&lt;/p&gt;
+
+&lt;p&gt;Please see Demo2 module. This module randomizes the product name and the description with a lorem ipsum text.&lt;/p&gt;
+
+&lt;h5 id=&#34;example-config-1:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Example config:&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;config&amp;gt;
+    &amp;lt;anonygento&amp;gt;
+        &amp;lt;anonymizations&amp;gt;
+            &amp;lt;myAnonymizationKey&amp;gt;
+                &amp;lt;active&amp;gt;1&amp;lt;/active&amp;gt;
+                &amp;lt;label&amp;gt;Some label&amp;lt;/label&amp;gt;
+                &amp;lt;model&amp;gt;namespace2_moduleX/aModel&amp;lt;/model&amp;gt;
+                &amp;lt;adminRoute&amp;gt;yourAdminRoute/[edit|view|etc]?id&amp;lt;/adminRoute&amp;gt;&amp;lt;!-- if available --&amp;gt;
+                &amp;lt;options&amp;gt;
+                    &amp;lt;optionKey1&amp;gt;1&amp;lt;/optionKey1&amp;gt;
+                    &amp;lt;!-- your options --&amp;gt;
+                &amp;lt;/options&amp;gt;
+                &amp;lt;mapping&amp;gt;
+                	&amp;lt;!-- if you wish to apply a mapping (see Demo2) --&amp;gt;
+                &amp;lt;/mapping&amp;gt;
+                &amp;lt;anonymizationModel&amp;gt;namespace_module/myAnonymizationProcess&amp;lt;/anonymizationModel&amp;gt;
+            &amp;lt;/myAnonymizationKey&amp;gt;
+        &amp;lt;/anonymizations&amp;gt;
+    &amp;lt;/anonygento&amp;gt;
+&amp;lt;/config&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not neccessary XML elements: &lt;code&gt;adminRoute&lt;/code&gt; and &lt;code&gt;options&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Your model &lt;code&gt;namespace2_moduleX/aModel&lt;/code&gt; must have a resource collection.&lt;/p&gt;
+
+&lt;p&gt;Extend your entity with the SQL column: &lt;code&gt;anonymized TINYINT(1) UNSIGNED NOT NULL DEFAULT 0&lt;/code&gt;. Use the following setup structure:&lt;/p&gt;
+
+&lt;h4 id=&#34;setup-class-in-model-resource-setup-php:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Setup class in Model/Resource/Setup.php&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;class Namespace_Modul_Model_Resource_Setup extends SchumacherFM_Anonygento_Model_Resource_Setup {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;mysql4-install-upgrade:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;mysql4/install/upgrade&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;/* @var $installer Namespace_Modul_Model_Resource_Setup */
+$installer = $this;
+$installer-&amp;gt;startSetup();
+
+// for non EAV models and to extend EAV _entity table
+$installer-&amp;gt;addAnonymizedColumn(&#39;namespace2_moduleX/aModel&#39;);
+
+// only for EAV models, catalog_product is for example.
+$installer-&amp;gt;addAnonymizedAttribute(&#39;catalog_product&#39;);
+
+$installer-&amp;gt;endSetup();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Example Model:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;
+class Namespace_Module_Model_MyAnonymizationProcess extends SchumacherFM_Anonygento_Model_Anonymizations_Abstract
+{
+
+    public function run()
+    {
+        parent::run($this-&amp;gt;_getCollection(), &#39;_anonymizeFooBar&#39;);
+    }
+
+    protected function _anonymizeFooBar($model)
+    {
+        // to access options: (see above in the config)
+        $opt1 = $this-&amp;gt;_getOption(&#39;optionKey1&#39;,&#39;[int|bool|str]&#39;);
+
+        // please see Demo2 module
+        $this-&amp;gt;_copyObjectData( ... );
+        $model-&amp;gt;save();
+    }
+    /**
+     * @return Namespace_Module_Model_Resource_Name_Collection
+     */
+    protected function _getCollection()
+    {
+        return parent::_getCollection(&#39;namespace_module/name&#39;, &#39;myAnonymizationKey&#39;);
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;events-observers:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Events / Observers&lt;/h2&gt;
+
+&lt;h3 id=&#34;event-anonygento-anonymizations-copy-after:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Event &lt;code&gt;anonygento_anonymizations_copy_after&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;This event will be fired after data has been copied from the random object to the target object.&lt;/p&gt;
+
+&lt;p&gt;This allows you to change the random data for specific models.&lt;/p&gt;
+
+&lt;p&gt;See the observer in demo1 module.&lt;/p&gt;
+
+&lt;p&gt;Fired in: &lt;code&gt;SchumacherFM_Anonygento_Model_Anonymizations_Abstract::_copyObjectData&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Name:       &lt;code&gt;anonygento_anonymizations_copy_after&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Event prefix:  &lt;code&gt;to_object&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;
+class SchumacherFM_Demo1_Model_Observer {
+
+    public function copyAfterAlterCustomerTelephone(Varien_Event_Observer $observer)
+    {
+        $toObject = $observer-&amp;gt;getEvent()-&amp;gt;getToObject();
+
+        // checking for the correct instance is a must
+        if($toObject instanceof Mage_Sales_Model_Order) {
+            $toObject-&amp;gt;setCustomerTaxvat( mt_rand() );
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;event-anonygento-anonymizations-get-collection:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Event &lt;code&gt;anonygento_anonymizations_get_collection&lt;/code&gt;&lt;/h3&gt;
+
+&lt;p&gt;To access each single collection.&lt;/p&gt;
+
+&lt;p&gt;Fired in: &lt;code&gt;SchumacherFM_Anonygento_Model_Anonymizations_Abstract::_getCollection&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Name:       &lt;code&gt;anonygento_anonymizations_get_collection&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Event prefix:  &lt;code&gt;collection&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;performance-errors:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Performance / Errors&lt;/h2&gt;
+
+&lt;p&gt;On my MacBook Air Mid 2012 the whole anonymization process for ~8000 Customers, ~4000 orders
+and ~9000 quotes lasts for ~15 minutes. With 256MB of memory limit I have to restart the process
+several times. Setting the memory limit to 2048 the script runs without interruptions.&lt;/p&gt;
+
+&lt;p&gt;If you get errors like this one:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Fatal error: Allowed memory size of xxx bytes exhausted (tried to allocate x bytes) in abc.php on line x&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Just rerun the script.&lt;/p&gt;
+
+&lt;p&gt;On a Ubuntu virtual machine with standard LAMP system (php 5.3.[10|20] Suhosin) the script fails.
+Even with memory limit -1 the script will not run. Maybe someone can test this without Suhosin &amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        
+        <item>
+            <title>MageNerator - Magento Extension Generator Website</title>
+            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
+            <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;
@@ -398,10 +1049,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>TYPO3Mind</title>
-            <link>http://localhost:1313/projects/2011-11-14-typo3mind/</link>
+            <link>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</link>
             <pubDate>Mon, 14 Nov 2011 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2011-11-14-typo3mind/</guid>
+            <guid>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</guid>
             <description>&lt;p&gt;TYPO3Mind is an extension for generating mind mapping files. Mind maps helps you to understand how
 your whole TYPO3 installation has been setup and what the current running status is. Currently you
 can only export .mm files which can be imported by FreeMind.&lt;/p&gt;

@@ -2,25 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Coding on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/coding/</link>
+        <link>http://cyrillschumacher.com/tags/coding/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
         <updated>Tue, 16 Dec 2014 00:00:00 UTC</updated>
         
         <item>
-            <title>Magento Grid Column Renderer</title>
-            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</link>
+            <title>Magento Grid Column Renderer with DB queries</title>
+            <link>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer/</guid>
-            <description>&lt;p&gt;Today I&amp;rsquo;ve weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+            <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
+            <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid 
+    extends Mage_Adminhtml_Block_Widget_Grid
+{
+    protected function _prepareColumns()
+    {
+	  // more column definitions
+	  
+        $this-&amp;gt;addColumn(&#39;preparation_warehouse&#39;, array(
+            &#39;header&#39;     =&amp;gt; Mage::helper(&#39;Module&#39;)-&amp;gt;__(&#39;Preparation&amp;lt;br&amp;gt;Warehouses&#39;),
+            &#39;index&#39;      =&amp;gt; &#39;preparation_warehouse&#39;,
+            &#39;product_id&#39; =&amp;gt; $this-&amp;gt;_getProduct()-&amp;gt;getId(),
+            &#39;field_name&#39; =&amp;gt; &#39;preparation_warehouse&#39;,
+            &#39;renderer&#39;   =&amp;gt; &#39;Module/product_widget_grid_column_renderer_preparationWarehouse&#39;,
+            &#39;align&#39;      =&amp;gt; &#39;center&#39;,
+            &#39;filter&#39;     =&amp;gt; false,
+            &#39;sortable&#39;   =&amp;gt; false
+        ));
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here is the renderer:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse extends
     Mage_Adminhtml_Block_Widget_Grid_Column_Renderer_Abstract
 {
     public function render(Varien_Object $row)
     {
+        /** @var $row NameSpace_Module_Model_Sales_Order */
         $html      = &#39;&#39;;
         $orderId   = $row-&amp;gt;getId();
         $productId = $this-&amp;gt;getColumn()-&amp;gt;getproduct_id();
@@ -45,6 +68,39 @@
     }
 }
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;A little explanation before we figure out what is wrong here:&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;PreparationWarehouse&lt;/code&gt; is saved per &lt;code&gt;sales/order_item&lt;/code&gt; because one order item can be shipped from a different warehouse.&lt;/p&gt;
+
+&lt;p&gt;The entity &lt;code&gt;Module/SalesFlatOrderItem&lt;/code&gt; is an additional table which extends in very very bad way the &lt;code&gt;sales_flat_order_item&lt;/code&gt; table/entity.&lt;/p&gt;
+
+&lt;p&gt;After refactoring of &lt;code&gt;NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid&lt;/code&gt; I&amp;rsquo;ve completely deleted the column renderer &lt;code&gt;PreparationWarehouse&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; relied on only 10 different columns on the &lt;code&gt;sales/order&lt;/code&gt; table but more DB retrieval work has been done in all the column renderers. The &lt;code&gt;PreparationWarehouse&lt;/code&gt; was the worst one of all.&lt;/p&gt;
+
+&lt;p&gt;After switching the collection in the &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; to&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        $this-&amp;gt;_collection = Mage::getModel(&#39;sales/order_item&#39;)-&amp;gt;getCollection();
+        $this-&amp;gt;_collection-&amp;gt;join(
+            [&#39;so&#39; =&amp;gt; &#39;sales/order&#39;],
+            &#39;main_table.order_id = so.entity_id AND main_table.product_id = &#39; . $this-&amp;gt;_getProduct()-&amp;gt;getId(),
+            [
+                &#39;increment_id&#39;,
+                &#39;so_created_at&#39; =&amp;gt; &#39;so.created_at&#39;,
+                &#39;grand_total&#39;,
+                &#39;order_currency_code&#39;,
+                &#39;customer_id&#39;,
+                &#39;customer_firstname&#39;,
+                &#39;customer_lastname&#39;,
+                &#39;is_valid&#39;,
+                &#39;status&#39;,
+                &#39;state&#39;,
+            ]
+        );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;all column renderers can now be removed and a simple option list or even the default text fields have been reimplemented.&lt;/p&gt;
 </description>
         </item>
         

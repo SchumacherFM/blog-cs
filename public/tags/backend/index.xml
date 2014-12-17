@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Backend on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/backend/</link>
+        <link>http://cyrillschumacher.com/tags/backend/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;

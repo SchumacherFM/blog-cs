@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Projects on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/projects/</link>
+        <link>http://cyrillschumacher.com/projects/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -238,10 +238,10 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
@@ -304,10 +304,10 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento PGP</title>
-            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
+            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
@@ -419,10 +419,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Nodejs Playground</title>
-            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
+            <link>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</link>
             <pubDate>Mon, 01 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</guid>
             <description>&lt;ul&gt;
 &lt;li&gt;implemented mysql&lt;/li&gt;
 &lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
@@ -463,10 +463,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
+            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
+            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;
@@ -905,10 +905,10 @@ Even with memory limit -1 the script will not run. Maybe someone can test this w
         
         <item>
             <title>TYPO3Mind</title>
-            <link>http://localhost:1313/projects/2011-11-14-typo3mind/</link>
+            <link>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</link>
             <pubDate>Mon, 14 Nov 2011 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2011-11-14-typo3mind/</guid>
+            <guid>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</guid>
             <description>&lt;p&gt;TYPO3Mind is an extension for generating mind mapping files. Mind maps helps you to understand how
 your whole TYPO3 installation has been setup and what the current running status is. Currently you
 can only export .mm files which can be imported by FreeMind.&lt;/p&gt;
