@@ -1,0 +1,31 @@
+{{ partial "head.html" . }}
+<body class="archive category col-3cm full-width topbar-enabled chrome">
+
+<div id="wrapper">
+  {{ partial "header.html" . }}
+
+  <div class="container" id="page">
+    <div class="container-inner">
+      <div class="main">
+        <div class="main-inner group">
+          <section class="content">
+            <div class="pad group" style="width:560px; margin:0 auto;">
+
+                <h1>Post or Page not found - Error 404 :-(</h1>
+
+                <iframe width="560" height="315"
+                        src="//www.youtube.com/embed/I9U6fq_5C4w?autoplay=1&rel=0"
+                        frameborder="0" allowfullscreen></iframe>
+
+            </div>
+
+          </section>
+          {{ partial "sidebarLeftCategories.html" . }}
+          {{ partial "sidebarRight.html" . }}
+        </div>
+      </div>
+    </div>
+  </div>
+  {{ partial "footer.copyright.html" . }}
+</div>
+{{ partial "footer.html" . }}
