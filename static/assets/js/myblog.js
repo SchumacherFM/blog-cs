@@ -21,6 +21,7 @@
         });
       });
       $('.hentry').matchHeight();
+      $('.related.post-hover').matchHeight();
     },
     hasSetBg = false,
     scroller = function (event) {
