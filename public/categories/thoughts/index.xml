@@ -14,7 +14,15 @@
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
             <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
-            <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt; which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+            <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt;
+which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
+
+&lt;p&gt;The grid was used to display the history of sales orders with all items per order. From the order head only 10 different
+columns had been used but from the sales order item lot of more columns were needed.&lt;/p&gt;
+
+&lt;p&gt;For each sales order item column the previous authors have created a custom renderer and each renderer loaded
+the sales order item object depending on the parent sales order. There was no sharing per line.
+So you can figure out that per line for nearly each column there was a DB query &amp;hellip;&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;class NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid 
     extends Mage_Adminhtml_Block_Widget_Grid
@@ -71,13 +79,21 @@
 
 &lt;p&gt;A little explanation before we figure out what is wrong here:&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;PreparationWarehouse&lt;/code&gt; is saved per &lt;code&gt;sales/order_item&lt;/code&gt; because one order item can be shipped from a different warehouse.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;PreparationWarehouse&lt;/code&gt; is saved per &lt;code&gt;sales/order_item&lt;/code&gt; because one order item can be shipped
+from a different warehouse.&lt;/p&gt;
 
-&lt;p&gt;The entity &lt;code&gt;Module/SalesFlatOrderItem&lt;/code&gt; is an additional table which extends in very very bad way the &lt;code&gt;sales_flat_order_item&lt;/code&gt; table/entity.&lt;/p&gt;
+&lt;p&gt;The entity &lt;code&gt;Module/SalesFlatOrderItem&lt;/code&gt; is an additional table which extends in a very very bad way
+the &lt;code&gt;sales_flat_order_item&lt;/code&gt; table/entity.&lt;/p&gt;
 
-&lt;p&gt;After refactoring of &lt;code&gt;NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid&lt;/code&gt; I&amp;rsquo;ve completely deleted the column renderer &lt;code&gt;PreparationWarehouse&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;During my helicopter code review I&amp;rsquo;ve figured out that the whole grid implementation was screwed up.&lt;/p&gt;
 
-&lt;p&gt;The &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; relied on only 10 different columns on the &lt;code&gt;sales/order&lt;/code&gt; table but more DB retrieval work has been done in all the column renderers. The &lt;code&gt;PreparationWarehouse&lt;/code&gt; was the worst one of all.&lt;/p&gt;
+&lt;p&gt;After refactoring of &lt;code&gt;NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid&lt;/code&gt; I&amp;rsquo;ve completely
+deleted the column renderer &lt;code&gt;PreparationWarehouse&lt;/code&gt; and many other renderers.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; relied on only 10 different columns on the &lt;code&gt;sales/order&lt;/code&gt; table but more
+DB retrieval work has been done in all the column renderers.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;PreparationWarehouse&lt;/code&gt; was the worst one of all.&lt;/p&gt;
 
 &lt;p&gt;After switching the collection in the &lt;code&gt;SalesHistoryOrdersGrid&lt;/code&gt; to&lt;/p&gt;
 

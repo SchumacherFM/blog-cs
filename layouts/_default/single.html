@@ -28,7 +28,9 @@
 
                   <p class="post-byline">
                     by {{ .GetParam "author" }} · {{ .Date.Format "2 January 2006" }} · {{ .WordCount }} Words ·
-                    ~{{ .ReadingTime}}min reading time
+                    ~{{ .ReadingTime}}min reading time |
+                    <a href="https://github.com/SchumacherFM/blog-cs/blob/master/content/{{ .Source.File.Path }}"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
 
@@ -73,8 +75,6 @@
       </div>
     </div>
   </div>
-
-
   {{ partial "footer.copyright.html" . }}
 </div>
 {{ partial "footer.html" . }}

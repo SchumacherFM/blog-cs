@@ -181,8 +181,10 @@
                   <h1 class="post-title">Magento Grid Column Renderer with DB queries</h1>
 
                   <p class="post-byline">
-                    by cyrill · 16 December 2014 · 278 Words ·
-                    ~2min reading time
+                    by cyrill · 16 December 2014 · 391 Words ·
+                    ~2min reading time |
+                    <a href="https://github.com/SchumacherFM/blog-cs/blob/master/content/posts/2014-12-14-grid-column-renderer.md"
+                       target="_blank">Improve on <i class="fa fa-github"></i></a>
                   </p>
 
 
@@ -191,7 +193,15 @@
                   <div class="entry">
                     <div class="entry-inner">
                       
-                      <p>Today I&rsquo;ve found weird piece of code in <code>NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse</code> which affects extremely performance when loading a grid in the backend.</p>
+                      <p>Today I&rsquo;ve found weird piece of code in <code>NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse</code>
+which affects extremely performance when loading a grid in the backend.</p>
+
+<p>The grid was used to display the history of sales orders with all items per order. From the order head only 10 different
+columns had been used but from the sales order item lot of more columns were needed.</p>
+
+<p>For each sales order item column the previous authors have created a custom renderer and each renderer loaded
+the sales order item object depending on the parent sales order. There was no sharing per line.
+So you can figure out that per line for nearly each column there was a DB query &hellip;</p>
 
 <pre><code>class NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid 
     extends Mage_Adminhtml_Block_Widget_Grid
@@ -248,13 +258,21 @@
 
 <p>A little explanation before we figure out what is wrong here:</p>
 
-<p>The <code>PreparationWarehouse</code> is saved per <code>sales/order_item</code> because one order item can be shipped from a different warehouse.</p>
+<p>The <code>PreparationWarehouse</code> is saved per <code>sales/order_item</code> because one order item can be shipped
+from a different warehouse.</p>
 
-<p>The entity <code>Module/SalesFlatOrderItem</code> is an additional table which extends in very very bad way the <code>sales_flat_order_item</code> table/entity.</p>
+<p>The entity <code>Module/SalesFlatOrderItem</code> is an additional table which extends in a very very bad way
+the <code>sales_flat_order_item</code> table/entity.</p>
 
-<p>After refactoring of <code>NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid</code> I&rsquo;ve completely deleted the column renderer <code>PreparationWarehouse</code>.</p>
+<p>During my helicopter code review I&rsquo;ve figured out that the whole grid implementation was screwed up.</p>
 
-<p>The <code>SalesHistoryOrdersGrid</code> relied on only 10 different columns on the <code>sales/order</code> table but more DB retrieval work has been done in all the column renderers. The <code>PreparationWarehouse</code> was the worst one of all.</p>
+<p>After refactoring of <code>NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid</code> I&rsquo;ve completely
+deleted the column renderer <code>PreparationWarehouse</code> and many other renderers.</p>
+
+<p>The <code>SalesHistoryOrdersGrid</code> relied on only 10 different columns on the <code>sales/order</code> table but more
+DB retrieval work has been done in all the column renderers.</p>
+
+<p>The <code>PreparationWarehouse</code> was the worst one of all.</p>
 
 <p>After switching the collection in the <code>SalesHistoryOrdersGrid</code> to</p>
 
@@ -326,6 +344,26 @@
 
                   <div class="related-inner">
                     <h4 class="post-title">
+                      <a href="http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/" rel="bookmark"
+                         title="Magento ModelView">Magento ModelView</a>
+                    </h4>
+                    <div class="post-meta group">
+                      <p class="post-date">8 June 2014</p>
+                    </div>
+                  </div>
+                </article>
+
+            </li>
+        
+    
+        
+        
+        
+            <li class="related post-hover">
+                <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
+
+                  <div class="related-inner">
+                    <h4 class="post-title">
                       <a href="http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/" rel="bookmark"
                          title="Magento MySQL AsyncSave">Magento MySQL AsyncSave</a>
                     </h4>
@@ -346,31 +384,11 @@
 
                   <div class="related-inner">
                     <h4 class="post-title">
-                      <a href="http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/" rel="bookmark"
-                         title="Magento Security Bundle @todo">Magento Security Bundle @todo</a>
+                      <a href="http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/" rel="bookmark"
+                         title="HarrisStreet - Composer.org based installer for Magento">HarrisStreet - Composer.org based installer for Magento</a>
                     </h4>
                     <div class="post-meta group">
-                      <p class="post-date">13 March 2014</p>
-                    </div>
-                  </div>
-                </article>
-
-            </li>
-        
-    
-        
-        
-        
-            <li class="related post-hover">
-                <article class="post type-post status-publish format-standard has-post-thumbnail hentry">
-
-                  <div class="related-inner">
-                    <h4 class="post-title">
-                      <a href="http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/" rel="bookmark"
-                         title="Magento OPCache Panel">Magento OPCache Panel</a>
-                    </h4>
-                    <div class="post-meta group">
-                      <p class="post-date">20 December 2013</p>
+                      <p class="post-date">14 April 2014</p>
                     </div>
                   </div>
                 </article>
@@ -482,11 +500,11 @@
         
         <li><a href="http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/">OnixParser</a></li>
         
+        <li><a href="http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/">Magento ModelView</a></li>
+        
         <li><a href="http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/">Magento MySQL AsyncSave</a></li>
         
-        <li><a href="http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/">Magento Security Bundle @todo</a></li>
-        
-        <li><a href="http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/">Magento OPCache Panel</a></li>
+        <li><a href="http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/">HarrisStreet - Composer.org based installer for Magento</a></li>
         
       </ul>
     </div>
@@ -557,8 +575,6 @@
       </div>
     </div>
   </div>
-
-
   <footer id="footer">
 
   <nav class="nav-container group" id="nav-footer">

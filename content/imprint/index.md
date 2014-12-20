@@ -1,6 +1,6 @@
 ---
 title: Impressum
-date: 2013-12-01
+date: 2013-01-01
 author: Cyrill
 categories:
   - "Imprint"

@@ -240,3 +240,12 @@ a,
     text-align: left;
 }
 
+.post-byline a {
+    color: #aaa;
+    text-decoration: underline;
+}
+
+.post-byline a:hover {
+    color: #d36430;
+    text-decoration: none;
+}

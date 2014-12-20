@@ -11,9 +11,17 @@ tags:
   - Refactoring
 ---
 
-Today I've found weird piece of code in `NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse` which affects extremely performance when loading a grid in the backend.
+Today I've found weird piece of code in `NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse` 
+which affects extremely performance when loading a grid in the backend.
 
 <!--more-->
+
+The grid was used to display the history of sales orders with all items per order. From the order head only 10 different
+columns had been used but from the sales order item lot of more columns were needed.
+
+For each sales order item column the previous authors have created a custom renderer and each renderer loaded
+the sales order item object depending on the parent sales order. There was no sharing per line.
+So you can figure out that per line for nearly each column there was a DB query ...
 
 ```
 class NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid 
@@ -72,13 +80,21 @@ class NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWare
 
 A little explanation before we figure out what is wrong here:
 
-The `PreparationWarehouse` is saved per `sales/order_item` because one order item can be shipped from a different warehouse.
+The `PreparationWarehouse` is saved per `sales/order_item` because one order item can be shipped 
+from a different warehouse.
 
-The entity `Module/SalesFlatOrderItem` is an additional table which extends in very very bad way the `sales_flat_order_item` table/entity. 
+The entity `Module/SalesFlatOrderItem` is an additional table which extends in a very very bad way 
+the `sales_flat_order_item` table/entity. 
 
-After refactoring of `NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid` I've completely deleted the column renderer `PreparationWarehouse`. 
+During my helicopter code review I've figured out that the whole grid implementation was screwed up.
 
-The `SalesHistoryOrdersGrid` relied on only 10 different columns on the `sales/order` table but more DB retrieval work has been done in all the column renderers. The `PreparationWarehouse` was the worst one of all.
+After refactoring of `NameSpace_Module_Block_Product_Edit_Tabs_SalesHistoryOrdersGrid` I've completely 
+deleted the column renderer `PreparationWarehouse` and many other renderers. 
+
+The `SalesHistoryOrdersGrid` relied on only 10 different columns on the `sales/order` table but more 
+DB retrieval work has been done in all the column renderers. 
+
+The `PreparationWarehouse` was the worst one of all.
 
 After switching the collection in the `SalesHistoryOrdersGrid` to 
 
@@ -103,4 +119,3 @@ After switching the collection in the `SalesHistoryOrdersGrid` to
 ```
 
 all column renderers can now be removed and a simple option list or even the default text fields have been reimplemented.
-

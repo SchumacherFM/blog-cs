@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Composer on CyrillSchumacher.com</title>
+        <link>http://cyrillschumacher.com/tags/composer/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Mon, 14 Apr 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>HarrisStreet - Composer.org based installer for Magento</title>
+            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
+            <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
+            <description>
+
+&lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
+
+&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
+
+ 
+
+&lt;h1 id=&#34;zookal-harrisstreet-for-magento:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Zookal HarrisStreet for Magento&lt;/h1&gt;
+
+&lt;p&gt;Composer based Magento installer.&lt;/p&gt;
+
+&lt;h3 id=&#34;todos:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;@todos&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;create a flag to remove unnecessary files like RELEASE_NOTES, license [depending on the target]&lt;/li&gt;
+&lt;li&gt;create two flags for removing downloader and/or compiler folders/files [depending on the target]&lt;/li&gt;
+&lt;li&gt;show a hint for which target and which DVCS branch we&amp;rsquo;re currently building&lt;/li&gt;
+&lt;li&gt;if build is for !development then create a confirm question to proceed this build. include also a json flag to switch off this confirmation&lt;/li&gt;
+&lt;li&gt;try to separate between Magento frontend and backend. the frontend version has a complete stripped off backend. &lt;a href=&#34;https://github.com/kalenjordan/magerun-addons#uninstall-a-module&#34;&gt;magerun-addons uninstall-a-module&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;try to build for target: production-be or production-fe or staging-jenkins&lt;/li&gt;
+&lt;li&gt;create option either to move htdocs to xxxx-data dir or remove folder&lt;/li&gt;
+&lt;li&gt;preRunCheck() add checks for required php modules like PDO &amp;hellip;&lt;/li&gt;
+&lt;li&gt;if a module is &lt;code&gt;&amp;lt;active&amp;gt;false&amp;lt;/active&amp;gt;&lt;/code&gt; in the config xml then remove it completely &amp;hellip; but with care, maybe devs need some classes so we would have an
+option to either remove or keep the files.&lt;/li&gt;
+&lt;li&gt;integrate the target.json into the composer file and let the user choose for which target he/she wants to build, extend composer.&lt;/li&gt;
+&lt;li&gt;this readme!!!&lt;/li&gt;
+&lt;li&gt;refactor code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;description:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Description&lt;/h3&gt;
+
+&lt;p&gt;This software is pre-alpha but it is used in production for Zookals website.&lt;/p&gt;
+
+&lt;p&gt;Composer&amp;rsquo;s script handler to install, update and maintain Magento (&amp;gt;=1.6).&lt;/p&gt;
+
+&lt;p&gt;Configuration of Harris Street will be read from your root composer.json file.&lt;/p&gt;
+
+&lt;p&gt;Uses the composer hooks:  post-install-cmd and pre-install-cmd&lt;/p&gt;
+
+&lt;p&gt;Example json &lt;a href=&#34;https://github.com/zookal/magento/blob/master/composer.json&#34;&gt;https://github.com/zookal/magento/blob/master/composer.json&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;config-values-depending-on-the-environment:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Config Values depending on the environment&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;web/cookie/cookie_*&lt;/li&gt;
+&lt;li&gt;dev/template/allow_symlink&lt;/li&gt;
+&lt;li&gt;each %url% path&lt;/li&gt;
+&lt;li&gt;netsuite credentials&lt;/li&gt;
+&lt;li&gt;zendesk credentials&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;how-to-magento-composer-installer:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;How to magento-composer-installer&lt;/h3&gt;
+
+&lt;p&gt;For dev env the checkout strategy is symlink while on staging and production the checkout strategy is copy and allow symlinks will be set to false.&lt;/p&gt;
+
+&lt;h3 id=&#34;how-to-use:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;How to use&lt;/h3&gt;
+
+&lt;p&gt;Add to your project-based composer.json: Please see the demo composer.json file.&lt;/p&gt;
+
+&lt;h2 id=&#34;installation:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;Require this installer in your &lt;code&gt;composer.json&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;quot;require&amp;quot;: {
+    …
+    &amp;quot;zookal/harris-street&amp;quot;: &amp;quot;dev-master&amp;quot;,
+    …
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
