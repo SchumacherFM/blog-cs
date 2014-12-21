@@ -44,7 +44,7 @@ As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/u
 In your markdown template you can e.g. add a short code like:
 
 ```
-{ {% jsonGH 0 %}}
+{{</* jsonGH 0 */>}}
 ```
 
 The 0 indicates which index to use in the json list within front matters.
@@ -69,15 +69,15 @@ The jsonGH short code template is:
 
 Parsing index 0:
 
-{{% jsonGH 0 %}}
+{{< jsonGH 0 >}}
 
 Parsing index 1:
 
-{{% jsonGH 1 %}}
+{{< jsonGH 1 >}}
 
 Parsing YouTube feed url:
 
-{{% jsonYt 2 %}}
+{{< jsonYt 2 >}}
 
 One strange problem occurs when parsing the Youtube API 2.0 (deprecated):
 
