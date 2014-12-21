@@ -1,5 +1,4 @@
-/public/wp-content/uploads
-/static/wp-content/uploads
+/public
 syncFolders*
 /branches
 /config
