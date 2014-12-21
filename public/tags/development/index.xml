@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Development on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/development/</link>
+        <link>http://cyrillschumacher.com/tags/development/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento MySQL AsyncSave</title>
-            <link>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
             <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
             <description>
 
 &lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
@@ -78,10 +78,10 @@ of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL inj
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
@@ -149,10 +149,10 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento Anonygento</title>
-            <link>http://localhost:1313/projects/2012-12-12-magento-anonygento/</link>
+            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2012-12-12-magento-anonygento/</guid>
+            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
             <description>
 
 &lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Progress Bar on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/progress-bar/</link>
+        <link>http://cyrillschumacher.com/tags/progress-bar/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Pace - Automatic page load progress bar</title>
-            <link>http://localhost:1313/projects/2013-09-27-magento-pace/</link>
+            <link>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</link>
             <pubDate>Fri, 27 Sep 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-09-27-magento-pace/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</guid>
             <description>&lt;p&gt;Magento Pace - Automatic page load progress bar for the backend and frontend.&lt;/p&gt;
 
 &lt;p&gt;Pace will automatically monitor your ajax requests, event loop lag, document ready state, and elements on

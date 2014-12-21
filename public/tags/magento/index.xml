@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Magento on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/magento/</link>
+        <link>http://cyrillschumacher.com/tags/magento/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Grid Column Renderer with DB queries</title>
-            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
+            <link>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
+            <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
             <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt;
 which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
 
@@ -122,10 +122,10 @@ DB retrieval work has been done in all the column renderers.&lt;/p&gt;
         
         <item>
             <title>Magento ModelView</title>
-            <link>http://localhost:1313/projects/2014-06-08-magento-modelview/</link>
+            <link>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</link>
             <pubDate>Sun, 08 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-06-08-magento-modelview/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</guid>
             <description>
 
 &lt;p&gt;Magento ModelView - Using a model to simulate a database view.
@@ -153,10 +153,10 @@ getData() is now type safe. &lt;code&gt;__call()&lt;/code&gt; disabled.&lt;/p&gt
         
         <item>
             <title>Magento MySQL AsyncSave</title>
-            <link>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
             <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
             <description>
 
 &lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
@@ -221,10 +221,10 @@ of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL inj
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
@@ -300,10 +300,10 @@ option to either remove or keep the files.&lt;/li&gt;
         
         <item>
             <title>n98-magerun - HarrisStreet - Configuration Importer Exporter</title>
-            <link>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
+            <link>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
             <pubDate>Thu, 27 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
             <description>
 
 &lt;p&gt;Magento n98-magerun module for importing and exporting configuration data. Import supports hierarchical
@@ -468,10 +468,10 @@ Options:
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
@@ -539,10 +539,10 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
@@ -605,10 +605,10 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento Pace - Automatic page load progress bar</title>
-            <link>http://localhost:1313/projects/2013-09-27-magento-pace/</link>
+            <link>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</link>
             <pubDate>Fri, 27 Sep 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-09-27-magento-pace/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</guid>
             <description>&lt;p&gt;Magento Pace - Automatic page load progress bar for the backend and frontend.&lt;/p&gt;
 
 &lt;p&gt;Pace will automatically monitor your ajax requests, event loop lag, document ready state, and elements on
@@ -628,10 +628,10 @@ your page to decide the progress. On ajax navigation it will begin again!&lt;/p&
         
         <item>
             <title>Magento PGP</title>
-            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
+            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
@@ -743,10 +743,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Magento Optimized Backend Login</title>
-            <link>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</link>
+            <link>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</link>
             <pubDate>Tue, 04 Jun 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
             <description>&lt;p&gt;Sets the autocomplete html form attribute depending on the environment for the backend login form.&lt;/p&gt;
 
 &lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
@@ -769,10 +769,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
+            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
+            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;
@@ -872,10 +872,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Magento Anonygento</title>
-            <link>http://localhost:1313/projects/2012-12-12-magento-anonygento/</link>
+            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2012-12-12-magento-anonygento/</guid>
+            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
             <description>
 
 &lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;

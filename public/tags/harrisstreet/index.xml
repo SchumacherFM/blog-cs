@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Harrisstreet on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/harrisstreet/</link>
+        <link>http://cyrillschumacher.com/tags/harrisstreet/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
@@ -89,10 +89,10 @@ option to either remove or keep the files.&lt;/li&gt;
         
         <item>
             <title>n98-magerun - HarrisStreet - Configuration Importer Exporter</title>
-            <link>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
+            <link>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
             <pubDate>Thu, 27 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
             <description>
 
 &lt;p&gt;Magento n98-magerun module for importing and exporting configuration data. Import supports hierarchical

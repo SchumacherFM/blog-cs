@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Imprints on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/imprint/</link>
+        <link>http://cyrillschumacher.com/imprint/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Impressum</title>
-            <link>http://localhost:1313/imprint/</link>
+            <link>http://cyrillschumacher.com/imprint/</link>
             <pubDate>Tue, 01 Jan 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/imprint/</guid>
+            <guid>http://cyrillschumacher.com/imprint/</guid>
             <description>
 
 &lt;p&gt;Click for more details!&lt;/p&gt;

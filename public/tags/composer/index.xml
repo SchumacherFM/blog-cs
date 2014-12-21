@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Composer on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/composer/</link>
+        <link>http://cyrillschumacher.com/tags/composer/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;

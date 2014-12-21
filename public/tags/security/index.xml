@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Security on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/security/</link>
+        <link>http://cyrillschumacher.com/tags/security/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Login on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/login/</link>
+        <link>http://cyrillschumacher.com/tags/login/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Optimized Backend Login</title>
-            <link>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</link>
+            <link>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</link>
             <pubDate>Tue, 04 Jun 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
+            <guid>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
             <description>&lt;p&gt;Sets the autocomplete html form attribute depending on the environment for the backend login form.&lt;/p&gt;
 
 &lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Gohugo on CyrillSchumacher.com</title>
-        <link>http://localhost:1313/tags/gohugo/</link>
+        <link>http://cyrillschumacher.com/tags/gohugo/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Dynamic Pages with GoHugo.io</title>
-            <link>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</link>
+            <link>http://cyrillschumacher.com/2014/12/21/dynamic-pages-with-gohugo.io/</link>
             <pubDate>Sun, 21 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</guid>
+            <guid>http://cyrillschumacher.com/2014/12/21/dynamic-pages-with-gohugo.io/</guid>
             <description>
 
 &lt;p&gt;What if you want to create simple dynamic pages with &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, the static site generator?&lt;/p&gt;
@@ -363,7 +363,7 @@ Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
   
     
     &lt;li&gt;
-      map[$t:Blow hole at Pancake Rocks, Punakaiki, New Zealand type:text]&lt;br&gt;
+      map[type:text $t:Blow hole at Pancake Rocks, Punakaiki, New Zealand]&lt;br&gt;
     &lt;/li&gt;
   
     
@@ -393,7 +393,7 @@ Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
   
     
     &lt;li&gt;
-      map[type:text $t:Australian Reptile Zoo: Milking a Costal Taipan]&lt;br&gt;
+      map[$t:Australian Reptile Zoo: Milking a Costal Taipan type:text]&lt;br&gt;
     &lt;/li&gt;
   
     
