@@ -1,0 +1,11 @@
+<ul class="pinglist">
+  {{ $i := index .Params 0 }}
+  {{ $j := .GetJson $i }}
+
+  {{ range $j.feed.entry }}
+    {{ $v := . }}
+    <li>
+      {{index $v.title }}<br>
+    </li>
+  {{ end }}
+</ul>

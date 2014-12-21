@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Nodejs on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/nodejs/</link>
+        <link>http://localhost:1313/tags/nodejs/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,19 +10,19 @@
         
         <item>
             <title>Nodejs Playground</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</link>
+            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
             <pubDate>Mon, 01 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</guid>
+            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
             <description>&lt;ul&gt;
 &lt;li&gt;implemented mysql&lt;/li&gt;
 &lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
 &lt;li&gt;custom handlebars.js helper&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Nodejs-Playground&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 </description>
         </item>
         

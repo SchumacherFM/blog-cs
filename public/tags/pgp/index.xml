@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Pgp on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/pgp/</link>
+        <link>http://localhost:1313/tags/pgp/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,18 +10,18 @@
         
         <item>
             <title>Magento PGP</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
+            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
 their public key and each email sent to their address will be automatically encrypted.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-PGP&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/logo/magento-pgp.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;

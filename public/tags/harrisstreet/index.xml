@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Harrisstreet on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/harrisstreet/</link>
+        <link>http://localhost:1313/tags/harrisstreet/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,18 +10,17 @@
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
- 
+&lt;/p&gt;
 
 &lt;h1 id=&#34;zookal-harrisstreet-for-magento:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Zookal HarrisStreet for Magento&lt;/h1&gt;
 
@@ -90,18 +89,18 @@ option to either remove or keep the files.&lt;/li&gt;
         
         <item>
             <title>n98-magerun - HarrisStreet - Configuration Importer Exporter</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
+            <link>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
             <pubDate>Thu, 27 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
+            <guid>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
             <description>
 
 &lt;p&gt;Magento n98-magerun module for importing and exporting configuration data. Import supports hierarchical
 folder structure and of course different environments.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet-ImpEx&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Import and Export of Magentos configuration stored in core_config_data table. Handling of different environments
 with inheritance.&lt;/p&gt;

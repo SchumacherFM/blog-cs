@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Projects on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/projects/</link>
+        <link>http://localhost:1313/projects/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,19 +10,19 @@
         
         <item>
             <title>OnixParser</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</link>
+            <link>http://localhost:1313/projects/2014-06-29-onixparser-golang/</link>
             <pubDate>Sun, 29 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</guid>
+            <guid>http://localhost:1313/projects/2014-06-29-onixparser-golang/</guid>
             <description>
 
 &lt;p&gt;Onix Parser written in GoLang to deal with huge XML file sizes. The ONIX for Books Product Information
 Message is the international standard for representing and communicating book industry product
 information in electronic form.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;OnixParser&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;A parser for the &lt;a href=&#34;http://www.editeur.org/83/Overview/&#34;&gt;EDItEUR ONIX xml file format&lt;/a&gt; written in GoLang.&lt;/p&gt;
 
@@ -99,19 +99,19 @@ has been enabled.&lt;/p&gt;
         
         <item>
             <title>Magento ModelView</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</link>
+            <link>http://localhost:1313/projects/2014-06-08-magento-modelview/</link>
             <pubDate>Sun, 08 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</guid>
+            <guid>http://localhost:1313/projects/2014-06-08-magento-modelview/</guid>
             <description>
 
 &lt;p&gt;Magento ModelView - Using a model to simulate a database view.
 This module contains only abstract classes.
 getData() is now type safe. &lt;code&gt;__call()&lt;/code&gt; disabled.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-ModelView&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;This module contains only abstract classes.&lt;/p&gt;
 
@@ -130,18 +130,18 @@ getData() is now type safe. &lt;code&gt;__call()&lt;/code&gt; disabled.&lt;/p&gt
         
         <item>
             <title>Magento MySQL AsyncSave</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <link>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</link>
             <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <guid>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</guid>
             <description>
 
 &lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
 MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-AsyncSave&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Magento implementation of &lt;a href=&#34;http://au1.php.net/manual/en/mysqli.query.php&#34;&gt;http://au1.php.net/manual/en/mysqli.query.php&lt;/a&gt;
 to use MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
@@ -198,18 +198,17 @@ of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL inj
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
- 
+&lt;/p&gt;
 
 &lt;h1 id=&#34;zookal-harrisstreet-for-magento:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Zookal HarrisStreet for Magento&lt;/h1&gt;
 
@@ -278,18 +277,18 @@ option to either remove or keep the files.&lt;/li&gt;
         
         <item>
             <title>n98-magerun - HarrisStreet - Configuration Importer Exporter</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
+            <link>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
             <pubDate>Thu, 27 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
+            <guid>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
             <description>
 
 &lt;p&gt;Magento n98-magerun module for importing and exporting configuration data. Import supports hierarchical
 folder structure and of course different environments.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet-ImpEx&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Import and Export of Magentos configuration stored in core_config_data table. Handling of different environments
 with inheritance.&lt;/p&gt;
@@ -446,19 +445,19 @@ Options:
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 
 &lt;p&gt;This project is ideal for a hackathon.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-SecurityBundle&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 
@@ -517,17 +516,17 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OpCache&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;OpCache Control Panel for Magento Backend.&lt;/p&gt;
 
@@ -583,18 +582,18 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento Pace - Automatic page load progress bar</title>
-            <link>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</link>
+            <link>http://localhost:1313/projects/2013-09-27-magento-pace/</link>
             <pubDate>Fri, 27 Sep 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</guid>
+            <guid>http://localhost:1313/projects/2013-09-27-magento-pace/</guid>
             <description>&lt;p&gt;Magento Pace - Automatic page load progress bar for the backend and frontend.&lt;/p&gt;
 
 &lt;p&gt;Pace will automatically monitor your ajax requests, event loop lag, document ready state, and elements on
 your page to decide the progress. On ajax navigation it will begin again!&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-Pace&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Based on &lt;a href=&#34;https://github.com/HubSpot/pace&#34;&gt;https://github.com/HubSpot/pace&lt;/a&gt;&lt;/p&gt;
 
@@ -606,18 +605,18 @@ your page to decide the progress. On ajax navigation it will begin again!&lt;/p&
         
         <item>
             <title>Magento PGP</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
+            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
 their public key and each email sent to their address will be automatically encrypted.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-PGP&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/logo/magento-pgp.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
@@ -721,33 +720,33 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Nodejs Playground</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</link>
+            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
             <pubDate>Mon, 01 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</guid>
+            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
             <description>&lt;ul&gt;
 &lt;li&gt;implemented mysql&lt;/li&gt;
 &lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
 &lt;li&gt;custom handlebars.js helper&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Nodejs-Playground&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 </description>
         </item>
         
         <item>
             <title>Magento Optimized Backend Login</title>
-            <link>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</link>
+            <link>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</link>
             <pubDate>Tue, 04 Jun 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
+            <guid>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
             <description>&lt;p&gt;Sets the autocomplete html form attribute depending on the environment for the backend login form.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OptimizedBackendLogin&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Sets the autocomplete html form attribute depending on the environment. (Allows you to store the password in the browser during development)&lt;/li&gt;
@@ -765,17 +764,17 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
+            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
+            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;MageNerator&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;h3 id=&#34;printscreens:9da25cf6bc57712f288ea62881ccce28&#34;&gt;Printscreens&lt;/h3&gt;
 
@@ -868,10 +867,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Magento Anonygento</title>
-            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
+            <link>http://localhost:1313/projects/2012-12-12-magento-anonygento/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
+            <guid>http://localhost:1313/projects/2012-12-12-magento-anonygento/</guid>
             <description>
 
 &lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;
@@ -879,9 +878,9 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
 &lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal
 developers who really not need any kind of sensitive data.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Anonygento&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Anonymizes all customer related data in a Magento shop!&lt;/p&gt;
 
@@ -1207,21 +1206,21 @@ Even with memory limit -1 the script will not run. Maybe someone can test this w
         
         <item>
             <title>TYPO3Mind</title>
-            <link>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</link>
+            <link>http://localhost:1313/projects/2011-11-14-typo3mind/</link>
             <pubDate>Mon, 14 Nov 2011 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</guid>
+            <guid>http://localhost:1313/projects/2011-11-14-typo3mind/</guid>
             <description>&lt;p&gt;TYPO3Mind is an extension for generating mind mapping files. Mind maps helps you to understand how
 your whole TYPO3 installation has been setup and what the current running status is. Currently you
 can only export .mm files which can be imported by FreeMind.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;TYPO3Mind&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Needs TYPO3 4.5 - 4.7, SimpleXML, PHP5.2 or later.&lt;/p&gt;
 
-&lt;a href=&#34;wp-content/uploads/typo3mind-ps.jpg&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;wp-content/uploads/typo3mind-ps.jpg&#34;&gt;
   &lt;picture&gt;
     &lt;source srcset=&#34;wp-content/uploads/typo3mind-psx0480.jpg&#34; media=&#34;(max-width: 480px)&#34;&gt;
     &lt;source srcset=&#34;wp-content/uploads/typo3mind-psx0768.jpg&#34; media=&#34;(max-width: 768px)&#34;&gt;
@@ -1230,7 +1229,7 @@ can only export .mm files which can be imported by FreeMind.&lt;/p&gt;
     &lt;img srcset=&#34;wp-content/uploads/typo3mind-psx1024.jpg&#34; alt=&#34;img typo3mind-ps&#34;&gt;
   &lt;/picture&gt;
 &lt;/a&gt;
-
+&lt;/p&gt;
 </description>
         </item>
         

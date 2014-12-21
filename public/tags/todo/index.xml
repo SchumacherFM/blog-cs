@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Todo on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/todo/</link>
+        <link>http://localhost:1313/tags/todo/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,19 +10,19 @@
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 
 &lt;p&gt;This project is ideal for a hackathon.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-SecurityBundle&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 

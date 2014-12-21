@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Gohugo on CyrillSchumacher.com</title>
+        <link>http://localhost:1313/tags/gohugo/</link>
+        <language>en-US</language>
+        <author>Cyrill at Schumacher dot fm</author>
+        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <updated>Sun, 21 Dec 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Dynamic Pages with GoHugo.io</title>
+            <link>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</link>
+            <pubDate>Sun, 21 Dec 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</guid>
+            <description>
+
+&lt;p&gt;What if you want to create simple dynamic pages with &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, the static site generator?&lt;/p&gt;
+
+&lt;p&gt;My idea is: Import any JSON from any local file or URL and make the JSON content
+available in a &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;shortcode&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Go code is currently in my &lt;a href=&#34;https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib/shortcode.go#L130&#34;&gt;fork&lt;/a&gt;.
+Mainly to do some more refactor before sending a PR. I&amp;rsquo;m not quite happy with the code but it works.
+Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
+
+&lt;h3 id=&#34;how-to-implement:c1c54e5e12faeaa48c26eb10af4a803a&#34;&gt;How to implement?&lt;/h3&gt;
+
+&lt;p&gt;You should extend the &lt;a href=&#34;http://gohugo.io/content/front-matter/&#34;&gt;front matter&lt;/a&gt; per page with this list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;json:
+  - static/starred.json
+  - static/starred2.json
+  - http://gdata.youtube.com/feeds/users/ytuser/uploads?alt=json&amp;amp;max-results=10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Local files must reside inside Hugos working directory.&lt;/p&gt;
+
+&lt;p&gt;As an example I&amp;rsquo;m using the JSON from my &lt;a href=&#34;https://api.github.com/users/schumacherfm/starred&#34;&gt;GitHub Stars&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In your markdown template you can e.g. add a short code like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{ {% jsonGH 0 %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The 0 indicates which index to use in the json list within front matters.&lt;/p&gt;
+
+&lt;p&gt;The jsonGH short code template is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;pinglist&amp;quot;&amp;gt;
+  {{ $i := index .Params 0 }}
+  {{ range .GetJson $i }}
+    {{ $p := . }}
+    &amp;lt;li&amp;gt;
+      {{$p.language}}: &amp;lt;strong&amp;gt;{{ $p.name }}&amp;lt;/strong&amp;gt;
+      &amp;lt;a href=&amp;quot;{{ $p.html_url }}&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;{{ $p.full_name }}&amp;lt;/a&amp;gt;
+      &amp;lt;br&amp;gt;
+      Stars: {{$p.stargazers_count}} | Watchers: {{$p.watchers_count}}&amp;lt;br&amp;gt;
+      {{ $p.description }}
+    &amp;lt;/li&amp;gt;
+    {{ end }}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Parsing index 0:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+    
+    &lt;li&gt;
+      CSS: &lt;strong&gt;touchstonejs&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/JedWatson/touchstonejs&#34; target=&#34;_blank&#34;&gt;JedWatson/touchstonejs&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1064 | Watchers: 1064&lt;br&gt;
+      Mobile App Framework powered by React
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      CSS: &lt;strong&gt;jquery.avgrund.js&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/voronianski/jquery.avgrund.js&#34; target=&#34;_blank&#34;&gt;voronianski/jquery.avgrund.js&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1564 | Watchers: 1564&lt;br&gt;
+      Avgrund is a jQuery plugin with new modal concept for popups
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Parsing index 1:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;dl&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/nf/dl&#34; target=&#34;_blank&#34;&gt;nf/dl&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 54 | Watchers: 54&lt;br&gt;
+      
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;aws-go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/stripe/aws-go&#34; target=&#34;_blank&#34;&gt;stripe/aws-go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 641 | Watchers: 641&lt;br&gt;
+      An incredibly experimental, automatically generated set of AWS clients in Go.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;lane&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/oleiade/lane&#34; target=&#34;_blank&#34;&gt;oleiade/lane&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 77 | Watchers: 77&lt;br&gt;
+      A golang queues, stacks and deques implementation library
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/golang/go&#34; target=&#34;_blank&#34;&gt;golang/go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 4831 | Watchers: 4831&lt;br&gt;
+      The Go programming language
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;goji&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/zenazn/goji&#34; target=&#34;_blank&#34;&gt;zenazn/goji&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1857 | Watchers: 1857&lt;br&gt;
+      Goji is a minimalistic web framework for Golang that&amp;#39;s high in antioxidants
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;gox&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/mitchellh/gox&#34; target=&#34;_blank&#34;&gt;mitchellh/gox&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 774 | Watchers: 774&lt;br&gt;
+      A dead simple, no frills Go cross compile tool
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ioprogress&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/mitchellh/ioprogress&#34; target=&#34;_blank&#34;&gt;mitchellh/ioprogress&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 235 | Watchers: 235&lt;br&gt;
+      Go (golang) package for progress bars around io.Reader/Writers.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      PHP: &lt;strong&gt;mpmd&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/AOEpeople/mpmd&#34; target=&#34;_blank&#34;&gt;AOEpeople/mpmd&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 50 | Watchers: 50&lt;br&gt;
+      Magento Project Mess Detector (for n98-magerun)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;gometry&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rakyll/gometry&#34; target=&#34;_blank&#34;&gt;rakyll/gometry&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 228 | Watchers: 228&lt;br&gt;
+      A visual interface to work with runtime profiling data from Go programs (work-in-progress)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Objective-C: &lt;strong&gt;CotEditor&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/coteditor/CotEditor&#34; target=&#34;_blank&#34;&gt;coteditor/CotEditor&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1014 | Watchers: 1014&lt;br&gt;
+      Lightweight Plain-Text Editor for OS X
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;httprouter&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/julienschmidt/httprouter&#34; target=&#34;_blank&#34;&gt;julienschmidt/httprouter&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1041 | Watchers: 1041&lt;br&gt;
+      A high performance HTTP request router that scales well
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;http2&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/bradfitz/http2&#34; target=&#34;_blank&#34;&gt;bradfitz/http2&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 474 | Watchers: 474&lt;br&gt;
+      HTTP/2 support for Go (in active development)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;robotstxt-go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/temoto/robotstxt-go&#34; target=&#34;_blank&#34;&gt;temoto/robotstxt-go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 62 | Watchers: 62&lt;br&gt;
+      The robots.txt exclusion protocol implementation for Go language #golang
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;vegeta&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/tsenart/vegeta&#34; target=&#34;_blank&#34;&gt;tsenart/vegeta&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 2025 | Watchers: 2025&lt;br&gt;
+      HTTP load testing tool and library. It&amp;#39;s over 9000!
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;cron&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/robfig/cron&#34; target=&#34;_blank&#34;&gt;robfig/cron&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 325 | Watchers: 325&lt;br&gt;
+      a cron library for go
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;grace&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/grace&#34; target=&#34;_blank&#34;&gt;facebookgo/grace&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 515 | Watchers: 515&lt;br&gt;
+      Graceful restart for Go servers.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;mysqltest&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/mysqltest&#34; target=&#34;_blank&#34;&gt;facebookgo/mysqltest&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 17 | Watchers: 17&lt;br&gt;
+      Package mysqltest provides standalone instances of mysql suitable for use in tests.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ensure&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/ensure&#34; target=&#34;_blank&#34;&gt;facebookgo/ensure&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 18 | Watchers: 18&lt;br&gt;
+      Package ensure provides utilities for testing to ensure the given conditions are met and Fatal if they aren&amp;#39;t satisified.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;cockroach&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/cockroachdb/cockroach&#34; target=&#34;_blank&#34;&gt;cockroachdb/cockroach&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 2556 | Watchers: 2556&lt;br&gt;
+      A Scalable, Geo-Replicated, Transactional Datastore
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Shell: &lt;strong&gt;compressed-magento-sample-data&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/Vinai/compressed-magento-sample-data&#34; target=&#34;_blank&#34;&gt;Vinai/compressed-magento-sample-data&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 14 | Watchers: 14&lt;br&gt;
+      A highly compressed version of the magento 1.9 sample data and a script to create it.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;delve&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/derekparker/delve&#34; target=&#34;_blank&#34;&gt;derekparker/delve&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1266 | Watchers: 1266&lt;br&gt;
+      Go debugger
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ngrok&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/inconshreveable/ngrok&#34; target=&#34;_blank&#34;&gt;inconshreveable/ngrok&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 3863 | Watchers: 3863&lt;br&gt;
+      Introspected tunnels to localhost
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      JavaScript: &lt;strong&gt;dashboards&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/keen/dashboards&#34; target=&#34;_blank&#34;&gt;keen/dashboards&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 4641 | Watchers: 4641&lt;br&gt;
+      Responsive dashboard templates for Bootstrap
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;sql-migrate&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rubenv/sql-migrate&#34; target=&#34;_blank&#34;&gt;rubenv/sql-migrate&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 206 | Watchers: 206&lt;br&gt;
+      SQL schema migration tool for Go.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;boom&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rakyll/boom&#34; target=&#34;_blank&#34;&gt;rakyll/boom&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1703 | Watchers: 1703&lt;br&gt;
+      HTTP(S) load generator, ApacheBench (ab) replacement, written in Go
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;pb&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/cheggaaa/pb&#34; target=&#34;_blank&#34;&gt;cheggaaa/pb&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 380 | Watchers: 380&lt;br&gt;
+      Console progress bar for Golang
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;viper&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/spf13/viper&#34; target=&#34;_blank&#34;&gt;spf13/viper&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 193 | Watchers: 193&lt;br&gt;
+      Go configuration with fangs
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;go-spew&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/davecgh/go-spew&#34; target=&#34;_blank&#34;&gt;davecgh/go-spew&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 383 | Watchers: 383&lt;br&gt;
+      Implements a deep pretty printer for Go data structures to aid in debugging
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Parsing YouTube feed url:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+
+  
+    
+    &lt;li&gt;
+      map[$t:Carols in the Domain, Sydney 2014 type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blow hole at Pancake Rocks, Punakaiki, New Zealand type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Thermal Wonderland in Wai-o-Tapu New Zealand type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blue Mountains Blackheath Grand Canyon Track type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Sculptures by the sea 2014 type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blue Mountains View @ Wentworth Falls type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Park: Milking a Sydney Funnel Web Spider type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[type:text $t:Australian Reptile Zoo: Milking a Costal Taipan]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Zoo: Koalas type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Zoo: Tasmanian Devil feeding an egg type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;One strange problem occurs when parsing the Youtube API 2.0 (deprecated):&lt;/p&gt;
+
+&lt;p&gt;The JSON response looks something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;quot;entry&amp;quot;: [
+    {
+      &amp;quot;id&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;http://gdata.youtube.com/feeds/videos/XeceUDREW0U&amp;quot;},
+      &amp;quot;published&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;2014-12-20T22:35:14.000Z&amp;quot;},
+      &amp;quot;updated&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;2014-12-20T22:37:03.000Z&amp;quot;},
+      &amp;quot;category&amp;quot;: [
+        {
+          &amp;quot;scheme&amp;quot;: &amp;quot;http://schemas.google.com/g/2005#kind&amp;quot;,
+          &amp;quot;term&amp;quot;: &amp;quot;http://gdata.youtube.com/schemas/2007#video&amp;quot;
+        },
+        {
+          &amp;quot;scheme&amp;quot;: &amp;quot;http://gdata.youtube.com/schemas/2007/categories.cat&amp;quot;,
+          &amp;quot;term&amp;quot;: &amp;quot;Travel&amp;quot;,
+          &amp;quot;label&amp;quot;: &amp;quot;Travel &amp;amp; Events&amp;quot;
+        }
+      ],
+      &amp;quot;title&amp;quot;: {
+        &amp;quot;$t&amp;quot;: &amp;quot;Carols in the Domain, Sydney 2014&amp;quot;,
+        &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;
+      },
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The shortcode template is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;pinglist&amp;quot;&amp;gt;
+  {{ $i := index .Params 0 }}
+  {{ $j := .GetJson $i }}
+
+  {{ range $j.feed.entry }}
+    {{ $v := . }}
+    &amp;lt;li&amp;gt;
+      {{index $v.title }}&amp;lt;br&amp;gt;
+      Hugo dies when accessing: {{$v.title.$t}}: {{ $v.content.$t }}
+    &amp;lt;/li&amp;gt;
+  {{ end }}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo totally panics and crashes when using: &lt;code&gt;{{$v.title.$t}}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The best solution should be switching to &lt;a href=&#34;https://developers.google.com/youtube/v3/&#34;&gt;Youtube API v3&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or any other ideas?&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

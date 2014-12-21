@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Typo3 on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/typo3/</link>
+        <link>http://localhost:1313/tags/typo3/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,21 +10,21 @@
         
         <item>
             <title>TYPO3Mind</title>
-            <link>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</link>
+            <link>http://localhost:1313/projects/2011-11-14-typo3mind/</link>
             <pubDate>Mon, 14 Nov 2011 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2011-11-14-typo3mind/</guid>
+            <guid>http://localhost:1313/projects/2011-11-14-typo3mind/</guid>
             <description>&lt;p&gt;TYPO3Mind is an extension for generating mind mapping files. Mind maps helps you to understand how
 your whole TYPO3 installation has been setup and what the current running status is. Currently you
 can only export .mm files which can be imported by FreeMind.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;TYPO3Mind&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Needs TYPO3 4.5 - 4.7, SimpleXML, PHP5.2 or later.&lt;/p&gt;
 
-&lt;a href=&#34;wp-content/uploads/typo3mind-ps.jpg&#34;&gt;
+&lt;p&gt;&lt;a href=&#34;wp-content/uploads/typo3mind-ps.jpg&#34;&gt;
   &lt;picture&gt;
     &lt;source srcset=&#34;wp-content/uploads/typo3mind-psx0480.jpg&#34; media=&#34;(max-width: 480px)&#34;&gt;
     &lt;source srcset=&#34;wp-content/uploads/typo3mind-psx0768.jpg&#34; media=&#34;(max-width: 768px)&#34;&gt;
@@ -33,7 +33,7 @@ can only export .mm files which can be imported by FreeMind.&lt;/p&gt;
     &lt;img srcset=&#34;wp-content/uploads/typo3mind-psx1024.jpg&#34; alt=&#34;img typo3mind-ps&#34;&gt;
   &lt;/picture&gt;
 &lt;/a&gt;
-
+&lt;/p&gt;
 </description>
         </item>
         

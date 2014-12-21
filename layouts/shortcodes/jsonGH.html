@@ -1,0 +1,13 @@
+<ul class="pinglist">
+  {{ $i := index .Params 0 }}
+  {{ range .GetJson $i }}
+    {{ $p := . }}
+    <li>
+      {{$p.language}}: <strong>{{ $p.name }}</strong>
+      <a href="{{ $p.html_url }}" target="_blank">{{ $p.full_name }}</a>
+      <br>
+      Stars: {{$p.stargazers_count}} | Watchers: {{$p.watchers_count}}<br>
+      {{ $p.description }}
+    </li>
+    {{ end }}
+</ul>

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Refactoring on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/refactoring/</link>
+        <link>http://localhost:1313/tags/refactoring/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Grid Column Renderer with DB queries</title>
-            <link>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
+            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
+            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
             <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt;
 which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
 

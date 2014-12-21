@@ -2,18 +2,469 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title> on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/</link>
+        <link>http://localhost:1313/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
-        <updated>Tue, 16 Dec 2014 00:00:00 UTC</updated>
+        <updated>Sun, 21 Dec 2014 00:00:00 UTC</updated>
+        
+        <item>
+            <title>Dynamic Pages with GoHugo.io</title>
+            <link>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</link>
+            <pubDate>Sun, 21 Dec 2014 00:00:00 UTC</pubDate>
+            <author>Cyrill at Schumacher dot fm</author>
+            <guid>http://localhost:1313/2014/12/21/dynamic-pages-with-gohugo.io/</guid>
+            <description>
+
+&lt;p&gt;What if you want to create simple dynamic pages with &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, the static site generator?&lt;/p&gt;
+
+&lt;p&gt;My idea is: Import any JSON from any local file or URL and make the JSON content
+available in a &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;shortcode&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Go code is currently in my &lt;a href=&#34;https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib/shortcode.go#L130&#34;&gt;fork&lt;/a&gt;.
+Mainly to do some more refactor before sending a PR. I&amp;rsquo;m not quite happy with the code but it works.
+Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
+
+&lt;h3 id=&#34;how-to-implement:c1c54e5e12faeaa48c26eb10af4a803a&#34;&gt;How to implement?&lt;/h3&gt;
+
+&lt;p&gt;You should extend the &lt;a href=&#34;http://gohugo.io/content/front-matter/&#34;&gt;front matter&lt;/a&gt; per page with this list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;json:
+  - static/starred.json
+  - static/starred2.json
+  - http://gdata.youtube.com/feeds/users/ytuser/uploads?alt=json&amp;amp;max-results=10
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Local files must reside inside Hugos working directory.&lt;/p&gt;
+
+&lt;p&gt;As an example I&amp;rsquo;m using the JSON from my &lt;a href=&#34;https://api.github.com/users/schumacherfm/starred&#34;&gt;GitHub Stars&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;In your markdown template you can e.g. add a short code like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{ {% jsonGH 0 %}}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The 0 indicates which index to use in the json list within front matters.&lt;/p&gt;
+
+&lt;p&gt;The jsonGH short code template is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;pinglist&amp;quot;&amp;gt;
+  {{ $i := index .Params 0 }}
+  {{ range .GetJson $i }}
+    {{ $p := . }}
+    &amp;lt;li&amp;gt;
+      {{$p.language}}: &amp;lt;strong&amp;gt;{{ $p.name }}&amp;lt;/strong&amp;gt;
+      &amp;lt;a href=&amp;quot;{{ $p.html_url }}&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;{{ $p.full_name }}&amp;lt;/a&amp;gt;
+      &amp;lt;br&amp;gt;
+      Stars: {{$p.stargazers_count}} | Watchers: {{$p.watchers_count}}&amp;lt;br&amp;gt;
+      {{ $p.description }}
+    &amp;lt;/li&amp;gt;
+    {{ end }}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Parsing index 0:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+    
+    &lt;li&gt;
+      CSS: &lt;strong&gt;touchstonejs&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/JedWatson/touchstonejs&#34; target=&#34;_blank&#34;&gt;JedWatson/touchstonejs&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1064 | Watchers: 1064&lt;br&gt;
+      Mobile App Framework powered by React
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      CSS: &lt;strong&gt;jquery.avgrund.js&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/voronianski/jquery.avgrund.js&#34; target=&#34;_blank&#34;&gt;voronianski/jquery.avgrund.js&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1564 | Watchers: 1564&lt;br&gt;
+      Avgrund is a jQuery plugin with new modal concept for popups
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Parsing index 1:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;dl&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/nf/dl&#34; target=&#34;_blank&#34;&gt;nf/dl&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 54 | Watchers: 54&lt;br&gt;
+      
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;aws-go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/stripe/aws-go&#34; target=&#34;_blank&#34;&gt;stripe/aws-go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 641 | Watchers: 641&lt;br&gt;
+      An incredibly experimental, automatically generated set of AWS clients in Go.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;lane&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/oleiade/lane&#34; target=&#34;_blank&#34;&gt;oleiade/lane&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 77 | Watchers: 77&lt;br&gt;
+      A golang queues, stacks and deques implementation library
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/golang/go&#34; target=&#34;_blank&#34;&gt;golang/go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 4831 | Watchers: 4831&lt;br&gt;
+      The Go programming language
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;goji&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/zenazn/goji&#34; target=&#34;_blank&#34;&gt;zenazn/goji&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1857 | Watchers: 1857&lt;br&gt;
+      Goji is a minimalistic web framework for Golang that&amp;#39;s high in antioxidants
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;gox&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/mitchellh/gox&#34; target=&#34;_blank&#34;&gt;mitchellh/gox&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 774 | Watchers: 774&lt;br&gt;
+      A dead simple, no frills Go cross compile tool
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ioprogress&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/mitchellh/ioprogress&#34; target=&#34;_blank&#34;&gt;mitchellh/ioprogress&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 235 | Watchers: 235&lt;br&gt;
+      Go (golang) package for progress bars around io.Reader/Writers.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      PHP: &lt;strong&gt;mpmd&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/AOEpeople/mpmd&#34; target=&#34;_blank&#34;&gt;AOEpeople/mpmd&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 50 | Watchers: 50&lt;br&gt;
+      Magento Project Mess Detector (for n98-magerun)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;gometry&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rakyll/gometry&#34; target=&#34;_blank&#34;&gt;rakyll/gometry&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 228 | Watchers: 228&lt;br&gt;
+      A visual interface to work with runtime profiling data from Go programs (work-in-progress)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Objective-C: &lt;strong&gt;CotEditor&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/coteditor/CotEditor&#34; target=&#34;_blank&#34;&gt;coteditor/CotEditor&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1014 | Watchers: 1014&lt;br&gt;
+      Lightweight Plain-Text Editor for OS X
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;httprouter&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/julienschmidt/httprouter&#34; target=&#34;_blank&#34;&gt;julienschmidt/httprouter&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1041 | Watchers: 1041&lt;br&gt;
+      A high performance HTTP request router that scales well
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;http2&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/bradfitz/http2&#34; target=&#34;_blank&#34;&gt;bradfitz/http2&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 474 | Watchers: 474&lt;br&gt;
+      HTTP/2 support for Go (in active development)
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;robotstxt-go&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/temoto/robotstxt-go&#34; target=&#34;_blank&#34;&gt;temoto/robotstxt-go&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 62 | Watchers: 62&lt;br&gt;
+      The robots.txt exclusion protocol implementation for Go language #golang
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;vegeta&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/tsenart/vegeta&#34; target=&#34;_blank&#34;&gt;tsenart/vegeta&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 2025 | Watchers: 2025&lt;br&gt;
+      HTTP load testing tool and library. It&amp;#39;s over 9000!
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;cron&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/robfig/cron&#34; target=&#34;_blank&#34;&gt;robfig/cron&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 325 | Watchers: 325&lt;br&gt;
+      a cron library for go
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;grace&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/grace&#34; target=&#34;_blank&#34;&gt;facebookgo/grace&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 515 | Watchers: 515&lt;br&gt;
+      Graceful restart for Go servers.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;mysqltest&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/mysqltest&#34; target=&#34;_blank&#34;&gt;facebookgo/mysqltest&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 17 | Watchers: 17&lt;br&gt;
+      Package mysqltest provides standalone instances of mysql suitable for use in tests.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ensure&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/facebookgo/ensure&#34; target=&#34;_blank&#34;&gt;facebookgo/ensure&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 18 | Watchers: 18&lt;br&gt;
+      Package ensure provides utilities for testing to ensure the given conditions are met and Fatal if they aren&amp;#39;t satisified.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;cockroach&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/cockroachdb/cockroach&#34; target=&#34;_blank&#34;&gt;cockroachdb/cockroach&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 2556 | Watchers: 2556&lt;br&gt;
+      A Scalable, Geo-Replicated, Transactional Datastore
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Shell: &lt;strong&gt;compressed-magento-sample-data&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/Vinai/compressed-magento-sample-data&#34; target=&#34;_blank&#34;&gt;Vinai/compressed-magento-sample-data&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 14 | Watchers: 14&lt;br&gt;
+      A highly compressed version of the magento 1.9 sample data and a script to create it.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;delve&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/derekparker/delve&#34; target=&#34;_blank&#34;&gt;derekparker/delve&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1266 | Watchers: 1266&lt;br&gt;
+      Go debugger
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;ngrok&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/inconshreveable/ngrok&#34; target=&#34;_blank&#34;&gt;inconshreveable/ngrok&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 3863 | Watchers: 3863&lt;br&gt;
+      Introspected tunnels to localhost
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      JavaScript: &lt;strong&gt;dashboards&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/keen/dashboards&#34; target=&#34;_blank&#34;&gt;keen/dashboards&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 4641 | Watchers: 4641&lt;br&gt;
+      Responsive dashboard templates for Bootstrap
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;sql-migrate&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rubenv/sql-migrate&#34; target=&#34;_blank&#34;&gt;rubenv/sql-migrate&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 206 | Watchers: 206&lt;br&gt;
+      SQL schema migration tool for Go.
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;boom&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/rakyll/boom&#34; target=&#34;_blank&#34;&gt;rakyll/boom&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 1703 | Watchers: 1703&lt;br&gt;
+      HTTP(S) load generator, ApacheBench (ab) replacement, written in Go
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;pb&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/cheggaaa/pb&#34; target=&#34;_blank&#34;&gt;cheggaaa/pb&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 380 | Watchers: 380&lt;br&gt;
+      Console progress bar for Golang
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;viper&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/spf13/viper&#34; target=&#34;_blank&#34;&gt;spf13/viper&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 193 | Watchers: 193&lt;br&gt;
+      Go configuration with fangs
+    &lt;/li&gt;
+    
+    
+    &lt;li&gt;
+      Go: &lt;strong&gt;go-spew&lt;/strong&gt;
+      &lt;a href=&#34;https://github.com/davecgh/go-spew&#34; target=&#34;_blank&#34;&gt;davecgh/go-spew&lt;/a&gt;
+      &lt;br&gt;
+      Stars: 383 | Watchers: 383&lt;br&gt;
+      Implements a deep pretty printer for Go data structures to aid in debugging
+    &lt;/li&gt;
+    
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Parsing YouTube feed url:&lt;/p&gt;
+
+&lt;p&gt;&lt;ul class=&#34;pinglist&#34;&gt;
+  
+  
+
+  
+    
+    &lt;li&gt;
+      map[$t:Carols in the Domain, Sydney 2014 type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blow hole at Pancake Rocks, Punakaiki, New Zealand type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Thermal Wonderland in Wai-o-Tapu New Zealand type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blue Mountains Blackheath Grand Canyon Track type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Sculptures by the sea 2014 type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Blue Mountains View @ Wentworth Falls type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Park: Milking a Sydney Funnel Web Spider type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[type:text $t:Australian Reptile Zoo: Milking a Costal Taipan]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Zoo: Koalas type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+    
+    &lt;li&gt;
+      map[$t:Australian Reptile Zoo: Tasmanian Devil feeding an egg type:text]&lt;br&gt;
+    &lt;/li&gt;
+  
+&lt;/ul&gt;
+&lt;/p&gt;
+
+&lt;p&gt;One strange problem occurs when parsing the Youtube API 2.0 (deprecated):&lt;/p&gt;
+
+&lt;p&gt;The JSON response looks something like:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  &amp;quot;entry&amp;quot;: [
+    {
+      &amp;quot;id&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;http://gdata.youtube.com/feeds/videos/XeceUDREW0U&amp;quot;},
+      &amp;quot;published&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;2014-12-20T22:35:14.000Z&amp;quot;},
+      &amp;quot;updated&amp;quot;: {&amp;quot;$t&amp;quot;: &amp;quot;2014-12-20T22:37:03.000Z&amp;quot;},
+      &amp;quot;category&amp;quot;: [
+        {
+          &amp;quot;scheme&amp;quot;: &amp;quot;http://schemas.google.com/g/2005#kind&amp;quot;,
+          &amp;quot;term&amp;quot;: &amp;quot;http://gdata.youtube.com/schemas/2007#video&amp;quot;
+        },
+        {
+          &amp;quot;scheme&amp;quot;: &amp;quot;http://gdata.youtube.com/schemas/2007/categories.cat&amp;quot;,
+          &amp;quot;term&amp;quot;: &amp;quot;Travel&amp;quot;,
+          &amp;quot;label&amp;quot;: &amp;quot;Travel &amp;amp; Events&amp;quot;
+        }
+      ],
+      &amp;quot;title&amp;quot;: {
+        &amp;quot;$t&amp;quot;: &amp;quot;Carols in the Domain, Sydney 2014&amp;quot;,
+        &amp;quot;type&amp;quot;: &amp;quot;text&amp;quot;
+      },
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The shortcode template is:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;pinglist&amp;quot;&amp;gt;
+  {{ $i := index .Params 0 }}
+  {{ $j := .GetJson $i }}
+
+  {{ range $j.feed.entry }}
+    {{ $v := . }}
+    &amp;lt;li&amp;gt;
+      {{index $v.title }}&amp;lt;br&amp;gt;
+      Hugo dies when accessing: {{$v.title.$t}}: {{ $v.content.$t }}
+    &amp;lt;/li&amp;gt;
+  {{ end }}
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hugo totally panics and crashes when using: &lt;code&gt;{{$v.title.$t}}&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The best solution should be switching to &lt;a href=&#34;https://developers.google.com/youtube/v3/&#34;&gt;Youtube API v3&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or any other ideas?&lt;/p&gt;
+</description>
+        </item>
         
         <item>
             <title>Magento Grid Column Renderer with DB queries</title>
-            <link>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
+            <link>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</link>
             <pubDate>Tue, 16 Dec 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
+            <guid>http://localhost:1313/2014/12/16/magento-grid-column-renderer-with-db-queries/</guid>
             <description>&lt;p&gt;Today I&amp;rsquo;ve found weird piece of code in &lt;code&gt;NameSpace_Module_Block_Product_Widget_Grid_Column_Renderer_PreparationWarehouse&lt;/code&gt;
 which affects extremely performance when loading a grid in the backend.&lt;/p&gt;
 
@@ -122,19 +573,19 @@ DB retrieval work has been done in all the column renderers.&lt;/p&gt;
         
         <item>
             <title>OnixParser</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</link>
+            <link>http://localhost:1313/projects/2014-06-29-onixparser-golang/</link>
             <pubDate>Sun, 29 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-29-onixparser-golang/</guid>
+            <guid>http://localhost:1313/projects/2014-06-29-onixparser-golang/</guid>
             <description>
 
 &lt;p&gt;Onix Parser written in GoLang to deal with huge XML file sizes. The ONIX for Books Product Information
 Message is the international standard for representing and communicating book industry product
 information in electronic form.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;OnixParser&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;A parser for the &lt;a href=&#34;http://www.editeur.org/83/Overview/&#34;&gt;EDItEUR ONIX xml file format&lt;/a&gt; written in GoLang.&lt;/p&gt;
 
@@ -211,19 +662,19 @@ has been enabled.&lt;/p&gt;
         
         <item>
             <title>Magento ModelView</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</link>
+            <link>http://localhost:1313/projects/2014-06-08-magento-modelview/</link>
             <pubDate>Sun, 08 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-08-magento-modelview/</guid>
+            <guid>http://localhost:1313/projects/2014-06-08-magento-modelview/</guid>
             <description>
 
 &lt;p&gt;Magento ModelView - Using a model to simulate a database view.
 This module contains only abstract classes.
 getData() is now type safe. &lt;code&gt;__call()&lt;/code&gt; disabled.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-ModelView&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;This module contains only abstract classes.&lt;/p&gt;
 
@@ -242,18 +693,18 @@ getData() is now type safe. &lt;code&gt;__call()&lt;/code&gt; disabled.&lt;/p&gt
         
         <item>
             <title>Magento MySQL AsyncSave</title>
-            <link>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</link>
+            <link>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</link>
             <pubDate>Sun, 01 Jun 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-06-01-magento-mysqlasyncsave/</guid>
+            <guid>http://localhost:1313/projects/2014-06-01-magento-mysqlasyncsave/</guid>
             <description>
 
 &lt;p&gt;DEPRECATED Magento implementation of &lt;a href=&#34;http://php.net/manual/en/mysqli.query.php&#34;&gt;http://php.net/manual/en/mysqli.query.php&lt;/a&gt; to use
 MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-AsyncSave&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Magento implementation of &lt;a href=&#34;http://au1.php.net/manual/en/mysqli.query.php&#34;&gt;http://au1.php.net/manual/en/mysqli.query.php&lt;/a&gt;
 to use MYSQLI_ASYNC for inserts and updates.&lt;/p&gt;
@@ -310,18 +761,17 @@ of &lt;a href=&#34;https://www.owasp.org/index.php/SQL_Injection&#34;&gt;SQL inj
         
         <item>
             <title>HarrisStreet - Composer.org based installer for Magento</title>
-            <link>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</link>
+            <link>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</link>
             <pubDate>Mon, 14 Apr 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-04-14-magento-harrisstreet/</guid>
+            <guid>http://localhost:1313/projects/2014-04-14-magento-harrisstreet/</guid>
             <description>
 
 &lt;p&gt;Zookal HarrisStreet for Magento - Composer based Magento installer.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
- 
+&lt;/p&gt;
 
 &lt;h1 id=&#34;zookal-harrisstreet-for-magento:75a82ee7fbc965e04e8b65e10e0bd368&#34;&gt;Zookal HarrisStreet for Magento&lt;/h1&gt;
 
@@ -390,18 +840,18 @@ option to either remove or keep the files.&lt;/li&gt;
         
         <item>
             <title>n98-magerun - HarrisStreet - Configuration Importer Exporter</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
+            <link>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</link>
             <pubDate>Thu, 27 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
+            <guid>http://localhost:1313/projects/2014-03-27-n98-magerun-harrisstr-impex/</guid>
             <description>
 
 &lt;p&gt;Magento n98-magerun module for importing and exporting configuration data. Import supports hierarchical
 folder structure and of course different environments.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;Zookal&#34; data-r=&#34;HarrisStreet-ImpEx&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Import and Export of Magentos configuration stored in core_config_data table. Handling of different environments
 with inheritance.&lt;/p&gt;
@@ -558,19 +1008,19 @@ Options:
         
         <item>
             <title>Magento Security Bundle @todo</title>
-            <link>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</link>
+            <link>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</link>
             <pubDate>Thu, 13 Mar 2014 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2014-03-13-magento-securitybundle/</guid>
+            <guid>http://localhost:1313/projects/2014-03-13-magento-securitybundle/</guid>
             <description>
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 
 &lt;p&gt;This project is ideal for a hackathon.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-SecurityBundle&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;The Magento SecurityBundle provides additional security features for your e-commerce application.&lt;/p&gt;
 
@@ -629,17 +1079,17 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento OPCache Panel</title>
-            <link>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</link>
+            <link>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</link>
             <pubDate>Fri, 20 Dec 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-12-20-magento-opcache-panel/</guid>
+            <guid>http://localhost:1313/projects/2013-12-20-magento-opcache-panel/</guid>
             <description>
 
 &lt;p&gt;OpCache (Zend Optimizer) Control Panel (GUI) for the Magento Backend.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OpCache&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;OpCache Control Panel for Magento Backend.&lt;/p&gt;
 
@@ -695,18 +1145,18 @@ the response is a valid script file or not.&lt;/p&gt;&lt;/li&gt;
         
         <item>
             <title>Magento Pace - Automatic page load progress bar</title>
-            <link>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</link>
+            <link>http://localhost:1313/projects/2013-09-27-magento-pace/</link>
             <pubDate>Fri, 27 Sep 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-09-27-magento-pace/</guid>
+            <guid>http://localhost:1313/projects/2013-09-27-magento-pace/</guid>
             <description>&lt;p&gt;Magento Pace - Automatic page load progress bar for the backend and frontend.&lt;/p&gt;
 
 &lt;p&gt;Pace will automatically monitor your ajax requests, event loop lag, document ready state, and elements on
 your page to decide the progress. On ajax navigation it will begin again!&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-Pace&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Based on &lt;a href=&#34;https://github.com/HubSpot/pace&#34;&gt;https://github.com/HubSpot/pace&lt;/a&gt;&lt;/p&gt;
 
@@ -718,18 +1168,18 @@ your page to decide the progress. On ajax navigation it will begin again!&lt;/p&
         
         <item>
             <title>Magento PGP</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</link>
+            <link>http://localhost:1313/projects/2013-07-23-magento-pgp/</link>
             <pubDate>Tue, 23 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-23-magento-pgp/</guid>
+            <guid>http://localhost:1313/projects/2013-07-23-magento-pgp/</guid>
             <description>
 
 &lt;p&gt;Secure emails in Magento via PGP / GPG email encryption. Customers and shop owners can upload
 their public key and each email sent to their address will be automatically encrypted.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-PGP&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&#34;https://raw.github.com/SchumacherFM/Magento-PGP/master/logo/magento-pgp.png&#34; alt=&#34;image&#34; /&gt;
 &lt;/p&gt;
@@ -833,33 +1283,33 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Nodejs Playground</title>
-            <link>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</link>
+            <link>http://localhost:1313/projects/2013-07-01-node-playground/</link>
             <pubDate>Mon, 01 Jul 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-07-01-node-playground/</guid>
+            <guid>http://localhost:1313/projects/2013-07-01-node-playground/</guid>
             <description>&lt;ul&gt;
 &lt;li&gt;implemented mysql&lt;/li&gt;
 &lt;li&gt;custom mysql query with result output (missing best practice)&lt;/li&gt;
 &lt;li&gt;custom handlebars.js helper&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Nodejs-Playground&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 </description>
         </item>
         
         <item>
             <title>Magento Optimized Backend Login</title>
-            <link>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</link>
+            <link>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</link>
             <pubDate>Tue, 04 Jun 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
+            <guid>http://localhost:1313/projects/2013-06-04-magento-optimizedbackendlogin/</guid>
             <description>&lt;p&gt;Sets the autocomplete html form attribute depending on the environment for the backend login form.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Magento-OptimizedBackendLogin&#34; data-c=&#34;5&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Sets the autocomplete html form attribute depending on the environment. (Allows you to store the password in the browser during development)&lt;/li&gt;
@@ -877,10 +1327,10 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>Impressum</title>
-            <link>http://cyrillschumacher.com/imprint/</link>
+            <link>http://localhost:1313/imprint/</link>
             <pubDate>Tue, 01 Jan 2013 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/imprint/</guid>
+            <guid>http://localhost:1313/imprint/</guid>
             <description>
 
 &lt;p&gt;Click for more details!&lt;/p&gt;
@@ -925,17 +1375,17 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
         
         <item>
             <title>MageNerator - Magento Extension Generator Website</title>
-            <link>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</link>
+            <link>http://localhost:1313/projects/2012-07-01-magenerator/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-07-01-magenerator/</guid>
+            <guid>http://localhost:1313/projects/2012-07-01-magenerator/</guid>
             <description>
 
 &lt;p&gt;This TYPO3 4.7 extension is deprecated since middle 2012 as there are so many tools which are working in an IDE.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;MageNerator&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;h3 id=&#34;printscreens:9da25cf6bc57712f288ea62881ccce28&#34;&gt;Printscreens&lt;/h3&gt;
 
@@ -1023,345 +1473,6 @@ $pgpDetails = $pgp-&amp;gt;getPublicKeyDetails();
 
 &lt;p&gt;&lt;img src=&#34;https://github.com/schumacherfm/magenerator/raw/master/printscreens/20_packageCreator.jpg&#34; alt=&#34;printscreen&#34; title=&#34;Printscreen&#34; /&gt;
 &lt;/p&gt;
-</description>
-        </item>
-        
-        <item>
-            <title>Magento Anonygento</title>
-            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
-            <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
-            <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
-            <description>
-
-&lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;
-
-&lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal
-developers who really not need any kind of sensitive data.&lt;/p&gt;
-
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
-&lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Anonygento&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
-
-
-&lt;p&gt;Anonymizes all customer related data in a Magento shop!&lt;/p&gt;
-
-&lt;p&gt;Install (via modman) and run:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd shell
-$ php -f anonygento.php
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, quotes, newsletters, etc.&lt;/p&gt;
-
-&lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal developers who really
-not need any kind of sensitive data.&lt;/p&gt;
-
-&lt;p&gt;Anonygento can be easily extended by custom configuration and observers.&lt;/p&gt;
-
-&lt;p&gt;Do not run this script in the production environment.&lt;/p&gt;
-
-&lt;h2 id=&#34;what-it-does:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;What it does?&lt;/h2&gt;
-
-&lt;p&gt;This extension anonymizes all customer related data from the following data objects:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Customers&lt;/li&gt;
-&lt;li&gt;Customers Addresses&lt;/li&gt;
-&lt;li&gt;Orders&lt;/li&gt;
-&lt;li&gt;Order Addresses&lt;/li&gt;
-&lt;li&gt;Order Grid&lt;/li&gt;
-&lt;li&gt;Order Payment&lt;/li&gt;
-&lt;li&gt;Quotes&lt;/li&gt;
-&lt;li&gt;Quote Addresses&lt;/li&gt;
-&lt;li&gt;Quote Payment&lt;/li&gt;
-&lt;li&gt;Credit memo&lt;/li&gt;
-&lt;li&gt;Invoice&lt;/li&gt;
-&lt;li&gt;Shipment&lt;/li&gt;
-&lt;li&gt;Newsletter Subscribers&lt;/li&gt;
-&lt;li&gt;Gift messages&lt;/li&gt;
-&lt;li&gt;Review&lt;/li&gt;
-&lt;li&gt;Rating&lt;/li&gt;
-&lt;li&gt;Sendfriend&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;This module is optimized to handle a large amount of data.&lt;/p&gt;
-
-&lt;h2 id=&#34;random-data:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Random Data&lt;/h2&gt;
-
-&lt;p&gt;All data is read from self defined csv files which are stored in the module data folder and in this location in a locale subfolder.&lt;/p&gt;
-
-&lt;p&gt;You provide the random data for the module. There are several files for the en_US locale already available.&lt;/p&gt;
-
-&lt;p&gt;Zipcode, City, State and Country aren&amp;rsquo;t anonymized so that shipping and tax calculations still work correctly.&lt;/p&gt;
-
-&lt;p&gt;IP addresses in all tables are also anonymized.&lt;/p&gt;
-
-&lt;p&gt;You can configure in the backend section which locale to use. Just navigate
-to System -&amp;gt; Configuration -&amp;gt; Advanced -&amp;gt; Developer -&amp;gt; Anonygento Settings&lt;/p&gt;
-
-&lt;p&gt;If the csv files are empty in the locale folder then the Anonygento generates real random mnenomic strings.&lt;/p&gt;
-
-&lt;h2 id=&#34;magento-backend-hints:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Magento Backend hints&lt;/h2&gt;
-
-&lt;p&gt;The red label &amp;lsquo;sensitive data&amp;rsquo; will switch to green for each entity when the anonymization process ran successful.&lt;/p&gt;
-
-&lt;h2 id=&#34;compatibility:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Compatibility&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Magento &amp;gt;= 1.5&lt;/li&gt;
-&lt;li&gt;php &amp;gt;= 5.3.0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;It could run with Magento &amp;lt; 1.5 but still not tested.&lt;/p&gt;
-
-&lt;h2 id=&#34;todo-next-versions:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Todo / Next Versions&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Enterprise tables like Logging, RMA, Sales credit memo, sales invoice grid, sales order grid, sales shipment grid&lt;/li&gt;
-&lt;li&gt;Ask for a different database before running the anonymization process&lt;/li&gt;
-&lt;li&gt;Assign a store view to a locale to get e.g. country specific random names.&lt;/li&gt;
-&lt;li&gt;Run via backend instead of shell. Use a nice ajax updater.&lt;/li&gt;
-&lt;li&gt;Restore created_at and updated_at columns / attributes&lt;/li&gt;
-&lt;li&gt;Anonymize all prices&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;backend:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Backend&lt;/h4&gt;
-
-&lt;p&gt;Clear the cache, logout from the admin panel and then login again.&lt;/p&gt;
-
-&lt;p&gt;Call the extension from System -&amp;gt; Tools -&amp;gt; Anonygento (just to get a summery).&lt;/p&gt;
-
-&lt;p&gt;In this grid view you can view the data from all entities by clicking on the &amp;ldquo;View&amp;rdquo; link.&lt;/p&gt;
-
-&lt;h4 id=&#34;shell:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Shell&lt;/h4&gt;
-
-&lt;p&gt;Call the script like shown below.&lt;/p&gt;
-
-&lt;h5 id=&#34;this-is-the-view-if-you-choose-no:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;This is the view if you choose &amp;ldquo;no&amp;rdquo;.&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd shell
-$ php -f anonygento.php
-Anonymize this Magento installation? [y/n]n
-Nothing done!
-$
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;this-view-shows-the-result-for-choosing-yes:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;This view shows the result for choosing &amp;ldquo;yes&amp;rdquo;:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cd shell
-$ php -f anonygento.php
-Anonymize this Magento installation? [y/n]y
-Running customer, work load: XXXX rows
-  0% [-------------------------------------]
-Running ...
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;command-line-options:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Command line options&lt;/h5&gt;
-
-&lt;p&gt;Adjusting memory limit (in MB): &lt;code&gt;php -f anonygento.php -- --memoryLimit=2048 --runAnonymization&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Statistics: &lt;code&gt;php -f anonygento.php -- --stat&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;If all fails and you still get our of memory errors:&lt;/p&gt;
-
-&lt;p&gt;Limiting the collection size: &lt;code&gt;php -f anonygento.php -- --collectionLimit=400 --runAnonymization&lt;/code&gt;&lt;/p&gt;
-
-&lt;h4 id=&#34;disabling-the-confirmation-and-username-query:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Disabling the confirmation and username query&lt;/h4&gt;
-
-&lt;p&gt;Add to your e.g. .bash_profile or type it into the shell: &lt;code&gt;export ANONYGENTO_DEV=true&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This is will enable the dev mode.&lt;/p&gt;
-
-&lt;h2 id=&#34;extending-the-anonymization-process:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Extending the anonymization process&lt;/h2&gt;
-
-&lt;h4 id=&#34;custom-attributes:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Custom attributes&lt;/h4&gt;
-
-&lt;p&gt;To anonymize custom attributes in the e.g. customer eav model you can add the following
-xml to the config.xml. No PHP programming is necessary except if you need custom random strings.&lt;/p&gt;
-
-&lt;h5 id=&#34;example-config:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Example config:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;config&amp;gt;
-    &amp;lt;anonygento&amp;gt;
-        &amp;lt;anonymizations&amp;gt;
-            &amp;lt;!--extending the customer anonymization process with two custom attributes--&amp;gt;
-            &amp;lt;customer&amp;gt;
-                &amp;lt;mapping&amp;gt;
-                    &amp;lt;fill&amp;gt;
-                        &amp;lt;myAttributeName1&amp;gt;
-                            &amp;lt;model&amp;gt;schumacherfm_demo1/mydemo1&amp;lt;/model&amp;gt;
-                            &amp;lt;method&amp;gt;changeMydemo1&amp;lt;/method&amp;gt;
-                        &amp;lt;/myAttributeName1&amp;gt;
-                        &amp;lt;myAttributeName2&amp;gt;
-                            &amp;lt;method&amp;gt;mt_rand&amp;lt;/method&amp;gt;
-                            &amp;lt;args&amp;gt;
-                                &amp;lt;a0&amp;gt;100&amp;lt;/a0&amp;gt;
-                                &amp;lt;a1&amp;gt;1000&amp;lt;/a1&amp;gt;
-                            &amp;lt;/args&amp;gt;
-                        &amp;lt;/myAttributeName2&amp;gt;
-                        &amp;lt;myAttributeName3&amp;gt;
-                            &amp;lt;helper&amp;gt;core&amp;lt;/helper&amp;gt;
-                            &amp;lt;method&amp;gt;getRandomString&amp;lt;/method&amp;gt;
-                            &amp;lt;args&amp;gt;
-                                &amp;lt;a0&amp;gt;12&amp;lt;/a0&amp;gt;
-                            &amp;lt;/args&amp;gt;
-                        &amp;lt;/myAttributeName3&amp;gt;
-                    &amp;lt;/fill&amp;gt;
-                &amp;lt;/mapping&amp;gt;
-            &amp;lt;/customer&amp;gt;
-        &amp;lt;/anonymizations&amp;gt;
-    &amp;lt;/anonygento&amp;gt;
-&amp;lt;/config&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Please see Demo1 module.&lt;/p&gt;
-
-&lt;p&gt;The XML &lt;code&gt;fill&lt;/code&gt; element will be automatically processed. It executes a defined method or function on an EAV or entity attribute. The above example should be self-explanatory.&lt;/p&gt;
-
-&lt;h4 id=&#34;custom-entities:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Custom entities&lt;/h4&gt;
-
-&lt;p&gt;To add custom entities to anonymization process you can simply extend the config.xml. Useful when you want to anonymize e.g.: store locator, news, enterprise or other payment solutions.&lt;/p&gt;
-
-&lt;p&gt;Please see Demo2 module. This module randomizes the product name and the description with a lorem ipsum text.&lt;/p&gt;
-
-&lt;h5 id=&#34;example-config-1:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Example config:&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-xml&#34;&gt;&amp;lt;config&amp;gt;
-    &amp;lt;anonygento&amp;gt;
-        &amp;lt;anonymizations&amp;gt;
-            &amp;lt;myAnonymizationKey&amp;gt;
-                &amp;lt;active&amp;gt;1&amp;lt;/active&amp;gt;
-                &amp;lt;label&amp;gt;Some label&amp;lt;/label&amp;gt;
-                &amp;lt;model&amp;gt;namespace2_moduleX/aModel&amp;lt;/model&amp;gt;
-                &amp;lt;adminRoute&amp;gt;yourAdminRoute/[edit|view|etc]?id&amp;lt;/adminRoute&amp;gt;&amp;lt;!-- if available --&amp;gt;
-                &amp;lt;options&amp;gt;
-                    &amp;lt;optionKey1&amp;gt;1&amp;lt;/optionKey1&amp;gt;
-                    &amp;lt;!-- your options --&amp;gt;
-                &amp;lt;/options&amp;gt;
-                &amp;lt;mapping&amp;gt;
-                	&amp;lt;!-- if you wish to apply a mapping (see Demo2) --&amp;gt;
-                &amp;lt;/mapping&amp;gt;
-                &amp;lt;anonymizationModel&amp;gt;namespace_module/myAnonymizationProcess&amp;lt;/anonymizationModel&amp;gt;
-            &amp;lt;/myAnonymizationKey&amp;gt;
-        &amp;lt;/anonymizations&amp;gt;
-    &amp;lt;/anonygento&amp;gt;
-&amp;lt;/config&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Not neccessary XML elements: &lt;code&gt;adminRoute&lt;/code&gt; and &lt;code&gt;options&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Your model &lt;code&gt;namespace2_moduleX/aModel&lt;/code&gt; must have a resource collection.&lt;/p&gt;
-
-&lt;p&gt;Extend your entity with the SQL column: &lt;code&gt;anonymized TINYINT(1) UNSIGNED NOT NULL DEFAULT 0&lt;/code&gt;. Use the following setup structure:&lt;/p&gt;
-
-&lt;h4 id=&#34;setup-class-in-model-resource-setup-php:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Setup class in Model/Resource/Setup.php&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;class Namespace_Modul_Model_Resource_Setup extends SchumacherFM_Anonygento_Model_Resource_Setup {}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h5 id=&#34;mysql4-install-upgrade:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;mysql4/install/upgrade&lt;/h5&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;/* @var $installer Namespace_Modul_Model_Resource_Setup */
-$installer = $this;
-$installer-&amp;gt;startSetup();
-
-// for non EAV models and to extend EAV _entity table
-$installer-&amp;gt;addAnonymizedColumn(&#39;namespace2_moduleX/aModel&#39;);
-
-// only for EAV models, catalog_product is for example.
-$installer-&amp;gt;addAnonymizedAttribute(&#39;catalog_product&#39;);
-
-$installer-&amp;gt;endSetup();
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Example Model:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;
-class Namespace_Module_Model_MyAnonymizationProcess extends SchumacherFM_Anonygento_Model_Anonymizations_Abstract
-{
-
-    public function run()
-    {
-        parent::run($this-&amp;gt;_getCollection(), &#39;_anonymizeFooBar&#39;);
-    }
-
-    protected function _anonymizeFooBar($model)
-    {
-        // to access options: (see above in the config)
-        $opt1 = $this-&amp;gt;_getOption(&#39;optionKey1&#39;,&#39;[int|bool|str]&#39;);
-
-        // please see Demo2 module
-        $this-&amp;gt;_copyObjectData( ... );
-        $model-&amp;gt;save();
-    }
-    /**
-     * @return Namespace_Module_Model_Resource_Name_Collection
-     */
-    protected function _getCollection()
-    {
-        return parent::_getCollection(&#39;namespace_module/name&#39;, &#39;myAnonymizationKey&#39;);
-    }
-
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;events-observers:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Events / Observers&lt;/h2&gt;
-
-&lt;h3 id=&#34;event-anonygento-anonymizations-copy-after:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Event &lt;code&gt;anonygento_anonymizations_copy_after&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;This event will be fired after data has been copied from the random object to the target object.&lt;/p&gt;
-
-&lt;p&gt;This allows you to change the random data for specific models.&lt;/p&gt;
-
-&lt;p&gt;See the observer in demo1 module.&lt;/p&gt;
-
-&lt;p&gt;Fired in: &lt;code&gt;SchumacherFM_Anonygento_Model_Anonymizations_Abstract::_copyObjectData&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Name:       &lt;code&gt;anonygento_anonymizations_copy_after&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Event prefix:  &lt;code&gt;to_object&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-php&#34;&gt;
-class SchumacherFM_Demo1_Model_Observer {
-
-    public function copyAfterAlterCustomerTelephone(Varien_Event_Observer $observer)
-    {
-        $toObject = $observer-&amp;gt;getEvent()-&amp;gt;getToObject();
-
-        // checking for the correct instance is a must
-        if($toObject instanceof Mage_Sales_Model_Order) {
-            $toObject-&amp;gt;setCustomerTaxvat( mt_rand() );
-        }
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h3 id=&#34;event-anonygento-anonymizations-get-collection:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Event &lt;code&gt;anonygento_anonymizations_get_collection&lt;/code&gt;&lt;/h3&gt;
-
-&lt;p&gt;To access each single collection.&lt;/p&gt;
-
-&lt;p&gt;Fired in: &lt;code&gt;SchumacherFM_Anonygento_Model_Anonymizations_Abstract::_getCollection&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Name:       &lt;code&gt;anonygento_anonymizations_get_collection&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Event prefix:  &lt;code&gt;collection&lt;/code&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;performance-errors:c3c43655b3c88479715f9e227f1eba9c&#34;&gt;Performance / Errors&lt;/h2&gt;
-
-&lt;p&gt;On my MacBook Air Mid 2012 the whole anonymization process for ~8000 Customers, ~4000 orders
-and ~9000 quotes lasts for ~15 minutes. With 256MB of memory limit I have to restart the process
-several times. Setting the memory limit to 2048 the script runs without interruptions.&lt;/p&gt;
-
-&lt;p&gt;If you get errors like this one:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;Fatal error: Allowed memory size of xxx bytes exhausted (tried to allocate x bytes) in abc.php on line x&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;Just rerun the script.&lt;/p&gt;
-
-&lt;p&gt;On a Ubuntu virtual machine with standard LAMP system (php 5.3.[10|20] Suhosin) the script fails.
-Even with memory limit -1 the script will not run. Maybe someone can test this without Suhosin &amp;hellip;&lt;/p&gt;
 </description>
         </item>
         

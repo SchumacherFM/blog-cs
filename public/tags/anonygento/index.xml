@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Anonygento on CyrillSchumacher.com</title>
-        <link>http://cyrillschumacher.com/tags/anonygento/</link>
+        <link>http://localhost:1313/tags/anonygento/</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
         <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
@@ -10,10 +10,10 @@
         
         <item>
             <title>Magento Anonygento</title>
-            <link>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</link>
+            <link>http://localhost:1313/projects/2012-12-12-magento-anonygento/</link>
             <pubDate>Sun, 01 Jul 2012 00:00:00 UTC</pubDate>
             <author>Cyrill at Schumacher dot fm</author>
-            <guid>http://cyrillschumacher.com/projects/2012-12-12-magento-anonygento/</guid>
+            <guid>http://localhost:1313/projects/2012-12-12-magento-anonygento/</guid>
             <description>
 
 &lt;p&gt;Anonygento is a Magento module which anonymizes all data especially customer, orders, newsletters.&lt;/p&gt;
@@ -21,9 +21,9 @@
 &lt;p&gt;This anonymization is useful when you want to hire external developers or for your internal
 developers who really not need any kind of sensitive data.&lt;/p&gt;
 
-&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
+&lt;p&gt;&lt;h3&gt;Latest commit and statistics from GitHub:&lt;/h3&gt;
 &lt;div class=&#34;hubinfo&#34; data-u=&#34;SchumacherFM&#34; data-r=&#34;Anonygento&#34; data-c=&#34;&#34;&gt;&lt;/div&gt;
-
+&lt;/p&gt;
 
 &lt;p&gt;Anonymizes all customer related data in a Magento shop!&lt;/p&gt;
 
