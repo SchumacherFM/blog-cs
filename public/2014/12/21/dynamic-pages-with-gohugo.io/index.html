@@ -181,7 +181,7 @@
                   <h1 class="post-title">Dynamic Pages with GoHugo.io</h1>
 
                   <p class="post-byline">
-                    by cyrill · 21 December 2014 · 885 Words ·
+                    by cyrill · 21 December 2014 · 891 Words ·
                     ~5min reading time |
                     <a href="https://github.com/SchumacherFM/blog-cs/blob/master/content/posts/2014-12-21-dynamic-pages-with-gohugo.md"
                        target="_blank">Improve on <i class="fa fa-github"></i></a>
@@ -195,7 +195,8 @@
                       
                       
 
-<p>What if you want to create simple dynamic pages with <a href="http://gohugo.io">Hugo</a>, the static site generator?</p>
+<p>What if you want to create simple pseudo dynamic content within a page
+with <a href="http://gohugo.io">Hugo</a>, the static site generator?</p>
 
 <p>My idea is: Import any JSON from any local file or URL and make the JSON content
 available in a <a href="http://gohugo.io/extras/shortcodes/">shortcode</a>.</p>
@@ -542,7 +543,7 @@ Any suggestions someone? Also tests are missing &hellip; 8-|</p>
   
     
     <li>
-      map[type:text $t:Blow hole at Pancake Rocks, Punakaiki, New Zealand]<br>
+      map[$t:Blow hole at Pancake Rocks, Punakaiki, New Zealand type:text]<br>
     </li>
   
     
@@ -577,7 +578,7 @@ Any suggestions someone? Also tests are missing &hellip; 8-|</p>
   
     
     <li>
-      map[$t:Australian Reptile Zoo: Koalas type:text]<br>
+      map[type:text $t:Australian Reptile Zoo: Koalas]<br>
     </li>
   
     
@@ -614,7 +615,7 @@ Any suggestions someone? Also tests are missing &hellip; 8-|</p>
       },
 </code></pre>
 
-<p>The shortcode template is:</p>
+<p>The YouTube short code template is:</p>
 
 <pre><code>&lt;ul class=&quot;pinglist&quot;&gt;
   {{ $i := index .Params 0 }}

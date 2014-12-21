@@ -16,7 +16,8 @@
             <guid>http://cyrillschumacher.com/2014/12/21/dynamic-pages-with-gohugo.io/</guid>
             <description>
 
-&lt;p&gt;What if you want to create simple dynamic pages with &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, the static site generator?&lt;/p&gt;
+&lt;p&gt;What if you want to create simple pseudo dynamic content within a page
+with &lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;, the static site generator?&lt;/p&gt;
 
 &lt;p&gt;My idea is: Import any JSON from any local file or URL and make the JSON content
 available in a &lt;a href=&#34;http://gohugo.io/extras/shortcodes/&#34;&gt;shortcode&lt;/a&gt;.&lt;/p&gt;
@@ -363,7 +364,7 @@ Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
   
     
     &lt;li&gt;
-      map[type:text $t:Blow hole at Pancake Rocks, Punakaiki, New Zealand]&lt;br&gt;
+      map[$t:Blow hole at Pancake Rocks, Punakaiki, New Zealand type:text]&lt;br&gt;
     &lt;/li&gt;
   
     
@@ -398,7 +399,7 @@ Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
   
     
     &lt;li&gt;
-      map[$t:Australian Reptile Zoo: Koalas type:text]&lt;br&gt;
+      map[type:text $t:Australian Reptile Zoo: Koalas]&lt;br&gt;
     &lt;/li&gt;
   
     
@@ -435,7 +436,7 @@ Any suggestions someone? Also tests are missing &amp;hellip; 8-|&lt;/p&gt;
       },
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;The shortcode template is:&lt;/p&gt;
+&lt;p&gt;The YouTube short code template is:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;lt;ul class=&amp;quot;pinglist&amp;quot;&amp;gt;
   {{ $i := index .Params 0 }}

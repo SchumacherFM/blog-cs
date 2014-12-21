@@ -14,7 +14,8 @@ json:
   - http://gdata.youtube.com/feeds/users/kiriwt/uploads?alt=json&max-results=10
 ---
 
-What if you want to create simple dynamic pages with [Hugo](http://gohugo.io), the static site generator?
+What if you want to create simple pseudo dynamic content within a page 
+with [Hugo](http://gohugo.io), the static site generator?
 
 <!--more-->
 
@@ -105,7 +106,7 @@ The JSON response looks something like:
       },
 ```
 
-The shortcode template is:
+The YouTube short code template is:
 
 ```
 <ul class="pinglist">
