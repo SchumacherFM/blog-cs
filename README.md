@@ -3,9 +3,11 @@ Blog cyrillschumacher.com
 
 Powered by [Hugo](http://gohugo.io), a #golang powered static site generator.
 
+The hugo version in this repo is a special crafted one with cutting edge features.
+
 Theme used: [https://wordpress.org/themes/hueman](https://wordpress.org/themes/hueman)
 
-When you copy the theme make sure you remove our social media handles and other stuff from me.
+When you copy the theme make sure you remove my social media handles and other stuff from me.
 
 Feel free to send a PR to improve the theme and posts.
 
