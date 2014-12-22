@@ -15,7 +15,7 @@ with [Hugo](http://gohugo.io), the static site generator?
 
 <!--more-->
 
-My idea is: Import any JSON or CSV from any local file or URL and make the JSON content
+My idea is: Import any JSON or CSV from any local file or URL and make the JSON or CSV content
 available in a [shortcode](http://gohugo.io/extras/shortcodes/).
 
 The Go code is currently in my [fork](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib/shortcode.go#L130).
@@ -120,5 +120,46 @@ The best solution should be switching to [Youtube API v3](https://developers.goo
 Or any other ideas?
 
 ### Parsing CSV
+
+The short code within your page for the CSV looks like:
+
+```
+{{</* csvDemo url="static/SalesJan2009.csv" sep="," */>}}
+```
+
+The url can be a local or a remote resource. Sep is the CSV separator which can only be one character long.
+There is currently no possibility to provide a line separator (Default: `\r\n` or `\n`).
+
+The html of the `csvDemo` short code displays:
+
+```
+<table border="1">
+  {{ $url := .Get "url" }}
+  {{ $sep := .Get "sep" }}
+  {{ range $i, $r := .GetCsv $url $sep }}
+
+    {{ if eq $i 0 }}
+      <thead>
+        <tr>
+          {{ range $r }}
+            <th>{{ . }}</th>
+          {{end}}
+        </tr>
+      </thead>
+    {{else}}
+      <tbody>
+        <tr>
+          {{ range  $r }}
+            <td>{{ . }}</td>
+          {{end}}
+        </tr>
+      </tbody>
+    {{end}}
+
+  {{ end }}
+</table>
+```
+
+The final result:
 
 {{< csvDemo url="static/SalesJan2009.csv" sep="," >}}
