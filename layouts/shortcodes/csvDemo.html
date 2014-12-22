@@ -1,0 +1,10 @@
+<table border="1">
+  {{ $url := .Get "url" }}
+  {{ $sep := .Get "sep" }}
+  {{ range .GetCsv $url $sep }}
+    {{ $r := . }}
+    <tr>
+      <td>{{ $r }}</td>
+    </tr>
+    {{ end }}
+</table>

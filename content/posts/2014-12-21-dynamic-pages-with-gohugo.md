@@ -8,10 +8,6 @@ categories:
 tags:
   - GoHugo
   - GoLang
-json:
-  - static/starred.json
-  - static/starred2.json
-  - http://gdata.youtube.com/feeds/users/kiriwt/uploads?alt=json&max-results=10
 ---
 
 What if you want to create simple pseudo dynamic content within a page 
@@ -19,7 +15,7 @@ with [Hugo](http://gohugo.io), the static site generator?
 
 <!--more-->
 
-My idea is: Import any JSON from any local file or URL and make the JSON content
+My idea is: Import any JSON or CSV from any local file or URL and make the JSON content
 available in a [shortcode](http://gohugo.io/extras/shortcodes/).
 
 The Go code is currently in my [fork](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib/shortcode.go#L130).
@@ -28,15 +24,6 @@ Any suggestions someone? Also tests are missing ... 8-|
 
 ### How to implement?
 
-You should extend the [front matter](http://gohugo.io/content/front-matter/) per page with this list:
-
-```
-json:
-  - static/starred.json
-  - static/starred2.json
-  - http://gdata.youtube.com/feeds/users/ytuser/uploads?alt=json&max-results=10
-```
-
 Local files must reside inside Hugos working directory.
 
 As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/users/schumacherfm/starred).
@@ -44,17 +31,19 @@ As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/u
 In your markdown template you can e.g. add a short code like:
 
 ```
-{{</* jsonGH 0 */>}}
+{{</* jsonGH url="static/starred.json" */>}}
 ```
 
-The 0 indicates which index to use in the json list within front matters.
+```
+{{</* jsonYT url="http://gdata.youtube.com/feeds/users/useryt/uploads?alt=json&max-results=10" */>}}
+```
 
 The jsonGH short code template is:
 
 ```
 <ul class="pinglist">
-  {{ $i := index .Params 0 }}
-  {{ range .GetJson $i }}
+  {{ $url := .Get "url" }}
+  {{ range .GetJson $url }}
     {{ $p := . }}
     <li>
       {{$p.language}}: <strong>{{ $p.name }}</strong>
@@ -67,17 +56,19 @@ The jsonGH short code template is:
 </ul>
 ```
 
+### Parsing JSON
+
 Parsing index 0:
 
-{{< jsonGH 0 >}}
+{{< jsonGH url="static/starred.json" >}}
 
 Parsing index 1:
 
-{{< jsonGH 1 >}}
+{{< jsonGH url="static/starred2.json" >}}
 
 Parsing YouTube feed url:
 
-{{< jsonYt 2 >}}
+{{< jsonYT url="static/ytUploads.json" >}}
 
 One strange problem occurs when parsing the Youtube API 2.0 (deprecated):
 
@@ -110,14 +101,13 @@ The YouTube short code template is:
 
 ```
 <ul class="pinglist">
-  {{ $i := index .Params 0 }}
-  {{ $j := .GetJson $i }}
+  {{ $url := .Get "url" }}
+  {{ $j := .GetJson $url }}
 
   {{ range $j.feed.entry }}
     {{ $v := . }}
     <li>
       {{index $v.title }}<br>
-      Hugo dies when accessing: {{$v.title.$t}}: {{ $v.content.$t }}
     </li>
   {{ end }}
 </ul>
@@ -128,3 +118,7 @@ Hugo totally panics and crashes when using: `{{$v.title.$t}}`.
 The best solution should be switching to [Youtube API v3](https://developers.google.com/youtube/v3/).
 
 Or any other ideas?
+
+### Parsing CSV
+
+{{< csvDemo url="static/SalesJan2009.csv" sep="," >}}
