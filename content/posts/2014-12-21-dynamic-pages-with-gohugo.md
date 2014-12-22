@@ -18,7 +18,7 @@ with [Hugo](http://gohugo.io), the static site generator?
 My idea is: Import any JSON or CSV from any local file or URL and make the JSON or CSV content
 available in a [shortcode](http://gohugo.io/extras/shortcodes/).
 
-The Go code is currently in my [fork](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib/shortcode.go#L130).
+The Go code is currently in my [fork shortcode_resources.go](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib%2Fshortcode_resources.go#L87).
 Mainly to do some more refactor before sending a PR. I'm not quite happy with the code but it works. 
 Any suggestions someone? Also tests are missing ... 8-|
 
