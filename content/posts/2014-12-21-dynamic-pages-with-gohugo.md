@@ -38,7 +38,7 @@ In your markdown template you can e.g. add a short code like:
 {{</* jsonYT url="http://gdata.youtube.com/feeds/users/useryt/uploads?alt=json&max-results=10" */>}}
 ```
 
-The jsonGH short code template is:
+The demoJsonGH short code template is:
 
 ```
 <ul class="pinglist">
@@ -60,15 +60,15 @@ The jsonGH short code template is:
 
 Parsing index 0:
 
-{{< jsonGH url="static/starred.json" >}}
+{{< demoJsonGH url="static/starred.json" >}}
 
 Parsing index 1:
 
-{{< jsonGH url="static/starred2.json" >}}
+{{< demoJsonGH url="static/starred2.json" >}}
 
 Parsing YouTube feed url:
 
-{{< jsonYT url="static/ytUploads.json" >}}
+{{< demoJsonYT url="static/ytUploads.json" >}}
 
 One strange problem occurs when parsing the Youtube API 2.0 (deprecated):
 
@@ -124,13 +124,13 @@ Or any other ideas?
 The short code within your page for the CSV looks like:
 
 ```
-{{</* csvDemo url="static/SalesJan2009.csv" sep="," */>}}
+{{</* demoCsv url="static/SalesJan2009.csv" sep="," */>}}
 ```
 
 The url can be a local or a remote resource. Sep is the CSV separator which can only be one character long.
 There is currently no possibility to provide a line separator (Default: `\r\n` or `\n`).
 
-The html of the `csvDemo` short code displays:
+The html of the `demoCsv` short code displays:
 
 ```
 <table border="1">
@@ -162,4 +162,4 @@ The html of the `csvDemo` short code displays:
 
 The final result:
 
-{{< csvDemo url="static/SalesJan2009.csv" sep="," >}}
+{{< demoCsv url="static/SalesJan2009.csv" sep="," >}}
