@@ -29,11 +29,11 @@ As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/u
 In your markdown template you can e.g. add a short code like:
 
 ```
-{{</* jsonGH url="static/starred.json" */>}}
+{{</* demoJsonGH url="static/starred.json" */>}}
 ```
 
 ```
-{{</* jsonYT url="http://gdata.youtube.com/feeds/users/useryt/uploads?alt=json&max-results=10" */>}}
+{{</* demoJsonYT url="http://gdata.youtube.com/feeds/users/useryt/uploads?alt=json&max-results=10" */>}}
 ```
 
 The demoJsonGH short code template is:
@@ -41,7 +41,7 @@ The demoJsonGH short code template is:
 ```
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ range .GetJson $url }}
+  {{ range getJson $url }}
     {{ $p := . }}
     <li>
       {{$p.language}}: <strong>{{ $p.name }}</strong>
@@ -54,13 +54,9 @@ The demoJsonGH short code template is:
 </ul>
 ```
 
-### Parsing JSON
-
-Parsing index 0:
+### Parsing JSON results
 
 {{< demoJsonGH url="static/starred.json" >}}
-
-Parsing index 1:
 
 {{< demoJsonGH url="static/starred2.json" >}}
 
@@ -126,7 +122,7 @@ The short code within your page for the CSV looks like:
 ```
 
 The url can be a local or a remote resource. Sep is the CSV separator which can only be one character long.
-There is currently no possibility to provide a line separator (Default: `\r\n` or `\n`).
+There is currently no possibility to provide a line separator (Default: `\r\n` or `\n`; `\r` does not work.).
 
 The html of the `demoCsv` short code displays:
 
@@ -162,7 +158,19 @@ The final result:
 
 {{< demoCsv url="static/SalesJan2009.csv" sep="," >}}
 
+### Integrating into layout HTML files
+
+An example on how I have integrated my GitHub Gists into the left sidebar can be found here:
+[layouts/partials/sidebarLeftCategories.html#L29](https://github.com/SchumacherFM/blog-cs/blob/master/layouts/partials/sidebarLeftCategories.html#L29)
+
 ### Notes
 
-Downloaded remote files will be cached in $TMPDIR/hugo/cache/resources. The only cache invalidation method
-is left to the user: `rm *`.
+Downloaded remote files will be cached in `--cacheDir`. The default cacheDir is set to `$TMPDIR/hugo_cache/` 
+The only cache invalidation method is left to the user: `rm *`. Downloaded files are always cached.
+
+### Futures Features
+
+Once I have more time I would like to implement also an RSS reader and advanced authentication methods.
+
+A far future feature would be to generated a whole category or category tree with n documents from a JSON file.
+That feature would allow to import categories and products from Magento or any other system.

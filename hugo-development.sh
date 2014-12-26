@@ -1,4 +1,4 @@
 #!/bin/bash
 rm -Rf public
 mkdir public
-./hugo server -w -v --baseUrl="localhost"
+./hugo server -w -v --baseUrl="localhost" --cacheDir="./cache"
