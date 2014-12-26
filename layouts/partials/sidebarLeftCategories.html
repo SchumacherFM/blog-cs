@@ -26,6 +26,18 @@
       </form>
     </div>
 
+    <div class="widget widget_recent_entries sidebarLeftCategories"><h3>Last 5 GitHub Gists</h3>
+      <ul>
+        {{ $gistJ := getJson "https://api.github.com/users/schumacherfm/gists" }}
+        {{range first 5 $gistJ }}
+          {{ if .public }}
+            <li><a href="{{ .html_url}}" target="_blank">{{.description}}</a></li>
+          {{ end }}
+        {{end}}
+      </ul>
+    </div>
+
+
   </div>
   <!--/.sidebar-content-->
 </div>

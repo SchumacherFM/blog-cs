@@ -1,6 +1,6 @@
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ $j := .GetJson $url }}
+  {{ $j := getJson $url }}
 
   {{ range $j.feed.entry }}
     {{ $v := . }}

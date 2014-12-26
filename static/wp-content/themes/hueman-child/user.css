@@ -249,3 +249,16 @@ a,
     color: #d36430;
     text-decoration: none;
 }
+
+.entry ul.ghStarred li {
+    list-style-type: none;
+    margin-bottom: 1em;
+    border-bottom: 1px solid #ececec;
+}
+
+.ghStarred img {
+    height: 50px;
+    margin-left: 0;
+    margin-right: 0.5em;
+    float: left;
+}

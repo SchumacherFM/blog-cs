@@ -1,7 +1,7 @@
 <table border="1">
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
-  {{ range $i, $r := .GetCsv $url $sep }}
+  {{ range $i, $r := getCsv $url $sep }}
 
     {{ if eq $i 0 }}
       <thead>
