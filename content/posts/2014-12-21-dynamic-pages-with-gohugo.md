@@ -10,21 +10,19 @@ tags:
   - GoLang
 ---
 
-What if you want to create simple pseudo dynamic content within a page 
+What if you want to create simple pseudo dynamic content within a page or a layout
 with [Hugo](http://gohugo.io), the static site generator?
 
 <!--more-->
 
 My idea is: Import any JSON or CSV from any local file or URL and make the JSON or CSV content
-available in a [shortcode](http://gohugo.io/extras/shortcodes/).
+available in a [shortcode](http://gohugo.io/extras/shortcodes/) or directly in the layout files.
 
-The Go code is currently in my [fork shortcode_resources.go](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/hugolib%2Fshortcode_resources.go#L87).
-Mainly to do some more refactor before sending a PR. I'm not quite happy with the code but it works. 
-Any suggestions someone? Also tests are missing ... 8-|
+The Go code is currently in my [template_resources.go](https://github.com/SchumacherFM/hugo/blob/dynamicJsonShortCodes/tpl/template_resources.go).
 
 ### How to implement?
 
-Local files must reside inside Hugos working directory.
+Local JSON or CSV files must reside inside Hugos working directory.
 
 As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/users/schumacherfm/starred).
 
@@ -102,7 +100,7 @@ The YouTube short code template is:
 ```
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ $j := .GetJson $url }}
+  {{ $j := getJson $url }}
 
   {{ range $j.feed.entry }}
     {{ $v := . }}
@@ -136,7 +134,7 @@ The html of the `demoCsv` short code displays:
 <table border="1">
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
-  {{ range $i, $r := .GetCsv $url $sep }}
+  {{ range $i, $r := getCsv $url $sep }}
 
     {{ if eq $i 0 }}
       <thead>
@@ -163,3 +161,8 @@ The html of the `demoCsv` short code displays:
 The final result:
 
 {{< demoCsv url="static/SalesJan2009.csv" sep="," >}}
+
+### Notes
+
+Downloaded remote files will be cached in $TMPDIR/hugo/cache/resources. The only cache invalidation method
+is left to the user: `rm *`.
