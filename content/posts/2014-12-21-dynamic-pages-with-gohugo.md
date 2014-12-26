@@ -10,6 +10,8 @@ tags:
   - GoLang
 ---
 
+Update: 27.12.2014
+
 What if you want to create simple pseudo dynamic content within a page or a layout
 with [Hugo](http://gohugo.io), the static site generator?
 
