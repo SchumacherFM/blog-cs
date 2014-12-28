@@ -59,6 +59,7 @@ Searching for other blog posts which covers the topic var_export vs serialize I 
 - From July 2009: [Cache a large array: JSON, serialize or var_export?](http://techblog.procurios.nl/k/news/view/34972/14863/cache-a-large-array-json-serialize-or-var_export.html) Winner: serialize. Tested without OPcache.
 - From August 2011: [Storing arrays using JSON, serialize and var_export](http://ahoj.io/storing-arrays-using-json-serialize-and-var-export) Winner depends on the size of the array. Tested without OPcache.
 - From January 2011: [This stackoverflow answer](http://stackoverflow.com/a/4820537) Winner: igbinary
+- From Oct 2014: [Caching Data Structures in PHP](http://jrm.cc/posts/caching-data-structures-in-php/) Winner: var_export with Opcache (Array size up to 50kb)
 
 ### Speed test
 
