@@ -11,7 +11,7 @@ tags:
 url: magento2-list-of-all-dispatched-events  
 ---
 
-This on going updated post which lists all dispatched events in Magento2.
+This on going updated post lists all dispatched events in Magento2.
 
 Current version: 0.42.0-beta2
 
