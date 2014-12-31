@@ -232,11 +232,11 @@ a,
     color: #dddddd;
 }
 
-.entry .gist table {
+.entry .gist table, .entry table.mEvent {
     text-align: left;
 }
 
-.entry .gist table td {
+.entry .gist table td, .entry table.mEvent td {
     text-align: left;
 }
 

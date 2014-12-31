@@ -1,7 +1,7 @@
 ---
 title: Github Starred Repositories
 author: Cyrill
-date: 2014-12-27
+date: 2014-12-31
 disqus_identifier: /2014/12/25/github-starred/
 categories:
   - Thoughts
