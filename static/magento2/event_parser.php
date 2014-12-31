@@ -3,6 +3,10 @@
 find site -type f -name "*.js" | xargs pcregrep -i -M -n -e 'varienGlobalEvents.fireEvent\([^;]+\);' > events_js.txt
 find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_app.txt
 find site/lib -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_lib.txt
+
+find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'coreRegistry\s*->\s*register\([^;]+\);' > register_app.txt
+find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'get\(.Magento\\Framework\\Registry.\)->register\([^;]+\);' >> register_app.txt
+
  */
 
 if (!isset($argv[1])) {
