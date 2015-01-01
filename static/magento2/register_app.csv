@@ -142,5 +142,18 @@
 "app/code/Magento/Widget/Controller/Adminhtml/Widget/Index.php"|"48"|"skip_widgets"|"$this->_coreRegistry->register('skip_widgets', $skipped);"
 "app/code/Magento/Widget/Controller/Adminhtml/Widget/Instance.php"|"109"|"current_widget_instance"|"$this->_coreRegistry->register('current_widget_instance', $widgetInstance);"
 "app/code/Magento/Wishlist/Controller/Index/Configure.php"|"70"|"wishlist_item"|"$this->_coreRegistry->register('wishlist_item', $item);"
+"app/code/Magento/Backend/Model/Config/Backend/Admin/Custompath.php"|"23"|"custom_admin_path_redirect"|"$this->_registry->register('custom_admin_path_redirect', true, true);"
+"app/code/Magento/Catalog/Model/Category.php"|"839"|"_category_is_anchor_attribute"|"$this->_registry->register('_category_is_anchor_attribute', $model);"
+"app/code/Magento/CatalogSearch/Model/Advanced.php"|"206"|"advanced_search_conditions"|"$this->_registry->register('advanced_search_conditions', $allConditions);"
+"app/code/Magento/GoogleAdwords/Model/Observer.php"|"59"|"NO_MATCH"|"$this->_registry->register(
+    \Magento\GoogleAdwords\Helper\Data"
+"app/code/Magento/GoogleShopping/Model/Item.php"|"202"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Integration/Controller/Adminhtml/Integration/Delete.php"|"41"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Integration/Controller/Adminhtml/Integration/Edit.php"|"46"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Integration/Controller/Adminhtml/Integration/NewAction.php"|"24"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Integration/Controller/Adminhtml/Integration/PermissionsDialog.php"|"23"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Integration/Controller/Adminhtml/Integration/TokensDialog.php"|"47"|"NO_MATCH"|"$this->_registry->register(
+    self"
+"app/code/Magento/Sendfriend/Model/Sendfriend.php"|"531"|"send_to_friend_model"|"$this->_registry->register('send_to_friend_model', $this);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Category.php"|"66"|"category"|"$this->_objectManager->get('Magento\Framework\Registry')->register('category', $category);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Category.php"|"67"|"current_category"|"$this->_objectManager->get('Magento\Framework\Registry')->register('current_category', $category);"

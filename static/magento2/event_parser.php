@@ -5,6 +5,7 @@ find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^
 find site/lib -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_lib.txt
 
 find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'coreRegistry\s*->\s*register\([^;]+\);' > register_app.txt
+find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '_registry\s*->\s*register\([^;]+\);' >> register_app.txt
 find site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'get\(.Magento\\Framework\\Registry.\)->register\([^;]+\);' >> register_app.txt
 
  */
