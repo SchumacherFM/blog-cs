@@ -9,6 +9,7 @@ tags:
   - Magento2
   - Performance
   - Failure
+  - Dependency Injection
 ---
 
 Poking around in Magento2 I stumbled upon `Magento\Framework\ObjectManager\DefinitionFactory` which takes care of how the cached DI (Dependency Injections) definitions are loaded. I've created a Pull Request but never submitted it.

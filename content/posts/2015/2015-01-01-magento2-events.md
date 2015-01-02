@@ -25,12 +25,12 @@ Please use your browsers search function!
 
 # Events in the app folder
 
-{{< mage2_events url="static/magento2/events_app.csv" sep="|" >}}
+{{< mage2_code url="static/magento2/events_app.csv" sep="|" >}}
 
 # Events in the lib folder
 
-{{< mage2_events url="static/magento2/events_lib.csv" sep="|" >}}
+{{< mage2_code url="static/magento2/events_lib.csv" sep="|" >}}
 
 # JavaScript Varien Events
 
-{{< mage2_events url="static/magento2/events_js.csv" sep="|" >}}
+{{< mage2_code url="static/magento2/events_js.csv" sep="|" >}}

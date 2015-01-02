@@ -40,7 +40,7 @@ Here is an example code on how to use the coreRegistry. This fictional class cre
 new tabs in the catalog/category section. Each tab lists the best sold products per category.
 
 The registry entry will be created here: 
-[app/code/Magento/Catalog/Controller/Adminhtml/Category.php#L67](https://github.com/magento/magento2/blob/master/app/code/Magento/Catalog/Controller/Adminhtml/Category.php#L67)
+[app/code/Magento/Catalog/Controller/Adminhtml/Category.php#L67](https://github.com/magento/magento2/tree/0.42.0-beta2/app/code/Magento/Catalog/Controller/Adminhtml/Category.php#L67)
 
 ```
 namespace MyNamespace\MyModule\Block\Adminhtml\CategorySales;
@@ -95,12 +95,20 @@ class BestSalesTabs extends \Magento\Backend\Block\Widget\Tabs
     ...
 ```
 
-You can also access the registry via the objectManager:
+**Do NOT access the registry via the objectManager:**
 
 ```
 $this->_objectManager->get('Magento\Framework\Registry')->registry('current_category');
 ```
 
-Please use your browsers search function!
+This is an anti-pattern. 
 
-{{< mage2_events url="static/magento2/register_app.csv" sep="|" >}}
+The usage of objectManager as service locator leads to highly coupled code and hidden dependencies. Also the 
+ability to configure specific arguments for the client that uses the OM directly is lost.
+
+The OM can be used only in composition root of application (Bootstrap) and for unserialization of 
+entities with service dependencies.
+
+*Please use your browsers search function!*
+
+{{< mage2_code url="static/magento2/register_app.csv" sep="|" >}}
