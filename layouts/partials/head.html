@@ -3,18 +3,10 @@
 <head>
   <base href="{{ .Site.BaseUrl }}/">
   {{ partial "head.pace.html" . }}
-  <title>{{ .Title }} - {{ .Site.Title }}</title>
   {{ partial "head.meta.html" . }}
-
   <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js");</script>
-  <style type="text/css">
-    .google_map div img {
-      max-width: none !important;
-    }
-  </style>
-
   <link rel="canonical" href="{{ .Permalink}}">
-  <link rel='shortlink' href='{{ .Permalink}}'/>
-  <link rel="shortcut icon" href="wp-content/uploads/2013/12/schumacher.png"/>
+  <link rel='shortlink' href="{{ .Permalink}}"/>
+  <link rel="shortcut icon" href="{{ .Site.BaseUrl }}/wp-content/uploads/schumacher.png"/>
   {{ partial "head.includes.html" . }}
 </head>
