@@ -31,7 +31,7 @@ As an example I'm using the JSON from my [GitHub Stars](https://api.github.com/u
 In your markdown template you can e.g. add a short code like:
 
 ```
-{{</* demoJsonGH url="static/starred.json" */>}}
+{{</* demoJsonGH url="static/wp-content/uploads/hugo/starred.json" */>}}
 ```
 
 ```
@@ -58,13 +58,13 @@ The demoJsonGH short code template is:
 
 ### Parsing JSON results
 
-{{< demoJsonGH url="static/starred.json" >}}
+{{< demoJsonGH url="static/wp-content/uploads/hugo/starred.json" >}}
 
-{{< demoJsonGH url="static/starred2.json" >}}
+{{< demoJsonGH url="static/wp-content/uploads/hugo/starred2.json" >}}
 
 Parsing YouTube feed url:
 
-{{< demoJsonYT url="static/ytUploads.json" >}}
+{{< demoJsonYT url="static/wp-content/uploads/hugo/ytUploads.json" >}}
 
 One strange problem occurs when parsing the Youtube API 2.0 (deprecated):
 
@@ -120,7 +120,7 @@ Or any other ideas?
 The short code within your page for the CSV looks like:
 
 ```
-{{</* demoCsv url="static/SalesJan2009.csv" sep="," */>}}
+{{</* demoCsv url="static/wp-content/uploads/hugo/SalesJan2009.csv" sep="," */>}}
 ```
 
 The url can be a local or a remote resource. Sep is the CSV separator which can only be one character long.
@@ -158,7 +158,7 @@ The html of the `demoCsv` short code displays:
 
 The final result:
 
-{{< demoCsv url="static/SalesJan2009.csv" sep="," >}}
+{{< demoCsv url="static/wp-content/uploads/hugo/SalesJan2009.csv" sep="," >}}
 
 ### Integrating into layout HTML files
 
