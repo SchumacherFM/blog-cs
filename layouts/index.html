@@ -15,14 +15,17 @@
               {{end}}
               <div class="post-list group">
                 {{ range $index,$data := first 7 .Data.Pages }}
-                {{if gt $index 0}}
-                {{ if mod $index 2 | eq 1 }}
-                <div class="post-row">{{end}}
-                  {{ template "indexes/categoryItem.html" $data }}
-                  {{ if mod $index 2 | eq 0 }}
-                </div>
-                {{end}}
-                {{end}}
+                  {{if gt $index 0}}
+                    {{ if mod $index 2 | eq 1 }}
+                      <div class="post-row">
+                    {{end}}
+
+                      {{ template "indexes/categoryItem.html" $data }}
+
+                    {{ if mod $index 2 | eq 0 }}
+                      </div>
+                    {{end}}
+                  {{end}}
                 {{end}}
               </div>
 
