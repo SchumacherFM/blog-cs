@@ -1,7 +1,7 @@
 ---
 title: Dynamic Pages with GoHugo.io
 author: Cyrill
-date: 2015-02-08
+date: 2014-12-21
 disqus_identifier: /2014/12/21/dynpages-gohugo/
 categories:
   - Thoughts
@@ -171,6 +171,8 @@ An example on how I have integrated my GitHub Gists into the left sidebar can be
 
 Downloaded remote files will be cached in `--cacheDir`. The default cacheDir is set to `$TMPDIR/hugo_cache/` 
 The only cache invalidation method is left to the user: `rm *`. Downloaded files are always cached.
+
+Update 8. Feb. 2015:
 
 The parameter `--ignoreCache` has been added to ignore the read from the cache but writing to the cache
 is still happening.

@@ -1,0 +1,32 @@
+---
+title: Dynamic Pages with GoHugo.io - Update
+author: Cyrill
+date: 2015-02-08
+disqus_identifier: /2014/12/21/dynpages-gohugo/
+categories:
+  - Thoughts
+tags:
+  - GoHugo
+  - GoLang
+---
+
+Check out the update in the notes section [2014/12/21/dynamic-pages-with-gohugo.io/](2014/12/21/dynamic-pages-with-gohugo.io/).
+
+<!--more-->
+
+Update 8. Feb. 2015:
+
+The parameter `--ignoreCache` has been added to ignore the read from the cache but writing to the cache
+is still happening.
+
+`getJson` and `getCsv` are now variadic functions. You can submit multiple parts of an URL which
+will be joined to the final URL. Example:
+
+```
+{{ $id := .Params._id }}
+{{ $url_pre :=  "http://localhost:3000/db/persons/" }}
+{{ $url_post := "/limit/10/skip/0" }}
+{{ $gistJ := getJson $url_pre $id $url_post }}
+```
+
+For `getCsv` the separator argument has been moved to the beginning of the function.
