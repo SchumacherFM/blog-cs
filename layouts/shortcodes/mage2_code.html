@@ -7,7 +7,7 @@
   <tbody>
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
-  {{ range $i, $r := getCsv $url $sep }}
+  {{ range $i, $r := getCsv $sep $url }}
     <tr>
       <td>
         <a href="https://github.com/magento/magento2/tree/0.42.0-beta2/{{ index $r 0 }}#L{{ index $r 1 }}" target="_blank">

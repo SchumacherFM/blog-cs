@@ -1,7 +1,7 @@
 ---
 title: Dynamic Pages with GoHugo.io
 author: Cyrill
-date: 2014-12-21
+date: 2015-02-08
 disqus_identifier: /2014/12/21/dynpages-gohugo/
 categories:
   - Thoughts
@@ -10,7 +10,9 @@ tags:
   - GoLang
 ---
 
-Update: 27.12.2014
+Update: 8. Feb. 2015 See the Notes section at the end.
+
+Update: 27. Dec 2014
 
 What if you want to create simple pseudo dynamic content within a page or a layout
 with [Hugo](http://gohugo.io), the static site generator?
@@ -132,7 +134,7 @@ The html of the `demoCsv` short code displays:
 <table border="1">
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
-  {{ range $i, $r := getCsv $url $sep }}
+  {{ range $i, $r := getCsv $sep $url }}
 
     {{ if eq $i 0 }}
       <thead>
@@ -169,6 +171,21 @@ An example on how I have integrated my GitHub Gists into the left sidebar can be
 
 Downloaded remote files will be cached in `--cacheDir`. The default cacheDir is set to `$TMPDIR/hugo_cache/` 
 The only cache invalidation method is left to the user: `rm *`. Downloaded files are always cached.
+
+The parameter `--ignoreCache` has been added to ignore the read from the cache but writing to the cache
+is still happening.
+
+`getJson` and `getCsv` are now variadic functions. You can submit multiple parts of an URL which
+will be joined to the final URL. Example:
+
+```
+{{ $id := .Params._id }}
+{{ $url_pre :=  "http://localhost:3000/db/persons/" }}
+{{ $url_post := "/limit/10/skip/0" }}
+{{ $gistJ := getJson $url_pre $id $url_post }}
+```
+
+For `getCsv` the separator argument has been moved to the beginning of the function.
 
 ### Futures Features
 
