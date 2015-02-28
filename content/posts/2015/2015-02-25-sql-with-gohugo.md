@@ -116,11 +116,34 @@ $ export HUGO_SQL_SOURCE='mysql_username:passw0rd@tcp(localhost:3306)/databaseNa
 
 A file will only contain: `username:passw0rd@tcp(localhost:3306)/databaseName`.
 
-Setting both values `--sqlSource` and the env var `HUGO_SQL_SOURCE` the env var will applied.
+Setting both values `--sqlSource` and the env var `HUGO_SQL_SOURCE` the env var will be applied.
 
 ## getSql
- 
- 
+
+`getSql` is the only SQL-able function name which can be called in every template.
+
+`getSql` accepts multiple string arguments and returns an array with all rows from the query.
+
+```
+{{ range _, $r := getSql "SELECT * FROM gopher_locations"  }}
+    ...
+{{end}}
+```
+
+If you would like to use a *dynamic* query:
+
+```
+{{ $city := "Sydney" }}
+{{ range _, $r := getSql "SELECT * FROM gopher_locations WHERE city=\"" $city "\""  }}
+    ...
+{{end}}
+```
+
+**Heads up:** There is no protection from SQL injections. You cannot have line breaks in 
+the query parts or anywhere else.
+
+If you would like to easily read longer queries you can put that query into a file 
+and provide the path to the file as argument to `getSql`. See the following example. 
 
 File `demo_query.sql` selects data from Magento product flat table using demo data:
 
@@ -136,8 +159,8 @@ FROM `catalog_product_flat_1`
 WHERE type_id = "configurable" AND price > 80
 ```
 
-This advanced example of the short code can even sum up the price using 
-the [Scratch](ulr) feature.
+This advanced `getSql` example of the short code can even sum up the price using 
+the [Scratch](http://gohugo.io/extras/scratch/) feature.
 
 ```
 <table border="1">
@@ -181,6 +204,37 @@ the [Scratch](ulr) feature.
 </table>
 ```
 
-
 {{< demoMySql >}}
+
+### Row functions
+
+For each row `$r` you can use additional functions to retrieve the value from a column.
+
+- `$r.Column "columnName"` gets the string value of a column.
+- `$r.Join "Separator" "columnName1" "columnName2" "columnNameN"` joins n-columns together using 
+the first argument as a separator. The separator can have nearly any length.
+- `$r.Int "columnName"` gets the integer value of a column. On error returns 0.
+- `$r.Float "columnName"` gets the floating point number of a column. On error returns 0.
+- `$r.DateTime "columnName" "layout"` parses the column string according to layout into the 
+time object. On error returns 0000-00-00. More [info](http://golang.org/pkg/time/#example_Parse)
+
+`Int` and `Float` can be perfectly used in conjunction with [printf](http://golang.org/pkg/fmt/).
+
+To output all columns at once you iterate over the `$r` variable:
+
+```
+<table border="1">
+  {{ range _, $r := getSql "./demo_query.sql"  }}
+      <tbody>
+        <tr>
+            {{ range $columnName,$value := $r }}
+            <td>{{ $columnName }} - {{ $value }}</td>
+            {{ end }}
+        </tr>
+      </tbody>
+  {{ end }}
+</table>
+```
+
+No further formatting is possible.
 

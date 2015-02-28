@@ -211,6 +211,10 @@ a,
     margin: 1em 0 0;
 }
 
+.entry code, .entry pre {
+    font-size: 12px;
+}
+
 @media only screen and (min-width : 1921px) {
     #header {
         background-image    : url("img/syd-bridge-oper-3200.jpg");

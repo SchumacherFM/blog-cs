@@ -16,7 +16,7 @@
       <tbody>
         <tr>
             <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
-            <td><a href="/{{ $r.Column "url_path" }}">{{ $r.Column "name" }}</a></td>
+            <td><a href="#">{{ $r.Column "name" }}</a></td>
             <td>{{ $r.Column "sku" }}</td>
             <td>{{ $r.Float "price" | printf "%.2f" }}€</td>
             {{ $p := $r.Float "price" }}
