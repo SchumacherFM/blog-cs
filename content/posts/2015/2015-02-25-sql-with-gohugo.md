@@ -1,5 +1,5 @@
 ---
-title: Build in SQL support for GoHugo.io
+title: Built-in SQL support for GoHugo.io
 author: Cyrill
 date: 2015-03-01
 disqus_identifier: /2015/02/25/sqlsupport-gohugo/
@@ -18,15 +18,16 @@ sqlite3 databases.
 
 ## Supported Databases
 
-- MySQL [Driver](https://github.com/go-sql-driver/mysql/)
-- Postgres [Driver](https://github.com/lib/pq)
-- MSSQL [Driver](https://github.com/denisenkom/go-mssqldb)
-- Sqlite3 [Driver](https://github.com/mattn/go-sqlite3)
+-  [MySQL](https://github.com/go-sql-driver/mysql/)
+-  [Postgres](https://github.com/lib/pq)
+-  [MSSQL](https://github.com/denisenkom/go-mssqldb)
+-  [Sqlite3](https://github.com/mattn/go-sqlite3)
 
 [Additional drivers](https://github.com/golang/go/wiki/SQLDrivers) may possibly be added in the future.
 
 The default built-in driver is MySQL. Other drivers needs to be compiled by yourself
-or I provide binaries in the future.
+or I provide binaries in the future. One binary (for OSX 10) with all enabled drivers is available 
+[here](https://github.com/SchumacherFM/blog-cs/blob/master/hugo).
 
 To enable all drivers:
 
@@ -73,17 +74,16 @@ Env var is the abbreviation for environment variable.
 
 ## Data Source Name (DSN) and Driver name configuration
 
-To make Hugo aware of which driver to use you must prepend the driver name either in the 
-beginning of the file name or in the env var followed by an underscore character as separator. 
-Driver names are always lowercase. The file extension does not matter.
+To make Hugo aware of which driver to use you must prepend the driver name at the
+beginning of the DSN followed by an underscore character as separator. 
+Driver names are always lowercase: `driverName_dataSourceName`. The file extension does not matter.
+
+To see all supported drivers run `$ hugo -h`.
 
 Examples for a file:
 
 ```
-$ hugo --sqlSource=/path/to/mysql_file
-$ hugo --sqlSource=C:\path\to\mssql_erp_system.txt
-$ hugo --sqlSource=/path/to/postgres_heroku_prod.txt
-$ hugo --sqlSource=/path/to/sqlite3_music_collection.txt
+$ hugo --sqlSource=/path/to/music_collection_dsn.txt
 ```
 
 Examples for the env var:
@@ -114,7 +114,7 @@ A quick DSN overview for each driver:
 $ export HUGO_SQL_SOURCE='mysql_username:passw0rd@tcp(localhost:3306)/databaseName'
 ```
 
-A file will only contain: `username:passw0rd@tcp(localhost:3306)/databaseName`.
+A file contains: `mysql_username:passw0rd@tcp(localhost:3306)/databaseName` for the MySQL driver.
 
 Setting both values `--sqlSource` and the env var `HUGO_SQL_SOURCE` the env var will be applied.
 
@@ -139,11 +139,11 @@ If you would like to use a *dynamic* query:
 {{end}}
 ```
 
-**Heads up:** There is no protection from SQL injections. You cannot have line breaks in 
-the query parts or anywhere else.
+**Heads up:** There is no protection from [SQL injections](https://www.owasp.org/index.php/SQL_Injection). 
+You cannot have line breaks in the query parts or anywhere else.
 
 If you would like to easily read longer queries you can put that query into a file 
-and provide the path to the file as argument to `getSql`. See the following example. 
+and provide the path to the file as an argument to `getSql`. See the following example. 
 
 File `demo_query.sql` selects data from Magento product flat table using demo data:
 
@@ -165,8 +165,7 @@ the [Scratch](http://gohugo.io/extras/scratch/) feature.
 ```
 <table border="1">
   {{ $.Scratch.Set "totalSum" 0 }}
-  {{ range $i, $r := getSql "./demo_query.sql"  }}
-
+  {{ range $i, $r := getSql $myConfigGlobalPath "demo_query.sql"  }}
     {{ if eq $i 0 }}
       <thead>
         <tr>
@@ -177,21 +176,21 @@ the [Scratch](http://gohugo.io/extras/scratch/) feature.
             <th>Updated</th>
         </tr>
       </thead>
-    {{end}}
       <tbody>
-        <tr>
-            <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
-            <td><a href="/{{ $r.Column "url_path" }}">{{ $r.Column "name" }}</a></td>
-            <td>{{ $r.Column "sku" }}</td>
-            <td>{{ $r.Float "price" | printf "%.2f" }}€</td>
-            {{ $p := $r.Float "price" }}
-            {{ $.Scratch.Add "totalSum" $p }}
-            <td>{{ $r.DateTime "updated_at" "2006-01-02 15:04:05.999999" | dateFormat "02/Jan/2006" }}
-              <br> {{ $r.Column "updated_at" }}
-            </td>
-        </tr>
-      </tbody>
+    {{end}}
+    <tr>
+        <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
+        <td><a href="/{{ $r.Column "url_path" }}">{{ $r.Column "name" }}</a></td>
+        <td>{{ $r.Column "sku" }}</td>
+        {{ $p := $r.Float "price" }}
+        <td>{{ $p | printf "%.2f" }}€</td>
+        {{ $.Scratch.Add "totalSum" $p }}
+        <td>{{ $r.DateTime "updated_at" "2006-01-02 15:04:05.999999" | dateFormat "02/Jan/2006" }}
+          <br> {{ $r.Column "updated_at" }}
+        </td>
+    </tr>
   {{ end }}
+  </tbody>
   <tfoot>
     <tr>
         <th>&nbsp;</th>
@@ -211,30 +210,41 @@ the [Scratch](http://gohugo.io/extras/scratch/) feature.
 For each row `$r` you can use additional functions to retrieve the value from a column.
 
 - `$r.Column "columnName"` gets the string value of a column.
-- `$r.Join "Separator" "columnName1" "columnName2" "columnNameN"` joins n-columns together using 
-the first argument as a separator. The separator can have nearly any length.
+- `$r.Columns` returns an array of all columns.
+- `$r.JoinValues "Separator" "columnName1" "columnName2" "columnNameN"` joins the value of n-columns together using 
+the first argument as a separator. The separator can have nearly any length. If you pass just a `*` as second
+argument then all columns will be joined: `$r.JoinValues "Separator" "*"`.
+- `$r.JoinColumns "Separator" "columnName1" "columnName2" "columnNameN"` joins the columns names. Same arguments
+as `JoinValues`.
 - `$r.Int "columnName"` gets the integer value of a column. On error returns 0.
 - `$r.Float "columnName"` gets the floating point number of a column. On error returns 0.
 - `$r.DateTime "columnName" "layout"` parses the column string according to layout into the 
-time object. On error returns 0000-00-00. More [info](http://golang.org/pkg/time/#example_Parse)
+time object. On error returns 0000-00-00. More [info](http://golang.org/pkg/time/#example_Parse).
 
-`Int` and `Float` can be perfectly used in conjunction with [printf](http://golang.org/pkg/fmt/).
+`$r.Int` and `$r.Float` can be perfectly used in conjunction with [printf](http://golang.org/pkg/fmt/).
 
-To output all columns at once you iterate over the `$r` variable:
+To output all columns at once you should use the functions `$r.JoinValues` and `$r.JoinColumns`,
+it would look like:
 
 ```
 <table border="1">
-  {{ range _, $r := getSql "./demo_query.sql"  }}
-      <tbody>
+  {{ range $i, $r := getSql "./demo_query.sql"  }}
+    {{ if eq $i 0 }}
+        <thead>
+            <tr>
+                <th>{{ $r.JoinColumns "</th><th>" "*" | safeHtml }}</th>
+            </tr>
+        </thead>
+     <tbody>
+    {{ end }}
         <tr>
-            {{ range $columnName,$value := $r }}
-            <td>{{ $columnName }} - {{ $value }}</td>
-            {{ end }}
+            <td>{{ $r.JoinValues "</td><td>" "*" | safeHtml }}</td>
         </tr>
-      </tbody>
   {{ end }}
+  </tbody>
 </table>
 ```
 
-No further formatting is possible.
+**Heads up**: You cannot iterate over the `$r` variable.
 
+Any questions :-) ? Please use the disqus form below.

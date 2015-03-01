@@ -1,6 +1,6 @@
 <table border="1">
   {{ $.Scratch.Set "totalSum" 0 }}
-  {{ range $i, $r := getSql "./demo_query.sql"  }}
+  {{ range $i, $r := getSql "./static/demo_query.sql"  }}
 
     {{ if eq $i 0 }}
       <thead>
@@ -12,21 +12,21 @@
             <th>Updated</th>
         </tr>
       </thead>
-    {{end}}
       <tbody>
-        <tr>
-            <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
-            <td><a href="#">{{ $r.Column "name" }}</a></td>
-            <td>{{ $r.Column "sku" }}</td>
-            <td>{{ $r.Float "price" | printf "%.2f" }}€</td>
-            {{ $p := $r.Float "price" }}
-            {{ $.Scratch.Add "totalSum" $p }}
-            <td>{{ $r.DateTime "updated_at" "2006-01-02 15:04:05.999999" | dateFormat "02/Jan/2006" }}
-              <br> {{ $r.Column "updated_at" }}
-            </td>
-        </tr>
-      </tbody>
+    {{end}}
+    <tr>
+        <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
+        <td>{{ $r.Column "name" }}</td>
+        <td>{{ $r.Column "sku" }}</td>
+        <td>{{ $r.Float "price" | printf "%.2f" }}€</td>
+        {{ $p := $r.Float "price" }}
+        {{ $.Scratch.Add "totalSum" $p }}
+        <td>{{ $r.DateTime "updated_at" "2006-01-02 15:04:05.999999" | dateFormat "02/Jan/2006" }}
+          <br> {{ $r.Column "updated_at" }}
+        </td>
+    </tr>
   {{ end }}
+  </tbody>
   <tfoot>
     <tr>
         <th>&nbsp;</th>
