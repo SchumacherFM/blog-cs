@@ -210,11 +210,11 @@ the [Scratch](http://gohugo.io/extras/scratch/) feature.
 For each row `$r` you can use additional functions to retrieve the value from a column.
 
 - `$r.Column "columnName"` gets the string value of a column.
-- `$r.Columns` returns an array of all columns.
+- `$r.Columns` returns an array of all column names.
 - `$r.JoinValues "Separator" "columnName1" "columnName2" "columnNameN"` joins the value of n-columns together using 
 the first argument as a separator. The separator can have nearly any length. If you pass just a `*` as second
 argument then all columns will be joined: `$r.JoinValues "Separator" "*"`.
-- `$r.JoinColumns "Separator"` joins all columns names using a separator.
+- `$r.JoinColumns "Separator"` joins all column names using a separator.
 - `$r.Int "columnName"` gets the integer value of a column. On error returns 0.
 - `$r.Float "columnName"` gets the floating point number of a column. On error returns 0.
 - `$r.DateTime "columnName" "layout"` parses the column string according to layout into the 
