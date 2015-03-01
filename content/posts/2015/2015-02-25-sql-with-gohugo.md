@@ -214,8 +214,7 @@ For each row `$r` you can use additional functions to retrieve the value from a 
 - `$r.JoinValues "Separator" "columnName1" "columnName2" "columnNameN"` joins the value of n-columns together using 
 the first argument as a separator. The separator can have nearly any length. If you pass just a `*` as second
 argument then all columns will be joined: `$r.JoinValues "Separator" "*"`.
-- `$r.JoinColumns "Separator" "columnName1" "columnName2" "columnNameN"` joins the columns names. Same arguments
-as `JoinValues`.
+- `$r.JoinColumns "Separator"` joins all columns names using a separator.
 - `$r.Int "columnName"` gets the integer value of a column. On error returns 0.
 - `$r.Float "columnName"` gets the floating point number of a column. On error returns 0.
 - `$r.DateTime "columnName" "layout"` parses the column string according to layout into the 
@@ -232,7 +231,7 @@ it would look like:
     {{ if eq $i 0 }}
         <thead>
             <tr>
-                <th>{{ $r.JoinColumns "</th><th>" "*" | safeHtml }}</th>
+                <th>{{ $r.JoinColumns "</th><th>" | safeHtml }}</th>
             </tr>
         </thead>
      <tbody>
@@ -246,5 +245,10 @@ it would look like:
 ```
 
 **Heads up**: You cannot iterate over the `$r` variable.
+
+### Allowed SQL commands
+
+The only possible SQL command is the `SELECT` statement. The validation checks if `SELECT` can 
+be recognized at the beginning of each SQL statement. Of course there are workarounds ;-). 
 
 Any questions :-) ? Please use the disqus form below.
