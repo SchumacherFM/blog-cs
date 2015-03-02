@@ -1,7 +1,7 @@
 ---
 title: Magento2 - List of all dispatched events
 author: Cyrill
-date: 2015-01-01
+date: 2015-02-28
 disqus_identifier: /2015/01/01/mage2-dispatched-events/
 categories:
   - Thoughts
@@ -13,7 +13,7 @@ url: magento2-list-of-all-dispatched-events
 
 This on going updated post lists all dispatched events in Magento2. An event cheat sheet.
 
-Current version: 0.42.0-beta2
+Current version: 0.42.0-beta10 / Feb 28, 2015
 
 <!--more-->
 
