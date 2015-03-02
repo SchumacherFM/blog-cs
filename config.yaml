@@ -5,6 +5,8 @@ copyright: "Copyright (c) 2015, Cyrill Schumacher; all rights reserved."
 MetaDataFormat: "yaml"
 canonifyurls: true
 builddrafts: false
+Paginate: 7
+PaginatePath: paginator
 permalinks:
   posts: /:year/:month/:day/:title/
 Taxonomies:

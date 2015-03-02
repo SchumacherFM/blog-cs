@@ -15,10 +15,10 @@ Magento2 itself uses PHP as the template engine (as what PHP has been developed 
 
 The [Twig](http://twig.sensiolabs.org) template engine cannot execute directly PHP code which seems more secure.
 
+<!--more-->
+
 This module is meant to be used additionally to the `.phtml` files and does not 
 provide any `.twig` template file.
-
-<!--more-->
 
 The biggest advantage of using Twig templates instead of `.phtml` PHP native files is that you cannot
 really add a lot of business logic and not even add database queries into the template.

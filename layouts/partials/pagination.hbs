@@ -1,0 +1,29 @@
+<!--
+    Why is this template file ending on .hbs?
+    Because PHPStorm provides a nice handlebars plugin for syntax highlighting :-)
+
+    https://github.com/SchumacherFM/blog-cs/blob/master/layouts/partials/pagination.hbs
+
+-->
+{{ $pag := $.Paginator }}
+<nav class="pagination group">
+  <div class="wp-pagenavi">
+    <span class="pages">
+        Page {{ $pag.PageNumber }} of {{ $pag.TotalPages }}
+        ({{ $pag.TotalNumberOfElements }} Posts)
+    </span>
+    {{ if $pag.HasPrev }}
+      <a class="previouspostslink" rel="prev" href="{{ $pag.Prev.Url }}">&laquo;</a>
+    {{ end }}
+    {{ range $p := $pag.Pagers }}
+        {{ if eq $p $pag }}
+          <span class="current">{{ $p.PageNumber }}</span>
+        {{ else }}
+          <a class="page" href="{{ $p.Url }}">{{ $p.PageNumber }}</a>
+        {{ end }}
+    {{ end }}
+    {{ if $pag.HasNext }}
+      <a class="nextpostslink" rel="next" href="{{ $pag.Next.Url }}">&raquo;</a>
+    {{ end }}
+  </div>
+</nav>

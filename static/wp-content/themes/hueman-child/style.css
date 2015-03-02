@@ -16,7 +16,7 @@ body, input, textarea, button, select, label {
 }
 
 body {
-    background: #f3c17e;
+    background: #eaeaea;
 }
 
 #commentform {
@@ -215,28 +215,28 @@ a,
     font-size: 12px;
 }
 
-@media only screen and (min-width : 1921px) {
+@media only screen and (min-width: 1921px) {
     #header {
-        background-image    : url("img/syd-bridge-oper-3200.jpg");
-        background-repeat   : no-repeat;
-        background-position : center;
+        background-image: url("img/syd-bridge-oper-3200.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
     }
 }
 
-@media only screen and (min-width : 1025px) and  (max-width : 1920px) {
+@media only screen and (min-width: 1025px) and  (max-width: 1920px) {
     #header {
-        background-image : url("img/syd-bridge-oper-1920.jpg");
+        background-image: url("img/syd-bridge-oper-1920.jpg");
     }
 }
 
-@media only screen and (min-width : 720px) and  (max-width : 1024px) {
+@media only screen and (min-width: 720px) and  (max-width: 1024px) {
     #header {
-        background-image : url("img/syd-bridge-oper-1024.jpg");
+        background-image: url("img/syd-bridge-oper-1024.jpg");
     }
 }
 
-@media only screen and (max-width : 719px) {
+@media only screen and (max-width: 719px) {
     #header {
-        background-image : url("img/syd-bridge-oper-720.jpg");
+        background-image: url("img/syd-bridge-oper-720.jpg");
     }
 }
