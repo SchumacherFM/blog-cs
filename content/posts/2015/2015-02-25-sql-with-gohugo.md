@@ -231,13 +231,13 @@ it would look like:
     {{ if eq $i 0 }}
         <thead>
             <tr>
-                <th>{{ $r.JoinColumns "</th><th>" | safeHtml }}</th>
+                <th>{{ $r.JoinColumns "</th><th>" | safeHTML }}</th>
             </tr>
         </thead>
      <tbody>
     {{ end }}
         <tr>
-            <td>{{ $r.JoinValues "</td><td>" "*" | safeHtml }}</td>
+            <td>{{ $r.JoinValues "</td><td>" "*" | safeHTML }}</td>
         </tr>
   {{ end }}
   </tbody>

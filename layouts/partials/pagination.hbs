@@ -13,17 +13,17 @@
         ({{ $pag.TotalNumberOfElements }} Posts)
     </span>
     {{ if $pag.HasPrev }}
-      <a class="previouspostslink" rel="prev" href="{{ $pag.Prev.Url }}">&laquo;</a>
+      <a class="previouspostslink" rel="prev" href="{{ $pag.Prev.URL }}">&laquo;</a>
     {{ end }}
     {{ range $p := $pag.Pagers }}
         {{ if eq $p $pag }}
           <span class="current">{{ $p.PageNumber }}</span>
         {{ else }}
-          <a class="page" href="{{ $p.Url }}">{{ $p.PageNumber }}</a>
+          <a class="page" href="{{ $p.URL }}">{{ $p.PageNumber }}</a>
         {{ end }}
     {{ end }}
     {{ if $pag.HasNext }}
-      <a class="nextpostslink" rel="next" href="{{ $pag.Next.Url }}">&raquo;</a>
+      <a class="nextpostslink" rel="next" href="{{ $pag.Next.URL }}">&raquo;</a>
     {{ end }}
   </div>
 </nav>

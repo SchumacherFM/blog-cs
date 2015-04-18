@@ -1,40 +1,42 @@
-<table border="1">
-  {{ $.Scratch.Set "totalSum" 0 }}
-  {{ range $i, $r := getSql "./static/demo_query.sql"  }}
+<pre>
+&lt;table border=&quot;1&quot;&gt;
+  {.{ $.Scratch.Set &quot;totalSum&quot; 0 }}
+  {.{ range $i, $r := getSql &quot;./static/demo_query.sql&quot;  }}
 
-    {{ if eq $i 0 }}
-      <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Sku</th>
-            <th>Price</th>
-            <th>Updated</th>
-        </tr>
-      </thead>
-      <tbody>
-    {{end}}
-    <tr>
-        <td>{{ $r.Int "entity_id" | printf "%09d" }}</td>
-        <td>{{ $r.Column "name" }}</td>
-        <td>{{ $r.Column "sku" }}</td>
-        <td>{{ $r.Float "price" | printf "%.2f" }}€</td>
-        {{ $p := $r.Float "price" }}
-        {{ $.Scratch.Add "totalSum" $p }}
-        <td>{{ $r.DateTime "updated_at" "2006-01-02 15:04:05.999999" | dateFormat "02/Jan/2006" }}
-          <br> {{ $r.Column "updated_at" }}
-        </td>
-    </tr>
-  {{ end }}
-  </tbody>
-  <tfoot>
-    <tr>
-        <th>&nbsp;</th>
-        <th>&nbsp;</th>
-        <th>Total:</th>
-        <th>{{ $.Scratch.Get "totalSum" }}€</th>
-        <th>&nbsp;</th>
-    </tr>
-  </tfoot>
+    {.{ if eq $i 0 }}
+      &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;ID&lt;/th&gt;
+            &lt;th&gt;Name&lt;/th&gt;
+            &lt;th&gt;Sku&lt;/th&gt;
+            &lt;th&gt;Price&lt;/th&gt;
+            &lt;th&gt;Updated&lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+    {.{end}}
+    &lt;tr&gt;
+        &lt;td&gt;{.{ $r.Int &quot;entity_id&quot; | printf &quot;%09d&quot; }}&lt;/td&gt;
+        &lt;td&gt;{.{ $r.Column &quot;name&quot; }}&lt;/td&gt;
+        &lt;td&gt;{.{ $r.Column &quot;sku&quot; }}&lt;/td&gt;
+        &lt;td&gt;{.{ $r.Float &quot;price&quot; | printf &quot;%.2f&quot; }}&euro;&lt;/td&gt;
+        {.{ $p := $r.Float &quot;price&quot; }}
+        {.{ $.Scratch.Add &quot;totalSum&quot; $p }}
+        &lt;td&gt;{.{ $r.DateTime &quot;updated_at&quot; &quot;2006-01-02 15:04:05.999999&quot; | dateFormat &quot;02/Jan/2006&quot; }}
+          &lt;br&gt; {.{ $r.Column &quot;updated_at&quot; }}
+        &lt;/td&gt;
+    &lt;/tr&gt;
+  {.{ end }}
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+        &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+        &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+        &lt;th&gt;Total:&lt;/th&gt;
+        &lt;th&gt;{.{ $.Scratch.Get &quot;totalSum&quot; }}&euro;&lt;/th&gt;
+        &lt;th&gt;&amp;nbsp;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
 
-</table>
+&lt;/table&gt;
+</pre>

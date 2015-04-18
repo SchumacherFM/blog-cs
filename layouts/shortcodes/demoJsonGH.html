@@ -1,6 +1,6 @@
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ range getJson $url }}
+  {{ range getJSON $url }}
     {{ $p := . }}
     <li>
       {{$p.language}}: <strong>{{ $p.name }}</strong>

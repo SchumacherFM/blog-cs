@@ -4,7 +4,7 @@
     <ul class="related-posts group">
     {{ $page_link := .Permalink }}
     {{ $tags := .Params.tags }}
-    {{ range first 5 .Site.Recent }}
+    {{ range first 5 .Site.Pages }}
         {{ $page := . }}
         {{ $has_common_tags := intersect $tags .Params.tags | len | lt 0 }}
         {{ if and $has_common_tags (ne $page_link $page.Permalink) }}

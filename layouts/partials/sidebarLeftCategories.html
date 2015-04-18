@@ -11,7 +11,7 @@
 
     <div class="widget widget_recent_entries sidebarLeftCategories"><h3>Last posts</h3>
       <ul>
-        {{range first .Site.Params.SidebarRecentLimit .Site.Recent}}
+        {{range first .Site.Params.SidebarRecentLimit .Site.Pages}}
         <li><a href="{{ lower .Permalink}}">{{.Title}}</a></li>
         {{end}}
       </ul>
@@ -29,7 +29,7 @@
     <div class="widget widget_recent_entries sidebarLeftCategories"><h3>Last 5 GitHub Gists</h3>
       <ul>
         {{ $urlPre := "https://api.github.com" }}
-        {{ $gistJ := getJson $urlPre "/users/schumacherfm/gists" }}
+        {{ $gistJ := getJSON $urlPre "/users/schumacherfm/gists" }}
         {{range first 5 $gistJ }}
           {{ if .public }}
             <li><a href="{{ .html_url }}" target="_blank">{{.description}}</a></li>

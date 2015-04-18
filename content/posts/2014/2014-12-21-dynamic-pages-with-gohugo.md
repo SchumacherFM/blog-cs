@@ -45,7 +45,7 @@ The demoJsonGH short code template is:
 ```
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ range getJson $url }}
+  {{ range getJSON $url }}
     {{ $p := . }}
     <li>
       {{$p.language}}: <strong>{{ $p.name }}</strong>
@@ -100,7 +100,7 @@ The YouTube short code template is:
 ```
 <ul class="pinglist">
   {{ $url := .Get "url" }}
-  {{ $j := getJson $url }}
+  {{ $j := getJSON $url }}
 
   {{ range $j.feed.entry }}
     {{ $v := . }}
@@ -134,7 +134,7 @@ The html of the `demoCsv` short code displays:
 <table border="1">
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
-  {{ range $i, $r := getCsv $sep $url }}
+  {{ range $i, $r := getCSV $sep $url }}
 
     {{ if eq $i 0 }}
       <thead>
@@ -177,17 +177,17 @@ Update 8. Feb. 2015:
 The parameter `--ignoreCache` has been added to ignore the read from the cache but writing to the cache
 is still happening.
 
-`getJson` and `getCsv` are now variadic functions. You can submit multiple parts of an URL which
+`getJSON` and `getCSV` are now variadic functions. You can submit multiple parts of an URL which
 will be joined to the final URL. Example:
 
 ```
 {{ $id := .Params._id }}
 {{ $url_pre :=  "http://localhost:3000/db/persons/" }}
 {{ $url_post := "/limit/10/skip/0" }}
-{{ $gistJ := getJson $url_pre $id $url_post }}
+{{ $gistJ := getJSON $url_pre $id $url_post }}
 ```
 
-For `getCsv` the separator argument has been moved to the beginning of the function.
+For `getCSV` the separator argument has been moved to the beginning of the function.
 
 ### Futures Features
 
