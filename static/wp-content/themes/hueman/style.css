@@ -832,7 +832,7 @@ box-shadow: inset -1px 0 1px rgba(0,0,0,0.2); }
 .post-title a { color: #444; }
 .post-title a:hover { color: #3b8dbd; }
 
-.entry.excerpt { font-size: 16px; color: #aaa; }
+.entry.excerpt { font-size: 16px; }
 .entry.excerpt p { margin-bottom: 0; }
 
 
