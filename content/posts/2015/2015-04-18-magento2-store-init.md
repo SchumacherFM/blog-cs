@@ -21,7 +21,8 @@ The confusing name *Store* of the middle column should be called *Store Group*.
 
 ### Stores
 
-Overview of the models and database tables. Each of the model is also its own scope. In addition there is also the default scope. In total: 4 scopes.
+Overview of the models and database tables. Each of the model is also its own scope. 
+In addition there is also the default scope. In total: 4 scopes.
 
 | Magento | Backend Label | Website | StoreGroup | Store View |
 | ------------- |-----------| --------------|---------|---------|
@@ -54,11 +55,55 @@ where as `lib/internal/Magento/Framework/App/ScopeInterface.php` defines the def
 
 These *single scope names* are mainly used to retrieve via PHP a configuration value:
 
+
+**SCOPE_STORE ~973x**
+
 ```
-->getValue
+$this->_scopeConfig->getValue('path/to/key', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+
+$useCategoryUrl = $this->_scopeConfig->getValue(
+    \Magento\Catalog\Helper\Product::XML_PATH_PRODUCT_URL_USE_CATEGORY,
+    \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+    $this->getStoreId() // can be either a store_id or store_code
+);
+
+$this->scopeConfig->isSetFlag(
+    Url::XML_PATH_CUSTOMER_STARTUP_REDIRECT_TO_DASHBOARD,
+    ScopeInterface::SCOPE_STORE
+);
+
 ```
 
-The *plural scope names* and *default* are used to handle the SQL statements for table `core_config_data` together with the scope_id (= store_id).
+**SCOPE_GROUP ~9x**
+
+Mostly used in these switch statements and more often in unit tests.
+
+```
+switch ($type) {
+    case \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE:
+        $this->_loadWebsiteCollection();
+        break;
+    case \Magento\Store\Model\ScopeInterface::SCOPE_GROUP:
+        $this->_loadGroupCollection();
+        break;
+    case \Magento\Store\Model\ScopeInterface::SCOPE_STORE:
+        $this->_loadStoreCollection();
+        break;
+    default:
+        break;
+}
+```
+
+**SCOPE_WEBSITE ~63x**
+
+```
+$this->config->getValue('catalog/price/scope', \Magento\Store\Model\ScopeInterface::SCOPE_WEBSITE);
+```
+
+Used all over the place in different szenarios.
+
+The *plural scope names* and *default* are used to handle the SQL statements for table `core_config_data` 
+together with the scope_id (= store_id).
 
 ![core_config_data table](wp-content/uploads/magento2_core_config_data.png)
 
@@ -94,7 +139,9 @@ Inspired from [Aoe_ManageStores](http://fbrnc.net/blog/2012/02/magento-website-s
 
 With Magento2 there has been introduced the [`Magento\Store\Model\StoreManager`](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStoreManager.php) which is wrapper abround the `Magento\Store\Model\Storage\Db` or `\Magento\Store\Model\Storage\DefaultStorage`. The `DefaultStorage` will only be used in testing.
 
-The StoreManager also defines the `MAGE_RUN_CODE` and `MAGE_RUN_TYPE` environment variables which are used in Nginx or Apache config to force set a specific website, store group or store view to a domain/path/etc. In PHP (especially in the index.php) it can be written like (don't do that in the core file):
+The StoreManager also defines the `MAGE_RUN_CODE` and `MAGE_RUN_TYPE` environment variables which are used in 
+Nginx or Apache config to force set a specific website, store group or store view to a domain/path/etc. 
+In PHP (especially in the index.php) it can be written like (don't do that in the core file):
 
 ```
 $_SERVER[\Magento\Store\Model\StoreManager::PARAM_RUN_CODE] = 'website_code|group_id|store_code';
@@ -107,7 +154,8 @@ Yes you can even set the group_id in `MAGE_RUN_CODE` when `MAGE_RUN_TYPE` is `gr
 
 With Magento2 there has been introduced the [`Magento\Store\Model\StorageFactory`](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStorageFactory.php) which is only used within the `StoreManager` and instantiates the `Storage\Db` or `Storage\DefaultStorage` depending on website code, group id or store code.
 
-StorageFactory responsibilities are detecting which website/store to load and to reinit the collections of websites, store groups and stores.
+StorageFactory responsibilities are detecting which website/store to load and to reinit the collections 
+of websites, store groups and stores.
 
 Errors during init process when a `RUN_CODE` or `RUN_TYPE` string cannot be found:
 
@@ -116,25 +164,37 @@ Errors during init process when a `RUN_CODE` or `RUN_TYPE` string cannot be foun
 
 Confusing messages... 😂 and its meanings are:
 
-1. The scope type (store, group, website) cannot be found. Mostly a typo in `$_SERVER['MAGE_RUN_TYPE']`. See all options [in the scopeType switch](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStorageFactory.php#L151).
+1. The scope type (store, group, website) cannot be found. Mostly a typo in `$_SERVER['MAGE_RUN_TYPE']`. 
+See all options [in the scopeType switch](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStorageFactory.php#L151).
 2. The call `getStore()` in the `Storage\Db` class returns null, no (default) store found. 
 
-The [scopeType switch](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStorageFactory.php#L151) (in 1.) sets the store depending on the scopeCode which can be website code, group id or store code.
+The [scopeType switch](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStorageFactory.php#L151) (in 1.) 
+sets the store depending on the scopeCode which can be website code, group id or store code.
 
 If all scopes and stores have been found the current store can be overridden in the following order with:
 
 1. Cookie Name `\Magento\Store\Model\Store::COOKIE_NAME` => `store`. If found then `setCurrentStore()` will be called.
-2. Request: Either in `$_GET` or in `$_POST` (and maybe also in `$_COOKIE`). Name: `___store`. If found then `setCurrentStore()` will be called if this method returns true then check if ___store is equal to the current store then check if the websites default store is equal to the __store -> cookie delete else 2x cookie create.
+2. Request: Either in `$_GET` or in `$_POST` (and maybe also in `$_COOKIE`). Name: `___store`. If found 
+then `setCurrentStore()` will be called if this method returns true then check if ___store is equal 
+to the current store then check if the websites default store is equal to 
+the __store -> cookie delete else 2x cookie create.
 
 The Request always wins in setting a store but only if: see next.
 
-`setCurrentStore($storage, $scopeCode, $scopeType)` implements besides setting the store also some checks: Prevent running a store from another website or store group, if website or store group was specified explicitly. Falls back to the default store for a website or store group.
+`setCurrentStore($storage, $scopeCode, $scopeType)` implements besides setting the store also some 
+checks: Prevent running a store from another website or store group, if website or store group was 
+specified explicitly. Falls back to the default store for a website or store group.
 
-The store code in a request parameter will be used to select a store from `store` table. Therefore the column `code` must be unique.
+The store code in a request parameter will be used to select a store from `store` table. Therefore 
+the column `code` must be unique.
 
 ### StoresConfig
 
-With Magento2 there has been introduced the [`Magento\Store\Model\StoresConfig`](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStoresConfig.php) which is a convenience helper class to retrieve (with method `getStoresConfigByPath()`) for a config path all config values for each store view. Only used in Customer group to check if the current group is the default group to create an account AND in `\Magento\Sales\Model\Observer\CleanExpiredQuotes` to clean the expired quotes.
+With Magento2 there has been introduced the [`Magento\Store\Model\StoresConfig`](https://github.com/magento/magento2/blob/develop/app%2Fcode%2FMagento%2FStore%2FModel%2FStoresConfig.php) 
+which is a convenience helper class to retrieve (with method `getStoresConfigByPath()`) for a 
+config path all config values for each store view. Only used in Customer group to check if the 
+current group is the default group to create an account AND in `\Magento\Sales\Model\Observer\CleanExpiredQuotes` 
+to clean the expired quotes.
 
 ### Init process
 
