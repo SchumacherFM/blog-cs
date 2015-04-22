@@ -196,6 +196,6 @@ config path all config values for each store view. Only used in Customer group t
 current group is the default group to create an account AND in `\Magento\Sales\Model\Observer\CleanExpiredQuotes` 
 to clean the expired quotes.
 
-### Init process
+### Other
 
-@todo UML diagram of the flow
+During code review I've found a lot of unused properties and variables in Magento2 Store module. No I didn't send a PR ...
