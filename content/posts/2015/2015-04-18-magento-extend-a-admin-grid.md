@@ -15,11 +15,12 @@ The proper way to extend any backend grid in Magento 1 and 2 without rewrites.
 
 <!--more-->
 
-A new requirement for one of the stores I take care of was to extend the sales order grid
-with the new column "order comments" aka. order status history.
+A new requirement for one of the stores I take care of was to extend the 
+sales order grid with the new column "order comments" aka. order status 
+history.
 
-Another Magento store already implemented that feature so I dig deeper to found out that 
-the used module is this one: [https://github.com/magemaven/magento-order-comment](https://github.com/magemaven/magento-order-comment).
+Another Magento store already implemented that feature so I digged deeper to 
+found out that the used module is this one: [https://github.com/magemaven/magento-order-comment](https://github.com/magemaven/magento-order-comment).
 
 ## Magento 1 implementation
 
@@ -36,7 +37,9 @@ for the select to the order history table to finally add the comment to the sale
 to resolve conflicts with other modules. This case to readd the "Delete Order" mass action. You cannot delete
 an order ... but that is a different discussion.
 
-### Conflict free rewriting
+Positive: MMOC adds the comment column, which retrieves its data from the collection, in the [grid block](https://github.com/magemaven/magento-order-comment/blob/master/app%2Fcode%2Fcommunity%2FMagemaven%2FOrderComment%2FBlock%2FAdminhtml%2FSales%2FOrder%2FGrid.php#L45). I've seen many other pretty bad examples like that [one](https://gist.github.com/SchumacherFM/378dc6d18ed4b3a8cb37#file-trackingnumber-php-L17) where the whole logic has been implemented in the [`render()`](https://gist.github.com/SchumacherFM/378dc6d18ed4b3a8cb37#file-trackingnumber-php-L17) method. Those modules can create a DOS attack on your MySQL server.
+
+### Conflict free & less resource-hungry rewriting
 
 Rewriting without any conflicts can only be done via listening to events with your observer.
 
@@ -77,7 +80,7 @@ class Zookal_Sales_Model_Observer_Adminhtml_Order_Grid
     public function addOrderCommentColumn(Varien_Event_Observer $observer)
     {
         /** @var Mage_Adminhtml_Block_Sales_Order_Grid $block */
-        $block = $observer->getEvent()->getBlock();
+        $block = $observer->get€vent()->getBlock();
         if (false === ($block instanceof Mage_Adminhtml_Block_Sales_Order_Grid)) {
             return; // return as early NO BIG IF constructs!
         }
@@ -90,7 +93,7 @@ class Zookal_Sales_Model_Observer_Adminhtml_Order_Grid
             'filter'   => false,
             'sortable' => false
         ], 'status');
-        $block->sortColumnsByOrder();
+        $block->sortColumnByOrder();
     }
 }
 ```
@@ -116,9 +119,6 @@ the grid collection is not yet available.
 How does the `_updateHistoryData()` method look like?
 
 ```
-    /**
-     * @var array
-     */
     protected $_hasHistory = [];
 
     protected function _updateHistoryData()
@@ -147,7 +147,7 @@ How does the `_updateHistoryData()` method look like?
 
 The key to access the sales order grid collection is: `$this->getColumn()->getGrid()->getCollection()`.
 The collection is already loaded so you can run `getColumnValues()` on it to retrieve all order IDs.
-Not DB access necessary!
+No DB access necessary!
 
 The rest of the method is simply accessing the history table pulling out the parent_ids and registering
 them in an internal array `_hasHistory`.
@@ -170,7 +170,7 @@ CSS class `.zk-user-comment` shows a nice icon and a prototypeJS event listener 
 window to show all the comments related to this order.
 
 It will be left as an exercise to the reader to implement this behaviour into his/her own store
-instead of copying this code from GitHub.
+instead of copying this code from GitHub. Some typos in the code are on purpose.
 
 ## Magento 2 implementation
 
