@@ -172,6 +172,11 @@ window to show all the comments related to this order.
 It will be left as an exercise to the reader to implement this behaviour into his/her own store
 instead of copying this code from GitHub. Some typos in the code are on purpose.
 
+Final result which includes two controller actions and a little bit of JS and CSS. All components
+are already in Magento available so no need to reinvent the whole stuff.
+
+![Display order comment in sales order grid](/wp-content/uploads/order_comment.png "Display order comment")
+
 ## Magento 2 implementation
 
-@todo
+@todo and nearly finished
