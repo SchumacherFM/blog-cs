@@ -179,4 +179,170 @@ are already in Magento available so no need to reinvent the whole stuff.
 
 ## Magento 2 implementation
 
-@todo and nearly finished
+The same logic as above applies to Magento2 except for the JavaScript.
+
+The column can be added this way:
+
+File: `app/code/SchumacherFM/OrderComment/view/adminhtml/layout/sales_order_grid_block.xml`
+
+```
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="SchumacherFM_OrderComment::css/ordercomment.css"/>
+        <link src="SchumacherFM_OrderComment::js/orderCommentBootStrap.js"/>
+    </head>
+    <body>
+        <referenceBlock name="sales.order.grid.columnSet">
+
+            <block class="Magento\Backend\Block\Widget\Grid\Column" after="status" as="sfm_order_comment">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Comment</argument>
+                    <argument name="index" xsi:type="string">real_order_id</argument>
+                    <argument name="id" xsi:type="string">sfm_order_comment</argument>
+                    <argument name="header_css_class" xsi:type="string">col-order-number</argument>
+                    <argument name="column_css_class" xsi:type="string">col-order-number</argument>
+                    <argument name="renderer" xsi:type="string">SchumacherFM\OrderComment\Block\Widget\Grid\Column\Renderer\OrderComment</argument>                    <argument name="filter" xsi:type="string">0</argument>
+                    <argument name="sortable" xsi:type="string">0</argument>
+                </arguments>
+            </block>
+
+        </referenceBlock>
+    </body>
+</page>
+```
+
+And the renderer looks nearly the same as for Magento1:
+
+```
+<?php
+
+namespace SchumacherFM\OrderComment\Block\Widget\Grid\Column\Renderer;
+
+class OrderComment extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+{
+
+    /**
+     * @var \Magento\Sales\Model\Resource\Order\Status\History\CollectionFactory
+     */
+    protected $_historyCollectionFactory;
+
+    /**
+     * @param \Magento\Backend\Block\Context $context
+     * @param \Magento\Sales\Model\Resource\Order\Status\History\CollectionFactory $historyCollectionFactory
+     * @param array $data
+     */
+    public function __construct(
+        \Magento\Backend\Block\Context $context,
+        \Magento\Sales\Model\Resource\Order\Status\History\CollectionFactory $historyCollectionFactory,
+        array $data = []
+    ) {
+        parent::__construct($context, $data);
+        $this->_historyCollectionFactory = $historyCollectionFactory;
+    }
+
+    /**
+     * @var array
+     */
+    protected $_hasHistory = [];
+
+    protected function _updateHistoryData()
+    {
+        /** @var \Magento\Sales\Model\Resource\Order\Grid\Collection $gridCollection */
+        $gridCollection = $this->getColumn()->getGrid()->getCollection();
+        $ids = array_map('intval', $gridCollection->getColumnValues('entity_id'));
+
+        /** @var \Magento\Sales\Model\Resource\Order\Status\History\Collection $historyCollection */
+        $historyCollection = $this->_historyCollectionFactory->create();
+
+        $historyCollection
+            ->addFieldToFilter('parent_id', ['in' => $ids])
+            ->addFieldToFilter('comment', ['notnull' => true])
+            ->addFieldToFilter('comment', ['neq' => '']);
+        // add more filters here for the $historyCollection
+
+        /** @var \Magento\Framework\DB\Select $select */
+        $select = $historyCollection->getSelect();
+        $select->reset(\Magento\Framework\DB\Select::COLUMNS);
+        $select->columns(['parent_id']);
+        $select->group(['parent_id']);
+
+        $this->_hasHistory = $gridCollection->getConnection()->fetchAssoc($select);
+    }
+
+    /**
+     * @param \Magento\Backend\Block\Widget\Grid\Column $column
+     * @return $this
+     */
+    public function setColumn($column)
+    {
+        parent::setColumn($column);
+        $this->_updateHistoryData();
+        return $this;
+    }
+
+    /**
+     * @param \Magento\Framework\Object $row
+     * @return string
+     */
+    public function render(\Magento\Framework\Object $row)
+    {
+        /** @var $row \Magento\Sales\Model\Order */
+
+        if (!isset($this->_hasHistory[$row->getId()])) {
+            return '';
+        }
+        return '<div class="zk-user-comment" data-order="' . $this->escapeHtml($row->getIncrementId()) . '"
+        data-url="' . $this->escapeUrl($this->_getUrl($row)) . '" title="Customer Comment"></div>';
+    }
+
+    /**
+     * @param \Magento\Sales\Model\Order $order
+     *
+     * @return string
+     */
+    protected function _getUrl(\Magento\Sales\Model\Order $order)
+    {
+        return $this->getUrl('*/ordercomments/comments', ['parent_id' => $order->getId()]);
+    }
+}
+```
+
+I had a tiny problem to get the requirejs stuff running but file `js/orderCommentBootStrap.js`
+consists simply of that JS:
+
+```
+require([
+    "SchumacherFM_OrderComment/js/orderComment"
+]);
+```
+
+and the `js/orderComment.js` contains the logic:
+
+```
+define([
+    "jquery"
+], function (jQuery) {
+    'use strict';
+
+    jQuery('.zk-user-comment').each(function (k, element) {
+        var $that = jQuery(this)
+
+        $that.on('click', function (e) {
+            e.stopPropagation();
+            console.log('@todo open modal load data via URL', $that.data('url'), $that.data('order'))
+
+        });
+    });
+});
+```
+
+Is there a better way for the Javascript to load and to avoid two files? Put all in one file?
+
+I ran out of time for the final implementation of the controller to load the history of comments.
+
+You can have a look on the files here: [https://github.com/SchumacherFM/magento2/commit/dad43804a39855a412c76485529d555be32101fc](https://github.com/SchumacherFM/magento2/commit/dad43804a39855a412c76485529d555be32101fc)
+
+If there are more than four comments in the Disqus block then I'll outsource that module into its own repo
+with fully functionality.
