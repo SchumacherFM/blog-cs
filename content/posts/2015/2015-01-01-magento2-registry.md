@@ -1,7 +1,7 @@
 ---
 title: Magento2 - List of all coreRegistry register calls
 author: Cyrill
-date: 2015-02-28
+date: 2015-10-06
 disqus_identifier: /2015/01/01/mage2-coreRegistry/
 categories:
   - Thoughts
@@ -13,7 +13,7 @@ url: magento2-list-of-all-register-calls
 
 This on going updated post lists all calls to `coreRegistry->register()` in Magento2. A registry cheat sheet.
 
-Current version: 0.42.0-beta10 / Feb 28, 2015
+Current version: 1.0.0-beta / Oct 7, 2015
 
 <!--more-->
 

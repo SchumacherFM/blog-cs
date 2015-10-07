@@ -1,5 +1,5 @@
 "lib/web/mage/adminhtml/form.js"|"18"|"formSubmit"|"varienGlobalEvents.fireEvent('formSubmit', $(e.target).attr('id'));"
-"lib/web/mage/adminhtml/form.js"|"270"|"address_country_changed"|"varienGlobalEvents.fireEvent('address_country_changed', this.countryEl);"
+"lib/web/mage/adminhtml/form.js"|"271"|"address_country_changed"|"varienGlobalEvents.fireEvent('address_country_changed', this.countryEl);"
 "lib/web/mage/adminhtml/grid.js"|"129"|"gridRowClick"|"varienGlobalEvents.fireEvent('gridRowClick', event);"
 "lib/web/mage/adminhtml/grid.js"|"132"|"gridRowDblClick"|"varienGlobalEvents.fireEvent('gridRowDblClick', event);"
 "lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"95"|"tinymceSubmit"|"varienGlobalEvents.fireEvent('tinymceSubmit', e);"
@@ -8,8 +8,7 @@
 "lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"107"|"tinymceSetContent"|"varienGlobalEvents.fireEvent('tinymceSetContent', o);"
 "lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"111"|"tinymceSaveContent"|"varienGlobalEvents.fireEvent('tinymceSaveContent', o);"
 "lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"115"|"tinymceChange"|"varienGlobalEvents.fireEvent('tinymceChange', l);"
-"lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"119"|"tinymceExecCommand"|"varienGlobalEvents.fireEvent('tinymceExecCommand', cmd);"
-"lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"131"|"open_browser_callback"|"varienGlobalEvents.fireEvent('open_browser_callback', {
+"lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"122"|"tinymceExecCommand"|"varienGlobalEvents.fireEvent('tinymceExecCommand', cmd);"
+"lib/web/mage/adminhtml/wysiwyg/tiny_mce/setup.js"|"134"|"open_browser_callback"|"varienGlobalEvents.fireEvent('open_browser_callback', {
     win"
-"lib/web/mage/adminhtml/wysiwyg/widget.js"|"273"|"tinymceChange"|"varienGlobalEvents.fireEvent('tinymceChange');"
-"app/code/Magento/DesignEditor/view/adminhtml/web/js/tools-files.js"|"201"|"tinymceChange"|"varienGlobalEvents.fireEvent('tinymceChange');"
+"lib/web/mage/adminhtml/wysiwyg/widget.js"|"284"|"tinymceChange"|"varienGlobalEvents.fireEvent('tinymceChange');"

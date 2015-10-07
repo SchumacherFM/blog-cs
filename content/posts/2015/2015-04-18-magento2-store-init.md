@@ -10,6 +10,10 @@ tags:
   - CoreStore
 ---
 
+Update Oct 2015: This version is outdated as the store package has been refactored between 0.74.0-beta4 and 1.0.0-beta.
+
+See updated post [here](/2015/10/10/magento2-stores-and-scopes-v1.0.0/).
+
 Exploring the *Store* package and its init process with scopes in Magento2 (0.74.0-beta4) and Magento1 (1.9 CE).
 
 <!--more-->

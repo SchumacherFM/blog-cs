@@ -1,7 +1,7 @@
 ---
 title: Magento2 - List of all dispatched events
 author: Cyrill
-date: 2015-02-28
+date: 2015-10-07
 disqus_identifier: /2015/01/01/mage2-dispatched-events/
 categories:
   - Thoughts
@@ -13,13 +13,15 @@ url: magento2-list-of-all-dispatched-events
 
 This on going updated post lists all dispatched events in Magento2. An event cheat sheet.
 
-Current version: 0.42.0-beta10 / Feb 28, 2015
+Current version: 1.0.0-beta / Oct 7, 2015
 
 <!--more-->
 
 This page lists three different groups of events occurring in: app and lib folders
 and global Varien JavaScript Events. Clicking on the file name brings you directly
 to the source code on GitHub including the correct line number.
+
+Events are listed in alternating colors.
 
 Please use your browsers search function!
 
