@@ -10,7 +10,7 @@
   {{ range $i, $r := getCSV $sep $url }}
     <tr>
       <td>
-        <a href="https://github.com/magento/magento2/tree/1.0.0-beta/{{ index $r 0 }}#L{{ index $r 1 }}" target="_blank">
+        <a href="https://github.com/magento/magento2/blob/develop/{{ index $r 0 }}#L{{ index $r 1 }}" target="_blank">
           {{ index $r 0 }}
         </a><br>
         {{ index $r 2 }}

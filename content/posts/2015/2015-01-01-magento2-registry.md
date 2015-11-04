@@ -13,7 +13,7 @@ url: magento2-list-of-all-register-calls
 
 This on going updated post lists all calls to `coreRegistry->register()` in Magento2. A registry cheat sheet.
 
-Current version: 1.0.0-beta / Oct 7, 2015
+Current version: blob/develop / Nov 4, 2015
 
 <!--more-->
 

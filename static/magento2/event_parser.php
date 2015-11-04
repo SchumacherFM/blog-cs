@@ -1,8 +1,8 @@
 <?php
 /*
-find ~/Sites/magento2/site -type f -name "*.js" | xargs pcregrep -i -M -n -e 'varienGlobalEvents.fireEvent\([^;]+\);' > events_js.txt
-find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_app.txt
-find ~/Sites/magento2/site/lib -type f -name "*.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_lib.txt
+find ~/Sites/magento2/site -type f -name "*.js" -not -name "*.min.*" | xargs pcregrep -i -M -n -e 'varienGlobalEvents.fireEvent\([^;]+\);' > events_js.txt
+find ~/Sites/magento2/site/app -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_app.txt
+find ~/Sites/magento2/site/lib -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > events_lib.txt
 
 find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'coreRegistry\s*->\s*register\([^;]+\);' > register_app.txt
 find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '_registry\s*->\s*register\([^;]+\);' >> register_app.txt
@@ -19,11 +19,10 @@ $fContent = file_get_contents($file);
 
 $fc = explode(');', $fContent);
 
-
 foreach ($fc as $event) {
     $event = trim($event) . ');';
     $lineEvent = explode(':', $event);
-    $fileName = substr(trim($lineEvent[0]), 5);
+    $fileName = substr(trim($lineEvent[0]), 32); // 32 number of chars in path to remove
     if (!isset($lineEvent[2])) {
         continue;
     }

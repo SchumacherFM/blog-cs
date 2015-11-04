@@ -105,8 +105,8 @@
 "app/code/Magento/Sales/Controller/Guest/PrintCreditmemo.php"|"72"|"current_creditmemo"|"$this->_coreRegistry->register('current_creditmemo', $creditmemo);"
 "app/code/Magento/Sales/Controller/Guest/PrintInvoice.php"|"62"|"current_invoice"|"$this->_coreRegistry->register('current_invoice', $invoice);"
 "app/code/Magento/Sales/Controller/Guest/PrintShipment.php"|"61"|"current_shipment"|"$this->_coreRegistry->register('current_shipment', $shipment);"
-"app/code/Magento/Sales/Helper/Guest.php"|"187"|"current_order"|"$this->coreRegistry->register('current_order', $order);"
-"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"357"|"rule_data"|"$this->_coreRegistry->register(
+"app/code/Magento/Sales/Helper/Guest.php"|"188"|"current_order"|"$this->coreRegistry->register('current_order', $order);"
+"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"365"|"rule_data"|"$this->_coreRegistry->register(
     'rule_data',
     new \Magento\Framework\DataObject(
 [
@@ -138,9 +138,9 @@
 "app/code/Magento/Widget/Controller/Adminhtml/Widget/Index.php"|"49"|"skip_widgets"|"$this->_coreRegistry->register('skip_widgets', $skipped);"
 "app/code/Magento/Widget/Controller/Adminhtml/Widget/Instance.php"|"110"|"current_widget_instance"|"$this->_coreRegistry->register('current_widget_instance', $widgetInstance);"
 "app/code/Magento/Wishlist/Controller/Index/Configure.php"|"75"|"wishlist_item"|"$this->_coreRegistry->register('wishlist_item', $item);"
-"app/code/Magento/Braintree/Model/PaymentMethod.php"|"343"|"NO_MATCH"|"$this->_registry->register(self"
+"app/code/Magento/Braintree/Model/PaymentMethod.php"|"352"|"NO_MATCH"|"$this->_registry->register(self"
 "app/code/Magento/Catalog/Model/Category.php"|"909"|"_category_is_anchor_attribute"|"$this->_registry->register('_category_is_anchor_attribute', $model);"
-"app/code/Magento/CatalogSearch/Model/Advanced.php"|"226"|"advanced_search_conditions"|"$this->_registry->register('advanced_search_conditions', $allConditions);"
+"app/code/Magento/CatalogSearch/Model/Advanced.php"|"225"|"advanced_search_conditions"|"$this->_registry->register('advanced_search_conditions', $allConditions);"
 "app/code/Magento/Config/Model/Config/Backend/Admin/Custompath.php"|"24"|"custom_admin_path_redirect"|"$this->_registry->register('custom_admin_path_redirect', true, true);"
 "app/code/Magento/GoogleAdwords/Observer/SetConversionValueObserver.php"|"62"|"NO_MATCH"|"$this->_registry->register(
     \Magento\GoogleAdwords\Helper\Data"
