@@ -10,8 +10,8 @@ tags:
   - GoLang
 ---
 
-Importing pages via JSON from another URL. With this feature you can 
-[Hugo](http://gohugo.io) let render virtual pages.
+Importing pages via JSON from another URL. With this feature you can let 
+[Hugo](http://gohugo.io) render virtual pages.
 
 <!--more-->
 
