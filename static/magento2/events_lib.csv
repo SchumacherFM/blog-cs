@@ -11,6 +11,7 @@
     $eventParameters);"
 "lib/internal/Magento/Framework/App/Action/Action.php"|"113"|"controller_action_postdispatch"|"$this->_eventManager->dispatch('controller_action_postdispatch', $eventParameters);"
 "lib/internal/Magento/Framework/App/Cron.php"|"64"|"default"|"$this->_eventManager->dispatch('default');"
+"lib/internal/Magento/Framework/App/FrontController.php"|"55"|"NO_MATCH"|"$result = $actionInstance->dispatch($request);"
 "lib/internal/Magento/Framework/App/Http.php"|"115"|"NO_MATCH"|"$result = $frontController->dispatch($this->_request);"
 "lib/internal/Magento/Framework/App/Http.php"|"127"|"controller_front_send_response_before"|"$this->_eventManager->dispatch('controller_front_send_response_before', $eventParams);"
 "lib/internal/Magento/Framework/App/View.php"|"216"|"controller_action_layout_render_before"|"$this->_eventManager->dispatch('controller_action_layout_render_before');"
@@ -52,10 +53,10 @@
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"844"|"model_delete_commit_after"|"$this->_eventManager->dispatch('model_delete_commit_after', ['object' => $this]);"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"845"|"_delete_commit_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_commit_after', $this->_getEventData());"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"888"|"_clear"|"$this->_eventManager->dispatch($this->_eventPrefix . '_clear', $this->_getEventData());"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"531"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"533"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"578"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"580"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"529"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"531"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"576"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"578"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
 "lib/internal/Magento/Framework/Model/ResourceModel/Db/VersionControl/RelationComposite.php"|"50"|"_process_relation"|"$this->eventManager->dispatch(
     $object->getEventPrefix(). '_process_relation',
     [
