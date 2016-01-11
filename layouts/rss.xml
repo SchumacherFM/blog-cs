@@ -4,7 +4,7 @@
         <link>{{ .Permalink }}</link>
         <language>en-US</language>
         <author>Cyrill at Schumacher dot fm</author>
-        <rights>Copyright (c) 2014, Cyrill Schumacher; all rights reserved.</rights>
+        <rights>Copyright (c) 2014-2016, Cyrill Schumacher; all rights reserved.</rights>
         <updated>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 MST" }}</updated>
         {{ range first 15 .Data.Pages }}
         <item>

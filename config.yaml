@@ -1,7 +1,7 @@
 title: "Cyrill Schumacher's Blog"
 languageCode: "en-us"
 disqusShortname: "cyrillschumacher"
-copyright: "Copyright (c) 2015, Cyrill Schumacher; all rights reserved."
+copyright: "Copyright (c) 2014-2016, Cyrill Schumacher; all rights reserved."
 MetaDataFormat: "yaml"
 canonifyurls: true
 builddrafts: false
@@ -13,7 +13,7 @@ Taxonomies:
   tag: "tags"
   category: "categories"
 params:
-  CopyrightHTML: "Copyright &#xA9; 2015 Cyrill Schumacher. All Rights Reserved."
+  CopyrightHTML: "Copyright &#xA9; 2014-2016 Cyrill Schumacher. All Rights Reserved."
   GitHubUser: "schumacherfm"
   SidebarRecentLimit: 5
   Categories:
