@@ -9,7 +9,8 @@ fi
 rm -Rf public
 mkdir public
 $HUGO -v --baseUrl="//vps.cyrillschumacher.com" --cacheDir="./cache"
-cp -R static/piwik public/
+cp static/piwik public/
 cp static/*.asc static/schumach*.png public/
+cp -R static/.well-known public/
 ./syncFolders-caddy-push.sh
 git push
