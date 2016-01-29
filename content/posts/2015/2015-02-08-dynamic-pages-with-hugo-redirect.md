@@ -1,5 +1,5 @@
 ---
-title: Dynamic Pages with GoHugo.io - Update
+title: Data-driven contents with GoHugo.io - Update
 author: Cyrill
 date: 2015-02-08
 disqus_identifier: /2014/12/21/dynpages-gohugo/
@@ -13,6 +13,10 @@ tags:
 Check out the update in the notes section [2014/12/21/dynamic-pages-with-gohugo.io/](2014/12/21/dynamic-pages-with-gohugo.io/).
 
 <!--more-->
+
+Update 29. Jan. 2016:
+
+Renamed the topic to Data-driven content because [better wording](https://gohugo.io/extras/datadrivencontent/) :-)
 
 Update 8. Feb. 2015:
 

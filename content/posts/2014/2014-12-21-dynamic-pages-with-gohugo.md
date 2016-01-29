@@ -1,5 +1,5 @@
 ---
-title: Dynamic Pages with GoHugo.io
+title: Data-driven content with GoHugo.io
 author: Cyrill
 date: 2014-12-21
 disqus_identifier: /2014/12/21/dynpages-gohugo/
@@ -8,9 +8,11 @@ categories:
 tags:
   - GoHugo
   - GoLang
+aliases:
+    - /2014/12/21/dynamic-pages-with-gohugo.io
 ---
 
-Update: 8. Feb. 2015 See the Notes section at the end.
+Update: 8. Feb. 2015 See the Notes section at the end. 
 
 Update: 27. Dec 2014
 
@@ -195,3 +197,7 @@ Once I have more time I would like to implement also an RSS reader and advanced 
 
 A far future feature would be to generated a whole category or category tree with n documents from a JSON file.
 That feature would allow to import categories and products from Magento or any other system.
+
+Update 29. Jan. 2016:
+
+Renamed the topic to Data-driven content because [better wording](https://gohugo.io/extras/datadrivencontent/) :-)
