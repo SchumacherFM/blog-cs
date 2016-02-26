@@ -11,16 +11,16 @@ tags:
   - GoLang
 ---
 
-Ever wanted to send emails from your static site without depending on 3rd party services?
+Ever wanted to send emails from your static website without depending on 3rd party services?
 Meet the mailout middleware for Caddy Server!
  
 <!--more-->
 
-After several blogs of mine moved away from WordPress and TYPO3 to [Hugo](https://gohugo.io),
+After moving several of my blogs away from WordPress and TYPO3 to [Hugo](https://gohugo.io),
 the static site generator, I wasn't able to send emails from these static sites anymore. 
 
 Of course there are 3rd party services like https://en.wikipedia.org/wiki/FormMail or 
-www.formspree.io or any other interpreted script form processor which you can install. 
+www.formspree.io or any other interpreted script form processor, which you can install. 
 But those scripts introduce another insecure dependency or someone reads your emails.
 
 With the Go Language based [middleware](https://en.wikipedia.org/wiki/Middleware) mailout 
@@ -40,9 +40,9 @@ Due to the REST API you can use any other programming language to post your form
 
 ## Can I test it?
 
-Sure click on the top left of this page on the envelop icon below the "Follow:" headline.
+Sure. Click on the top left of this page on the envelope icon below the "Follow:" headline.
  
-A modal will open and enables you to send a PGP encrypted email to me. Be aware, I may respond.
+A modal will open and enable you to send a PGP encrypted email to me. Be aware, I may respond.
 
 ## Where can I get it?
 
