@@ -55,7 +55,7 @@
             .done(function (data) {
                 console.log('data', data);
                 if (!data.error) {
-                    $('#contact-thx').show();
+                    $('#reply-title').html('Thank you for contacting me! You may get an answer.');
                     $contactForm.hide();
                     return;
                 }
