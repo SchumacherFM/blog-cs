@@ -1,4 +1,4 @@
-(function (w) {
+;(function (w) {
     var $ = w.jQuery,
         done = false,
         ready = function () {
@@ -41,6 +41,32 @@
                 hasSetBg = false;
             }
         };
+
+    $('body').on('submit', '#commentform', function (e) {
+        var $contactForm = $('#commentform');
+        e.preventDefault();
+        $.ajax({
+                type     : 'POST',
+                url      : $contactForm.attr('action'),
+                data     : $contactForm.serialize(),
+                dataType : 'json',
+                encode   : true
+            })
+            .done(function (data) {
+                console.log('data', data);
+                if (!data.error) {
+                    $('#contact-thx').show();
+                    $contactForm.hide();
+                    return;
+                }
+                alert("Ein Fehler ist aufgetreten: " + data.error);
+            })
+            .fail(function (data) {
+                console.log('data', data);
+                alert("Ein Fehler ist aufgetreten.");
+            });
+
+    });
 
     if (window.addEventListener) {
         window.addEventListener('load', ready, false);

@@ -1,0 +1,10 @@
+Contact from website:
+
+{{ range $key, $value := .Form }}
+{{$key}}:   {{$value}}
+{{end}}
+
+Best regards!
+
+RemoteAddr: {{.Request.RemoteAddr}}
+Browser: {{.Request.Header.Get "User-Agent" }}

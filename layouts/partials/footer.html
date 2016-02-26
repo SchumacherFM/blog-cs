@@ -6,22 +6,34 @@
     var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[ 0 ];
     g.type = 'text/javascript';g.defer = true;g.async = true;g.src = u + 'js/';s.parentNode.insertBefore(g, s);
   })();
+  var bU = "{{.Site.BaseURL}}wp-content/plugins/wp-youtube-lyte/lyte/";
 </script>
 <noscript><p><img src="http://cyrillschumacher.com/piwik/js/?idsite=5" style="border:0;" alt=""/></p></noscript>
-<script type="text/javascript" src="assets/js/jquery-2.1.1.min.js"></script>
+{{ $baseURL := trim .Site.BaseURL " " }}
+{{ if in $baseURL "localhost" }}
+
+<script type="text/javascript" src="assets/js/jquery-2.2.1.js"></script>
+<script type="text/javascript" src="assets/js/jquery.matchHeight.js"></script>
+<script type="text/javascript" src="assets/js/jquery.modal.js"></script>
+<script type="text/javascript" src="assets/js/picturefill.js"></script>
+<script type="text/javascript" src="assets/js/hubinfo.js"></script>
+
 <script type="text/javascript" src="wp-content/themes/hueman/js/jquery.jplayer.min.js"></script>
 <script type="text/javascript" src="wp-content/themes/hueman/js/scripts.js"></script>
-<script type="text/javascript" src="assets/picturefill/picturefill.min.js"></script>
-<script type="text/javascript" src="assets/hubinfo/dist/hubinfo.js"></script>
+
 <script type="text/javascript" src="assets/highlight/highlight.pack.js"></script>
-<script type="text/javascript" src="assets/js/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" async defer src="wp-content/plugins/wp-youtube-lyte/lyte/lyte.js"></script>
+<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
+
+{{ else }}
+
+<script type="text/javascript" async defer src="assets/js/all.min.js"></script>
+
+{{ end }}
 
 <!--[if lt IE 9]>
 <script src="wp-content/themes/hueman/js/ie/respond.js"></script>
 <![endif]-->
-<script type="text/javascript">var bU = "{{.Site.BaseURL}}wp-content/plugins/wp-youtube-lyte/lyte/";</script>
-<script type="text/javascript" async defer src="wp-content/plugins/wp-youtube-lyte/lyte/lyte.js"></script>
-<script type="text/javascript" async defer src="assets/js/myblog.js"></script>
 
 </body>
 </html>
