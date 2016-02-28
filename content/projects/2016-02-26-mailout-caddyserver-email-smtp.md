@@ -28,7 +28,7 @@ for [CaddyServer](https://caddyserver.com) I have solved all the "problems". The
 
 - Single binary and compiled into the Caddy web server
 - Available for nearly all operating systems and architectures
-- Receive the form via HTTP/2 with TLS
+- Receive the posted HTML form via HTTP/2 with TLS
 - Send the email optionally [PGP](https://en.wikipedia.org/wiki/Pretty_Good_Privacy) encrypted
 - Partly RESTful API designed end point
 - Support for plain text and HTML emails
@@ -37,6 +37,11 @@ for [CaddyServer](https://caddyserver.com) I have solved all the "problems". The
 - Optional server side logging of sent emails. Logging after PGP encryption.
 
 Due to the REST API you can use any other programming language to post your form data to the mailout endpoint.
+
+*PGP:* Note on sensitive information leakage when using PGP with multiple email message receivers: For each 
+email address in the to, cc and bcc field you must add a public PGP key, if not, emails to recipients
+without a public key won't be encrypted. For all email addresses with a PGP key, the mailout middleware
+will send a separated email encrypted with the key of the receiver.
 
 ## Can I test it?
 
