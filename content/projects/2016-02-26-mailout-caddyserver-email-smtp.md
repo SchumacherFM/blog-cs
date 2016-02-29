@@ -36,6 +36,21 @@ for [CaddyServer](https://caddyserver.com) I have solved all the "problems". The
 - Full support for SMTP with SSL encryption (Port 465) or TLS encryption (Port 587). Of course unencrypted sending on Port 25 has not been deactivated. 
 - Optional server side logging of sent emails. Logging after PGP encryption.
 
+The mailout directive starts a service routine that runs during the lifetime of the server.
+This background service manages the sending of the emails. It opens a connection to the SMTP
+server, sends the email and then waits for 30 seconds if another email should be send out.
+If no email gets transferred through the channel, the service routine closes the connection to
+the SMTP server. For the next email the connection gets reopened.
+
+During the start phase of the Caddy binary the mailout setup routine tries to ping the SMTP server and
+checks if the log in credentials satisfy the authentication system. If that
+ping fails, mailout service won't be available.
+
+All email sending related errors gets logged in the error log file. The JSON API will not report
+any failed sending of an email. If you enable email logging, no email gets lost despite SMTP errors.
+If you do not provide a directory for email and error logging you will leave no trace on the hard disk
+for a sent out email, theoretically.
+
 Due to the REST API you can use any other programming language to post your form data to the mailout endpoint.
 
 *PGP:* Note on sensitive information leakage when using PGP with multiple email message receivers: For each 
