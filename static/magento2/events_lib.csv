@@ -26,7 +26,7 @@
     $eventName,
     ['target' => $target, 'source' => $source, 'root' => $root]);"
 "lib/internal/Magento/Framework/Event/Collection.php"|"127"|"NO_MATCH"|"$this->getGlobalObservers()->dispatch($event);"
-"lib/internal/Magento/Framework/Event/Manager.php"|"65"|"NO_MATCH"|"$this->_invoker->dispatch($observerConfig, $wrapper);"
+"lib/internal/Magento/Framework/Event/Manager.php"|"66"|"NO_MATCH"|"$this->_invoker->dispatch($observerConfig, $wrapper);"
 "lib/internal/Magento/Framework/Event/Observer/Collection.php"|"85"|"NO_MATCH"|"$observer->dispatch($event);"
 "lib/internal/Magento/Framework/Event.php"|"77"|"NO_MATCH"|"$this->getObservers()->dispatch($this);"
 "lib/internal/Magento/Framework/Locale/Currency.php"|"93"|"currency_display_options_forming"|"$this->_eventManager->dispatch(
@@ -53,16 +53,16 @@
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"844"|"model_delete_commit_after"|"$this->_eventManager->dispatch('model_delete_commit_after', ['object' => $this]);"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"845"|"_delete_commit_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_commit_after', $this->_getEventData());"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"888"|"_clear"|"$this->_eventManager->dispatch($this->_eventPrefix . '_clear', $this->_getEventData());"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"529"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"531"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"576"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"578"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"531"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"533"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"578"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"580"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
 "lib/internal/Magento/Framework/Model/ResourceModel/Db/VersionControl/RelationComposite.php"|"50"|"_process_relation"|"$this->eventManager->dispatch(
     $object->getEventPrefix(). '_process_relation',
     [
 'object' => $object
     ]);"
-"lib/internal/Magento/Framework/View/Element/AbstractBlock.php"|"637"|"view_block_abstract_to_html_before"|"$this->_eventManager->dispatch('view_block_abstract_to_html_before', ['block' => $this]);"
+"lib/internal/Magento/Framework/View/Element/AbstractBlock.php"|"642"|"view_block_abstract_to_html_before"|"$this->_eventManager->dispatch('view_block_abstract_to_html_before', ['block' => $this]);"
 "lib/internal/Magento/Framework/View/Element/Messages.php"|"259"|"view_message_block_render_grouped_html_after"|"$this->_eventManager->dispatch('view_message_block_render_grouped_html_after', $params);"
 "lib/internal/Magento/Framework/View/Layout/Builder.php"|"79"|"layout_load_before"|"$this->eventManager->dispatch(
     'layout_load_before',

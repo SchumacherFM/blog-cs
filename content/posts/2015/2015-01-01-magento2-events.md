@@ -13,7 +13,7 @@ url: magento2-list-of-all-dispatched-events
 
 This on going updated post lists all dispatched events in Magento2. An event cheat sheet.
 
-Current version: blob/develop / Dec 28, 2015
+Current version: 2.0.4 / April 15, 2016
 
 <!--more-->
 
