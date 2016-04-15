@@ -1,0 +1,448 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script>
+  var slocData = {
+    "2.0.0" : {
+      "CSS"        : {
+        "FileCount"    : 695,
+        "TotalLines"   : 82310,
+        "CodeLines"    : 79978,
+        "BlankLines"   : 1605,
+        "CommentLines" : 727
+      },
+      "Conf"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 10,
+        "CodeLines"    : 9,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      },
+      "HTML"       : {
+        "FileCount"    : 323,
+        "TotalLines"   : 33073,
+        "CodeLines"    : 30195,
+        "BlankLines"   : 1040,
+        "CommentLines" : 1838
+      },
+      "JSON"       : {
+        "FileCount"    : 307,
+        "TotalLines"   : 19450,
+        "CodeLines"    : 19428,
+        "BlankLines"   : 22,
+        "CommentLines" : 0
+      },
+      "JavaScript" : {
+        "FileCount"    : 1150,
+        "TotalLines"   : 350113,
+        "CodeLines"    : 239400,
+        "BlankLines"   : 49150,
+        "CommentLines" : 61563
+      },
+      "Make"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 153,
+        "CodeLines"    : 119,
+        "BlankLines"   : 24,
+        "CommentLines" : 10
+      },
+      "Markdown"   : {
+        "FileCount"    : 315,
+        "TotalLines"   : 25761,
+        "CodeLines"    : 20381,
+        "BlankLines"   : 5380,
+        "CommentLines" : 0
+      },
+      "PHP"        : {
+        "FileCount"    : 24308,
+        "TotalLines"   : 2961925,
+        "CodeLines"    : 1838495,
+        "BlankLines"   : 307284,
+        "CommentLines" : 816146
+      },
+      "Python"     : {
+        "FileCount"    : 1,
+        "TotalLines"   : 241,
+        "CodeLines"    : 28,
+        "BlankLines"   : 65,
+        "CommentLines" : 148
+      },
+      "Rtf"        : {
+        "FileCount"    : 1,
+        "TotalLines"   : 40,
+        "CodeLines"    : 40,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Rust"       : {
+        "FileCount"    : 4,
+        "TotalLines"   : 1020,
+        "CodeLines"    : 740,
+        "BlankLines"   : 280,
+        "CommentLines" : 0
+      },
+      "SQL"        : {
+        "FileCount"    : 4,
+        "TotalLines"   : 209,
+        "CodeLines"    : 142,
+        "BlankLines"   : 27,
+        "CommentLines" : 40
+      },
+      "SVG"        : {
+        "FileCount"    : 33,
+        "TotalLines"   : 3392,
+        "CodeLines"    : 3392,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Shell"      : {
+        "FileCount"    : 17,
+        "TotalLines"   : 561,
+        "CodeLines"    : 357,
+        "BlankLines"   : 98,
+        "CommentLines" : 106
+      },
+      "Text"       : {
+        "FileCount"    : 504,
+        "TotalLines"   : 17141,
+        "CodeLines"    : 11103,
+        "BlankLines"   : 6038,
+        "CommentLines" : 0
+      },
+      "XML"        : {
+        "FileCount"    : 3894,
+        "TotalLines"   : 732779,
+        "CodeLines"    : 713684,
+        "BlankLines"   : 1583,
+        "CommentLines" : 17512
+      },
+      "YAML"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 6,
+        "CodeLines"    : 5,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      }
+    },
+    "2.0.1" : {
+      "CSS"        : {
+        "FileCount"    : 695,
+        "TotalLines"   : 82310,
+        "CodeLines"    : 79978,
+        "BlankLines"   : 1605,
+        "CommentLines" : 727
+      },
+      "Conf"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 10,
+        "CodeLines"    : 9,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      },
+      "HTML"       : {
+        "FileCount"    : 323,
+        "TotalLines"   : 33073,
+        "CodeLines"    : 30195,
+        "BlankLines"   : 1040,
+        "CommentLines" : 1838
+      },
+      "JSON"       : {
+        "FileCount"    : 306,
+        "TotalLines"   : 19474,
+        "CodeLines"    : 19452,
+        "BlankLines"   : 22,
+        "CommentLines" : 0
+      },
+      "JavaScript" : {
+        "FileCount"    : 1150,
+        "TotalLines"   : 350099,
+        "CodeLines"    : 239388,
+        "BlankLines"   : 49152,
+        "CommentLines" : 61559
+      },
+      "Markdown"   : {
+        "FileCount"    : 316,
+        "TotalLines"   : 25977,
+        "CodeLines"    : 20558,
+        "BlankLines"   : 5419,
+        "CommentLines" : 0
+      },
+      "PHP"        : {
+        "FileCount"    : 24334,
+        "TotalLines"   : 2968600,
+        "CodeLines"    : 1841571,
+        "BlankLines"   : 308269,
+        "CommentLines" : 818760
+      },
+      "Rtf"        : {
+        "FileCount"    : 1,
+        "TotalLines"   : 40,
+        "CodeLines"    : 40,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Rust"       : {
+        "FileCount"    : 3,
+        "TotalLines"   : 996,
+        "CodeLines"    : 728,
+        "BlankLines"   : 268,
+        "CommentLines" : 0
+      },
+      "SQL"        : {
+        "FileCount"    : 4,
+        "TotalLines"   : 209,
+        "CodeLines"    : 142,
+        "BlankLines"   : 27,
+        "CommentLines" : 40
+      },
+      "SVG"        : {
+        "FileCount"    : 33,
+        "TotalLines"   : 3392,
+        "CodeLines"    : 3392,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Shell"      : {
+        "FileCount"    : 17,
+        "TotalLines"   : 561,
+        "CodeLines"    : 357,
+        "BlankLines"   : 98,
+        "CommentLines" : 106
+      },
+      "Text"       : {
+        "FileCount"    : 504,
+        "TotalLines"   : 17141,
+        "CodeLines"    : 11103,
+        "BlankLines"   : 6038,
+        "CommentLines" : 0
+      },
+      "XML"        : {
+        "FileCount"    : 3898,
+        "TotalLines"   : 732858,
+        "CodeLines"    : 713754,
+        "BlankLines"   : 1587,
+        "CommentLines" : 17517
+      },
+      "YAML"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 6,
+        "CodeLines"    : 5,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      }
+    },
+    "2.0.2" : {
+      "CSS"        : {
+        "FileCount"    : 695,
+        "TotalLines"   : 82310,
+        "CodeLines"    : 79978,
+        "BlankLines"   : 1605,
+        "CommentLines" : 727
+      },
+      "Conf"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 10,
+        "CodeLines"    : 9,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      },
+      "HTML"       : {
+        "FileCount"    : 323,
+        "TotalLines"   : 33073,
+        "CodeLines"    : 30195,
+        "BlankLines"   : 1040,
+        "CommentLines" : 1838
+      },
+      "JSON"       : {
+        "FileCount"    : 306,
+        "TotalLines"   : 19474,
+        "CodeLines"    : 19452,
+        "BlankLines"   : 22,
+        "CommentLines" : 0
+      },
+      "JavaScript" : {
+        "FileCount"    : 1150,
+        "TotalLines"   : 350099,
+        "CodeLines"    : 239388,
+        "BlankLines"   : 49152,
+        "CommentLines" : 61559
+      },
+      "Markdown"   : {
+        "FileCount"    : 316,
+        "TotalLines"   : 25990,
+        "CodeLines"    : 20568,
+        "BlankLines"   : 5422,
+        "CommentLines" : 0
+      },
+      "PHP"        : {
+        "FileCount"    : 24334,
+        "TotalLines"   : 2968659,
+        "CodeLines"    : 1841527,
+        "BlankLines"   : 308270,
+        "CommentLines" : 818862
+      },
+      "Rtf"        : {
+        "FileCount"    : 1,
+        "TotalLines"   : 40,
+        "CodeLines"    : 40,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Rust"       : {
+        "FileCount"    : 3,
+        "TotalLines"   : 996,
+        "CodeLines"    : 728,
+        "BlankLines"   : 268,
+        "CommentLines" : 0
+      },
+      "SQL"        : {
+        "FileCount"    : 4,
+        "TotalLines"   : 209,
+        "CodeLines"    : 142,
+        "BlankLines"   : 27,
+        "CommentLines" : 40
+      },
+      "SVG"        : {
+        "FileCount"    : 33,
+        "TotalLines"   : 3392,
+        "CodeLines"    : 3392,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Shell"      : {
+        "FileCount"    : 17,
+        "TotalLines"   : 561,
+        "CodeLines"    : 357,
+        "BlankLines"   : 98,
+        "CommentLines" : 106
+      },
+      "Text"       : {
+        "FileCount"    : 504,
+        "TotalLines"   : 17141,
+        "CodeLines"    : 11103,
+        "BlankLines"   : 6038,
+        "CommentLines" : 0
+      },
+      "XML"        : {
+        "FileCount"    : 3898,
+        "TotalLines"   : 732858,
+        "CodeLines"    : 713754,
+        "BlankLines"   : 1587,
+        "CommentLines" : 17517
+      },
+      "YAML"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 6,
+        "CodeLines"    : 5,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      }
+    },
+    "2.0.4" : {
+      "CSS"        : {
+        "FileCount"    : 695,
+        "TotalLines"   : 82310,
+        "CodeLines"    : 79978,
+        "BlankLines"   : 1605,
+        "CommentLines" : 727
+      },
+      "Conf"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 10,
+        "CodeLines"    : 9,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      },
+      "HTML"       : {
+        "FileCount"    : 323,
+        "TotalLines"   : 33073,
+        "CodeLines"    : 30195,
+        "BlankLines"   : 1040,
+        "CommentLines" : 1838
+      },
+      "JSON"       : {
+        "FileCount"    : 307,
+        "TotalLines"   : 19506,
+        "CodeLines"    : 19484,
+        "BlankLines"   : 22,
+        "CommentLines" : 0
+      },
+      "JavaScript" : {
+        "FileCount"    : 1150,
+        "TotalLines"   : 350117,
+        "CodeLines"    : 239404,
+        "BlankLines"   : 49153,
+        "CommentLines" : 61560
+      },
+      "Markdown"   : {
+        "FileCount"    : 317,
+        "TotalLines"   : 25820,
+        "CodeLines"    : 20466,
+        "BlankLines"   : 5354,
+        "CommentLines" : 0
+      },
+      "PHP"        : {
+        "FileCount"    : 24455,
+        "TotalLines"   : 2975937,
+        "CodeLines"    : 1846343,
+        "BlankLines"   : 309010,
+        "CommentLines" : 820584
+      },
+      "Rtf"        : {
+        "FileCount"    : 1,
+        "TotalLines"   : 40,
+        "CodeLines"    : 40,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Rust"       : {
+        "FileCount"    : 3,
+        "TotalLines"   : 996,
+        "CodeLines"    : 728,
+        "BlankLines"   : 268,
+        "CommentLines" : 0
+      },
+      "SQL"        : {
+        "FileCount"    : 4,
+        "TotalLines"   : 209,
+        "CodeLines"    : 142,
+        "BlankLines"   : 27,
+        "CommentLines" : 40
+      },
+      "SVG"        : {
+        "FileCount"    : 33,
+        "TotalLines"   : 3392,
+        "CodeLines"    : 3392,
+        "BlankLines"   : 0,
+        "CommentLines" : 0
+      },
+      "Shell"      : {
+        "FileCount"    : 17,
+        "TotalLines"   : 561,
+        "CodeLines"    : 357,
+        "BlankLines"   : 98,
+        "CommentLines" : 106
+      },
+      "Text"       : {
+        "FileCount"    : 506,
+        "TotalLines"   : 17344,
+        "CodeLines"    : 11258,
+        "BlankLines"   : 6086,
+        "CommentLines" : 0
+      },
+      "XML"        : {
+        "FileCount"    : 3906,
+        "TotalLines"   : 733014,
+        "CodeLines"    : 713878,
+        "BlankLines"   : 1591,
+        "CommentLines" : 17545
+      },
+      "YAML"       : {
+        "FileCount"    : 1,
+        "TotalLines"   : 6,
+        "CodeLines"    : 5,
+        "BlankLines"   : 1,
+        "CommentLines" : 0
+      }
+    }
+  };
+</script>
+<div id="slocCharts"></div>

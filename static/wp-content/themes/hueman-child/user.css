@@ -337,3 +337,6 @@ a,
     -ms-border-radius: 8px;
     border-radius: 8px;
 }
+canvas.sloc {
+    margin:0 0 1em 0;
+}
