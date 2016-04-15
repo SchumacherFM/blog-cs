@@ -2508,13 +2508,13 @@ jQuery(document).ready(function($) {
 
   function getSlocChartData(slocData, lang) {
     var chartData = {
-      labels   : [],
-      datasets : []
+      'labels'   : [],
+      'datasets' : []
     };
 
     var protoRow = {
-      label : "",
-      data  : []
+      'label' : "",
+      'data'  : []
     };
 
     var statsSet = {};
@@ -2562,8 +2562,8 @@ jQuery(document).ready(function($) {
       $('#slocCharts').append('<h2>Lines of Code for: ' + lang + '</h2>');
 
       var $can = $('<canvas/>', {
-        id    : canID,
-        class : 'sloc'
+        'id'    : canID,
+        'class' : 'sloc'
       });
       $can.attr({'width' : 700, 'height' : 525});
       $('#slocCharts').append($can);
