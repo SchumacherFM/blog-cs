@@ -13,9 +13,9 @@ url: magento2-list-of-all-dispatched-events
 
 This ongoing updated post, lists all dispatched events in Magento 2.0. An event cheat sheet.
 
-Current version: 2.0.7 / May 195, 2016
+Current version: 2.0.7 / May 19, 2016
 
-For Magento 2.1 see [here](/magento-2.1-list-of-all-dispatched-events).
+For Magento 2.1 see [here](magento-2.1-list-of-all-dispatched-events/).
 
 <!--more-->
 

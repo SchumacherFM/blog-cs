@@ -20,7 +20,7 @@ static/assets/highlight/highlight.pack.js \
 static/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js \
 static/assets/js/myblog.js > static/assets/js/all.js
 
-yuicompressor --line-break 120 -o static/assets/js/all.min.js static/assets/js/all.js
+# yuicompressor --line-break 120 -o static/assets/js/all.min.js static/assets/js/all.js
 
 $HUGO -v --baseUrl="//cyrillschumacher.com" --cacheDir="./cache"
 cp static/piwik public/
