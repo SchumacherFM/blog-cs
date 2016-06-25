@@ -1,6 +1,6 @@
 <?php
 /*
-find ~/Sites/magento2/site -type f -name "*.js" -not -name "*.min.*" | xargs pcregrep -i -M -n -e 'varienGlobalEvents.fireEvent\([^;]+\);' > 2.1_events_js.txt
+# find ~/Sites/magento2/site -type f -name "*.js" -not -name "*.min.*" | xargs pcregrep -i -M -n -e 'varienGlobalEvents.fireEvent\([^;]+\);' > 2.1_events_js.txt
 find ~/Sites/magento2/site/app -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.1_events_app.txt
 find ~/Sites/magento2/site/lib -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.1_events_lib.txt
 

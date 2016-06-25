@@ -5,12 +5,13 @@
     </tr>
   </thead>
   <tbody>
+  {{ $tag := .Get "tag" }}
   {{ $url := .Get "url" }}
   {{ $sep := .Get "sep" }}
   {{ range $i, $r := getCSV $sep $url }}
     <tr>
       <td>
-        <a href="https://github.com/magento/magento2/blob/2.0.4/{{ index $r 0 }}#L{{ index $r 1 }}" target="_blank">
+        <a href="https://github.com/magento/magento2/blob/{{ $tag }}/{{ index $r 0 }}#L{{ index $r 1 }}" target="_blank">
           {{ index $r 0 }}
         </a><br>
         {{ index $r 2 }}

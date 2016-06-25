@@ -1,5 +1,5 @@
 ---
-title: Magento2 - List of all dispatched events
+title: Magento 2.0 - List of all dispatched events
 author: Cyrill
 date: 2015-10-07
 disqus_identifier: /2015/01/01/mage2-dispatched-events/
@@ -29,12 +29,12 @@ Please use your browsers search function!
 
 # Events in the app folder
 
-{{< mage2_code url="static/magento2/2.0_events_app.csv" sep="|" >}}
+{{< mage2_code tag="2.0.7" url="static/magento2/2.0_events_app.csv" sep="|" >}}
 
 # Events in the lib folder
 
-{{< mage2_code url="static/magento2/2.0_events_lib.csv" sep="|" >}}
+{{< mage2_code tag="2.0.7" url="static/magento2/2.0_events_lib.csv" sep="|" >}}
 
 # JavaScript Varien Events
 
-{{< mage2_code url="static/magento2/2.0_events_js.csv" sep="|" >}}
+{{< mage2_code tag="2.0.7" url="static/magento2/2.0_events_js.csv" sep="|" >}}
