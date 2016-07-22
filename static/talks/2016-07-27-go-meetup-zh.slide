@@ -1,0 +1,61 @@
+Zurich Gophers Meetup
+Discussion about Go 1.7
+27 Jul 2016
+
+Cyrill Schumacher
+Unic AG
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Agenda
+
+- Welcome
+- News/Jobs/Conferences
+- Go 1.7
+
+* News
+
+- Intellij IDE Go Plugin got a big update
+- New vim-go tutorial
+- Caddy Server 0.9 Released with All New Core 
+- goimports has been updated, faster and less CPU.
+- Transaction Oriented Collector (TOC) - Go's next GC
+
+.link http://go-ide.com/releases/0.11.1725/ 
+.link https://github.com/fatih/vim-go-tutorial
+.link https://caddyserver.com/blog/caddy-0_9-released 
+
+* Jobs
+
+Shout out if you're looking for a job or have a job.
+
+* Conferences
+
+- GopherCon in Denver, CO JULY 11TH TO 13TH, 2016 https://github.com/gophercon/2016-talks
+- The Golang UK Conference; August 17th, 18th & 19th 2016; London; Tickets for ~£300
+- The European Go conference; October 10, 2016 · Paris; Tickets for ~139€
+- GothamGo Conference; November 18, 2016 - New York City
+- FOSDEM Brussels / 4 & 5 February 2017 - Free!
+
+* Go 1.7 Some Core Features
+
+- Support for OSX 10.12 Sierra, linux/s390, plan9/arm, linux/mips64, 
+- new code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.  
+- The compiler and linker have been optimized and run significantly faster in this release than in Go 1.6,
+- Smaller binaries than built with Go 1.6, sometimes by as much as 20-30%
+- This release removes support for the GO15VENDOREXPERIMENT environment variable
+- Use BinaryOnly packages (without complete source code) in your program
+
+more in the release notes
+
+* Go 1.7 Some Package Features
+
+- Moves the golang.org/x/net/context package into the standard library as context. 
+- net/http/httptrace, a package that provides mechanisms for tracing events within HTTP requests. 
+- The testing package now supports the definition of tests with subtests and benchmarks with sub-benchmarks.
+
+* context
+
+* testing
+
