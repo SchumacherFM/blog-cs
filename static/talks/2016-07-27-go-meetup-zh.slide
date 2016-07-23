@@ -1,5 +1,5 @@
 Zurich Gophers Meetup
-Discussion about Go 1.7
+Discussions about Go 1.7
 27 Jul 2016
 
 Cyrill Schumacher
@@ -24,7 +24,8 @@ https://github.com/SchumacherFM
 
 .link http://go-ide.com/releases/0.11.1725/ 
 .link https://github.com/fatih/vim-go-tutorial
-.link https://caddyserver.com/blog/caddy-0_9-released 
+.link https://caddyserver.com/blog/caddy-0_9-released
+.link http://golang.org/s/gctoc
 
 * Jobs
 
@@ -32,7 +33,7 @@ Shout out if you're looking for a job or have a job.
 
 * Conferences
 
-- GopherCon in Denver, CO JULY 11TH TO 13TH, 2016 https://github.com/gophercon/2016-talks
+- GopherCon in Denver, CO; July 11.-13., 2016 https://github.com/gophercon/2016-talks
 - The Golang UK Conference; August 17th, 18th & 19th 2016; London; Tickets for ~£300
 - The European Go conference; October 10, 2016 · Paris; Tickets for ~139€
 - GothamGo Conference; November 18, 2016 - New York City
@@ -40,7 +41,7 @@ Shout out if you're looking for a job or have a job.
 
 * Go 1.7 Some Core Features
 
-- Support for OSX 10.12 Sierra, linux/s390, plan9/arm, linux/mips64, 
+- Support for OSX 10.12 Sierra, linux/s390, plan9/arm, linux/mips64, ppc ...
 - new code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.  
 - The compiler and linker have been optimized and run significantly faster in this release than in Go 1.6,
 - Smaller binaries than built with Go 1.6, sometimes by as much as 20-30%
@@ -51,11 +52,98 @@ more in the release notes
 
 * Go 1.7 Some Package Features
 
-- Moves the golang.org/x/net/context package into the standard library as context. 
 - net/http/httptrace, a package that provides mechanisms for tracing events within HTTP requests. 
+- Moves the golang.org/x/net/context package into the standard library as context. 
 - The testing package now supports the definition of tests with subtests and benchmarks with sub-benchmarks.
 
 * context
 
-* testing
+From https://blog.golang.org/context:
+- In http/rpc requests there is a need for request specific values such as auth tokens, end user IDs, deadline, request | tracing IDs or scoped values.
+- Every blocking or IO function call should be cancelable or timeoutable.
 
+Context should always be the first parameter of a function call or optional config on a request structure
+
+	func (d *Dialer) DialContext(ctx context.Context, network, address string) (Conn, error)
+
+* context.WithValue()
+
+	func WithValue(parent Context, key, val interface{}) Context
+
+- So easy to abuse
+- obscures your program’s flow
+- Context.Value() should inform not control
+
+* How to make it impossible to abuse and type safe?
+
+Example from an HTTP middleware for JSON web token authentication:
+
+	type keyCtxToken struct{}
+	func withContext(ctx context.Context, t csjwt.Token) context.Context {
+		return context.WithValue(ctx, keyCtxToken{}, t)
+	}
+	func FromContext(ctx context.Context) (csjwt.Token, bool) {
+		t, ok := ctx.Value(keyCtxToken{}).(csjwt.Token)
+		return t, ok
+	}
+
+Use `FromContext()` to extract the token in the next middleware or final HTTP handler.
+
+But`FromContext()` obscures the program flow because only documentation can make clear what must be in the context. Better ideas?
+
+* context.Value() abuse
+
+Any kind of onnections are the worst case examples of objects to place in a context.Value because it obviously controls the program and is required input for your functions.
+
+.image fine.png _ 300
+
+.caption © by http://gunshowcomic.com/648
+
+Tip: Use context to store values, like strings and data structs; avoid using it to store references, like pointers or handles.
+
+* context with cancellation
+
+	func (c *Client) Ping(ctx context.Context) error {
+	 // ...
+	}
+
+With specific timeout:
+	
+	ctx := context.Background()
+	ctx, cancel = context.WithTimeout(ctx, 3*time.Second)
+	defer cancel()
+	client.Ping(ctx)
+
+With dynamic timeout:
+	
+	ctx := context.Background()
+	ctx, cancel = context.WithCancel(ctx)
+	defer func() {
+	  <- eventHappens
+	  cancel()
+	}()
+	client.Ping(ctx)
+
+* testing with sub-tests & sub-benchmarks
+
+The Run methods of T and B allow defining subtests and sub-benchmarks, without having to define separate functions for each. This enables uses like table-driven benchmarks and creating hierarchical tests. It also provides a way to share common setup and tear-down code:
+
+	func TestFoo(t *testing.T) {
+	    // <setup code>
+	    t.Run("A=1", func(t *testing.T) { ... })
+	    t.Run("A=2", func(t *testing.T) { ... })
+	    t.Run("B=1", func(t *testing.T) { ... })
+	    // <tear-down code>
+	}
+
+Run them like:
+
+	go test -run Foo     # Run top-level tests matching "Foo".
+	go test -run Foo/A=  # Run subtests of Foo matching "A=".
+	go test -run /A=1    # Run all subtests of a top-level test matching "A=1".
+
+* One more thing
+
+There might be a meetup in October at a new location with Gophers from the US.
+
+Stay tuned!
