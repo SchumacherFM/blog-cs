@@ -11,41 +11,51 @@ https://github.com/SchumacherFM
 * Agenda
 
 - Welcome
-- News/Jobs/Conferences
+- News/Conferences
 - Go 1.7
+
+* Welcome
+
+Thank you for coming! 
+
+Glad to have you here for the 2nd Go Meetup at the new Unic office
+
+Snacks and Drinks sponsored by Unic
+
+.link http://www.unic.com/jobs
 
 * News
 
 - Intellij IDE Go Plugin got a big update
 - New vim-go tutorial
 - Caddy Server 0.9 Released with All New Core 
+- Hugo Static Site Generator v0.16
 - goimports has been updated, faster and less CPU.
 - Transaction Oriented Collector (TOC) - Go's next GC
 
 .link http://go-ide.com/releases/0.11.1725/ 
 .link https://github.com/fatih/vim-go-tutorial
 .link https://caddyserver.com/blog/caddy-0_9-released
+.link https://github.com/spf13/hugo/releases/tag/v0.16
 .link http://golang.org/s/gctoc
-
-* Jobs
-
-Shout out if you're looking for a job or have a job.
 
 * Conferences
 
-- GopherCon in Denver, CO; July 11.-13., 2016 https://github.com/gophercon/2016-talks
+- GopherCon in Denver, CO; July 11.-13., 2016
 - The Golang UK Conference; August 17th, 18th & 19th 2016; London; Tickets for ~£300
 - The European Go conference; October 10, 2016 · Paris; Tickets for ~139€
 - GothamGo Conference; November 18, 2016 - New York City
 - FOSDEM Brussels / 4 & 5 February 2017 - Free!
 
+.link https://github.com/gophercon/2016-talks
+
 * Go 1.7 Some Core Features
 
 - Support for OSX 10.12 Sierra, linux/s390, plan9/arm, linux/mips64, ppc ...
-- new code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.  
+- New code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.  
 - The compiler and linker have been optimized and run significantly faster in this release than in Go 1.6,
 - Smaller binaries than built with Go 1.6, sometimes by as much as 20-30%
-- This release removes support for the GO15VENDOREXPERIMENT environment variable
+- This release removes support for the GO15VENDOREXPERIMENT environment variable. Do you use a vendoring tool? Which?
 - Use BinaryOnly packages (without complete source code) in your program
 
 more in the release notes
@@ -53,10 +63,20 @@ more in the release notes
 * Go 1.7 Some Package Features
 
 - net/http/httptrace, a package that provides mechanisms for tracing events within HTTP requests. 
+
+Next slides more about:
+
 - Moves the golang.org/x/net/context package into the standard library as context. 
 - The testing package now supports the definition of tests with subtests and benchmarks with sub-benchmarks.
 
 * context
+
+	Context interface {
+		Deadline() (deadline time.Time, ok bool)
+		Done() <-chan struct{}
+		Err() error
+		Value(key interface{}) interface{}
+	}
 
 From https://blog.golang.org/context:
 - In http/rpc requests there is a need for request specific values such as auth tokens, end user IDs, deadline, request | tracing IDs or scoped values.
@@ -71,13 +91,15 @@ Context should always be the first parameter of a function call or optional conf
 	func WithValue(parent Context, key, val interface{}) Context
 
 - So easy to abuse
-- obscures your program’s flow
+- obscures your program’s flow, if used incorrectly
 - Context.Value() should inform not control
 
 * How to make it impossible to abuse and type safe?
 
 Example from an HTTP middleware for JSON web token authentication:
 
+	package jwt
+	
 	type keyCtxToken struct{}
 	func withContext(ctx context.Context, t csjwt.Token) context.Context {
 		return context.WithValue(ctx, keyCtxToken{}, t)
@@ -87,17 +109,29 @@ Example from an HTTP middleware for JSON web token authentication:
 		return t, ok
 	}
 
-Use `FromContext()` to extract the token in the next middleware or final HTTP handler.
+Use `jwt.FromContext()` to extract the token in a type safe way in the next middleware or final HTTP handler.
 
-But`FromContext()` obscures the program flow because only documentation can make clear what must be in the context. Better ideas?
 
 * context.Value() abuse
 
-Any kind of onnections are the worst case examples of objects to place in a context.Value because it obviously controls the program and is required input for your functions.
+Any kind of connections are the worst case examples of objects to place in a context.Value because it obviously controls the program and is required input for your functions. Example from: http://peter.bourgon.org/blog/2016/07/11/context.html
 
-.image fine.png _ 300
+	// Don't do this.
+	func MyMiddleware(next http.Handler) http.Handler {
+		return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+			db := r.Context().Value(DatabaseContextKey).(Database)
+			// Use db somehow
+			next.ServeHTTP(w, r)
+		})
+	}
+	// Do this instead.
+	func MyMiddleware(db Database, next http.Handler) http.Handler {
+		return http.HandlerFunc(func (w http.ResponseWriter, r *http.Request) {
+			// Use db here.
+			next.ServeHTTP(w, r)
+		})
+	}
 
-.caption © by http://gunshowcomic.com/648
 
 Tip: Use context to store values, like strings and data structs; avoid using it to store references, like pointers or handles.
 
@@ -144,6 +178,8 @@ Run them like:
 
 * One more thing
 
-There might be a meetup in October at a new location with Gophers from the US.
+There might be a meetup end of October at a new location with a Gopher from the US.
+
+.image ardanlabs.png
 
 Stay tuned!
