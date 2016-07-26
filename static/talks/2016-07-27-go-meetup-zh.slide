@@ -13,6 +13,7 @@ https://github.com/SchumacherFM
 - Welcome
 - News/Conferences
 - Go 1.7
+- Two more things
 
 * Welcome
 
@@ -176,10 +177,10 @@ Run them like:
 	go test -run Foo/A=  # Run subtests of Foo matching "A=".
 	go test -run /A=1    # Run all subtests of a top-level test matching "A=1".
 
-* One more thing
+* Two more things
 
-There might be a meetup end of October at a new location with a Gopher from the US.
+Our next meetup will be on the 20th of October at a new location with a Gopher from the US.
 
 .image ardanlabs.png
 
-Stay tuned!
+.link https://github.com/golang/go/issues/16339 Vote No -> Proposal: Alias declarations for Go #16339 
