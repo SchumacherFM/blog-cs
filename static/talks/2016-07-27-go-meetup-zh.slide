@@ -13,7 +13,6 @@ https://github.com/SchumacherFM
 - Welcome
 - News/Conferences
 - Go 1.7
-- Two more things
 
 * Welcome
 
@@ -179,8 +178,8 @@ Run them like:
 
 * Two more things
 
-Our next meetup will be on the 20th of October at a new location with a Gopher from the US.
+Our next meetup will be on the 20th of October at a maybe new location with a Gopher from the US.
 
 .image ardanlabs.png
 
-.link https://github.com/golang/go/issues/16339 Vote No -> Proposal: Alias declarations for Go #16339 
+.link https://github.com/golang/go/issues/16339 ✍️ Vote -> Proposal: Alias declarations for Go #16339 
