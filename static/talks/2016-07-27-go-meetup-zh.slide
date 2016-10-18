@@ -1,4 +1,4 @@
-Zurich Gophers Meetup
+IV. Zurich Gophers Meetup
 Discussions about Go 1.7
 27 Jul 2016
 
@@ -16,7 +16,7 @@ https://github.com/SchumacherFM
 
 * Welcome
 
-Thank you for coming! 
+Thank you for coming!
 
 Glad to have you here for the 2nd Go Meetup at the new Unic office
 
@@ -28,12 +28,12 @@ Snacks and Drinks sponsored by Unic
 
 - Intellij IDE Go Plugin got a big update
 - New vim-go tutorial
-- Caddy Server 0.9 Released with All New Core 
+- Caddy Server 0.9 Released with All New Core
 - Hugo Static Site Generator v0.16
 - goimports has been updated, faster and less CPU.
 - Transaction Oriented Collector (TOC) - Go's next GC
 
-.link http://go-ide.com/releases/0.11.1725/ 
+.link http://go-ide.com/releases/0.11.1725/
 .link https://github.com/fatih/vim-go-tutorial
 .link https://caddyserver.com/blog/caddy-0_9-released
 .link https://github.com/spf13/hugo/releases/tag/v0.16
@@ -52,7 +52,7 @@ Snacks and Drinks sponsored by Unic
 * Go 1.7 Some Core Features
 
 - Support for OSX 10.12 Sierra, linux/s390, plan9/arm, linux/mips64, ppc ...
-- New code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.  
+- New code generation back end for 64-bit x86 systems; based on SSA, generates more compact, more efficient code and provides a better platform for optimizations such as bounds check elimination. The new back end reduces the CPU time required by our benchmark programs by 5-35%.
 - The compiler and linker have been optimized and run significantly faster in this release than in Go 1.6,
 - Smaller binaries than built with Go 1.6, sometimes by as much as 20-30%
 - This release removes support for the GO15VENDOREXPERIMENT environment variable. Do you use a vendoring tool? Which?
@@ -62,11 +62,11 @@ more in the release notes
 
 * Go 1.7 Some Package Features
 
-- net/http/httptrace, a package that provides mechanisms for tracing events within HTTP requests. 
+- net/http/httptrace, a package that provides mechanisms for tracing events within HTTP requests.
 
 Next slides more about:
 
-- Moves the golang.org/x/net/context package into the standard library as context. 
+- Moves the golang.org/x/net/context package into the standard library as context.
 - The testing package now supports the definition of tests with subtests and benchmarks with sub-benchmarks.
 
 * context
@@ -99,7 +99,7 @@ Context should always be the first parameter of a function call or optional conf
 Example from an HTTP middleware for JSON web token authentication:
 
 	package jwt
-	
+
 	type keyCtxToken struct{}
 	func withContext(ctx context.Context, t csjwt.Token) context.Context {
 		return context.WithValue(ctx, keyCtxToken{}, t)
@@ -142,14 +142,14 @@ Tip: Use context to store values, like strings and data structs; avoid using it 
 	}
 
 With specific timeout:
-	
+
 	ctx := context.Background()
 	ctx, cancel = context.WithTimeout(ctx, 3*time.Second)
 	defer cancel()
 	client.Ping(ctx)
 
 With dynamic timeout:
-	
+
 	ctx := context.Background()
 	ctx, cancel = context.WithCancel(ctx)
 	defer func() {
@@ -182,4 +182,4 @@ Our next meetup will be on the 20th of October at a maybe new location with a Go
 
 .image ardanlabs.png
 
-.link https://github.com/golang/go/issues/16339 ✍️ Vote -> Proposal: Alias declarations for Go #16339 
+.link https://github.com/golang/go/issues/16339 ✍️ Vote -> Proposal: Alias declarations for Go #16339
