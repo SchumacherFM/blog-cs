@@ -11,9 +11,11 @@ tags:
   - EAV
 ---
 
-Magento's (1+2) EAV database model allows to much redundant content which blows
-up the overall size. Taking care of this content is for most merchants, without
-a PIM (Product Information System like Akeneo), a pretty huge task. In this post
+Magento's (1+2) EAV
+([Entity-Attribute-Value](https://en.wikipedia.org/wiki/Entity–attribute–value_model))
+database model allows too much redundant data. This leads to an unusual large
+database and strains errors when working with that data in the backend. Taking
+care of the shop content is for most merchants a pretty huge task. In this post
 I would like to propose an overall fix to this problem with backwards
 incompatible changes to the database structure.
 
@@ -21,9 +23,16 @@ incompatible changes to the database structure.
 
 TODO: Fix grammar.
 
-**TL;DR:** Refactor configuration manager to handle all scopes; Drop `store_id`
-*and `website_id` column in EAV type tables and all other and add `scope` and
-*`scope_id` columns.
+Even if you use a PIM ([Product Information
+Management](https://en.wikipedia.org/wiki/Product_information_management)) the
+amount of data is still the same. The PIM connector does all the work to push
+the data into Magento. The database will be slowed down.
+
+Magento's customers, price structure and stock handling affects this issue too.
+We remove those limitations.
+
+With the following proposed changes a PIM might become superfluous ;-) and we
+gain overall flexibility with customers, prices and stocks.
 
 ### Intro and wording
 
@@ -157,13 +166,13 @@ Abbreviation in the print screens: POS = Point of Sales.
 
 The EAV tables must be refactored. An EAV type table must be able to store all
 scopes with all its IDs. This can be achieved by either adding two new columns
-for the `scope` and its `scope_id` or single column `scope_type_id` which merges
-via bit shifting the scope and the ID. But as humans usually create SQL
+for the `scope` and its `scope_id` or a single column `scope_type_id` which
+merges via bit shifting the scope and the ID. But as humans usually create SQL
 statements on the fly, it might be better to add two columns. That allows you to
 create queries without any helper functions to merge/explode scope and ID.
 
-`scope` column contains either Default, Website, Group or Store (or as mentioned
-above values up to 255). Remember hierarchy says:
+`scope` column contains either Default (0), Website (1), Group (2) or Store (3)
+(or as mentioned above values up to 255). Remember hierarchy says:
 Default->Website->Group->Store, where Store gives the lowest and most granular
 level.
 
