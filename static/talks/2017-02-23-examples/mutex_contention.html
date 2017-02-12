@@ -1,0 +1,27 @@
+<html>
+       <body>
+<pre>CyS at MBP in ~/GoPro/src/github.com/SchumacherFM/caddyesi on master [!?]
+$ ./caddyesi.test -test.run=XXX -test.bench=Middleware/ServeHTTP_Parallel -test.mutexprofile=zmutex.out
+BenchmarkMiddleware/ServeHTTP_Parallel-4         	   30000	     39157 ns/op	   46006 B/op	      66 allocs/op
+PASS
+
+CyS at MBP in ~/GoPro/src/github.com/SchumacherFM/caddyesi on master [!?]
+$ go tool pprof ./caddyesi.test zmutex.out
+Entering interactive mode (type "help" for commands)
+(pprof) top
+903.14us of 903.14us total (  100%)
+Showing top 10 nodes out of 36 (cum >= 76.08us)
+      flat  flat%   sum%        cum   cum%
+  903.14us   100%   100%   903.14us   100%  sync.(*Mutex).Unlock
+         0     0%   100%   107.02us 11.85%  fmt.(*pp).free
+         0     0%   100%   503.53us 55.75%  fmt.Sprintf
+         0     0%   100%   396.51us 43.90%  fmt.newPrinter
+         0     0%   100%   399.61us 44.25%  github.com/SchumacherFM/caddyesi.(*Middleware).ServeHTTP
+         0     0%   100%   173.48us 19.21%  github.com/SchumacherFM/caddyesi.(*PathConfig).ESITagsByRequest
+         0     0%   100%    21.91us  2.43%  github.com/SchumacherFM/caddyesi.(*PathConfig).pageID
+         0     0%   100%   226.13us 25.04%  github.com/SchumacherFM/caddyesi.(*injectingWriter).Write
+         0     0%   100%    21.91us  2.43%  github.com/SchumacherFM/caddyesi.pageID
+         0     0%   100%    76.08us  8.42%  github.com/SchumacherFM/caddyesi/bufpool.Get
+(pprof)</pre>
+       </body>
+</html>

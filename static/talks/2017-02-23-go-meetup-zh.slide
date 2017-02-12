@@ -1,0 +1,307 @@
+VI. Zurich Gophers Meetup
+Go 1.8 Release Party
+23 Feb 2017
+
+Cyrill Schumacher
+Unic AG
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Agenda
+
+- Welcome
+- Job Openings
+- Talks / Outlook
+
+* Welcome
+
+Thank you for coming!
+
+Glad to have you here for the VI. Go meetup this time at Unic.
+
+Thank you Unic for hosting our meetup and sponsoring snacks and drinks!
+
+* Job Openings
+
+Who is looking for a job and who has some jobs?
+
+Speak now or talk to me after this presentation.
+
+* Conferences / Events
+
+- FOSDEM Brussels / 4 & 5 February 2017 - Free!
+- GopherCon in Denver, CO; July 12th–15th, 2017
+- The Golang UK Conference; 16TH, 17th & 18th August 2017, in London
+- The European Go conference; Monday, November 6, 2017, in Paris
+- VII. Zurich Gophers Meetup End of April 2017
+
+* License and Materials
+
+This presentation is licensed under the
+[[https://creativecommons.org/licenses/by-sa/4.0/][Creative Commons Attribution-ShareAlike 4.0 International]] licence.
+
+The materials for this presentation are available on GitHub:
+
+.link https://github.com/davecheney/go-1.8-release-party
+
+You are encouraged to remix, transform, or build upon the material, providing
+you distribute your contributions under the same license.
+
+If you have suggestions or corrections to this presentation, please raise
+[[https://github.com/davecheney/go-1.8-release-party/issues][an issue on the GitHub project]].
+
+* Go 1.8
+
+Go 1.8 was released on the 16th of February.
+
+Go 1.8 is the 9th release in the Go 1 series. It follows from the previous
+version, Go 1.7, [[https://blog.golang.org/go1.7][released on the 16th of August, 2016]]
+
+TODO LINK TO RELEASE NOTES AND BLOG POST ANNOUNCEMENT
+
+* Performance
+
+As always, the changes are so general and varied that precise statements about
+performance are difficult to make. Most programs should run a bit faster, due to
+speedups in the garbage collector and optimizations in the standard library.
+
+[[https://github.com/golang/go/issues/18964][net/http: HTTP/1 server got 0.5μs slower in Go 1.8 #18964]] ;-)
+
+* Miscellaneous performance improvements
+
+There have been optimizations to implementations in the `bytes`, `crypto/aes`,
+`crypto/cipher`, `crypto/elliptic`, `crypto/sha256`, `crypto/sha512`,
+`encoding/asn1`, `encoding/csv`, `encoding/hex`, `encoding/json`, `hash/crc32`,
+`image/color`, `image/draw`, `math`, `math/big`, `reflect`, `regexp`, `runtime`,
+`strconv`, `strings`, `syscall`, `text/template`, and `unicode/utf8` packages.
+
+* Garbage Collector
+
+Garbage collection pauses should be significantly shorter than they were in Go
+1.7, usually under 100 microseconds and often as low as 10 microseconds. See the
+document on eliminating stop-the-world stack re-scanning for details. More work
+remains for Go 1.9.
+
+* Defer
+
+The overhead of deferred function calls has been reduced by about half.
+
+* Cgo
+
+The overhead of calls from Go into C has been reduced by about half.
+
+* Struct conversion
+
+When explicitly converting a value from one struct type to another, as of Go 1.8
+the tags are ignored.
+
+.code 2017-02-23-examples/struct_conversion.go
+
+* Ports
+
+- Go now supports 32-bit MIPS on Linux for both big-endian (linux/mips) and little-endian machines (linux/mipsle) that implement the MIPS32r1 instruction set with FPU or kernel FPU emulation. Note that many common MIPS-based routers lack an FPU and have firmware that doesn't enable kernel FPU emulation; Go won't run on such machines.
+- On DragonFly BSD, Go now requires DragonFly 4.4.4 or later.
+- On OpenBSD, Go now requires OpenBSD 5.9 or later.
+- The Plan 9 port's networking support is now much more complete and matches the behavior of Unix and Windows with respect to deadlines and cancelation.
+- Go 1.8 now only supports OS X 10.8 or later. This is likely the last Go release to support 10.8. Compiling Go or running binaries on older OS X versions is untested.
+
+* Default GOPATH
+
+TODO NEEDS LINK TO ISSUE AND DISCUSSION
+
+[[https://github.com/davecheney/go-1.8-release-party/issues/3][TODO NEED EXAMPLE]]
+
+TODO NEEDS UPGRADE ADVICE
+
+* Compiler changes
+
+* SSA backend
+
+- All backends updated to use the new SSA form. Old "plan9" style compiler backend deleted.
+- Big performance improvements for arm32.
+- Easy to add new SSA backends (for values of easy compilier engineers work in).
+
+* New parser
+
+Robert Griesemer and Matthew Dempsky replaced the parser. TODO LINK TO CHANGE
+
+The new parser removes many of the package level variables which came along for
+the ride from the previous YACC based parser. Removing package level globals is
+a stepping stone to making the compiler more parallel.
+
+This new parser is reportedly considerably faster, but in 1.8 is hamstrung by
+having to convert between the new style AST and the old version the rest of the
+compiler expects.
+
+Expect this AST conversion to be removed in Go 1.9.
+
+* Compiler speed
+
+About a 12-15% improvement compared to Go 1.7
+
+TODO NEED GRAPHS
+
+* Mutex contention profile
+
+Peter Wienberger has added a new pprof profile, mutex contention.
+
+.html 2017-02-23-examples/mutex_contention.html
+
+_note_: do to an oversight this only works with `sync.Mutex`, not `sync.RWMutex`, this oversight will be addressed early in Go 1.9.
+
+TODO LINK TO ISSUE ABOUT RWMUTEX
+
+* Tools
+
+- The yacc tool (previously available by running “go tool yacc”) has been removed. As of Go 1.7 it was no longer used by the Go compiler. It has moved to the “tools” repository and is now available at golang.org/x/tools/cmd/goyacc.
+- `go`tool`asm` now supports a flotilla of Intel and PPC vector instructions. [[https://beta.golang.org/doc/go1.8#cmd_asm][Consult the release notes for the specifics]].
+- The trace tool has a new -pprof flag for producing pprof-compatible blocking and latency profiles from an execution trace. Garbage collection events are now shown more clearly in the execution trace viewer. Garbage collection activity is shown on its own row and GC helper goroutines are annotated with their roles.
+- Vet is stricter in some ways and looser where it previously caused false positives. Vet now checks for copying an array of locks, duplicate JSON and XML struct field tags, non-space-separated struct tags, deferred calls to HTTP Response.Body.Close before checking errors, and indexed arguments in Printf. It also improves existing checks.
+
+* go bug
+
+The new `go`bug` command starts a bug report on GitHub, prefilled with information about the current system.
+
+    $ go bug <ENTER> opens GitHub
+
+* go fix
+
+`go`fix` now rewrites references to `golang.org/x/net/context` to the standard library provided `context` package.
+
+* go vet - repeated struct tags and multiple struct tags
+
+.code 2017-02-23-examples/vet_repeated_json_tags.go
+
+* Plugins
+
+Go now supports a “plugin” build mode for generating plugins written in Go, and a new plugin package for loading such plugins at run time. Plugin support is only currently available on Linux.
+
+* Plugin Example
+
+.code 2017-02-23-examples/plugins/plugin.go
+
+Then to build plugin.so
+
+ $ go build -buildmode=plugin plugin.go
+
+* Plugin Example - Using Plugin
+.code 2017-02-23-examples/plugins/main.go  /START OMIT/,/END OMIT/
+
+ $ go run main.go
+ main started...
+ Plugin loading
+ Hello, number 7
+
+* What's coming up in Go 1.9
+
+Before we close, let's quickly touch on some of the things coming up in Go 1.9
+
+_note_: All of these are speculation, nothing is set in stone until code hits the repo.
+
+* Aliases
+
+After being rolled back before the Go 1.8 freeze, aliases are being re-proposed for Go 1.9 in a more limited fashion.
+
+.link https://golang.org/design/18130-type-alias
+
+TODO SHOW EXAMPLES
+
+* Faster / cheaper runtime.MemStats
+
+The cost of calling `runtime.MemStats` is propotional to the size of the heap; Austin recently timed it at ~1.7ms per Gb.
+
+There is a CL ready to land that reduces it to 20 us per proc (thread servicing a goroutine) which is a much smaller upper bound.
+
+.link https://golang.org/issue/13613
+
+TODO LINK TO CL
+
+
+* New calling convention
+
+On [[https://changelog.com/gotime/27][GoTime episode 27]], Keith Randall hinted that Go may change its calling convention.
+
+The current Go calling convention passes all parameters and results on the
+stack.
+
+This makes things like the scheduler and the garbage collector simpler, as you
+know when you enter a function, no registers are live or contain pointers.
+
+Most other languages pass some or all of their arguments in registers, and Keith
+thinks there is possibly a 10% speedup in changing the calling convetion.
+
+Changing the calling convention would affect all the assembly code written. One
+solution would be to have the assember/compiler/go tool ? generate studs to
+convert between new and old calling conventions for
+
+TODO WILL THIS AFFECT/IMPROVE CGO CALLING TIME?
+
+TODO LINK TO ISSUE / DISCUSSION
+
+* Improvements to the inliner
+
+Inlining has historically been limited to leaf functions because of the concern
+of agressive inlining on the call graph.
+
+In support of this Robert Griesemer and Matthew Dempsky have been improving the
+line number tracking in Go 1.9 to make it flexible enough to lift the
+restriction on non-leaf functions.
+
+An intern, TODO NAME, has been hired to work on the inlinier for 1.9
+
+Josh Bleecher-Snyder has also suggest that the cost model for inlining should be
+revised to make sure inlining is paying for itself.
+
+TODO LINK TO ISSUE
+
+* ROC collector
+
+TODO WILL THIS MAKE IT INTO 1.9 ?
+
+WHAT WOULD IT DO ?
+
+* Official dependency management tool
+
+.link https://github.com/golang/dep
+
+    $ go get -u github.com/golang/dep/...
+    $ dep init
+    $ dep ensure -update
+
+To update a dependency to a new version, you might run
+
+    $ dep ensure github.com/pkg/errors@^0.8.0
+
+* Go 1.8 may be the last to support ARMv5
+
+Supporting ARMv5 has been a problem for several releases.
+
+Currently we have no ARMv5 builders so have no idea if Go 1.8 actually works on real ARMv5 hardware (we test on ARMv7).
+
+If you or your company care about ARMv5, you have to shoulder some of the burdon. Contact @bradfitz and set up a builder.
+
+_No_ARMv5_builders_means_ARMv5_support_will_be_dropped_in_Go_1.9_.
+
+From release notes:
+
+Go 1.9 will likely require the ARMv6K (as found in the Raspberry Pi 1) or later.
+To identify whether a Linux system is ARMv6K or later, run “go tool dist
+-check-armv6k” (to facilitate testing, it is also possible to just copy the dist
+command to the system without installing a full copy of Go 1.8) and if the
+program terminates with output "ARMv6K supported." then the system implements
+ARMv6K or later. Go on non-Linux ARM systems already requires ARMv6K or later.
+
+* TODO ANYTHING ELSE
+
+ARE THERE OTHER UPCOMING 1.9 FEATURES TO BE AWARE OF
+
+Over 500 issues!
+
+.link https://github.com/golang/go/issues?q=is%3Aopen+is%3Aissue+milestone%3AGo1.9
+
+* Conclusion
+
+Upgrade to Go 1.8, now!
+
+It's literally the best version of Go to date.
