@@ -32,8 +32,8 @@ Speak now or talk to me after this presentation.
 
 - FOSDEM Brussels / 4 & 5 February 2017 - Free!
 - GopherCon in Denver, CO; July 12th–15th, 2017
-- The Golang UK Conference; 16TH, 17th & 18th August 2017, in London
-- The European Go conference; Monday, November 6, 2017, in Paris
+- The Golang UK Conference; 16th, 17th & 18th August 2017, in London
+- The European Go conference (DotGo); Monday, November 6, 2017, in Paris
 - VII. Zurich Gophers Meetup End of April 2017
 
 * License and Materials
@@ -83,6 +83,10 @@ Garbage collection pauses should be significantly shorter than they were in Go
 document on eliminating stop-the-world stack re-scanning for details. More work
 remains for Go 1.9.
 
+.image 2017-02-23-examples/go18gc.jpg 350 _
+
+.link https://twitter.com/akrylysov/status/832361348050849792
+
 * Defer
 
 The overhead of deferred function calls has been reduced by about half.
@@ -103,14 +107,14 @@ the tags are ignored.
 - Go now supports 32-bit MIPS on Linux for both big-endian (linux/mips) and little-endian machines (linux/mipsle) that implement the MIPS32r1 instruction set with FPU or kernel FPU emulation. Note that many common MIPS-based routers lack an FPU and have firmware that doesn't enable kernel FPU emulation; Go won't run on such machines.
 - On DragonFly BSD, Go now requires DragonFly 4.4.4 or later.
 - On OpenBSD, Go now requires OpenBSD 5.9 or later.
-- The Plan 9 port's networking support is now much more complete and matches the behavior of Unix and Windows with respect to deadlines and cancelation.
+- The Plan 9 port's networking support is now much more complete and matches the behavior of Unix and Windows with respect to deadlines and cancellation.
 - Go 1.8 now only supports OS X 10.8 or later. This is likely the last Go release to support 10.8. Compiling Go or running binaries on older OS X versions is untested.
 
 * Default GOPATH
 
-TODO NEEDS LINK TO ISSUE AND DISCUSSION
+`$HOME/go`
 
-[[https://github.com/davecheney/go-1.8-release-party/issues/3][TODO NEED EXAMPLE]]
+[[https://github.com/golang/go/issues/17262][cmd/go: assume GOPATH=$HOME/go if not set #17262]]
 
 TODO NEEDS UPGRADE ADVICE
 
@@ -150,7 +154,7 @@ Peter Wienberger has added a new pprof profile, mutex contention.
 
 _note_: do to an oversight this only works with `sync.Mutex`, not `sync.RWMutex`, this oversight will be addressed early in Go 1.9.
 
-TODO LINK TO ISSUE ABOUT RWMUTEX
+[[https://github.com/golang/go/issues/18496][runtime: contended mutex profiling doesn't work for sync.RWMutex #18496]]
 
 * Tools
 
@@ -229,11 +233,11 @@ This makes things like the scheduler and the garbage collector simpler, as you
 know when you enter a function, no registers are live or contain pointers.
 
 Most other languages pass some or all of their arguments in registers, and Keith
-thinks there is possibly a 10% speedup in changing the calling convetion.
+thinks there is possibly a 10% speedup in changing the calling convention.
 
 Changing the calling convention would affect all the assembly code written. One
-solution would be to have the assember/compiler/go tool ? generate studs to
-convert between new and old calling conventions for
+solution would be to have the assembler/compiler/go tool ? generate studs to
+convert between new and old calling conventions for.
 
 TODO WILL THIS AFFECT/IMPROVE CGO CALLING TIME?
 
@@ -242,7 +246,7 @@ TODO LINK TO ISSUE / DISCUSSION
 * Improvements to the inliner
 
 Inlining has historically been limited to leaf functions because of the concern
-of agressive inlining on the call graph.
+of aggressive inlining on the call graph.
 
 In support of this Robert Griesemer and Matthew Dempsky have been improving the
 line number tracking in Go 1.9 to make it flexible enough to lift the
@@ -272,6 +276,12 @@ WHAT WOULD IT DO ?
 To update a dependency to a new version, you might run
 
     $ dep ensure github.com/pkg/errors@^0.8.0
+
+* syncmap.Map
+
+[[https://golang.org/issue/18177][sync: add a Map to replace RWLock+map usage #18177]]
+
+Package syncmap provides a concurrent map implementation. It is a prototype for a proposed addition to the sync package in the standard library.
 
 * Go 1.8 may be the last to support ARMv5
 
