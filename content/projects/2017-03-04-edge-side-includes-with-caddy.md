@@ -1,12 +1,12 @@
 ---
 title: Edge Side Includes with Caddy
 author: Cyrill
-date: 2017-03-01
-disqus_identifier: /2017/03/01/caddyesi/
+date: 2017-03-04
+disqus_identifier: /2017/03/04/caddyesi/
 categories:
-  - Thoughts
+  - Projects
 tags:
-  - Golang
+  - GoLang
   - EdgeSideIncludes
   - Caddy
   - CaddyESI
