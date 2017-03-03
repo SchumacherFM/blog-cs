@@ -88,6 +88,8 @@ Short explanation for the tag above:
 
 Now open the Web Inspector panel and search for HTML comment of the `printdebug` output.
 
+<a href="https://github.com/SchumacherFM/caddyesi/blob/master/esitag/backend/grpc_server_main_demo.go" target="_blank">Click here</a> to discover the source for the gRPC server
+
 ## Documentation
 
 Please switch to the [README.md](https://github.com/SchumacherFM/caddyesi/blob/master/README.md#plugin-configuration-optional) in the GitHub source code.
