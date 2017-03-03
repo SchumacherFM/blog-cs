@@ -13,7 +13,7 @@ url: magento2-list-of-all-register-calls
 
 This on going updated post lists all calls to `coreRegistry->register()` in Magento2. A registry cheat sheet.
 
-Current version: 2.0.4 / April 15, 2016
+Current version: 2.0.13 / Feb 13, 2017
 
 <!--more-->
 
@@ -111,4 +111,4 @@ entities with service dependencies.
 
 *Please use your browsers search function!*
 
-{{< mage2_code url="static/magento2/register_app.csv" sep="|" >}}
+{{< mage2_code tag="2.0.13" url="static/magento2/register_app.csv" sep="|" >}}

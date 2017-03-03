@@ -4,6 +4,11 @@
 find ~/Sites/magento2/site/app -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.1_events_app.txt
 find ~/Sites/magento2/site/lib -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.1_events_lib.txt
 
+find ~/Sites/magento2/site/app -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.dev_events_app.txt
+find ~/Sites/magento2/site/lib -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2.dev_events_lib.txt
+
+find ~/Sites/magento2/magento2ee/app -type f -name "*.php" -not -name "*Test.php" | xargs pcregrep -i -M -n -e '->dispatch\([^;]+\);' > 2ee.dev_events_app.txt
+
 find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'coreRegistry\s*->\s*register\([^;]+\);' > 2.0_register_app.txt
 find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e '_registry\s*->\s*register\([^;]+\);' >> 2.0_register_app.txt
 find ~/Sites/magento2/site/app -type f -name "*.php" | xargs pcregrep -i -M -n -e 'get\(.Magento\\Framework\\Registry.\)->register\([^;]+\);' >> 2.0_register_app.txt
