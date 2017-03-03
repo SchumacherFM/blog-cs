@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Edge Side Includes with Caddy
 author: Cyrill
 date: 2017-03-04
@@ -83,6 +84,26 @@ Short explanation for the tag above:
 - `session_{Fsession}` the uppercase `F` declares that the variable `session` can be found in the form, either GET or POST/PATCH/PUT.
 - `forwardheaders` forwards all headers from your browser to the micro service. You can define specific headers only.
 - `timeout` if the gRPC service takes longer than those `4ms` the error message in `onerror` gets displayed.
+
+The content of the resources file looks:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<items>
+    <item>
+        <alias>grpcServerDemo</alias>
+        <url><![CDATA[grpc://127.0.0.1:42042]]></url>
+    </item>
+</items>
+```
+
+The following form enables you to create different session counters:
+
+<form method="GET" action="/projects/2017-03-04-edge-side-includes-with-caddy/">
+<label for="session">Session Name (8-128 characters)</label>
+<input id="session" name="session" value="" maxlength="128" minlength="8">
+<button type="submit">Submit</button>
+</form>
 
 <esi:include src="grpcServerDemo" printdebug="1" key="session_{Fsession}" forwardheaders="all" timeout="4ms" onerror="Demo gRPC server unavailable :-("/>
 
