@@ -20,6 +20,8 @@ HTTP/HTTPS, HTTP2, shell scripts and gRPC (Protocol buffers).
 
 <!--more-->
 
+{{% hubinfo u="SchumacherFM" r="caddyesi" c="5" %}}
+
 ESI tags are used to fetch content from a backend resource and inject that
 content into the returned page to be displayed in a e.g. browser. ESI tags
 limits itself not to HTML only, you can include them into all text formats.
