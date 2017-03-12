@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: Edge Side Includes with Caddy
 author: Cyrill
 date: 2017-03-04
@@ -107,7 +107,9 @@ The following form enables you to create different session counters:
 
 <esi:include src="grpcServerDemo" printdebug="1" key="session_{Fsession}" forwardheaders="all" timeout="4ms" onerror="Demo gRPC server unavailable :-("/>
 
-Now open the Web Inspector panel and search for HTML comment of the `printdebug` output.
+Now open the Web Inspector panel and search for HTML comment of the `printdebug`
+output. The value `Next Session Integer	` gets reset after a specific short
+amount of time.
 
 <a href="https://github.com/SchumacherFM/caddyesi/blob/master/esitag/backend/grpc_server_main_demo.go" target="_blank">Click here</a> to discover the source for the gRPC server
 
