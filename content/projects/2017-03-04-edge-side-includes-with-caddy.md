@@ -9,19 +9,19 @@ categories:
 tags:
   - GoLang
   - EdgeSideIncludes
+  - ESI
   - Caddy
-  - CaddyESI
   - MicroServices
 ---
 
 Introduction of a middleware for the <a href="https://caddyserver.com/" target="_blank">Caddy web server</a> 
 to handle Edge Side Includes (ESI) tags. ESI tags are use to query backend
-(micro) services. This middleware (CaddyESI) supports Redis, Memcache,
-HTTP/HTTPS, HTTP2, shell scripts and gRPC (Protocol buffers).
+(micro) services. This middleware supports Redis, Memcache,
+HTTP/HTTPS, HTTP2, shell scripts, SQL and gRPC (Protocol buffers).
 
 <!--more-->
 
-{{% hubinfo u="SchumacherFM" r="caddyesi" c="5" %}}
+{{% hubinfo u="corestoreio" r="caddy-esi" c="5" %}}
 
 ESI tags are used to fetch content from a backend resource and inject that
 content into the returned page to be displayed in a e.g. browser. ESI tags
@@ -43,7 +43,7 @@ us to calculate the correct `Content-Length` header and also allows to return
 headers from the backend to the client. So <a href="https://en.wikipedia.org/wiki/Time_To_First_Byte" target="_blank">time to first byte &quot;TTFB&quot;</a>
 depends on the slowest backend resource.
 
-Future versions of CaddyESI provides the additional option of enabling
+Future versions of ESI for Caddy provides the additional option of enabling
 `Transfer-Encoding: chunked` to start immediately the output and then waiting
 for all backend resources when the first ESI tag occurs in the page.
 
@@ -67,7 +67,7 @@ source URL into an XHR request or an HTTP2 push. (todo)
 
 More details how officially [Edge Side Includes](https://en.wikipedia.org/wiki/Edge_Side_Includes) are defined.
 
-The middleware CaddyESI implements only the `<esi:include />` tag with different
+This middleware implements only the `<esi:include />` tag with different
 features and interpretations.
 
 ## Example
@@ -111,11 +111,11 @@ Now open the Web Inspector panel and search for HTML comment of the `printdebug`
 output. The value `Next Session Integer	` gets reset after a specific short
 amount of time.
 
-<a href="https://github.com/SchumacherFM/caddyesi/blob/master/esitag/backend/grpc_server_main_demo.go" target="_blank">Click here</a> to discover the source for the gRPC server
+<a href="https://github.com/corestoreio/caddy-esi/blob/master/esitag/backend/grpc_server_main_demo.go" target="_blank">Click here</a> to discover the source for the gRPC server
 
 ## Documentation
 
-Please switch to the [README.md](https://github.com/SchumacherFM/caddyesi/blob/master/README.md#plugin-configuration-optional) in the GitHub source code.
+Please switch to the [README.md](https://github.com/corestoreio/caddy-esi/blob/master/README.md#plugin-configuration-optional) in the GitHub source code.
 
 ## JSON Example
 
@@ -126,7 +126,7 @@ configuration the backend resource alias "myRedis". The URL to the Redis server
 gets stored in the resource configuration file (see Caddyfile). Second we're
 adding the ESI tags to the main JSON array, defining the src and each key points
 to a key in the Redis server. The value of each key contains a valid JSON
-object. Once the page gets requested from the e.g. browser the CaddyESI
+object. Once the page gets requested from the e.g. browser the ESI
 middleware will query in parallel Redis and insert the value into the main JSON
 array. As Redis is single threaded you can define additional Redis sources to
 gain even more performance. Finally you only need to write a program to insert
@@ -160,9 +160,9 @@ Correct me if I'm wrong:
 
 <a href="http://stackoverflow.com/questions/5960598/varnish-and-esi-how-is-the-performance" target="_blank">Stack Overflow: Varnish and ESI, how is the performance?</a>
 
-CaddyESI solves this problem: <a href="http://serverfault.com/questions/737229/varnish-esi-streaming-response-is-it-possible-not-to-stream-the-response" target="_blank">Varnish ESI Streaming Response - Is it possible NOT to stream the response</a>
+ESI for Caddy solves this problem: <a href="http://serverfault.com/questions/737229/varnish-esi-streaming-response-is-it-possible-not-to-stream-the-response" target="_blank">Varnish ESI Streaming Response - Is it possible NOT to stream the response</a>
 
-CaddyESI solves this problem: <a href="http://www.eschrade.com/page/magento-esi-varnish-and-performance/" target="_blank">ESchrade - Kevin Schroeder - MAGENTO, ESI, VARNISH AND PERFORMANCE</a>
+ESI for Caddy solves this problem: <a href="http://www.eschrade.com/page/magento-esi-varnish-and-performance/" target="_blank">ESchrade - Kevin Schroeder - MAGENTO, ESI, VARNISH AND PERFORMANCE</a>
 
 #### BigPipe
 
