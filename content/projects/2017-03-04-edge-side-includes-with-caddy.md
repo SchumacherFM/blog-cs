@@ -179,4 +179,6 @@ How it works
 
 ## Download Caddy server incl. ESI support
 
+More details on [https://github.com/corestoreio/caddy-esi](https://github.com/corestoreio/caddy-esi)
+
 TODO ;-)
