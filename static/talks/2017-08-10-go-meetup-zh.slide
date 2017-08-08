@@ -1,0 +1,86 @@
+The VIII. Zurich Gophers Meetup
+
+10 Aug 2017
+
+Cyrill Schumacher
+Unic AG
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Agenda
+
+- Welcome
+- Job Openings
+- Talks / Outlook
+- 7:10 - 7:30 - Talk 1 - What's new in Go 1.9
+- 7:35 - 7:45 - Talk 2 - Michael Weibel - Very very small talk about a serialization library
+- 7:45 - 8:15 - Talk 3 - Axel Wagner - Gradual code repairs for everyone
+- 8:20 - 9:00 - Wrap up, round table discussions, questions, pair programming, social interaction
+
+* Welcome
+
+Thank you for coming! Glad to have you here for the VIII. Go meetup this time at Unic.
+
+Thank you Unic for hosting our meetup and sponsoring snacks and drinks!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Job Openings
+
+Who is looking for a job and who has some jobs?
+
+Speak now or talk to me after this presentation.
+
+https://www.unic.com/jobs
+
+* Conferences / Events
+
+- The Golang UK Conference; 16th, 17th & 18th August 2017, in London
+- GothamGo	2017 October 05-06; New York, USA; http://gothamgo.com/
+- The European Go conference (DotGo); Monday, November 6, 2017, in Paris
+- IX. Zurich Gophers Meetup End of November 2017
+- GopherCon Denver	2018 August 27-30; Denver, CO; http://gophercon.com
+
+.image 2017-08-10/NERDY.png _ 200
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Go 1.9 Release Date
+
+.image 2017-08-10/COMING_SOON_GOPHER.png
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Go 1.9 In Progress
+
+.image 2017-08-10/GO_BUILD.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Go 1.9 New Features
+
+- compiler changes (parallel compiling)
+- monotonic time
+- typealias (type T1 = T2) and inline branches(?)
+- "fused multiply and add" (FMA) To force the intermediate rounding, write float64(x*y) + z.
+- By popular request, ./... no longer matches packages in vendor directories
+- testing: way to list tests and benchmarks without running them
+
+* Go 1.9 Minor changes to the library
+
+- database/sql: Use a cached Stmt if available in Tx.Stmt. Prevents statements from being re-prepared each time Tx.Stmt is called.; Rows.Scan can now scan user-defined string types; The new DB.Conn method returns the new Conn type representing an exclusive connection to the database from the connection pool.
+- encoding/csv: new field Reader.ReuseRecord for improved performance.
+- sync.Mutex is now more fair. What?
+- text/template: handling of empty blocks same behaviour as in Go 1.7
+- math/bits: an integer bit twiddling library
+- sync.Map a concurrent map with amortized-constant-time loads, stores, and deletes
+- More details in the release notes
+
+* Thanks!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
