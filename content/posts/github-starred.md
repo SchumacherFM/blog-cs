@@ -154,3 +154,11 @@ List of all my starred repositories. Last update can be spotted by the date.
 # Page 35
 
 {{< ghStarred url="https://api.github.com/user/372027/starred?page=35" >}}
+
+# Page 36
+
+{{< ghStarred url="https://api.github.com/user/372027/starred?page=36" >}}
+
+# Page 37
+
+{{< ghStarred url="https://api.github.com/user/372027/starred?page=37" >}}
