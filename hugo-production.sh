@@ -22,10 +22,10 @@ static/assets/js/myblog.js > static/assets/js/all.js
 
 # yuicompressor --line-break 120 -o static/assets/js/all.min.js static/assets/js/all.js
 
-$HUGO -v --baseUrl="//cyrillschumacher.com" --cacheDir="./cache"
+$HUGO -v --baseUrl="//cyrillschumacher.com" --cacheDir="./cache" --destination="./public/"
 cp static/piwik public/
 cp static/*.* public/
 cp -R static/.well-known public/
 ln -s ../piwik public/piwik
-./syncFolders-push.sh
-git push
+#./syncFolders-push.sh
+#git push
