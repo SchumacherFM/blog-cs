@@ -13,7 +13,7 @@ url: magento2-list-of-all-dispatched-events
 
 This ongoing updated post, lists all dispatched events in Magento 2.0. An event cheat sheet.
 
-Current version: 2.0.13 / Feb 16, 2017
+Current version: 2.0.16 / Sept 26, 2017
 
 For Magento 2.1 see [here](magento-2.1-list-of-all-dispatched-events/).
 
@@ -31,12 +31,12 @@ Please use your browsers search function!
 
 # Events in the app folder
 
-{{< mage2_code tag="2.0.13" url="static/magento2/2.0_events_app.csv" sep="|" >}}
+{{< mage2_code tag="2.0.16" url="static/magento2/2.0_events_app.csv" sep="|" >}}
 
 # Events in the lib folder
 
-{{< mage2_code tag="2.0.13" url="static/magento2/2.0_events_lib.csv" sep="|" >}}
+{{< mage2_code tag="2.0.16" url="static/magento2/2.0_events_lib.csv" sep="|" >}}
 
 # JavaScript Varien Events
 
-{{< mage2_code tag="2.0.13" url="static/magento2/2.0_events_js.csv" sep="|" >}}
+{{< mage2_code tag="2.0.16" url="static/magento2/2.0_events_js.csv" sep="|" >}}
