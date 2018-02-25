@@ -1,0 +1,57 @@
+The X. Zurich Gophers Meetup
+
+1st Mar 2018
+
+Cyrill Schumacher
+advandoo AG - digital commerce
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Welcome
+
+Thank you for coming! Glad to have you here for the X. Go meetup this time at JOb Cloud.
+
+Thank you Job Could for hosting our meetup and sponsoring the location!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Agenda
+
+- Intro / Job Openings
+- Talks / Outlook
+- Special announcement for this meetup group 😱
+
+- 7:05 - 7:30 - Carlo Strub: Sisyphus Intelligent Junk Mail Handler
+- 7:30 - 7:55 - Tom Whiston - From the desktop to the cloud: go toolchains and docker
+- 8:00 - 9:00 - Wrap up, round table discussions, questions, pair programming, social interaction
+
+* Job Openings
+
+- Who is looking for a job?
+- Who has some open positions?
+- Please send me your job openings to present them here.
+
+* Go 1.10
+
+Congrats to the Go Team and all contributors for the release of Go "1.10" (as written in YAML style when using a CI ;-) )
+
+- Go test supports caching and calls vet
+- strings.Builder as some kind of replacement for bytes.Buffer
+- lots of other changes which most Gophers are already familiar
+
+Source: [[https://medium.com/@thuc/whats-changes-in-golang-1-10-d3022fbade3c]]
+
+* Next Meetup
+
+Our next Meetup will be held as soon as we have 2-3 talks ;-) or in 2-3 months.
+
+Would someone like to host the Meetup?
+
+* Let's go!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
