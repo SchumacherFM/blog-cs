@@ -131,7 +131,7 @@
 "lib/internal/Magento/Framework/View/Layout/Builder.php"|"132"|"layout_generate_blocks_after"|"$this->eventManager->dispatch(
     'layout_generate_blocks_after',
     ['full_action_name' => $this->request->getFullActionName(), 'layout' => $this->layout]);"
-"lib/internal/Magento/Framework/View/Layout/Generator/Block.php"|"140"|"core_layout_block_create_after"|"$this->eventManager->dispatch('core_layout_block_create_after', ['block' => $block]);"
+"lib/internal/Magento/Framework/View/Layout/Generator/Block.php"|"151"|"core_layout_block_create_after"|"$this->eventManager->dispatch('core_layout_block_create_after', ['block' => $block]);"
 "lib/internal/Magento/Framework/View/Layout.php"|"495"|"core_layout_render_element"|"$this->_eventManager->dispatch(
     'core_layout_render_element',
     ['element_name' => $name, 'layout' => $this, 'transport' => $this->_renderingOutput]);"

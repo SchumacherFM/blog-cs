@@ -53,10 +53,10 @@
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"858"|"model_delete_commit_after"|"$this->_eventManager->dispatch('model_delete_commit_after', ['object' => $this]);"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"859"|"_delete_commit_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_commit_after', $this->_getEventData());"
 "lib/internal/Magento/Framework/Model/AbstractModel.php"|"902"|"_clear"|"$this->_eventManager->dispatch($this->_eventPrefix . '_clear', $this->_getEventData());"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"531"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"533"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"583"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
-"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"585"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"559"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"561"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"611"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"613"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
 "lib/internal/Magento/Framework/Model/ResourceModel/Db/VersionControl/RelationComposite.php"|"50"|"_process_relation"|"$this->eventManager->dispatch(
     $object->getEventPrefix(). '_process_relation',
     [
