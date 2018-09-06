@@ -1,0 +1,57 @@
+The XI. Zurich Gophers Meetup
+
+6th Sept 2018
+
+Cyrill Schumacher
+advandoo AG - digital commerce
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Welcome
+
+Thank you for coming! Glad to have you here for the XI. Go meetup this time at BlockFactory.
+
+Thank you BlockFactory for hosting our meetup and sponsoring the location!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Agenda
+
+- Intro / Job Openings
+- Talks / Outlook
+- Special announcement for this meetup group 😱
+
+- 7:05 - 7:30 - Michael Stapelberg - router7 - https://github.com/rtr7/router7
+- 7:30 - 7:55 - Roberto Clapis: Have you ever wondered what really lies behind the "go" statement? Did you ever stop and think about differences between goroutines and standard operative system threads? Is there something you should know to avoid bugs or weird, unintended behaviours?
+- 7:55 - 8:30 - Axel Wagner - Go Pub Quiz
+- 8:30 - 9:00 - Wrap up, round table discussions, questions, pair programming, social interaction
+
+* Job Openings
+
+- Who is looking for a job?
+- Who has some open positions?
+- Please send me your job openings to present them here.
+
+* Go 1.11
+
+Congrats to the Go Team and all contributors for the release of Go 1.11.
+
+- There are no changes to the language specification.
+- Adds an experimental port to WebAssembly (js/wasm).
+- Adds preliminary support for a new concept called “modules,” an alternative to GOPATH with integrated support for versioning and package distribution.
+- For more details please see [[https://golang.org/doc/go1.11]]
+
+* Next Meetup
+
+Our next Meetup will be held as soon as we have 2-3 talks ;-) or in 2-3 months.
+
+Would someone like to host the Meetup?
+
+* Let's go!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
