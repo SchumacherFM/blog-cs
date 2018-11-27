@@ -1,0 +1,51 @@
+The XII. Zurich Gophers Meetup
+
+29th Nov 2018
+
+Cyrill Schumacher
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Welcome #golangzrh
+
+Thank you for coming! Glad to have you here for the XII. Go meetup this time at JobCloud.
+
+Thank you JobCloud for hosting our meetup and sponsoring the location!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Agenda
+
+- Intro / Job Openings
+- Talks / Outlook
+
+- 7:05 - 7:30 - Alexander from smallpdf.com - A Small Performance Improvement in math/big: Topics touched would be: internals of math/big, some math, performance stuff, benchmarks
+- 7:30 - 7:55 - Alexey Gokhberg - Towards heterogeneous programming in Go
+- 7:55 - 8:30 - Marcel van Lohuizen - "a new configuration language" or error pkg in x/exp
+- 8:30 - 9:00 - Wrap up, round table discussions, questions, pair programming, social interaction
+
+* Job Openings
+
+- Who is looking for a job?
+- Who has some open positions?
+- Please send me your job openings to present them here.
+
+- https://www.jobcloud.ch/c/en/join-us/open-positions/
+- https://migros-gruppe.jobs
+
+* Next Meetup
+
+Our next Meetup will be held as soon as we have 2-3 talks ;-) or beginning of March 2019.
+
+Would someone like to host the Meetup?
+
+* Let's go!
+
+Tweet with #golangzrh
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
