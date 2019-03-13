@@ -1,0 +1,59 @@
+The XIII. Zurich Gophers Meetup
+
+Pi-Day 2019
+
+Cyrill Schumacher
+Magazine zum Globus AG
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Welcome
+
+Thank you for coming! Glad to have you here for the XIII. Go meetup this time at tgim.work.
+
+Thank you Globus (my new employer) for hosting our meetup and sponsoring the location!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Agenda
+
+- Intro / Job Openings
+- Talks / Outlook
+
+- 7:05 - 7:45 - Tom Payne: github.com/twpayne/go-vfs and/or github.com/twpayne/chezmoi
+- 7:45 - 8:30 - Jan Halfar, bestbytes: Jaeger Tracing in the globus.ch shop and other discussions
+- 8:30 - 9:00 - Wrap up, round table discussions, questions, pair programming, social interaction
+
+* Job Openings
+
+- Who is looking for a job?
+- Who has some open positions?
+- Please send me your job openings to present them here.
+
+Globus is looking for Senior Go Developers to work on our Go-only eCommerce Microservice Store -> https://migros-gruppe.jobs
+
+* Go 1.12
+
+Congrats to the Go Team and all contributors for the release of Go 1.12. Some highlights are:
+
+- There are no changes to the language specification.
+- binary-only packages are getting deprecated
+- Runtime improvements
+- TLS 1.3, 
+- fmt: Maps are now printed in key-sorted order to ease testing
+- For more details please see [[https://golang.org/doc/go1.12]]
+
+* Next Meetup
+
+Our next Meetup will be held as soon as we have 2-3 talks ;-) or in 2-3 months.
+
+Would someone like to host the Meetup?
+
+* Let's go!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
