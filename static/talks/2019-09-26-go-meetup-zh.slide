@@ -1,0 +1,116 @@
+The XV. Zurich Gophers Meetup
+
+Cyrill Schumacher
+Magazine zum Globus AG
+cyrill@schumacher.fm
+https://github.com/SchumacherFM
+@SchumacherFM
+
+* Welcome
+
+Thank you for coming! Glad to have you here for the XV. Go meetup this time at Google.
+
+Thank you Google for hosting our meetup and sponsoring the location, food and drinks!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Agenda
+
+- Intro / Job Openings
+- Talks / Outlook
+
+- 7:05 - 7:15 - Cyrill - What's new in Go 1.13
+- 7:15 - 7:45 - Roberto Clapis: go-fuzz
+- 7:45 - 8:15 - Alexey Gokhberg: Project Arhat: implementation of a machine learning framework in Go
+- 8:15 - 9:00 - Wrap up, round table discussions, questions, social interaction
+
+* Job Openings
+
+- Who is looking for a job?
+- Who has some open positions?
+- Please send me your job openings to present them here.
+
+* Next Meetup
+
+Our next Meetup will be held on the 28th of November.
+
+	Van Riper sent a message from the Go Developers Network: After the recent
+	Zoom call, the consensus was to organise a month long celebration of Go's
+	10th Anniversary in November (the 10th). Your commitment is simply to plan a
+	meetup for your group sometime in November. Working with Go Bridge, I will be
+	arranging for special Go 10th Anniversary Swag that every participating Go
+	developer meetup will be receiving to give out at their celebrations.
+
+Would someone like to host the Meetup?
+The event will be soon listed on meetup.com.
+
+* Let's go!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+* Go 1.13 What's new?
+
+.image images/unicorn.png _ 400
+
+* Go 1.13 Language changes
+
+- Generics (aka contracts)
+- Exceptions (try)
+- Metaprogramming
+- Borrow checking
+- Monads
+
+* Go 1.13 Language changes (for real)
+
+- binary integer literals: 0b1011 (Issue 19308)
+- octal integer literals: 0o644 (Issue 12711)
+- hexadecimal floating point: 0x1p0 (Issue 29008)
+- digital separator: 0b1001_0110 (Issue 28493)
+- signed shift counts (Issue 19113)
+
+* Go 1.13 Major changes
+
+- Error values: Is/As/Unwrap (Issue 29934)
+- TLS 1.3 enabled by default (CL 163081)
+- Support for Ed25519 in TLS (CL 177698)
+- GO111MODULE=auto not longer cares about being in $GOPATH/src (Issue 31857)
+- Third-party imports and multiple files on play.golang.org (Issue 31944)
+- Reproducible builds (independent of build path) (Issue 16860)
+- cmd/compile's escape analysis rewritten (Issue 23109)
+- net/http: introduces 15 sec server TCP keep-alives by default
+
+* Go 1.13 Minor features (1/2)
+
+- bytes,strings: add ToValidUTF8 (Issue 25805)
+- Let 'go build' write many binaries (Issue 14295)
+- More of math/bits is constant-time (Issue 31267)
+- go/token: add IsIdentifier, IsKeyword, IsExported (Issue 30064)
+- Don't register flags in testing.init (Issue 21051)
+- FAIL loudly when testing many packages (Issue 30507)
+- time.Duration ms and us methods (Issue 28564)
+- stop rounding testing.B.N (CL 112155)
+- add testing.B.ReportMetric (CL 166717)
+- race randomizes package init order (CL 170318)
+
+* Go 1.13 Minor features (2/2)
+
+- sql.NullTime and sql.NullInt32 (CL 170699,174178)
+- go build -trimpath
+- Out of range panic: runtime error: index out of range [3] with length 1
+
+* Go 1.13 Performance
+
+- go env is 2x as fast (Issue 29382)
+- context no longer imports fmt (CL 169080)
+- initialise maps incrementally (Issue 26552)
+- cmd/go loads packages in parallel (Issue 29758)
+- sync.Pool clears less often and causes less GC stop-the-world (Issue 22950,22331)
+- JSON decoder 15-20% faster (Issue 28923)
+- TrimSpace 4x faster on ASCII (Issue 29122)
+- other wins: regexp, bounds check elimination, mid-stack inlining, runtime
+- Faster defer
+- Divisibility check optimizations: `n % C == 0` is now 2x faster for constant C
