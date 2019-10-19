@@ -1,7 +1,7 @@
 #!/bin/bash
 HUGO=./hugo_snapshot_linux_amd64
 
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
     HUGO=./hugo_snapshot_darwin_amd64
 fi
 # Read this:

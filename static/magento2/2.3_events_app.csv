@@ -1,5 +1,5 @@
-"app/code/Magento/Eav/Model/Entity/Collection/AbstractCollection.php"|"916"|"eav_collection_abstract_load_before"|"$this->_eventManager->dispatch('eav_collection_abstract_load_before', ['collection' => $this]);"
-"app/code/Magento/Eav/Block/Adminhtml/Attribute/Edit/Main/AbstractMain.php"|"274"|"adminhtml_block_eav_attribute_edit_form_init"|"$this->_eventManager->dispatch(
+"app/code/Magento/Eav/Model/Entity/Collection/AbstractCollection.php"|"919"|"eav_collection_abstract_load_before"|"$this->_eventManager->dispatch('eav_collection_abstract_load_before', ['collection' => $this]);"
+"app/code/Magento/Eav/Block/Adminhtml/Attribute/Edit/Main/AbstractMain.php"|"271"|"adminhtml_block_eav_attribute_edit_form_init"|"$this->_eventManager->dispatch(
     'adminhtml_block_eav_attribute_edit_form_init',
     ['form' => $this->getForm()]);"
 "app/code/Magento/Authorizenet/Controller/Directpost/Payment/Place.php"|"138"|"checkout_directpost_placeOrder"|"$this->eventManager->dispatch(
@@ -11,20 +11,20 @@
 "app/code/Magento/Authorizenet/Model/Directpost.php"|"840"|"order_cancel_after"|"$this->_eventManager->dispatch('order_cancel_after', ['order' => $order ]);"
 "app/code/Magento/PageCache/Model/Cache/Type.php"|"51"|"adminhtml_cache_refresh_type"|"$this->eventManager->dispatch('adminhtml_cache_refresh_type');"
 "app/code/Magento/PageCache/Model/Layout/DepersonalizePlugin.php"|"55"|"depersonalize_clear_session"|"$this->eventManager->dispatch('depersonalize_clear_session');"
-"app/code/Magento/Sales/Controller/Adminhtml/Order/AddressSave.php"|"111"|"admin_sales_order_address_update"|"$this->_eventManager->dispatch(
+"app/code/Magento/Sales/Controller/Adminhtml/Order/AddressSave.php"|"124"|"admin_sales_order_address_update"|"$this->_eventManager->dispatch(
     'admin_sales_order_address_update',
     [
         'order_id' => $address->getParentId()
     ]);"
-"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"154"|"adminhtml_sales_order_create_process_data_before"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_data_before', $eventData);"
-"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"213"|"adminhtml_sales_order_create_process_item_before"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_item_before', $eventData);"
-"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"261"|"adminhtml_sales_order_create_process_item_after"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_item_after', $eventData);"
-"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"272"|"adminhtml_sales_order_create_process_data"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_data', $eventData);"
+"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"162"|"adminhtml_sales_order_create_process_data_before"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_data_before', $eventData);"
+"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"221"|"adminhtml_sales_order_create_process_item_before"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_item_before', $eventData);"
+"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"270"|"adminhtml_sales_order_create_process_item_after"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_item_after', $eventData);"
+"app/code/Magento/Sales/Controller/Adminhtml/Order/Create.php"|"281"|"adminhtml_sales_order_create_process_data"|"$this->_eventManager->dispatch('adminhtml_sales_order_create_process_data', $eventData);"
 "app/code/Magento/Sales/Controller/Adminhtml/Order/CreditmemoLoader.php"|"234"|"adminhtml_sales_order_creditmemo_register_before"|"$this->eventManager->dispatch(
     'adminhtml_sales_order_creditmemo_register_before',
     ['creditmemo' => $creditmemo, 'input' => $this->getCreditmemo()]);"
 "app/code/Magento/Sales/Model/Order/Creditmemo/RefundOperation.php"|"120"|"sales_order_creditmemo_refund"|"$this->eventManager->dispatch('sales_order_creditmemo_refund', ['creditmemo' => $creditmemo]);"
-"app/code/Magento/Sales/Model/Order/Creditmemo/Sender/EmailSender.php"|"117"|"email_creditmemo_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Creditmemo/Sender/EmailSender.php"|"120"|"email_creditmemo_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_creditmemo_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
 "app/code/Magento/Sales/Model/Order/Payment/Transaction.php"|"900"|"_html_txn_id"|"$this->_eventManager->dispatch($this->_eventPrefix . '_html_txn_id', $this->_getEventData());"
@@ -37,14 +37,14 @@
 "app/code/Magento/Sales/Model/Order/Payment.php"|"541"|"sales_order_payment_cancel_invoice"|"$this->_eventManager->dispatch(
     'sales_order_payment_cancel_invoice',
     ['payment' => $this, 'invoice' => $invoice]);"
-"app/code/Magento/Sales/Model/Order/Payment.php"|"597"|"sales_order_payment_void"|"$this->_eventManager->dispatch('sales_order_payment_void', ['payment' => $this, 'invoice' => $document]);"
-"app/code/Magento/Sales/Model/Order/Payment.php"|"740"|"sales_order_payment_refund"|"$this->_eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Payment.php"|"595"|"sales_order_payment_void"|"$this->_eventManager->dispatch('sales_order_payment_void', ['payment' => $this, 'invoice' => $document]);"
+"app/code/Magento/Sales/Model/Order/Payment.php"|"743"|"sales_order_payment_refund"|"$this->_eventManager->dispatch(
     'sales_order_payment_refund',
     ['payment' => $this, 'creditmemo' => $creditmemo]);"
-"app/code/Magento/Sales/Model/Order/Payment.php"|"851"|"sales_order_payment_cancel_creditmemo"|"$this->_eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Payment.php"|"854"|"sales_order_payment_cancel_creditmemo"|"$this->_eventManager->dispatch(
     'sales_order_payment_cancel_creditmemo',
     ['payment' => $this, 'creditmemo' => $creditmemo]);"
-"app/code/Magento/Sales/Model/Order/Payment.php"|"881"|"sales_order_payment_cancel"|"$this->_eventManager->dispatch('sales_order_payment_cancel', ['payment' => $this]);"
+"app/code/Magento/Sales/Model/Order/Payment.php"|"884"|"sales_order_payment_cancel"|"$this->_eventManager->dispatch('sales_order_payment_cancel', ['payment' => $this]);"
 "app/code/Magento/Sales/Model/Order/Invoice.php"|"379"|"sales_order_invoice_pay"|"$this->_eventManager->dispatch('sales_order_invoice_pay', [$this->_eventObject => $this]);"
 "app/code/Magento/Sales/Model/Order/Invoice.php"|"453"|"sales_order_invoice_cancel"|"$this->_eventManager->dispatch('sales_order_invoice_cancel', [$this->_eventObject => $this]);"
 "app/code/Magento/Sales/Model/Order/Invoice.php"|"667"|"sales_order_invoice_register"|"$this->_eventManager->dispatch(
@@ -58,44 +58,44 @@
     ]);"
 "app/code/Magento/Sales/Model/Order/Address/Renderer.php"|"58"|"customer_address_format"|"$this->eventManager->dispatch('customer_address_format', ['type' => $formatType, 'address' => $address]);"
 "app/code/Magento/Sales/Model/Order/Item.php"|"408"|"sales_order_item_cancel"|"$this->_eventManager->dispatch('sales_order_item_cancel', ['item' => $this]);"
-"app/code/Magento/Sales/Model/Order/Shipment/Sender/EmailSender.php"|"117"|"email_shipment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Shipment/Sender/EmailSender.php"|"120"|"email_shipment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_shipment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/OrderCommentSender.php"|"77"|"email_order_comment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/OrderCommentSender.php"|"79"|"email_order_comment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_order_comment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/ShipmentSender.php"|"122"|"email_shipment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/ShipmentSender.php"|"124"|"email_shipment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_shipment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
 "app/code/Magento/Sales/Model/Order/Email/Sender/OrderSender.php"|"139"|"email_order_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_order_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject, 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/CreditmemoSender.php"|"122"|"email_creditmemo_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/CreditmemoSender.php"|"124"|"email_creditmemo_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_creditmemo_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/CreditmemoCommentSender.php"|"80"|"email_creditmemo_comment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/CreditmemoCommentSender.php"|"82"|"email_creditmemo_comment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_creditmemo_comment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/InvoiceCommentSender.php"|"80"|"email_invoice_comment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/InvoiceCommentSender.php"|"82"|"email_invoice_comment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_invoice_comment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/ShipmentCommentSender.php"|"80"|"email_shipment_comment_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/ShipmentCommentSender.php"|"82"|"email_shipment_comment_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_shipment_comment_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Email/Sender/InvoiceSender.php"|"122"|"email_invoice_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Email/Sender/InvoiceSender.php"|"124"|"email_invoice_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_invoice_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Sales/Model/Order/Invoice/Sender/EmailSender.php"|"117"|"email_invoice_set_template_vars_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Order/Invoice/Sender/EmailSender.php"|"120"|"email_invoice_set_template_vars_before"|"$this->eventManager->dispatch(
     'email_invoice_set_template_vars_before',
     ['sender' => $this, 'transport' => $transportObject->getData(), 'transportObject' => $transportObject]);"
 "app/code/Magento/Sales/Model/Order/Invoice/PayOperation.php"|"65"|"sales_order_invoice_register"|"$this->eventManager->dispatch(
     'sales_order_invoice_register',
     ['invoice' => $invoice, 'order' => $order]);"
-"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"563"|"sales_convert_order_to_quote"|"$this->_eventManager->dispatch('sales_convert_order_to_quote', ['order' => $order, 'quote' => $quote]);"
-"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"675"|"sales_convert_order_item_to_quote_item"|"$this->_eventManager->dispatch(
+"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"569"|"sales_convert_order_to_quote"|"$this->_eventManager->dispatch('sales_convert_order_to_quote', ['order' => $order, 'quote' => $quote]);"
+"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"682"|"sales_convert_order_item_to_quote_item"|"$this->_eventManager->dispatch(
     'sales_convert_order_item_to_quote_item',
     ['order_item' => $orderItem, 'quote_item' => $item]);"
-"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"1957"|"checkout_submit_all_after"|"$this->_eventManager->dispatch('checkout_submit_all_after', ['order' => $order, 'quote' => $quote]);"
+"app/code/Magento/Sales/Model/AdminOrder/Create.php"|"1966"|"checkout_submit_all_after"|"$this->_eventManager->dispatch('checkout_submit_all_after', ['order' => $order, 'quote' => $quote]);"
 "app/code/Magento/Sales/Model/Order.php"|"1178"|"sales_order_place_before"|"$this->_eventManager->dispatch('sales_order_place_before', ['order' => $this]);"
 "app/code/Magento/Sales/Model/Order.php"|"1180"|"sales_order_place_after"|"$this->_eventManager->dispatch('sales_order_place_after', ['order' => $this]);"
 "app/code/Magento/Sales/Model/Order.php"|"1232"|"order_cancel_after"|"$this->_eventManager->dispatch('order_cancel_after', ['order' => $this]);"
@@ -106,7 +106,7 @@
     $this->_eventPrefix . '_dev_grid_async_indexing_' . $state,
     $this->_getEventData());"
 "app/code/Magento/Sales/Model/Rss/NewOrder.php"|"114"|"rss_order_new_collection_select"|"$this->eventManager->dispatch('rss_order_new_collection_select', ['collection' => $collection]);"
-"app/code/Magento/Sales/Model/Service/OrderService.php"|"256"|"sales_order_state_change_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Sales/Model/Service/OrderService.php"|"270"|"sales_order_state_change_before"|"$this->eventManager->dispatch(
     'sales_order_state_change_before',
     ['order' => $this, 'transport' => $transport]);"
 "app/code/Magento/Sales/Model/ResourceModel/Sale/Collection.php"|"166"|"sales_sale_collection_query_before"|"$this->_eventManager->dispatch('sales_sale_collection_query_before', ['collection' => $this]);"
@@ -128,17 +128,17 @@
         'object' => $object,
         'attribute' => $attribute
     ]);"
-"app/code/Magento/Sales/Block/Adminhtml/Reorder/Renderer/Action.php"|"59"|"adminhtml_customer_orders_add_action_renderer"|"$this->_eventManager->dispatch(
+"app/code/Magento/Sales/Block/Adminhtml/Reorder/Renderer/Action.php"|"61"|"adminhtml_customer_orders_add_action_renderer"|"$this->_eventManager->dispatch(
     'adminhtml_customer_orders_add_action_renderer',
     ['renderer' => $this, 'row' => $row]);"
-"app/code/Magento/Persistent/Observer/CheckExpirePersistentQuoteObserver.php"|"113"|"persistent_session_expired"|"$this->_eventManager->dispatch('persistent_session_expired');"
+"app/code/Magento/Persistent/Observer/CheckExpirePersistentQuoteObserver.php"|"131"|"persistent_session_expired"|"$this->_eventManager->dispatch('persistent_session_expired');"
+"app/code/Magento/Persistent/Observer/CheckExpirePersistentQuoteObserver.php"|"145"|"persistent_session_expired"|"$this->_eventManager->dispatch('persistent_session_expired');"
 "app/code/Magento/Persistent/Controller/Index/UnsetCookie.php"|"36"|"persistent_session_expired"|"$this->_eventManager->dispatch('persistent_session_expired');"
 "app/code/Magento/Translation/Model/Inline/CacheManager.php"|"61"|"adminhtml_cache_flush_system"|"$this->eventManager->dispatch('adminhtml_cache_flush_system');"
-"app/code/Magento/Config/Controller/Adminhtml/System/Config/Save.php"|"163"|"admin_system_config_save"|"$this->_eventManager->dispatch('admin_system_config_save', [
-    'configData' => $configData,
-    'request' => $this->getRequest()
-]);"
-"app/code/Magento/Config/Model/Config.php"|"213"|"NO_MATCH"|"$this->_eventManager->dispatch(
+"app/code/Magento/Config/Controller/Adminhtml/System/Config/Save.php"|"227"|"admin_system_config_save"|"$this->_eventManager->dispatch(
+    'admin_system_config_save',
+    ['configData' => $configData, 'request' => $this->getRequest()]);"
+"app/code/Magento/Config/Model/Config.php"|"222"|"NO_MATCH"|"$this->_eventManager->dispatch(
     'admin_system_config_changed_section_{$this->getSection()}',
     [
         'website' => $this->getWebsite(),
@@ -148,26 +148,26 @@
 "app/code/Magento/Config/Block/System/Config/Form/Fieldset/Modules/DisableOutput.php"|"80"|"adminhtml_system_config_advanced_disableoutput_render_before"|"$this->_eventManager->dispatch(
     'adminhtml_system_config_advanced_disableoutput_render_before',
     ['modules' => $dispatchResult]);"
-"app/code/Magento/Quote/Model/QuoteManagement.php"|"363"|"checkout_submit_before"|"$this->eventManager->dispatch('checkout_submit_before', ['quote' => $quote]);"
-"app/code/Magento/Quote/Model/QuoteManagement.php"|"379"|"checkout_submit_all_after"|"$this->eventManager->dispatch('checkout_submit_all_after', ['order' => $order, 'quote' => $quote]);"
-"app/code/Magento/Quote/Model/QuoteManagement.php"|"508"|"sales_model_service_quote_submit_before"|"$this->eventManager->dispatch(
+"app/code/Magento/Quote/Model/QuoteManagement.php"|"403"|"checkout_submit_before"|"$this->eventManager->dispatch('checkout_submit_before', ['quote' => $quote]);"
+"app/code/Magento/Quote/Model/QuoteManagement.php"|"419"|"checkout_submit_all_after"|"$this->eventManager->dispatch('checkout_submit_all_after', ['order' => $order, 'quote' => $quote]);"
+"app/code/Magento/Quote/Model/QuoteManagement.php"|"549"|"sales_model_service_quote_submit_before"|"$this->eventManager->dispatch(
     'sales_model_service_quote_submit_before',
     [
 'order' => $order,
 'quote' => $quote
     ]);"
-"app/code/Magento/Quote/Model/QuoteManagement.php"|"518"|"sales_model_service_quote_submit_success"|"$this->eventManager->dispatch(
+"app/code/Magento/Quote/Model/QuoteManagement.php"|"559"|"sales_model_service_quote_submit_success"|"$this->eventManager->dispatch(
     'sales_model_service_quote_submit_success',
     [
         'order' => $order,
         'quote' => $quote
     ]);"
-"app/code/Magento/Quote/Model/QuoteManagement.php"|"532"|"sales_model_service_quote_submit_failure"|"$this->eventManager->dispatch(
+"app/code/Magento/Quote/Model/QuoteManagement.php"|"683"|"sales_model_service_quote_submit_failure"|"$this->eventManager->dispatch(
     'sales_model_service_quote_submit_failure',
     [
-        'order'     => $order,
-        'quote'     => $quote,
-        'exception' => $e
+        'order' => $order,
+        'quote' => $quote,
+        'exception' => $e,
     ]);"
 "app/code/Magento/Quote/Model/Quote/TotalsCollector.php"|"130"|"sales_quote_collect_totals_before"|"$this->eventManager->dispatch(
     'sales_quote_collect_totals_before',
@@ -199,13 +199,13 @@
 "app/code/Magento/Quote/Model/Quote/Item.php"|"440"|"sales_quote_item_set_product"|"$this->_eventManager->dispatch(
     'sales_quote_item_set_product',
     ['product' => $product, 'quote_item' => $this]);"
-"app/code/Magento/Quote/Model/Quote.php"|"1546"|"sales_quote_remove_item"|"$this->_eventManager->dispatch('sales_quote_remove_item', ['quote_item' => $item]);"
-"app/code/Magento/Quote/Model/Quote.php"|"1581"|"sales_quote_add_item"|"$this->_eventManager->dispatch('sales_quote_add_item', ['quote_item' => $item]);"
-"app/code/Magento/Quote/Model/Quote.php"|"1682"|"sales_quote_product_add_after"|"$this->_eventManager->dispatch('sales_quote_product_add_after', ['items' => $items]);"
-"app/code/Magento/Quote/Model/Quote.php"|"2371"|"_merge_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/Quote/Model/Quote.php"|"1558"|"sales_quote_remove_item"|"$this->_eventManager->dispatch('sales_quote_remove_item', ['quote_item' => $item]);"
+"app/code/Magento/Quote/Model/Quote.php"|"1593"|"sales_quote_add_item"|"$this->_eventManager->dispatch('sales_quote_add_item', ['quote_item' => $item]);"
+"app/code/Magento/Quote/Model/Quote.php"|"1694"|"sales_quote_product_add_after"|"$this->_eventManager->dispatch('sales_quote_product_add_after', ['items' => $items]);"
+"app/code/Magento/Quote/Model/Quote.php"|"2383"|"_merge_before"|"$this->_eventManager->dispatch(
     $this->_eventPrefix . '_merge_before',
     [$this->_eventObject => $this, 'source' => $quote]);"
-"app/code/Magento/Quote/Model/Quote.php"|"2412"|"_merge_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Quote/Model/Quote.php"|"2424"|"_merge_after"|"$this->_eventManager->dispatch(
     $this->_eventPrefix . '_merge_after',
     [$this->_eventObject => $this, 'source' => $quote]);"
 "app/code/Magento/Quote/Model/Cart/Totals/ItemConverter.php"|"79"|"items_additional_data"|"$this->eventManager->dispatch('items_additional_data', ['item' => $item]);"
@@ -269,11 +269,11 @@ AbstractDataAssignObserver"
 "app/code/Magento/CatalogSearch/Model/ResourceModel/Fulltext.php"|"92"|"catalogsearch_reset_search_result"|"$this->_eventManager->dispatch('catalogsearch_reset_search_result', ['store_id' => $storeId]);"
 "app/code/Magento/Catalog/Plugin/Model/Product/Action/UpdateAttributesFlushCache.php"|"47"|"clean_cache_by_tags"|"$this->eventManager->dispatch('clean_cache_by_tags', ['object' => $this->cacheContext]);"
 "app/code/Magento/Catalog/Plugin/Model/Product/Action/UpdateAttributesFlushCache.php"|"60"|"clean_cache_by_tags"|"$this->eventManager->dispatch('clean_cache_by_tags', ['object' => $this->cacheContext]);"
-"app/code/Magento/Catalog/Controller/Category/View.php"|"149"|"catalog_controller_category_init_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Controller/Category/View.php"|"163"|"catalog_controller_category_init_after"|"$this->_eventManager->dispatch(
     'catalog_controller_category_init_after',
     ['category' => $category, 'controller_action' => $this]);"
-"app/code/Magento/Catalog/Controller/Product/Compare/Add.php"|"48"|"catalog_product_compare_add_product"|"$this->_eventManager->dispatch('catalog_product_compare_add_product', ['product' => $product]);"
-"app/code/Magento/Catalog/Controller/Product/Compare/Remove.php"|"51"|"catalog_product_compare_remove_product"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Controller/Product/Compare/Add.php"|"110"|"catalog_product_compare_add_product"|"$this->_eventManager->dispatch('catalog_product_compare_add_product', ['product' => $product]);"
+"app/code/Magento/Catalog/Controller/Product/Compare/Remove.php"|"57"|"catalog_product_compare_remove_product"|"$this->_eventManager->dispatch(
     'catalog_product_compare_remove_product',
     ['product' => $item]);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Category.php"|"148"|"category_prepare_ajax_response"|"$this->_eventManager->dispatch(
@@ -283,23 +283,22 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Controller/Adminhtml/Category/Save.php"|"176"|"catalog_category_prepare_save"|"$this->_eventManager->dispatch(
     'catalog_category_prepare_save',
     ['category' => $category, 'request' => $this->getRequest()]);"
-"app/code/Magento/Catalog/Controller/Adminhtml/Product/Gallery/Upload.php"|"60"|"catalog_product_gallery_upload_image_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Controller/Adminhtml/Product/Gallery/Upload.php"|"80"|"catalog_product_gallery_upload_image_after"|"$this->_eventManager->dispatch(
     'catalog_product_gallery_upload_image_after',
     ['result' => $result, 'action' => $this]);"
-"app/code/Magento/Catalog/Controller/Adminhtml/Product/Action/Attribute/Save.php"|"193"|"catalog_product_to_website_change"|"$this->_eventManager->dispatch('catalog_product_to_website_change', ['products' => $productIds]);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Product/Edit.php"|"66"|"catalog_product_edit_action"|"$this->_eventManager->dispatch('catalog_product_edit_action', ['product' => $product]);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Product/NewAction.php"|"64"|"catalog_product_new_action"|"$this->_eventManager->dispatch('catalog_product_new_action', ['product' => $product]);"
 "app/code/Magento/Catalog/Controller/Adminhtml/Product/Save.php"|"154"|"controller_action_catalog_product_save_entity_after"|"$this->_eventManager->dispatch(
     'controller_action_catalog_product_save_entity_after',
     ['controller' => $this, 'product' => $product]);"
-"app/code/Magento/Catalog/Model/Category.php"|"423"|"_move_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_move_before', $eventParams);"
-"app/code/Magento/Catalog/Model/Category.php"|"425"|"_move_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_move_after', $eventParams);"
-"app/code/Magento/Catalog/Model/Category.php"|"434"|"category_move"|"$this->_eventManager->dispatch('category_move', $eventParams);"
-"app/code/Magento/Catalog/Model/Category.php"|"445"|"clean_cache_by_tags"|"$this->_eventManager->dispatch('clean_cache_by_tags', ['object' => $this]);"
-"app/code/Magento/Catalog/Model/Product.php"|"560"|"_validate_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_validate_before', $this->_getEventData());"
-"app/code/Magento/Catalog/Model/Product.php"|"562"|"_validate_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_validate_after', $this->_getEventData());"
-"app/code/Magento/Catalog/Model/Product.php"|"1688"|"catalog_product_is_salable_before"|"$this->_eventManager->dispatch('catalog_product_is_salable_before', ['product' => $this]);"
-"app/code/Magento/Catalog/Model/Product.php"|"1693"|"catalog_product_is_salable_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/Category.php"|"438"|"_move_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_move_before', $eventParams);"
+"app/code/Magento/Catalog/Model/Category.php"|"440"|"_move_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_move_after', $eventParams);"
+"app/code/Magento/Catalog/Model/Category.php"|"449"|"category_move"|"$this->_eventManager->dispatch('category_move', $eventParams);"
+"app/code/Magento/Catalog/Model/Category.php"|"460"|"clean_cache_by_tags"|"$this->_eventManager->dispatch('clean_cache_by_tags', ['object' => $this]);"
+"app/code/Magento/Catalog/Model/Product.php"|"575"|"_validate_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_validate_before', $this->_getEventData());"
+"app/code/Magento/Catalog/Model/Product.php"|"577"|"_validate_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_validate_after', $this->_getEventData());"
+"app/code/Magento/Catalog/Model/Product.php"|"1748"|"catalog_product_is_salable_before"|"$this->_eventManager->dispatch('catalog_product_is_salable_before', ['product' => $this]);"
+"app/code/Magento/Catalog/Model/Product.php"|"1753"|"catalog_product_is_salable_after"|"$this->_eventManager->dispatch(
     'catalog_product_is_salable_after',
     ['product' => $this, 'salable' => $object]);"
 "app/code/Magento/Catalog/Model/Rss/Product/NotifyStock.php"|"73"|"rss_catalog_notify_stock_collection_select"|"$this->eventManager->dispatch(
@@ -309,18 +308,19 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Model/Product/Action.php"|"90"|"catalog_product_attribute_update_before"|"$this->_eventManager->dispatch(
     'catalog_product_attribute_update_before',
     ['attributes_data' => &$attrData, 'product_ids' => &$productIds, 'store_id' => &$storeId]);"
-"app/code/Magento/Catalog/Model/Product/Type/Price.php"|"178"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch('catalog_product_get_final_price', ['product' => $product, 'qty' => $qty]);"
+"app/code/Magento/Catalog/Model/Product/Action.php"|"172"|"catalog_product_to_website_change"|"$this->_eventManager->dispatch('catalog_product_to_website_change', ['products' => $productIds]);"
+"app/code/Magento/Catalog/Model/Product/Type/Price.php"|"180"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch('catalog_product_get_final_price', ['product' => $product, 'qty' => $qty]);"
 "app/code/Magento/Catalog/Model/Product/Type/AbstractType.php"|"611"|"NO_MATCH"|"$this->_eventManager->dispatch(
     $eventName,
     ['transport' => $transport, 'buy_request' => $buyRequest, 'product' => $product]);"
 "app/code/Magento/Catalog/Model/Indexer/Product/Category/Action/Rows.php"|"92"|"clean_cache_by_tags"|"$this->eventManager->dispatch('clean_cache_by_tags', ['object' => $this->cacheContext]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Category.php"|"457"|"catalog_category_change_products"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Category.php"|"459"|"catalog_category_change_products"|"$this->_eventManager->dispatch(
     'catalog_category_change_products',
     ['category' => $category, 'product_ids' => $productIds]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Category.php"|"1088"|"catalog_category_delete_after_done"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Category.php"|"1090"|"catalog_category_delete_after_done"|"$this->_eventManager->dispatch(
     'catalog_category_delete_after_done',
     ['product' => $object, 'category' => $object]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product.php"|"301"|"catalog_product_delete_after_done"|"$this->eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Product.php"|"304"|"catalog_product_delete_after_done"|"$this->eventManager->dispatch(
     'catalog_product_delete_after_done',
     ['product' => $object]);"
 "app/code/Magento/Catalog/Model/ResourceModel/Category/Flat/Collection.php"|"145"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
@@ -331,18 +331,18 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Model/ResourceModel/Category/Flat.php"|"212"|"catalog_category_tree_init_inactive_category_ids"|"$this->_eventManager->dispatch('catalog_category_tree_init_inactive_category_ids', ['tree' => $this]);"
 "app/code/Magento/Catalog/Model/ResourceModel/Category/Flat.php"|"301"|"catalog_category_flat_loadnodes_before"|"$this->_eventManager->dispatch('catalog_category_flat_loadnodes_before', ['select' => $select]);"
 "app/code/Magento/Catalog/Model/ResourceModel/Category/Tree.php"|"257"|"catalog_category_tree_init_inactive_category_ids"|"$this->_eventManager->dispatch('catalog_category_tree_init_inactive_category_ids', ['tree' => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"176"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"187"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"388"|"_add_is_active_filter"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"175"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
+"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"186"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
+"app/code/Magento/Catalog/Model/ResourceModel/Category/Collection.php"|"387"|"_add_is_active_filter"|"$this->_eventManager->dispatch(
     $this->_eventPrefix . '_add_is_active_filter',
     [$this->_eventObject => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Compare/Item/Collection.php"|"399"|"catalog_product_compare_item_collection_clear"|"$this->_eventManager->dispatch('catalog_product_compare_item_collection_clear');"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"424"|"catalog_prepare_price_select"|"$this->_eventManager->dispatch('catalog_prepare_price_select', $eventArgs);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"691"|"catalog_product_collection_load_after"|"$this->_eventManager->dispatch('catalog_product_collection_load_after', ['collection' => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"1295"|"catalog_product_collection_before_add_count_to_categories"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Compare/Item/Collection.php"|"400"|"catalog_product_compare_item_collection_clear"|"$this->_eventManager->dispatch('catalog_product_compare_item_collection_clear');"
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"446"|"catalog_prepare_price_select"|"$this->_eventManager->dispatch('catalog_prepare_price_select', $eventArgs);"
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"713"|"catalog_product_collection_load_after"|"$this->_eventManager->dispatch('catalog_product_collection_load_after', ['collection' => $this]);"
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"1317"|"catalog_product_collection_before_add_count_to_categories"|"$this->_eventManager->dispatch(
     'catalog_product_collection_before_add_count_to_categories',
     ['collection' => $this]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"2058"|"catalog_product_collection_apply_limitations_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Collection.php"|"2040"|"catalog_product_collection_apply_limitations_after"|"$this->_eventManager->dispatch(
     'catalog_product_collection_apply_limitations_after',
     ['collection' => $this]);"
 "app/code/Magento/Catalog/Model/ResourceModel/Product/Indexer/Eav/AbstractEav.php"|"208"|"prepare_catalog_product_index_select"|"$this->_eventManager->dispatch(
@@ -377,7 +377,7 @@ AbstractDataAssignObserver"
 'website_field' => new \Zend_Db_Expr('cs.website_id'),
 'store_field' => new \Zend_Db_Expr('cs.store_id'),
     ]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Indexer/Price/DefaultPrice.php"|"489"|"prepare_catalog_product_index_select"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Indexer/Price/DefaultPrice.php"|"496"|"prepare_catalog_product_index_select"|"$this->_eventManager->dispatch(
     'prepare_catalog_product_index_select',
     [
 'select' => $select,
@@ -385,7 +385,7 @@ AbstractDataAssignObserver"
 'website_field' => new \Zend_Db_Expr('cw.website_id'),
 'store_field' => new \Zend_Db_Expr('cs.store_id'),
     ]);"
-"app/code/Magento/Catalog/Model/ResourceModel/Product/Indexer/Price/Query/BaseFinalPrice.php"|"234"|"prepare_catalog_product_index_select"|"$this->eventManager->dispatch(
+"app/code/Magento/Catalog/Model/ResourceModel/Product/Indexer/Price/Query/BaseFinalPrice.php"|"233"|"prepare_catalog_product_index_select"|"$this->eventManager->dispatch(
     'prepare_catalog_product_index_select',
     [
 'select' => $select,
@@ -393,10 +393,10 @@ AbstractDataAssignObserver"
 'website_field' => new ColumnValueExpression('pw.website_id'),
 'store_field' => new ColumnValueExpression('cwd.default_store_id'),
     ]);"
-"app/code/Magento/Catalog/Helper/Product.php"|"415"|"catalog_controller_product_init_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Helper/Product.php"|"420"|"catalog_controller_product_init_before"|"$this->_eventManager->dispatch(
     'catalog_controller_product_init_before',
     ['controller_action' => $controller, 'params' => $params]);"
-"app/code/Magento/Catalog/Helper/Product.php"|"465"|"catalog_controller_product_init_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Helper/Product.php"|"470"|"catalog_controller_product_init_after"|"$this->_eventManager->dispatch(
     'catalog_controller_product_init_after',
     ['product' => $product, 'controller_action' => $controller]);"
 "app/code/Magento/Catalog/Helper/Product/View.php"|"277"|"catalog_controller_product_view"|"$this->_eventManager->dispatch('catalog_controller_product_view', ['product' => $product]);"
@@ -416,20 +416,20 @@ AbstractDataAssignObserver"
     'row' => $item->getData(),
     'product' => $item
 ]);"
-"app/code/Magento/Catalog/Block/Product/ListProduct.php"|"469"|"catalog_block_product_list_collection"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Block/Product/ListProduct.php"|"480"|"catalog_block_product_list_collection"|"$this->_eventManager->dispatch(
     'catalog_block_product_list_collection',
     ['collection' => $collection]);"
 "app/code/Magento/Catalog/Block/Product/AbstractProduct.php"|"387"|"catalog_block_product_status_display"|"$this->_eventManager->dispatch('catalog_block_product_status_display', ['status' => $statusInfo]);"
 "app/code/Magento/Catalog/Block/Product/View.php"|"217"|"catalog_product_view_config"|"$this->_eventManager->dispatch('catalog_product_view_config', ['response_object' => $responseObject]);"
-"app/code/Magento/Catalog/Block/Product/View/Options.php"|"232"|"catalog_product_option_price_configuration_after"|"$this->_eventManager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $configObj]);"
+"app/code/Magento/Catalog/Block/Product/View/Options.php"|"238"|"catalog_product_option_price_configuration_after"|"$this->_eventManager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $configObj]);"
 "app/code/Magento/Catalog/Block/Product/ProductList/Upsell.php"|"113"|"catalog_product_upsell"|"$this->_eventManager->dispatch(
     'catalog_product_upsell',
     ['product' => $product, 'collection' => $this->_itemCollection, 'limit' => null]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"400"|"adminhtml_catalog_category_tree_is_moveable"|"$this->_eventManager->dispatch('adminhtml_catalog_category_tree_is_moveable', ['options' => $options]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"439"|"adminhtml_catalog_category_tree_can_add_root_category"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"426"|"adminhtml_catalog_category_tree_is_moveable"|"$this->_eventManager->dispatch('adminhtml_catalog_category_tree_is_moveable', ['options' => $options]);"
+"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"467"|"adminhtml_catalog_category_tree_can_add_root_category"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_category_tree_can_add_root_category',
     ['category' => $this->getCategory(), 'options' => $options, 'store' => $this->getStore()->getId()]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"455"|"adminhtml_catalog_category_tree_can_add_sub_category"|"$this->_eventManager->dispatch(
+"app/code/Magento/Catalog/Block/Adminhtml/Category/Tree.php"|"483"|"adminhtml_catalog_category_tree_can_add_sub_category"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_category_tree_can_add_sub_category',
     ['category' => $this->getCategory(), 'options' => $options, 'store' => $this->getStore()->getId()]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/NewAttribute/Product/Attributes.php"|"52"|"adminhtml_catalog_product_edit_prepare_form"|"$this->_eventManager->dispatch('adminhtml_catalog_product_edit_prepare_form', ['form' => $form]);"
@@ -437,7 +437,7 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Grid.php"|"107"|"product_attribute_grid_build"|"$this->_eventManager->dispatch('product_attribute_grid_build', ['grid' => $this]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Main.php"|"65"|"adminhtml_product_attribute_types"|"$this->_eventManager->dispatch('adminhtml_product_attribute_types', ['response' => $response]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Main.php"|"78"|"product_attribute_form_build_main_tab"|"$this->_eventManager->dispatch('product_attribute_form_build_main_tab', ['form' => $form]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Advanced.php"|"248"|"product_attribute_form_build"|"$this->_eventManager->dispatch('product_attribute_form_build', ['form' => $form]);"
+"app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Advanced.php"|"246"|"product_attribute_form_build"|"$this->_eventManager->dispatch('product_attribute_form_build', ['form' => $form]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Front.php"|"115"|"product_attribute_form_build_front_tab"|"$this->_eventManager->dispatch('product_attribute_form_build_front_tab', ['form' => $form]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Edit/Tab/Front.php"|"177"|"adminhtml_catalog_product_attribute_edit_frontend_prepare_form"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_product_attribute_edit_frontend_prepare_form',
@@ -448,7 +448,7 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Attribute/Set/Toolbar/Main.php"|"63"|"adminhtml_catalog_product_attribute_set_toolbar_main_html_before"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_product_attribute_set_toolbar_main_html_before',
     ['block' => $this]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Product/Grid.php"|"423"|"adminhtml_catalog_product_grid_prepare_massaction"|"$this->_eventManager->dispatch('adminhtml_catalog_product_grid_prepare_massaction', ['block' => $this]);"
+"app/code/Magento/Catalog/Block/Adminhtml/Product/Grid.php"|"422"|"adminhtml_catalog_product_grid_prepare_massaction"|"$this->_eventManager->dispatch('adminhtml_catalog_product_grid_prepare_massaction', ['block' => $this]);"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Edit/Tab/Attributes.php"|"124"|"adminhtml_catalog_product_edit_prepare_form"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_product_edit_prepare_form',
     ['form' => $form, 'layout' => $this->getLayout()]);"
@@ -459,7 +459,7 @@ AbstractDataAssignObserver"
 "app/code/Magento/Catalog/Block/Adminhtml/Product/Edit/Action/Attribute/Tab/Attributes.php"|"76"|"adminhtml_catalog_product_form_prepare_excluded_field_list"|"$this->_eventManager->dispatch(
     'adminhtml_catalog_product_form_prepare_excluded_field_list',
     ['object' => $this]);"
-"app/code/Magento/Catalog/Block/Adminhtml/Product/Helper/Form/Gallery/Content.php"|"100"|"catalog_product_gallery_prepare_layout"|"$this->_eventManager->dispatch('catalog_product_gallery_prepare_layout', ['block' => $this]);"
+"app/code/Magento/Catalog/Block/Adminhtml/Product/Helper/Form/Gallery/Content.php"|"110"|"catalog_product_gallery_prepare_layout"|"$this->_eventManager->dispatch('catalog_product_gallery_prepare_layout', ['block' => $this]);"
 "app/code/Magento/Tax/Controller/Adminhtml/Tax/IgnoreTaxNotification.php"|"55"|"adminhtml_cache_refresh_type"|"$this->_eventManager->dispatch('adminhtml_cache_refresh_type', ['type' => 'config']);"
 "app/code/Magento/Tax/Model/Calculation.php"|"367"|"tax_rate_data_fetch"|"$this->_eventManager->dispatch('tax_rate_data_fetch', ['request' => $request, 'sender' => $this]);"
 "app/code/Magento/Tax/Model/Calculation/Rule.php"|"108"|"tax_settings_change_after"|"$this->_eventManager->dispatch('tax_settings_change_after');"
@@ -467,14 +467,14 @@ AbstractDataAssignObserver"
 "app/code/Magento/Tax/Model/Calculation/Rate.php"|"193"|"tax_settings_change_after"|"$this->_eventManager->dispatch('tax_settings_change_after');"
 "app/code/Magento/Tax/Model/Calculation/Rate.php"|"221"|"tax_settings_change_after"|"$this->_eventManager->dispatch('tax_settings_change_after');"
 "app/code/Magento/Tax/Model/Calculation/Rate.php"|"290"|"tax_settings_change_after"|"$this->_eventManager->dispatch('tax_settings_change_after');"
-"app/code/Magento/Bundle/Model/Product/Price.php"|"140"|"prepare_catalog_product_collection_prices"|"$this->_eventManager->dispatch(
+"app/code/Magento/Bundle/Model/Product/Price.php"|"143"|"prepare_catalog_product_collection_prices"|"$this->_eventManager->dispatch(
     'prepare_catalog_product_collection_prices',
     ['collection' => $selections, 'store_id' => $product->getStoreId()]);"
-"app/code/Magento/Bundle/Model/Product/Price.php"|"195"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch('catalog_product_get_final_price', ['product' => $product, 'qty' => $qty]);"
-"app/code/Magento/Bundle/Model/Product/Price.php"|"463"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch(
+"app/code/Magento/Bundle/Model/Product/Price.php"|"198"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch('catalog_product_get_final_price', ['product' => $product, 'qty' => $qty]);"
+"app/code/Magento/Bundle/Model/Product/Price.php"|"472"|"catalog_product_get_final_price"|"$this->_eventManager->dispatch(
     'catalog_product_get_final_price',
     ['product' => $product, 'qty' => $bundleQty]);"
-"app/code/Magento/Bundle/Model/ResourceModel/Indexer/Price.php"|"365"|"catalog_product_prepare_index_select"|"$this->eventManager->dispatch(
+"app/code/Magento/Bundle/Model/ResourceModel/Indexer/Price.php"|"369"|"catalog_product_prepare_index_select"|"$this->eventManager->dispatch(
     'catalog_product_prepare_index_select',
     [
 'select' => $select,
@@ -489,13 +489,13 @@ AbstractDataAssignObserver"
 "app/code/Magento/User/Controller/Adminhtml/User/Role/SaveRole.php"|"101"|"admin_permissions_role_prepare_save"|"$this->_eventManager->dispatch(
     'admin_permissions_role_prepare_save',
     ['object' => $role, 'request' => $this->getRequest()]);"
-"app/code/Magento/User/Model/User.php"|"570"|"admin_user_authenticate_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/User/Model/User.php"|"573"|"admin_user_authenticate_before"|"$this->_eventManager->dispatch(
     'admin_user_authenticate_before',
     ['username' => $username, 'user' => $this]);"
-"app/code/Magento/User/Model/User.php"|"580"|"admin_user_authenticate_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/User/Model/User.php"|"583"|"admin_user_authenticate_after"|"$this->_eventManager->dispatch(
     'admin_user_authenticate_after',
     ['username' => $username, 'password' => $password, 'user' => $this, 'result' => $result]);"
-"app/code/Magento/User/Model/User.php"|"922"|"admin_user_authenticate_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/User/Model/User.php"|"928"|"admin_user_authenticate_after"|"$this->_eventManager->dispatch(
     'admin_user_authenticate_after',
     [
 'username' => $this->getUserName(),
@@ -526,18 +526,18 @@ AbstractDataAssignObserver"
 "app/code/Magento/Backend/Block/Template.php"|"128"|"adminhtml_block_html_before"|"$this->_eventManager->dispatch('adminhtml_block_html_before', ['block' => $this]);"
 "app/code/Magento/Backend/Console/Command/CacheCleanCommand.php"|"35"|"adminhtml_cache_flush_system"|"$this->eventManager->dispatch('adminhtml_cache_flush_system');"
 "app/code/Magento/Backend/Console/Command/CacheFlushCommand.php"|"35"|"adminhtml_cache_flush_all"|"$this->eventManager->dispatch('adminhtml_cache_flush_all');"
-"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1041"|"catalog_product_import_bunch_delete_commit_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1048"|"catalog_product_import_bunch_delete_commit_before"|"$this->_eventManager->dispatch(
     'catalog_product_import_bunch_delete_commit_before',
     [
         'adapter' => $this,
         'bunch' => $bunch,
         'ids_to_delete' => $idsToDelete,
     ]);"
-"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1054"|"catalog_product_import_bunch_delete_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1061"|"catalog_product_import_bunch_delete_after"|"$this->_eventManager->dispatch(
     'catalog_product_import_bunch_delete_after',
     ['adapter' => $this, 'bunch' => $bunch]);"
-"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1081"|"catalog_product_import_finish_before"|"$this->_eventManager->dispatch('catalog_product_import_finish_before', ['adapter' => $this]);"
-"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1970"|"catalog_product_import_bunch_save_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1088"|"catalog_product_import_finish_before"|"$this->_eventManager->dispatch('catalog_product_import_finish_before', ['adapter' => $this]);"
+"app/code/Magento/CatalogImportExport/Model/Import/Product.php"|"1883"|"catalog_product_import_bunch_save_after"|"$this->_eventManager->dispatch(
     'catalog_product_import_bunch_save_after',
     ['adapter' => $this, 'bunch' => $bunch]);"
 "app/code/Magento/Checkout/Controller/Cart/Add.php"|"124"|"checkout_cart_add_product_complete"|"$this->_eventManager->dispatch(
@@ -546,7 +546,7 @@ AbstractDataAssignObserver"
 "app/code/Magento/Checkout/Controller/Cart/UpdateItemOptions.php"|"61"|"checkout_cart_update_item_complete"|"$this->_eventManager->dispatch(
     'checkout_cart_update_item_complete',
     ['item' => $item, 'request' => $this->getRequest(), 'response' => $this->getResponse()]);"
-"app/code/Magento/Checkout/Controller/Onepage/SaveOrder.php"|"129"|"checkout_controller_onepage_saveOrder"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Controller/Onepage/SaveOrder.php"|"133"|"checkout_controller_onepage_saveOrder"|"$this->_eventManager->dispatch(
     'checkout_controller_onepage_saveOrder',
     [
 'result' => $result,
@@ -558,28 +558,28 @@ AbstractDataAssignObserver"
 'order_ids' => [$session->getLastOrderId()],
 'order' => $session->getLastRealOrder()
     ]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"384"|"checkout_cart_product_add_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Model/Cart.php"|"375"|"checkout_cart_product_add_before"|"$this->_eventManager->dispatch(
     'checkout_cart_product_add_before',
     ['info' => $requestInfo, 'product' => $product]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"415"|"checkout_cart_product_add_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Model/Cart.php"|"406"|"checkout_cart_product_add_after"|"$this->_eventManager->dispatch(
     'checkout_cart_product_add_after',
     ['quote_item' => $result, 'product' => $product]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"515"|"checkout_cart_update_items_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Model/Cart.php"|"507"|"checkout_cart_update_items_before"|"$this->_eventManager->dispatch(
     'checkout_cart_update_items_before',
     ['cart' => $this, 'info' => $infoDataObject]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"556"|"checkout_cart_update_items_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Model/Cart.php"|"548"|"checkout_cart_update_items_after"|"$this->_eventManager->dispatch(
     'checkout_cart_update_items_after',
     ['cart' => $this, 'info' => $infoDataObject]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"584"|"checkout_cart_save_before"|"$this->_eventManager->dispatch('checkout_cart_save_before', ['cart' => $this]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"594"|"checkout_cart_save_after"|"$this->_eventManager->dispatch('checkout_cart_save_after', ['cart' => $this]);"
-"app/code/Magento/Checkout/Model/Cart.php"|"744"|"checkout_cart_product_update_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Checkout/Model/Cart.php"|"576"|"checkout_cart_save_before"|"$this->_eventManager->dispatch('checkout_cart_save_before', ['cart' => $this]);"
+"app/code/Magento/Checkout/Model/Cart.php"|"586"|"checkout_cart_save_after"|"$this->_eventManager->dispatch('checkout_cart_save_after', ['cart' => $this]);"
+"app/code/Magento/Checkout/Model/Cart.php"|"736"|"checkout_cart_product_update_after"|"$this->_eventManager->dispatch(
     'checkout_cart_product_update_after',
     ['quote_item' => $result, 'product' => $product]);"
-"app/code/Magento/Checkout/Model/Session.php"|"211"|"custom_quote_process"|"$this->_eventManager->dispatch('custom_quote_process', ['checkout_session' => $this]);"
-"app/code/Magento/Checkout/Model/Session.php"|"254"|"checkout_quote_init"|"$this->_eventManager->dispatch('checkout_quote_init', ['quote' => $quote]);"
-"app/code/Magento/Checkout/Model/Session.php"|"327"|"load_customer_quote_before"|"$this->_eventManager->dispatch('load_customer_quote_before', ['checkout_session' => $this]);"
-"app/code/Magento/Checkout/Model/Session.php"|"417"|"checkout_quote_destroy"|"$this->_eventManager->dispatch('checkout_quote_destroy', ['quote' => $this->getQuote()]);"
-"app/code/Magento/Checkout/Model/Session.php"|"500"|"restore_quote"|"$this->_eventManager->dispatch('restore_quote', ['order' => $order, 'quote' => $quote]);"
+"app/code/Magento/Checkout/Model/Session.php"|"228"|"custom_quote_process"|"$this->_eventManager->dispatch('custom_quote_process', ['checkout_session' => $this]);"
+"app/code/Magento/Checkout/Model/Session.php"|"281"|"checkout_quote_init"|"$this->_eventManager->dispatch('checkout_quote_init', ['quote' => $quote]);"
+"app/code/Magento/Checkout/Model/Session.php"|"360"|"load_customer_quote_before"|"$this->_eventManager->dispatch('load_customer_quote_before', ['checkout_session' => $this]);"
+"app/code/Magento/Checkout/Model/Session.php"|"453"|"checkout_quote_destroy"|"$this->_eventManager->dispatch('checkout_quote_destroy', ['quote' => $this->getQuote()]);"
+"app/code/Magento/Checkout/Model/Session.php"|"540"|"restore_quote"|"$this->_eventManager->dispatch('restore_quote', ['order' => $order, 'quote' => $quote]);"
 "app/code/Magento/Checkout/Model/Type/Onepage.php"|"718"|"checkout_type_onepage_save_order_after"|"$this->_eventManager->dispatch(
     'checkout_type_onepage_save_order_after',
     ['order' => $order, 'quote' => $this->getQuote()]);"
@@ -643,13 +643,13 @@ AbstractDataAssignObserver"
 "app/code/Magento/Theme/Model/Config.php"|"100"|"assign_theme_to_stores_after"|"$this->_eventManager->dispatch(
     'assign_theme_to_stores_after',
     ['stores' => $stores, 'scope' => $scope, 'theme' => $theme]);"
-"app/code/Magento/Theme/Block/Html/Topmenu.php"|"84"|"page_block_html_topmenu_gethtml_before"|"$this->_eventManager->dispatch(
+"app/code/Magento/Theme/Block/Html/Topmenu.php"|"87"|"page_block_html_topmenu_gethtml_before"|"$this->_eventManager->dispatch(
     'page_block_html_topmenu_gethtml_before',
     ['menu' => $this->getMenu(), 'block' => $this, 'request' => $this->getRequest()]);"
-"app/code/Magento/Theme/Block/Html/Topmenu.php"|"95"|"page_block_html_topmenu_gethtml_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Theme/Block/Html/Topmenu.php"|"105"|"page_block_html_topmenu_gethtml_after"|"$this->_eventManager->dispatch(
     'page_block_html_topmenu_gethtml_after',
     ['menu' => $this->getMenu(), 'transportObject' => $transportObject]);"
-"app/code/Magento/Paypal/Controller/Ipn/Index.php"|"88"|"paypal_checkout_success"|"$this->_eventManager->dispatch(
+"app/code/Magento/Paypal/Controller/Ipn/Index.php"|"90"|"paypal_checkout_success"|"$this->_eventManager->dispatch(
     'paypal_checkout_success',
     [
         'order' => $this->orderFactory->create()->loadByIncrementId($incrementId)
@@ -688,7 +688,7 @@ AbstractDataAssignObserver"
 "app/code/Magento/CatalogInventory/Model/Indexer/Stock/CacheCleaner.php"|"92"|"clean_cache_by_tags"|"$this->eventManager->dispatch('clean_cache_by_tags', ['object' => $this->cacheContext]);"
 "app/code/Magento/GiftMessage/Block/Message/Inline.php"|"245"|"gift_options_prepare_items"|"$this->_eventManager->dispatch('gift_options_prepare_items', ['items' => $entityItems]);"
 "app/code/Magento/GiftMessage/Block/Message/Inline.php"|"339"|"gift_options_prepare"|"$this->_eventManager->dispatch('gift_options_prepare', ['entity' => $entity]);"
-"app/code/Magento/SendFriendGraphQl/Model/Resolver/SendEmailToFriend.php"|"81"|"sendfriend_product"|"$this->eventManager->dispatch('sendfriend_product', ['product' => $product]);"
+"app/code/Magento/SendFriendGraphQl/Model/SendFriend/SendEmail.php"|"96"|"sendfriend_product"|"$this->eventManager->dispatch('sendfriend_product', ['product' => $product]);"
 "app/code/Magento/Cookie/Controller/Index/NoCookies.php"|"19"|"controller_action_nocookies"|"$this->_eventManager->dispatch(
     'controller_action_nocookies',
     ['action' => $this, 'redirect' => $redirect]);"
@@ -707,32 +707,32 @@ AbstractDataAssignObserver"
 "app/code/Magento/Customer/Controller/Account/EditPost.php"|"260"|"customer_account_edited"|"$this->_eventManager->dispatch(
     'customer_account_edited',
     ['email' => $customerCandidateDataObject->getEmail()]);"
-"app/code/Magento/Customer/Controller/Account/CreatePost.php"|"354"|"customer_register_success"|"$this->_eventManager->dispatch(
+"app/code/Magento/Customer/Controller/Account/CreatePost.php"|"361"|"customer_register_success"|"$this->_eventManager->dispatch(
     'customer_register_success',
     ['account_controller' => $this, 'customer' => $customer]);"
-"app/code/Magento/Customer/Controller/Adminhtml/Index/Save.php"|"320"|"adminhtml_customer_prepare_save"|"$this->_eventManager->dispatch(
+"app/code/Magento/Customer/Controller/Adminhtml/Index/Save.php"|"318"|"adminhtml_customer_prepare_save"|"$this->_eventManager->dispatch(
     'adminhtml_customer_prepare_save',
     ['customer' => $customer, 'request' => $this->getRequest()]);"
-"app/code/Magento/Customer/Controller/Adminhtml/Index/Save.php"|"352"|"adminhtml_customer_save_after"|"$this->_eventManager->dispatch(
+"app/code/Magento/Customer/Controller/Adminhtml/Index/Save.php"|"350"|"adminhtml_customer_save_after"|"$this->_eventManager->dispatch(
     'adminhtml_customer_save_after',
     ['customer' => $customer, 'request' => $this->getRequest()]);"
-"app/code/Magento/Customer/Model/Visitor.php"|"175"|"visitor_init"|"$this->_eventManager->dispatch('visitor_init', ['visitor' => $this]);"
-"app/code/Magento/Customer/Model/Visitor.php"|"198"|"visitor_activity_save"|"$this->_eventManager->dispatch('visitor_activity_save', ['visitor' => $this]);"
-"app/code/Magento/Customer/Model/AccountManagement.php"|"565"|"customer_customer_authenticated"|"$this->eventManager->dispatch(
+"app/code/Magento/Customer/Model/Visitor.php"|"180"|"visitor_init"|"$this->_eventManager->dispatch('visitor_init', ['visitor' => $this]);"
+"app/code/Magento/Customer/Model/Visitor.php"|"203"|"visitor_activity_save"|"$this->_eventManager->dispatch('visitor_activity_save', ['visitor' => $this]);"
+"app/code/Magento/Customer/Model/AccountManagement.php"|"591"|"customer_customer_authenticated"|"$this->eventManager->dispatch(
     'customer_customer_authenticated',
     ['model' => $customerModel, 'password' => $password]);"
-"app/code/Magento/Customer/Model/AccountManagement.php"|"570"|"customer_data_object_login"|"$this->eventManager->dispatch('customer_data_object_login', ['customer' => $customer]);"
-"app/code/Magento/Customer/Model/Session.php"|"180"|"customer_session_init"|"$this->_eventManager->dispatch('customer_session_init', ['customer_session' => $this]);"
-"app/code/Magento/Customer/Model/Session.php"|"416"|"customer_login"|"$this->_eventManager->dispatch('customer_login', ['customer' => $customer]);"
-"app/code/Magento/Customer/Model/Session.php"|"417"|"customer_data_object_login"|"$this->_eventManager->dispatch('customer_data_object_login', ['customer' => $this->getCustomerDataObject()]);"
-"app/code/Magento/Customer/Model/Session.php"|"435"|"customer_login"|"$this->_eventManager->dispatch('customer_login', ['customer' => $customerModel]);"
-"app/code/Magento/Customer/Model/Session.php"|"436"|"customer_data_object_login"|"$this->_eventManager->dispatch('customer_data_object_login', ['customer' => $customer]);"
-"app/code/Magento/Customer/Model/Session.php"|"467"|"customer_logout"|"$this->_eventManager->dispatch('customer_logout', ['customer' => $this->getCustomer()]);"
-"app/code/Magento/Customer/Model/Customer.php"|"407"|"customer_customer_authenticated"|"$this->_eventManager->dispatch(
+"app/code/Magento/Customer/Model/AccountManagement.php"|"596"|"customer_data_object_login"|"$this->eventManager->dispatch('customer_data_object_login', ['customer' => $customer]);"
+"app/code/Magento/Customer/Model/Session.php"|"181"|"customer_session_init"|"$this->_eventManager->dispatch('customer_session_init', ['customer_session' => $this]);"
+"app/code/Magento/Customer/Model/Session.php"|"421"|"customer_login"|"$this->_eventManager->dispatch('customer_login', ['customer' => $customer]);"
+"app/code/Magento/Customer/Model/Session.php"|"422"|"customer_data_object_login"|"$this->_eventManager->dispatch('customer_data_object_login', ['customer' => $this->getCustomerDataObject()]);"
+"app/code/Magento/Customer/Model/Session.php"|"442"|"customer_login"|"$this->_eventManager->dispatch('customer_login', ['customer' => $customerModel]);"
+"app/code/Magento/Customer/Model/Session.php"|"443"|"customer_data_object_login"|"$this->_eventManager->dispatch('customer_data_object_login', ['customer' => $customer]);"
+"app/code/Magento/Customer/Model/Session.php"|"474"|"customer_logout"|"$this->_eventManager->dispatch('customer_logout', ['customer' => $this->getCustomer()]);"
+"app/code/Magento/Customer/Model/Customer.php"|"411"|"customer_customer_authenticated"|"$this->_eventManager->dispatch(
     'customer_customer_authenticated',
     ['model' => $this, 'password' => $password]);"
-"app/code/Magento/Customer/Model/Address/AbstractAddress.php"|"496"|"customer_address_format"|"$this->_eventManager->dispatch('customer_address_format', ['type' => $formatType, 'address' => $this]);"
-"app/code/Magento/Customer/Model/ResourceModel/CustomerRepository.php"|"265"|"customer_save_after_data_object"|"$this->eventManager->dispatch(
+"app/code/Magento/Customer/Model/Address/AbstractAddress.php"|"498"|"customer_address_format"|"$this->_eventManager->dispatch('customer_address_format', ['type' => $formatType, 'address' => $this]);"
+"app/code/Magento/Customer/Model/ResourceModel/CustomerRepository.php"|"274"|"customer_save_after_data_object"|"$this->eventManager->dispatch(
     'customer_save_after_data_object',
     [
 'customer_data_object' => $savedCustomer,
@@ -747,37 +747,37 @@ AbstractDataAssignObserver"
     'payment_method_assign_data_vault_' . $this->getProviderCode(),
     [
 AbstractDataAssignObserver"
-"app/code/Magento/Wishlist/Controller/Index/Add.php"|"120"|"wishlist_add_product"|"$this->_eventManager->dispatch(
+"app/code/Magento/Wishlist/Controller/Index/Add.php"|"123"|"wishlist_add_product"|"$this->_eventManager->dispatch(
     'wishlist_add_product',
     ['wishlist' => $wishlist, 'product' => $product, 'item' => $result]);"
 "app/code/Magento/Wishlist/Controller/Index/UpdateItemOptions.php"|"109"|"wishlist_update_item"|"$this->_eventManager->dispatch(
     'wishlist_update_item',
     ['wishlist' => $wishlist, 'product' => $product, 'item' => $wishlist->getItem($id)]);"
-"app/code/Magento/Wishlist/Controller/Index/Send.php"|"277"|"wishlist_share"|"$this->_eventManager->dispatch('wishlist_share', ['wishlist' => $wishlist]);"
+"app/code/Magento/Wishlist/Controller/Index/Send.php"|"287"|"wishlist_share"|"$this->_eventManager->dispatch('wishlist_share', ['wishlist' => $wishlist]);"
 "app/code/Magento/Wishlist/Model/Wishlist.php"|"376"|"wishlist_add_item"|"$this->_eventManager->dispatch('wishlist_add_item', ['item' => $item]);"
 "app/code/Magento/Wishlist/Model/Wishlist.php"|"479"|"wishlist_product_add_after"|"$this->_eventManager->dispatch('wishlist_product_add_after', ['items' => $items]);"
 "app/code/Magento/Wishlist/Model/Rss/Wishlist.php"|"147"|"rss_wishlist_xml_callback"|"$this->eventManager->dispatch('rss_wishlist_xml_callback', $args);"
-"app/code/Magento/Wishlist/Model/ResourceModel/Item/Collection.php"|"303"|"wishlist_item_collection_products_after_load"|"$this->_eventManager->dispatch(
+"app/code/Magento/Wishlist/Model/ResourceModel/Item/Collection.php"|"323"|"wishlist_item_collection_products_after_load"|"$this->_eventManager->dispatch(
     'wishlist_item_collection_products_after_load',
     ['product_collection' => $productCollection]);"
-"app/code/Magento/Wishlist/Helper/Data.php"|"598"|"wishlist_items_renewed"|"$this->_eventManager->dispatch('wishlist_items_renewed');"
+"app/code/Magento/Wishlist/Helper/Data.php"|"610"|"wishlist_items_renewed"|"$this->_eventManager->dispatch('wishlist_items_renewed');"
 "app/code/Magento/Wishlist/Block/Customer/Wishlist/Item/Options.php"|"63"|"product_option_renderer_init"|"$this->_eventManager->dispatch('product_option_renderer_init', ['block' => $this]);"
 "app/code/Magento/Reports/Model/ResourceModel/Order/Collection.php"|"191"|"sales_prepare_amount_expression"|"$this->_eventManager->dispatch(
     'sales_prepare_amount_expression',
     ['collection' => $this, 'expression_object' => $expressionTransferObject]);"
-"app/code/Magento/Reports/Block/Adminhtml/Grid.php"|"145"|"adminhtml_widget_grid_filter_collection"|"$this->_eventManager->dispatch(
+"app/code/Magento/Reports/Block/Adminhtml/Grid.php"|"187"|"adminhtml_widget_grid_filter_collection"|"$this->_eventManager->dispatch(
     'adminhtml_widget_grid_filter_collection',
     ['collection' => $this->getCollection(), 'filter_values' => $this->_filterValues]);"
-"app/code/Magento/Store/Model/Group.php"|"420"|"_delete"|"$this->eventManager->dispatch($this->_eventPrefix . '_delete', ['group' => $group]);"
-"app/code/Magento/Store/Model/Group.php"|"447"|"_save"|"$this->eventManager->dispatch($this->_eventPrefix . '_save', ['group' => $group]);"
-"app/code/Magento/Store/Model/Store.php"|"1078"|"NO_MATCH"|"$this->eventManager->dispatch($event, ['store' => $store]);"
-"app/code/Magento/Store/Model/Store.php"|"1280"|"_delete"|"$this->eventManager->dispatch($this->_eventPrefix . '_delete', ['store' => $store]);"
+"app/code/Magento/Store/Model/Group.php"|"437"|"_delete"|"$this->eventManager->dispatch($this->_eventPrefix . '_delete', ['group' => $group]);"
+"app/code/Magento/Store/Model/Group.php"|"464"|"_save"|"$this->eventManager->dispatch($this->_eventPrefix . '_save', ['group' => $group]);"
+"app/code/Magento/Store/Model/Store.php"|"1091"|"NO_MATCH"|"$this->eventManager->dispatch($event, ['store' => $store]);"
+"app/code/Magento/Store/Model/Store.php"|"1299"|"_delete"|"$this->eventManager->dispatch($this->_eventPrefix . '_delete', ['store' => $store]);"
 "app/code/Magento/Store/Model/Config/Importer/Processor/Create.php"|"227"|"store_add"|"$this->eventManager->dispatch('store_add', ['store' => $store]);"
 "app/code/Magento/Store/Model/Address/Renderer.php"|"65"|"store_address_format"|"$this->eventManager->dispatch('store_address_format', ['type' => $type, 'store_info' => $storeInfo]);"
-"app/code/Magento/SalesRule/Controller/Adminhtml/Promo/Quote/Save.php"|"57"|"adminhtml_controller_salesrule_prepare_save"|"$this->_eventManager->dispatch(
+"app/code/Magento/SalesRule/Controller/Adminhtml/Promo/Quote/Save.php"|"68"|"adminhtml_controller_salesrule_prepare_save"|"$this->_eventManager->dispatch(
     'adminhtml_controller_salesrule_prepare_save',
     ['request' => $this->getRequest()]);"
-"app/code/Magento/SalesRule/Model/Rule.php"|"464"|"salesrule_rule_get_coupon_types"|"$this->_eventManager->dispatch('salesrule_rule_get_coupon_types', ['transport' => $transport]);"
+"app/code/Magento/SalesRule/Model/Rule.php"|"462"|"salesrule_rule_get_coupon_types"|"$this->_eventManager->dispatch('salesrule_rule_get_coupon_types', ['transport' => $transport]);"
 "app/code/Magento/SalesRule/Model/Quote/Discount.php"|"116"|"sales_quote_address_discount_item"|"$this->eventManager->dispatch('sales_quote_address_discount_item', $eventArgs);"
 "app/code/Magento/SalesRule/Model/Quote/Discount.php"|"123"|"sales_quote_address_discount_item"|"$this->eventManager->dispatch('sales_quote_address_discount_item', $eventArgs);"
 "app/code/Magento/SalesRule/Model/Rule/Condition/Combine.php"|"81"|"salesrule_rule_condition_combine"|"$this->_eventManager->dispatch('salesrule_rule_condition_combine', ['additional' => $additional]);"

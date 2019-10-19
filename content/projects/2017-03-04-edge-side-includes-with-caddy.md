@@ -27,11 +27,7 @@ ESI tags are used to fetch content from a backend resource and inject that
 content into the returned page to be displayed in a e.g. browser. ESI tags
 limits itself not to HTML only, you can include them into all text formats.
 
-**Warning:** Project still in beta phase and to enable more backend resources
-(besides HTTP) you need to buy a monthly recurring Enterprise maintenance
-support (Coming soon!)
-
-This blog post and the GitHub might get moved to a different location.
+**Warning:** Project still in alpha phase as there is a terrible race condition.
 
 ## Architectural overview
 
