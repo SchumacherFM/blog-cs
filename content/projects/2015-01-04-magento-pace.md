@@ -2,7 +2,6 @@
 title: Magento Pace - Automatic page load progress bar
 author: Cyrill
 date: 2015-01-04
-disqus_identifier: /2013/09/27/magepace/
 categories:
   - Projects
 tags:

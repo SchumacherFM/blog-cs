@@ -3,7 +3,6 @@ draft: true
 title: Performance of Go's database/sql
 author: Cyrill
 date: 2017-09-30
-disqus_identifier: /2017/03/03/mage2.2-dispatched-events/
 categories:
   - Thoughts
 tags:

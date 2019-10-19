@@ -2,7 +2,6 @@
 title: Nodejs Playground
 author: Cyrill
 date: 2013-07-01
-disqus_identifier: /2013/07/01/nodejs-playground/
 categories:
   - Projects
 tags:

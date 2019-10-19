@@ -4,8 +4,6 @@ date: 2013-01-01
 author: Cyrill
 categories:
   - "Imprint"
-disqus_identifier: imprint
-
 ---
 Click for more details!
 <!--more-->

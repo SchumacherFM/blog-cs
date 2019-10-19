@@ -2,7 +2,6 @@
 title: Magento OPCache Panel
 author: Cyrill
 date: 2013-12-20
-disqus_identifier: /2013/12/20/magento-opcache/
 categories:
   - Projects
 tags:

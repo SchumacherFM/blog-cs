@@ -2,7 +2,6 @@
 title: Mailout - SMTP client middleware for sending emails with CaddyServer and static sites
 author: Cyrill
 date: 2016-02-26
-disqus_identifier: /2016/02/26/mailout-caddy/
 categories:
   - Projects
 tags:

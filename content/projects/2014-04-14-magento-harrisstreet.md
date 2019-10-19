@@ -2,7 +2,6 @@
 title: HarrisStreet - Composer.org based installer for Magento
 author: Cyrill
 date: 2014-04-14
-disqus_identifier: /2013/04/14/harrisstreet/
 categories:
   - Projects
 tags:

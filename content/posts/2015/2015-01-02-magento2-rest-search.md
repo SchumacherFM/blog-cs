@@ -2,7 +2,6 @@
 title: Magento2 - Search parameters for the REST API
 author: Cyrill
 date: 2015-01-02
-disqus_identifier: /2015/01/02/mage2-rest-search-params/
 categories:
   - Thoughts
 tags:

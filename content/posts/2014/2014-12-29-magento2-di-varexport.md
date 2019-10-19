@@ -2,7 +2,6 @@
 title: Magento2 - Speed up DI with var_export + include instead of serialize
 author: Cyrill
 date: 2014-12-29
-disqus_identifier: /2014/12/29/mage2-di-varexport/
 categories:
   - Thoughts
 tags:

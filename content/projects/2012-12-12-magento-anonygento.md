@@ -2,7 +2,6 @@
 title: Magento Anonygento
 author: Cyrill
 date: 2012-07-01
-disqus_identifier: /2012/07/01/Anonygento/
 categories:
   - Projects
 tags:

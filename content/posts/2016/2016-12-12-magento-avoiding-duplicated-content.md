@@ -2,7 +2,6 @@
 title: Avoiding duplicate content in Magento's EAV model
 author: Cyrill
 date: 2016-12-12
-disqus_identifier: /2016/12/12/mage-no-duplicates/
 categories:
   - Thoughts
 tags:

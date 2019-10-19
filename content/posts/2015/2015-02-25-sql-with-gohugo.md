@@ -2,7 +2,6 @@
 title: Built-in SQL support for GoHugo.io
 author: Cyrill
 date: 2015-03-01
-disqus_identifier: /2015/02/25/sqlsupport-gohugo/
 categories:
   - Thoughts
 tags:

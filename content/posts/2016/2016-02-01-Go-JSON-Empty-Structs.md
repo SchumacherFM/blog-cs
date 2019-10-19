@@ -3,7 +3,6 @@ draft: false
 title: 'Go: encoding/json,xml: omitempty with non-pointer structs'
 author: Cyrill
 date: 2016-02-01
-disqus_identifier: /2016/02/01/go-omitempty-non-pointer-structs/
 categories:
   - Thoughts
 tags:

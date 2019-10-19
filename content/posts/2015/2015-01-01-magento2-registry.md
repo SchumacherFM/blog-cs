@@ -2,7 +2,6 @@
 title: Magento2 - List of all coreRegistry register calls
 author: Cyrill
 date: 2015-10-06
-disqus_identifier: /2015/01/01/mage2-coreRegistry/
 categories:
   - Thoughts
 tags:

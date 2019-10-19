@@ -2,7 +2,6 @@
 title: Twig Template Engine For Magento2
 author: Cyrill
 date: 2015-01-17
-disqus_identifier: /2015/01/17/mage2twig/
 categories:
   - Projects
 tags:

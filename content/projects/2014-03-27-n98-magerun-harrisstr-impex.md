@@ -2,7 +2,6 @@
 title: n98-magerun - HarrisStreet - Configuration Importer Exporter
 author: Cyrill
 date: 2014-03-27
-disqus_identifier: /2013/03/27/harrisimpex/
 categories:
   - Projects
 tags:

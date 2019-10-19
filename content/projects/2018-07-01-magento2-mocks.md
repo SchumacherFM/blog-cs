@@ -2,7 +2,6 @@
 title: Magento2 mock classes for removed core modules
 author: Cyrill
 date: 2018-07-01
-disqus_identifier: /2018/07/01/mage2mocks/
 categories:
   - Projects
 tags:

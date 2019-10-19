@@ -2,7 +2,6 @@
 title: Mediamock
 author: Cyrill
 date: 2015-12-28
-disqus_identifier: /2015/12/28/mediamock/
 categories:
   - Projects
 tags:

@@ -2,7 +2,6 @@
 title: Magento Optimized Backend Login
 author: Cyrill
 date: 2013-06-04
-disqus_identifier: /2013/12/20/Magento-OptimizedBackendLogin/
 categories:
   - Projects
 tags:

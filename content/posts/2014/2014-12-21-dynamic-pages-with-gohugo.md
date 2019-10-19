@@ -2,7 +2,6 @@
 title: Data-driven content with GoHugo.io
 author: Cyrill
 date: 2014-12-21
-disqus_identifier: /2014/12/21/dynpages-gohugo/
 categories:
   - Thoughts
 tags:

@@ -2,7 +2,6 @@
 title: Magento PGP
 author: Cyrill
 date: 2013-07-23
-disqus_identifier: /2013/07/23/magepgp/
 categories:
   - Projects
 tags:

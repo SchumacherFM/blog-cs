@@ -2,7 +2,6 @@
 title: Magento ModelView
 author: Cyrill
 date: 2014-06-08
-disqus_identifier: /2014/06/08/magento-modelview/
 categories:
   - Projects
 tags:

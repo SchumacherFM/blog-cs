@@ -2,7 +2,6 @@
 title: Virtual Pages with GoHugo.io
 author: Cyrill
 date: 2015-02-09
-disqus_identifier: /2015/02/09/virtpages-gohugo/
 categories:
   - Thoughts
 tags:

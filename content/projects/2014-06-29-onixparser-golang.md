@@ -2,7 +2,6 @@
 title: OnixParser
 author: Cyrill
 date: 2014-06-29
-disqus_identifier: /2014/06/29/OnixParser/
 categories:
   - Projects
 tags:

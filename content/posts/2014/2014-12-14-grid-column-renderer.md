@@ -2,7 +2,6 @@
 title: Magento Grid Column Renderer with DB queries
 author: Cyrill
 date: 2014-12-16
-disqus_identifier: /2014/12/16/magegridcolumnrenderer/
 categories:
   - Thoughts
 tags:

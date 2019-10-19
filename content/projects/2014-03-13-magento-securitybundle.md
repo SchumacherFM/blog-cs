@@ -2,7 +2,6 @@
 title: Magento Security Bundle @todo
 author: Cyrill
 date: 2014-03-13
-disqus_identifier: /2013/12/20/Magento-SecurityBundle/
 categories:
   - Projects
 tags:

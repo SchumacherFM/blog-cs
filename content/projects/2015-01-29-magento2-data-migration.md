@@ -2,7 +2,6 @@
 title: Data Migration from Magento1 to Magento2
 author: Cyrill
 date: 2015-01-29
-disqus_identifier: /2015/01/29/mage2migrate/
 categories:
   - Projects
 tags:

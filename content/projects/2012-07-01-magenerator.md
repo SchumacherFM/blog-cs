@@ -2,7 +2,6 @@
 title: MageNerator - Magento Extension Generator Website
 author: Cyrill
 date: 2012-07-01
-disqus_identifier: /2012/07/01/magenerator/
 categories:
   - Projects
 tags:

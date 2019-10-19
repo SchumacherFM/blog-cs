@@ -2,7 +2,6 @@
 title: Magento - Extending an adminhtml grid
 author: Cyrill
 date: 2015-05-07
-disqus_identifier: /2015/05/07/mage-extend-admin-grid/
 categories:
   - Thoughts
 tags:

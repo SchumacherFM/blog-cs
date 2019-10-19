@@ -2,7 +2,6 @@
 title: Magento MySQL AsyncSave
 author: Cyrill
 date: 2014-06-01
-disqus_identifier: /2014/06/01/Magento-AsyncSave/
 categories:
   - Projects
 tags:

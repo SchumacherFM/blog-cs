@@ -2,7 +2,6 @@
 title: Magento2 Stores and Scopes
 author: Cyrill
 date: 2015-04-20
-disqus_identifier: /2015/04/20/mage2-stores-and-scopes/
 categories:
   - Thoughts
 tags:

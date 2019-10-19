@@ -2,7 +2,6 @@
 title: Magento2 - REST API Permissions
 author: Cyrill
 date: 2015-01-03
-disqus_identifier: /2015/01/03/mage2-rest-api-permissions/
 categories:
   - Thoughts
 tags:

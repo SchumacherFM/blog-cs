@@ -3,7 +3,6 @@ draft: false
 title: Edge Side Includes with Caddy
 author: Cyrill
 date: 2017-03-04
-disqus_identifier: /2017/03/04/caddyesi/
 categories:
   - Projects
 tags:

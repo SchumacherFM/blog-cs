@@ -3,7 +3,6 @@ draft: false
 title: 'Magento2: SLOC - Single Lines of Code'
 author: Cyrill
 date: 2016-04-15
-disqus_identifier: /2016/04/15/magento2-sloc/
 categories:
   - Thoughts
 tags:

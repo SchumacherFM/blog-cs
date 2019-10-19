@@ -2,7 +2,6 @@
 title: Magento2 Stores and Scopes v1.0.0
 author: Cyrill
 date: 2015-10-10
-disqus_identifier: /2015/10/10/mage2-stores-and-scopes-v100/
 categories:
   - Thoughts
 tags:

@@ -2,7 +2,6 @@
 title: Magento 2.0 - List of all dispatched events
 author: Cyrill
 date: 2015-10-07
-disqus_identifier: /2015/01/01/mage2-dispatched-events/
 categories:
   - Thoughts
 tags:

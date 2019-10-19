@@ -3,7 +3,6 @@ draft: true
 title: Collection of useful Go command line instructions
 author: Cyrill
 date: 2016-12-18
-disqus_identifier: /2016/12/18/mage-no-duplicates/
 categories:
   - Projects
 tags:
