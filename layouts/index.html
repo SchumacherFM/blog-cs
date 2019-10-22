@@ -10,20 +10,20 @@
         <div class="main-inner group">
           <section class="content">
             <div class="pad group">
-              {{ $paginate := (.Paginate (where .Data.Pages "Section" "!=" "page")) }}
               {{ if eq .Paginator.PageNumber 1 }}
-                {{ range first 1 .Data.Pages }}
-                {{ template "featured.html" . }}
+                {{ range first 1 .Site.RegularPages }}
+                  {{ template "featured.html" . }}
                 {{end}}
               {{end}}
               <div class="post-list group">
+                {{ $paginate := (.Paginate (where .Data.Pages "Section" "!=" "page")) }}
                 {{ range $index,$data := $paginate.Pages }}
                   {{if gt $index 0}}
                     {{ if mod $index 2 | eq 1 }}
                       <div class="post-row">
                     {{end}}
 
-                      {{ template "indexes/categoryItem.html" $data }}
+                      {{ template "partials/categoryItem.html" $data }}
 
                     {{ if mod $index 2 | eq 0 }}
                       </div>

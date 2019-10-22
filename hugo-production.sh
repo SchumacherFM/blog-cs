@@ -1,10 +1,6 @@
 #!/bin/bash
 
-HUGO=./hugo_snapshot_linux_amd64
-
-if [ "$(uname)" == "Darwin" ]; then
-    HUGO=./hugo_snapshot_darwin_amd64
-fi
+HUGO=hugo
 
 rm -Rf public
 mkdir public
@@ -20,12 +16,9 @@ static/assets/highlight/highlight.pack.js \
 static/wp-content/plugins/wp-youtube-lyte/lyte/lyte-min.js \
 static/assets/js/myblog.js > static/assets/js/all.js
 
-# yuicompressor --line-break 120 -o static/assets/js/all.min.js static/assets/js/all.js
-
-$HUGO -v --baseUrl="//cyrillschumacher.com/" --cacheDir="./cache" --destination="./public/"
+$HUGO -v --baseUrl="//cyrillschumacher.com/" --cacheDir="/Users/kiri/Sites/hugo/cyrillschumacher/cache" --destination="./public/"
 cp -f static/piwik public/
 cp static/*.* public/
 cp -R static/.well-known public/
 ln -s ../piwik public/piwik
 ./syncFolders-push.sh
-#git push

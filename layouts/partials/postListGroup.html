@@ -2,7 +2,7 @@
   {{ range $index,$data := .Data.Pages }}
   {{ if mod $index 2 | eq 0 }}
   <div class="post-row">{{end}}
-    {{ template "indexes/categoryItem.html" $data }}
+    {{ template "partials/categoryItem.html" $data }}
     {{ if mod $index 2 | eq 1 }}
   </div>
   {{end}}
