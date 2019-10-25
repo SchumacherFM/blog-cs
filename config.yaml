@@ -1,14 +1,15 @@
 title: "Cyrill Schumacher's Blog"
-languageCode: "en-us"
+languageCode: "en-gb"
 copyright: "Copyright (c) 2014-2016, Cyrill Schumacher; all rights reserved."
 MetaDataFormat: "yaml"
-canonifyurls: true
+canonifyURLs: true
 builddrafts: false
+timeout: 600000
 Paginate: 7
-PaginatePath: paginator
+paginatePath: paginator
 permalinks:
   posts: /:year/:month/:day/:title/
-Taxonomies:
+taxonomies:
   tag: "tags"
   category: "categories"
 params:
