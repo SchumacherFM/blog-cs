@@ -1,14 +1,3 @@
-<script type="text/javascript">
-  var _paq = _paq || [];_paq.push([ 'trackPageView' ]);_paq.push([ 'enableLinkTracking' ]);
-  (function() {
-    var u = (("https:" == document.location.protocol) ? "https" : "http") + "://cyrillschumacher.com/piwik/";
-    _paq.push([ 'setTrackerUrl', u + 'js/' ]);_paq.push([ 'setSiteId', 5 ]);
-    var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[ 0 ];
-    g.type = 'text/javascript';g.defer = true;g.async = true;g.src = u + 'js/';s.parentNode.insertBefore(g, s);
-  })();
-  var bU = "{{.Site.BaseURL}}wp-content/plugins/wp-youtube-lyte/lyte/";
-</script>
-<noscript><p><img src="http://cyrillschumacher.com/piwik/js/?idsite=5" style="border:0;" alt=""/></p></noscript>
 {{ $baseURL := trim .Site.BaseURL " " }}
 {{ if in $baseURL "localhost" }}
 
