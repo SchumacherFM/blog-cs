@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/cyrill
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://www.schumacher.fm
+  * I am cyrill (https://keybase.io/cyrill) on keybase.
+  * I have a public key with fingerprint 076A 9DCE D5C2 63EE 438B  2BF7 3D7A E252 C8C7 9677
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "076a9dced5c263ee438b2bf73d7ae252c8c79677",
+            "host": "keybase.io",
+            "key_id": "3D7AE252C8C79677",
+            "uid": "32254eed01a93c34d6a3235321ee9c00",
+            "username": "cyrill"
+        },
+        "service": {
+            "hostname": "www.schumacher.fm",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1396344413,
+    "expire_in": 157680000,
+    "prev": "1bb8e34d100b99e43cfad14e049a8cef183500e09234f3f0542ed5f1c8592f5a",
+    "seqno": 4,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG/MacGPG2 v2.0.22 (Darwin)
+Comment: GPGTools - http://gpgtools.org
+
+owE1kVtIFFEYx3e1DV2QhEQIL+GgYqTLXHcuPcSqUVAJyz5FyTJz5ow7tDuzO7uu
+bVbQg5ZBJRSJSSaolQ+lgigh5YoI6ZJKRaFY2RXJEsk0C8TOmJ6Xw/m+3///XU5j
+WrLFbpWNzJIpfvivNRH/JVk8Qn1lLSbpcgwTarHTcPNSVK0KGkFD1SKYgOGsU+Rl
+AGUGkE4KQpriJFJSWEpmRUgyJOAAyztZFivGfHrYVCAbSQxDh6qjGHp4VRlFqXLW
+dQjxZVzZNl/9P0GSDA2hjBMiTwGKlp0iRVIMRRIQ8gDHTTAMDU0MQESDmKH6/dj5
+YgzFoiqAZsdm4a18TU2NIwx81QER+KDhUAJIHjT0iA50P0r7IpGgYKojseAmDiXv
+lpFXUjUZjY4EUWiEVV3DBAKRIKKazgTFOymapgmqGINngqoBvapJMKyTw9Exy8Ao
+siQkiYNoDALHJZ5H+wKKKBM0xGle5ABUCI5icBziPEnRCqXgDE2i5SoE4BieVBgR
+M0cLaTom0KhNsQpZhtUqTYxUGxA732DN3mGx2i07bUnm51nsqenbXzqUl2Jpav3g
+rk3zMQMZ0bzBlYXWz727x1/MP0gdWI0vuQrn/M7EytKTNqLy0UafpcyGLRf4mvqP
+Jr39qWvlX/adPOsu7Bp2/egyMiZ7Ukoevrxw5PY54unFfLdr8vJ+f/zOKn+w99Kx
+T93Lb2447rapRe3Kqb3fd3VmfpwtyQRL7bY/oSnPujp6PJn3jHj6cxaVpIX0vpi3
+4vpGY8co8S7/tbs8z7Zn9vBMYiR35qYi1NVllXbInWMnRuK5G9NTr7Lm7ncvvi+4
+d60/cetZaKzp+bfHzesTOePNV8WJnvDwmjBf1NB3YLClIXdgLSnna6h0OqD8bh2y
+8xVqdr3jylp2yz8=
+=aXu6
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/cyrill
+
+==================================================================
+
