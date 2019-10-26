@@ -1,7 +1,7 @@
 <section id="contactModal" class="themeform"><h3 class="heading">Contact Me</h3>
   <div id="respond" class="comment-respond">
     <h3 id="reply-title" class="comment-reply-title">This email will be PGP encrypted. </h3>
-    <form action="https://cyrillschumacher.com/mailout" method="post" id="commentform" class="comment-form">
+    <form data-netlify="true" name="CyrillSchumacherKontakt" method="POST" id="commentform" class="comment-form">
       <p class="comment-form-comment"><label for="comment">Comment</label>
         <textarea id="comment" name="comment"
                   cols="45" rows="8"
@@ -34,11 +34,10 @@
         <input id="url" name="url" type="text" value="" size="30">
       </p>
 
-      <p class="comment-form-url">
-        <img id="captcha" src="/mailout/captcha">
-        <input type="text" id="captcha_text" name="captcha_text" class="form-control"
-               placeholder="Captcha text" aria-required="true" required="required">
-      </p>
+      <p class="hidden">
+         <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+       </p>
+
       <p class="form-submit">
         <input name="submit" type="submit" id="submit" class="submit" value="Send message">
       </p>
