@@ -9,7 +9,8 @@
       {{$p.language}}: <strong>{{ $p.name }}</strong>
       <a href="{{ $p.html_url }}" target="_blank">{{ $p.full_name }}</a>
       <br>
-      Stars: {{$p.stargazers_count}} | Forks: {{$p.forks_count}} | Size: {{$p.size}}<br>
+      Stars: {{$p.stargazers_count}} | Forks: {{$p.forks_count}} | Size: {{$p.size}} {{if $p.archived}}| Archived{{end}}<br>
+      Created at: {{substr $p.created_at 0 10}} Updated at: {{substr $p.updated_at 0 10}} Pushed at: {{substr $p.pushed_at 0 10}}<br>
       {{ $p.description }}
       <div class="clear"></div>
     </li>

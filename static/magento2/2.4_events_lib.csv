@@ -1,0 +1,144 @@
+"lib/internal/Magento/Framework/Event.php"|"81"|"NO_MATCH"|"$this->getObservers()->dispatch($this);"
+"lib/internal/Magento/Framework/Locale/Currency.php"|"93"|"currency_display_options_forming"|"$this->_eventManager->dispatch(
+    'currency_display_options_forming',
+    ['currency_options' => $options, 'base_code' => $currency]);"
+"lib/internal/Magento/Framework/App/Http.php"|"116"|"NO_MATCH"|"$result = $frontController->dispatch($this->_request);"
+"lib/internal/Magento/Framework/App/Http.php"|"131"|"controller_front_send_response_before"|"$this->_eventManager->dispatch('controller_front_send_response_before', $eventParams);"
+"lib/internal/Magento/Framework/App/FrontController.php"|"245"|"NO_MATCH"|"return $actionInstance->dispatch($request);"
+"lib/internal/Magento/Framework/App/FrontController.php"|"271"|"controller_action_predispatch"|"$this->eventManager->dispatch('controller_action_predispatch', $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/FrontController.php"|"273"|"controller_action_predispatch_"|"$this->eventManager->dispatch(
+    'controller_action_predispatch_' . $request->getRouteName(),
+    $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/FrontController.php"|"277"|"controller_action_predispatch_"|"$this->eventManager->dispatch(
+    'controller_action_predispatch_' . $request->getFullActionName(),
+    $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/FrontController.php"|"295"|"controller_action_postdispatch_"|"$this->eventManager->dispatch(
+    'controller_action_postdispatch_' . $request->getFullActionName(),
+    $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/FrontController.php"|"299"|"controller_action_postdispatch_"|"$this->eventManager->dispatch(
+    'controller_action_postdispatch_' . $request->getRouteName(),
+    $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/FrontController.php"|"304"|"controller_action_postdispatch"|"$this->eventManager->dispatch('controller_action_postdispatch', $this->getEventParameters($actionInstance));"
+"lib/internal/Magento/Framework/App/Cron.php"|"86"|"default"|"$eventManager->dispatch('default');"
+"lib/internal/Magento/Framework/App/MaintenanceMode.php"|"82"|"maintenance_mode_changed"|"$this->eventManager->dispatch('maintenance_mode_changed', ['isOn' => $isOn]);"
+"lib/internal/Magento/Framework/App/View.php"|"216"|"controller_action_layout_render_before"|"$this->_eventManager->dispatch('controller_action_layout_render_before');"
+"lib/internal/Magento/Framework/App/View.php"|"217"|"controller_action_layout_render_before_"|"$this->_eventManager->dispatch(
+    'controller_action_layout_render_before_' . $this->_request->getFullActionName());"
+"lib/internal/Magento/Framework/Message/Manager.php"|"130"|"session_abstract_clear_messages"|"$this->eventManager->dispatch('session_abstract_clear_messages');"
+"lib/internal/Magento/Framework/Message/Manager.php"|"147"|"session_abstract_add_message"|"$this->eventManager->dispatch('session_abstract_add_message');"
+"lib/internal/Magento/Framework/Controller/Noroute/Index.php"|"23"|"controller_action_noroute"|"$this->_eventManager->dispatch('controller_action_noroute', ['action' => $this, 'status' => $status]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Update.php"|"99"|"entity_manager_save_before"|"$this->eventManager->dispatch(
+    'entity_manager_save_before',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Update.php"|"111"|"entity_manager_save_after"|"$this->eventManager->dispatch(
+    'entity_manager_save_after',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Create.php"|"109"|"entity_manager_save_before"|"$this->eventManager->dispatch(
+    'entity_manager_save_before',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Create.php"|"124"|"entity_manager_save_after"|"$this->eventManager->dispatch(
+    'entity_manager_save_after',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Read.php"|"91"|"entity_manager_load_before"|"$this->eventManager->dispatch(
+    'entity_manager_load_before',
+    [
+'entity_type' => $entityType,
+'identifier' => $identifier,
+'arguments' => $arguments
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Read.php"|"122"|"entity_manager_load_after"|"$this->eventManager->dispatch(
+    'entity_manager_load_after',
+    [
+'entity_type' => $entityType,
+'entity' => $entity,
+'arguments' => $arguments
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Delete.php"|"108"|"entity_manager_delete_before"|"$this->eventManager->dispatch(
+    'entity_manager_delete_before',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/Operation/Delete.php"|"120"|"entity_manager_delete_after"|"$this->eventManager->dispatch(
+    'entity_manager_delete_after',
+    [
+        'entity_type' => $entityType,
+        'entity' => $entity
+    ]);"
+"lib/internal/Magento/Framework/EntityManager/EventManager.php"|"50"|"_"|"$this->eventManager->dispatch(
+    $this->resolveEntityPrefix($entityType) . '_' . $eventSuffix,
+    $data);"
+"lib/internal/Magento/Framework/EntityManager/EventManager.php"|"63"|"NO_MATCH"|"$this->eventManager->dispatch($eventName, $data);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"567"|"model_load_before"|"$this->_eventManager->dispatch('model_load_before', $params);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"569"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', $params);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"580"|"model_load_after"|"$this->_eventManager->dispatch('model_load_after', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"581"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"666"|"model_save_commit_after"|"$this->_eventManager->dispatch('model_save_commit_after', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"667"|"_save_commit_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_save_commit_after', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"701"|"model_save_before"|"$this->_eventManager->dispatch('model_save_before', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"702"|"_save_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_save_before', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"827"|"model_save_after"|"$this->_eventManager->dispatch('model_save_after', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"828"|"clean_cache_by_tags"|"$this->_eventManager->dispatch('clean_cache_by_tags', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"829"|"_save_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_save_after', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"863"|"model_delete_before"|"$this->_eventManager->dispatch('model_delete_before', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"864"|"_delete_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_before', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"876"|"model_delete_after"|"$this->_eventManager->dispatch('model_delete_after', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"877"|"clean_cache_by_tags"|"$this->_eventManager->dispatch('clean_cache_by_tags', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"878"|"_delete_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_after', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"890"|"model_delete_commit_after"|"$this->_eventManager->dispatch('model_delete_commit_after', ['object' => $this]);"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"891"|"_delete_commit_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_delete_commit_after', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/AbstractModel.php"|"935"|"_clear"|"$this->_eventManager->dispatch($this->_eventPrefix . '_clear', $this->_getEventData());"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"541"|"core_collection_abstract_load_before"|"$this->_eventManager->dispatch('core_collection_abstract_load_before', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"543"|"_load_before"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_before', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"588"|"core_collection_abstract_load_after"|"$this->_eventManager->dispatch('core_collection_abstract_load_after', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/Collection/AbstractCollection.php"|"590"|"_load_after"|"$this->_eventManager->dispatch($this->_eventPrefix . '_load_after', [$this->_eventObject => $this]);"
+"lib/internal/Magento/Framework/Model/ResourceModel/Db/VersionControl/RelationComposite.php"|"50"|"_process_relation"|"$this->eventManager->dispatch(
+    $object->getEventPrefix(). '_process_relation',
+    [
+'object' => $object
+    ]);"
+"lib/internal/Magento/Framework/View/Result/Layout.php"|"167"|"layout_render_before"|"$this->eventManager->dispatch('layout_render_before');"
+"lib/internal/Magento/Framework/View/Result/Layout.php"|"168"|"layout_render_before_"|"$this->eventManager->dispatch('layout_render_before_' . $this->request->getFullActionName());"
+"lib/internal/Magento/Framework/View/Layout/Builder.php"|"79"|"layout_load_before"|"$this->eventManager->dispatch(
+    'layout_load_before',
+    ['full_action_name' => $this->request->getFullActionName(), 'layout' => $this->layout]);"
+"lib/internal/Magento/Framework/View/Layout/Builder.php"|"122"|"layout_generate_blocks_before"|"$this->eventManager->dispatch(
+    'layout_generate_blocks_before',
+    ['full_action_name' => $this->request->getFullActionName(), 'layout' => $this->layout]);"
+"lib/internal/Magento/Framework/View/Layout/Builder.php"|"132"|"layout_generate_blocks_after"|"$this->eventManager->dispatch(
+    'layout_generate_blocks_after',
+    ['full_action_name' => $this->request->getFullActionName(), 'layout' => $this->layout]);"
+"lib/internal/Magento/Framework/View/Layout/Generator/Block.php"|"150"|"core_layout_block_create_after"|"$this->eventManager->dispatch('core_layout_block_create_after', ['block' => $block]);"
+"lib/internal/Magento/Framework/View/Element/AbstractBlock.php"|"670"|"view_block_abstract_to_html_before"|"$this->_eventManager->dispatch('view_block_abstract_to_html_before', ['block' => $this]);"
+"lib/internal/Magento/Framework/View/Element/AbstractBlock.php"|"687"|"view_block_abstract_to_html_after"|"$this->_eventManager->dispatch(
+    'view_block_abstract_to_html_after',
+    [
+'block' => $this,
+'transport' => $transportObject
+    ]);"
+"lib/internal/Magento/Framework/View/Element/Messages.php"|"262"|"view_message_block_render_grouped_html_after"|"$this->_eventManager->dispatch('view_message_block_render_grouped_html_after', $params);"
+"lib/internal/Magento/Framework/View/Layout.php"|"516"|"core_layout_render_element"|"$this->_eventManager->dispatch(
+    'core_layout_render_element',
+    ['element_name' => $name, 'layout' => $this, 'transport' => $this->_renderingOutput]);"
+"lib/internal/Magento/Framework/DataObject/Copy.php"|"118"|"NO_MATCH"|"$this->eventManager->dispatch(
+    $eventName,
+    ['target' => $target, 'source' => $source, 'root' => $root]);"
+"lib/internal/Magento/Framework/Data/AbstractSearchResult.php"|"286"|"abstract_search_result_load_before"|"$this->eventManager->dispatch('abstract_search_result_load_before', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Data/AbstractSearchResult.php"|"288"|"_load_before"|"$this->eventManager->dispatch($this->eventPrefix . '_load_before', [$this->eventObject => $this]);"
+"lib/internal/Magento/Framework/Data/AbstractSearchResult.php"|"299"|"abstract_search_result_load_after"|"$this->eventManager->dispatch('abstract_search_result_load_after', ['collection' => $this]);"
+"lib/internal/Magento/Framework/Data/AbstractSearchResult.php"|"301"|"_load_after"|"$this->eventManager->dispatch($this->eventPrefix . '_load_after', [$this->eventObject => $this]);"
+"lib/internal/Magento/Framework/Event/Observer/Collection.php"|"89"|"NO_MATCH"|"$observer->dispatch($event);"
+"lib/internal/Magento/Framework/Event/Manager.php"|"66"|"NO_MATCH"|"$this->_invoker->dispatch($observerConfig, $wrapper);"
+"lib/internal/Magento/Framework/Event/Collection.php"|"127"|"NO_MATCH"|"$this->getGlobalObservers()->dispatch($event);"
