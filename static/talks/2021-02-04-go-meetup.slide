@@ -1,0 +1,124 @@
+# The Globus BB Gophers Meetup
+
+Cyrill Schumacher
+Magazine zum Globus AG
+
+## Welcome
+
+Thank you for joining!
+
+.image 2017-08-10/GoCommunity.png _ 700
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+## Let's go!
+
+.image 2017-08-10/Unicorn_Gopher.png _ 400
+.caption _Gopher_ by [[http://www.reneefrench.com][Renée French]]
+.caption _Graphics_ by [[https://github.com/ashleymcnamara][Ashley McNamara]]
+
+## Go 1.18 main new features
+
+- new support for generic code using parameterized types.
+- adds built-in support for writing fuzzing-based tests, to automatically find
+  inputs that cause your program to crash or return invalid answers.
+- adds a new “Go workspace mode”, which lets you work with multiple Go modules
+  simultaneously, an important use case for larger projects.
+- contains an expanded go version -m command, which now records build details
+  such as compiler flags. A program can query its own build details using
+  debug.ReadBuildInfo, and it can now read build details from other binaries using
+  the new debug/buildinfo package. This functionality is meant to be the foundation
+  for any tool that needs to produce a software bill of materials (SBOM) for Go
+  binaries.
+
+## Fuzzing
+
+.link https://go.dev/blog/fuzz-beta
+Fuzzing is a type of automated testing which continuously manipulates inputs to a
+program to find issues such as panics or bugs. These semi-random data mutations
+can discover new code coverage that existing unit tests may miss, and uncover
+edge case bugs which would otherwise go unnoticed.
+
+.code 2021-02-04/parse_fuzz.go
+
+
+## Workspace mode
+
+.link https://go.googlesource.com/proposal/+/master/design/45713-workspace.md
+A new workspace mode in the go command for editing multiple modules has been
+added. The presence of a go.work file in the working directory or a containing
+directory will put the go command into workspace mode. The go.work file specifies
+a set of local modules that comprise a workspace. When invoked in workspace mode,
+the go command will always select these modules and a consistent set of
+dependencies.
+
+## Parameterized types
+
+.link https://go.dev/doc/tutorial/generics
+
+Generics are the most significant change to Go since the release of Go 1, and
+certainly the largest single language change the Go team have ever made.
+
+## Generics gotchas "return"
+
+.play -edit -numbers 2021-02-04/generic_gotcha_return.go
+
+## Generics gotchas "fmt" 1/2
+
+.play -edit -numbers 2021-02-04/generic_gotcha_fmt.go
+
+## Generics gotchas "fmt" 2/2
+
+the go vet error results in:
+
+	$ go vet generic_gotcha_fmt.go
+	./generic_gotcha_fmt.go:12:20: fmt.Errorf format %q has arg key of wrong type K
+
+Solution is...
+
+## Generics Interface with type constraints (Problem)
+
+.play -numbers 2021-02-04/generic_gotcha_interface_type_constraint01.go
+
+## Generics Interface with type constraints (Solution)
+
+.play -numbers 2021-02-04/generic_gotcha_interface_type_constraint02.go
+
+## Unusual Generics
+
+	// Ptr is a simple function that helps to get literal pointer in one-line.
+    func Ptr[T any](v T) *T { return &v }
+
+Invoked as:
+
+	pInt := unusual_generics.Ptr(10)
+	pStr := unusual_generics.Ptr("test")
+	pUint64 := unusual_generics.Ptr[uint64](24)
+	fmt.Printf("%[1]T %[1]d\n", *pInt)
+	fmt.Printf("%[1]T %[1]s\n", *pStr)
+	fmt.Printf("%[1]T %[1]d\n", *pUint64)
+	// Output:
+	// int 10
+	// string test
+	// uint64 24
+
+Attention: future version Go can call directly `&10` or `&"test"`.
+
+## Generic constraints for checks during compile time
+
+.play -edit -numbers 2021-02-04/generic_avoidnil.go
+
+## Generics: bad patterns
+
+pointing out that:
+```
+func Something[R io.Reader](r R) error { ... }
+```
+is a useless use of generics and that is correctly written as:
+```
+func Something(r io.Reader) error { ... }
+```
+
+## When to use Generics?
+
+Use them wisely where multiple types occur and not just one.
