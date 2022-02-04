@@ -108,6 +108,51 @@ Attention: future version Go can call directly `&10` or `&"test"`.
 
 .play -edit -numbers 2021-02-04/generic_avoidnil.go
 
+## Generics - How to work around having no parameterized methods?
+
+Problem
+
+.link https://go.googlesource.com/proposal/+/refs/heads/master/design/43651-type-parameters.md#No-parameterized-methods
+
+This design does not permit methods to declare type parameters that are specific
+to the method. The receiver may have type parameters, but the method may not add
+any type parameters.
+
+	// NOTE: NOT POSSIBLE TO COMPILE THIS CODE AT THE MOMENT.
+	db, err := mongo.Connect("....")
+	if err != nil {
+		log.Fatal(err)
+	}
+	all, err := db.All[Customer](ctx) // Reads all person entities
+	if err != nil {
+		log.Fatal(err)
+	}
+
+## Generic Facilitators - Solution
+
+	package database
+	type Client struct{ ... }
+	type Querier[T any] struct {
+		client *Client
+	}
+	func NewQuerier[T any](c *Client) Querier[T] {
+		return Querier[T]{
+			client: c,
+		}
+	}
+	func (q Querier[T]) All(ctx context.Context) ([]T, error) {
+		// implementation
+	}
+	func (q Querier[T]) Filter(ctx context.Context, filter ...Filter) ([]T, error) {
+		// implementation
+	}
+
+Later, your users can create a new querier of any entity type and use the existing client connection to query the database:
+
+	var client *mongo.Client // initiate
+	querier := database.NewQuerier[Customer](client)
+	all, err := querier.All(ctx)
+
 ## Generics: bad patterns
 
 pointing out that:
