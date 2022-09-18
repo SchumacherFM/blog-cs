@@ -1,6 +1,6 @@
 title: "Cyrill Schumacher's Blog"
 languageCode: "en-gb"
-copyright: "Copyright (c) 2014-2016, Cyrill Schumacher; all rights reserved."
+copyright: "Copyright (c) 2014-2023, Cyrill Schumacher; all rights reserved."
 MetaDataFormat: "yaml"
 canonifyURLs: true
 builddrafts: false
@@ -13,7 +13,7 @@ taxonomies:
   tag: "tags"
   category: "categories"
 params:
-  CopyrightHTML: "Copyright &#xA9; 2014-2016 Cyrill Schumacher. All Rights Reserved."
+  CopyrightHTML: "Copyright &#xA9; 2014-2023 Cyrill Schumacher. All Rights Reserved."
   GitHubUser: "schumacherfm"
   SidebarRecentLimit: 5
   Categories:
